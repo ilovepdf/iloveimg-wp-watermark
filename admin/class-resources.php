@@ -143,17 +143,17 @@ class iLoveIMG_Watermark_Resources{
                 ?>                    
                     <?php if(iLoveIMG_Watermark_Resources::isLoggued()): ?>
                        <?php if(iLoveIMG_Watermark_Resources::getSizesEnabled()) : ?>
-                            <button type="button" class="iloveimg-compress button button-small button-primary" data-id="<?php echo $columnID ?>" <?php echo ($status_watermark === 1 || $status_watermark === 3) ? 'disabled="disabled"' :  '' ?>>Watermark</button>
+                            <button type="button" class="iloveimg-watermark button button-small button-primary" data-id="<?php echo $columnID ?>" <?php echo ($status_watermark === 1 || $status_watermark === 3) ? 'disabled="disabled"' :  '' ?>>Watermark</button>
                             <img src="<?php echo plugins_url( '/assets/images/spinner.gif', dirname(__FILE__) ) ?>" width="20" height="20" style="<?php echo ($status_watermark === 1 || $status_watermark === 3) ? '' :  'display: none;' ?>; margin-top: 7px" />
                             <?php if($status_watermark === 3): ?>
                                 <!-- <p>In queue...</p> -->
                             <?php endif; ?>
                         <?php else: ?>
-                            <a href="<?php echo admin_url( 'admin.php?page=iloveimg-admin-page' ) ?>" class="iloveimg_link">Go to settings</button>
+                            <a href="<?php echo admin_url( 'admin.php?page=iloveimg-watermark-admin-page' ) ?>" class="iloveimg_link">Go to settings</button>
                         <?php endif;
                     else: ?>
                         <p>You need to be registered</p>
-                        <a href="<?php echo admin_url( 'admin.php?page=iloveimg-admin-page' ) ?>" class="iloveimg_link">Go to settings</button>
+                        <a href="<?php echo admin_url( 'admin.php?page=iloveimg-watermark-admin-page' ) ?>" class="iloveimg_link">Go to settings</button>
                     <?php
                     endif;
                     if($status_watermark === 1 || $status_watermark === 3): ?>

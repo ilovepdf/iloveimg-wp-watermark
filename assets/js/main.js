@@ -13,7 +13,7 @@
     var timesIntervals = new Array();
     var timeReload;
 
-    function compressImage(event) {
+    function watermarkImage(event) {
         var element = jQuery(event.target);
         var container = element.closest('td');
 
@@ -37,7 +37,7 @@
           });
     }
 
-    function statusCompressing(element, index){
+    function statusWatermark(element, index){
         var element = jQuery(element);
         var container = element.closest('td');
         
@@ -63,18 +63,18 @@
         case 'upload-php':
         case 'media_page_iloveimg-media-page':
         case 'post-php':
-            jQuery(document).on("click", "button.iloveimg-compress", compressImage);
+            jQuery(document).on("click", "button.iloveimg-watermark", watermarkImage);
             jQuery(document).on("click", "button#iloveimg_allcompress", function(event){
-                totalImagesToCompress = jQuery("button.iloveimg-compress").length;
+                totalImagesToCompress = jQuery("button.iloveimg-watermark").length;
                 
                 jQuery("button#iloveimg_allcompress").attr('disabled', 'disabled');
-                jQuery("button.iloveimg-compress").each(function(index, element){
+                jQuery("button.iloveimg-watermark").each(function(index, element){
                     var buttonCompress = jQuery(element);
                     buttonCompress.trigger("click");
                     timeReload = setInterval(function(){
-                        var _percent = ( 100 - (jQuery("button.iloveimg-compress").length*100)/totalImagesToCompress);
-                        jQuery("button#iloveimg_allcompress .iloveimg-compress-all__percent").width( _percent + "%" );
-                        if(!jQuery("button.iloveimg-compress").length){
+                        var _percent = ( 100 - (jQuery("button.iloveimg-watermark").length*100)/totalImagesToCompress);
+                        jQuery("button#iloveimg_allcompress .iloveimg-watermark-all__percent").width( _percent + "%" );
+                        if(!jQuery("button.iloveimg-watermark").length){
                             clearInterval(timeReload);
                             location.reload();
                         }
@@ -85,7 +85,7 @@
             jQuery('<option>').val('iloveimg_bulk_action').text("Compress Images").appendTo('select[name=action2]');
             jQuery('.iloveimg_watermarking').each(function(index, element) {
                 timesIntervals["ref_" + index] = setInterval(function(){
-                    statusCompressing(element, index);
+                    statusWatermark(element, index);
                 },  1000);
             });
 

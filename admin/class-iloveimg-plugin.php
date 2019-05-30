@@ -39,7 +39,7 @@ class iLoveIMG_Watermark_Plugin {
     
     public function iLoveIMG_Watermark_library(){
         $ilove = new iLoveIMG_Watermark_Process();
-        $images = $ilove->compress($_POST['id']);
+        $images = $ilove->watermark($_POST['id']);
         if($images !== false){
             iLoveIMG_Watermark_Resources::render_compress_details($_POST['id']);
         }else{
@@ -121,7 +121,7 @@ class iLoveIMG_Watermark_Plugin {
         if(!iLoveIMG_Watermark_Resources::isLoggued()){
         ?>
             <div class="notice notice-warning is-dismissible">
-                <p><strong>iLoveIMG</strong> - Please you need to be logged or registered. <a href="<?php echo admin_url( 'admin.php?page=iloveimg-admin-page' ) ?>">Go to settings</a></p>
+                <p><strong>iLoveIMG</strong> - Please you need to be logged or registered. <a href="<?php echo admin_url( 'admin.php?page=iloveimg-watermark-admin-page' ) ?>">Go to settings</a></p>
             </div>
             <?php
         }
@@ -163,7 +163,7 @@ class iLoveIMG_Watermark_Plugin {
                     if($account['files_used'] >=  $account['free_files_limit'] and $account['package_files_used'] >=  $account['package_files_limit'] and @$account['subscription_files_used'] >=  $account['subscription_files_limit']){
                         ?>
                         <div class="notice notice-warning is-dismissible">
-                            <p><strong>iLoveIMG</strong> - Please you need more files. <a href="https://developer.ilovepdf.com/pricing" target="_blank">Buy more files</a></p>
+                            <p><strong>iLoveIMG</strong> - Please you need more files. <a href="https://developer.iloveimg.com/pricing" target="_blank">Buy more files</a></p>
                         </div>
                         <?php
                     }
