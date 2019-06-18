@@ -27,6 +27,10 @@ class iLoveIMG_Watermark_Plugin {
     }
 
     public function enqueue_scripts(){
+        wp_enqueue_script( self::NAME . '_spectrum_admin',
+        plugins_url( '/assets/js/spectrum.js', dirname(__FILE__) ),
+            array(), self::VERSION, true
+        );
         wp_enqueue_script( self::NAME . '_admin',
         plugins_url( '/assets/js/main.js', dirname(__FILE__) ),
 			array(), self::VERSION, true

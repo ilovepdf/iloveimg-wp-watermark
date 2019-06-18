@@ -4,7 +4,7 @@
 class iLoveIMG_Watermark_Serializer {
  
     public function init() {
-        add_action( 'admin_post_save_watermark', array( $this, 'save' ) );
+        add_action( 'admin_post', array( $this, 'save' ) );
     }
  
     public function save() {

@@ -11,7 +11,7 @@
         <div class="iloveimg_settings__info">
             <h3>The power of iLoveIMG in your Wordpress!</h3>
             <p>Compress all your Media image files and Stamp other Images or text into your Wordpress pictures. This is the Official iLoveIMG plugin for WordPress. You can optimize all your Images and stamp them automatically as you do in iloveimg.com.</p>
-            <p>Register now to get 250 free uses and start working with iLoveIMG plugin now!</p>
+            <p>Register now to get 500 free uses and start working with iLoveIMG plugin now!</p>
         </div>
     <?php endif ?>
     
@@ -41,7 +41,7 @@
                     </button>
                 </p>
                 <h3>Configure your Watermark Images settings</h3>
-                <input type="hidden" name="action" value="save_watermark">
+                <!-- <input type="hidden" name="action" value="save_watermark"> -->
                 <input type="hidden" name="iloveimg_action" value="iloveimg_action_options_watermark" />
                 <div class="iloveimg_settings__options__field">
                     <div class="switch">
@@ -80,20 +80,143 @@
                 <?php endif; ?>
 
 
-                <div class="iloveimg_settings__options__field">
+                <div class="iloveimg_settings__options__field iloveimg_settings__options__field-preview">
                     
                     <label>Lorem ipsum</label>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    <select name="iloveimg_field_type" id="">
+                    <select name="iloveimg_field_type" id="iloveimg_field_type">
                         <option value="text" <?php echo ($options_value['iloveimg_field_type'] == "text") ? "selected" : ""  ?>>Text</option>
                         <option value="image" <?php echo ($options_value['iloveimg_field_type'] == "image") ? "selected" : ""  ?>>Image</option>
                     </select>
-                    <button class="button button-secondary" id="media-open">Add Image</button>
+
+                    
+                    <div class="iloveimg_settings__options__field__cols">
+                        <div class="iloveimg_settings__options__field__cols__1">
+                            <div id="iloveimg_settings__watermark__preview">
+                                <div class="iloveimg_settings__watermark__preview-texts">
+                                    <p><?php echo isset($options_value['iloveimg_field_text']) ? $options_value['iloveimg_field_text'] : ""  ?></p>
+                                    <p><?php echo isset($options_value['iloveimg_field_text']) ? $options_value['iloveimg_field_text'] : ""  ?></p>
+                                    <p><?php echo isset($options_value['iloveimg_field_text']) ? $options_value['iloveimg_field_text'] : ""  ?></p>
+                                    <p><?php echo isset($options_value['iloveimg_field_text']) ? $options_value['iloveimg_field_text'] : ""  ?></p>
+                                    <p><?php echo isset($options_value['iloveimg_field_text']) ? $options_value['iloveimg_field_text'] : ""  ?></p>
+                                    <p><?php echo isset($options_value['iloveimg_field_text']) ? $options_value['iloveimg_field_text'] : ""  ?></p>
+                                    <p><?php echo isset($options_value['iloveimg_field_text']) ? $options_value['iloveimg_field_text'] : ""  ?></p>
+                                    <p><?php echo isset($options_value['iloveimg_field_text']) ? $options_value['iloveimg_field_text'] : ""  ?></p>
+                                    <p><?php echo isset($options_value['iloveimg_field_text']) ? $options_value['iloveimg_field_text'] : ""  ?></p>
+                                </div>
+                                <div class="iloveimg_settings__watermark__preview-images">
+                                    <img src="<?php echo $options_value['iloveimg_field_image'] ?>" />
+                                    <img src="<?php echo $options_value['iloveimg_field_image'] ?>" />
+                                    <img src="<?php echo $options_value['iloveimg_field_image'] ?>" />
+                                    <img src="<?php echo $options_value['iloveimg_field_image'] ?>" />
+                                    <img src="<?php echo $options_value['iloveimg_field_image'] ?>" />
+                                    <img src="<?php echo $options_value['iloveimg_field_image'] ?>" />
+                                    <img src="<?php echo $options_value['iloveimg_field_image'] ?>" />
+                                    <img src="<?php echo $options_value['iloveimg_field_image'] ?>" />
+                                    <img src="<?php echo $options_value['iloveimg_field_image'] ?>" />
+                                </div>
+                                <div class="iloveimg_settings__watermark__preview-mosaic-1"></div>
+                                <div class="iloveimg_settings__watermark__preview-mosaic-2"></div>
+                                <div class="iloveimg_settings__watermark__preview-mosaic-3"></div>
+                                <div class="iloveimg_settings__watermark__preview-mosaic-4"></div>
+                            </div>
+                        </div>
+                        <div class="iloveimg_settings__options__field__cols__2">
+
+                            <div class="iloveimg_settings__options__field__cols__2-text" style="display: none">
+                                <div class="iloveimg_settings__options__texts">
+                                    <div class="iloveimg_settings__options__texts-toolbar">
+                                        <select name="iloveimg_field_text_family" id="iloveimg_field_text_family">
+                                            <option value="Arial" <?php echo ($options_value['iloveimg_field_text_family'] == 'Arial') ? "selected" : ""  ?>>Arial</option>
+                                            <option value="Arial Unicode MS" <?php echo ($options_value['iloveimg_field_text_family'] == 'Arial') ? "selected" : ""  ?>>Arial Unicode MS</option>
+                                            <option value="Impact" <?php echo ($options_value['iloveimg_field_text_family'] == 'Impact') ? "selected" : ""  ?>>Impact</option>
+                                            <option value="Verdana" <?php echo ($options_value['iloveimg_field_text_family'] == 'Verdana') ? "selected" : ""  ?>>Verdana</option>
+                                            <option value="Courier New" <?php echo ($options_value['iloveimg_field_text_family'] == 'Courier New') ? "selected" : ""  ?>>Courier</option>
+                                            <option value="Comic Sans MS" <?php echo ($options_value['iloveimg_field_text_family'] == 'Comic Sans MS') ? "selected" : ""  ?>>Comic</option>
+                                            <option value="Times New Roman" <?php echo ($options_value['iloveimg_field_text_family'] == 'Times New Roman') ? "selected" : ""  ?>>Times new roman</option>
+                                            <option value="WenQuanYi Zen Hei" <?php echo ($options_value['iloveimg_field_text_family'] == 'WenQuanYi Zen Hei') ? "selected" : ""  ?>>WenQuanYi Zen Hei</option>
+                                            <option value="Times New Roman" <?php echo ($options_value['iloveimg_field_text_family'] == 'Lohit Marathi') ? "selected" : ""  ?>>Lohit Marathi</option>
+                                        </select>
+                                        <input type="checkbox" name="iloveimg_field_text_bold" id="iloveimg_field_text_bold" <?php echo isset($options_value['iloveimg_field_text_bold']) ? "checked" : ""  ?> />
+                                        <input type="checkbox" name="iloveimg_field_text_italic" id="iloveimg_field_text_italic" <?php echo isset($options_value['iloveimg_field_text_italic']) ? "checked" : ""  ?> />
+                                        <input type="checkbox" name="iloveimg_field_text_underline" id="iloveimg_field_text_underline" <?php echo isset($options_value['iloveimg_field_text_underline']) ? "checked" : ""  ?> />
+                                        <input type='hidden' name="iloveimg_field_text_color" id="iloveimg_field_text_color" value="<?php echo isset($options_value['iloveimg_field_text_color']) ? $options_value['iloveimg_field_text_color'] : ""  ?>" />
+                                        <a href="#" id="picker"></a>
+                                    </div>
+                                    <div class="iloveimg_settings__options__texts-container">
+                                        <input type="text" name="iloveimg_field_text" id="iloveimg_field_text" value="<?php echo isset($options_value['iloveimg_field_text']) ? $options_value['iloveimg_field_text'] : ""  ?>" placeholder="Text" value=""/>
+                                    </div>
+                                </div>   
+                            </div>
+
+                            <div class="iloveimg_settings__options__field__cols__2-image" style="display: none; margin-bottom: 20px;">
+                                <button class="button button-secondary" id="media-open">Add Image</button>
+                                <input type="hidden" id="iloveimg_field_image" name="iloveimg_field_image" value="<?php echo isset($options_value['iloveimg_field_image']) ? $options_value['iloveimg_field_image'] : ""  ?>"/>
+                            </div>
+
+                            <div class="iloveimg_settings__options__field__cols__2-format-container">
+                                <div class="iloveimg_settings__options__field__cols__2-format-container-col__1">
+                                    <table>
+                                        <tr>
+                                            <td><input type="radio" name="iloveimg_field_position" value="1" <?php echo (@$options_value['iloveimg_field_position'] == 1) ? "checked" : ""  ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="2" <?php echo (@$options_value['iloveimg_field_position'] == 2) ? "checked" : ""  ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="3" <?php echo (@$options_value['iloveimg_field_position'] == 3) ? "checked" : ""  ?>></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="radio" name="iloveimg_field_position" value="4" <?php echo (@$options_value['iloveimg_field_position'] == 4) ? "checked" : ""  ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="5" <?php echo (@$options_value['iloveimg_field_position'] == 5) ? "checked" : ""  ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="6" <?php echo (@$options_value['iloveimg_field_position'] == 6) ? "checked" : ""  ?>></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="radio" name="iloveimg_field_position" value="7" <?php echo (@$options_value['iloveimg_field_position'] == 7) ? "checked" : ""  ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="8" <?php echo (@$options_value['iloveimg_field_position'] == 8) ? "checked" : ""  ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="9" <?php echo (@$options_value['iloveimg_field_position'] == 9) ? "checked" : ""  ?>></td>
+                                        </tr>
+                                    </table>
+                                    <input type="checkbox" name="iloveimg_field_mosaic" id="iloveimg_field_mosaic" <?php echo (isset($options_value['iloveimg_field_mosaic'])) ? "checked" : ""  ?>>
+                                    <label for="">Mosaic</label>
+                                </div>
+                                <div class="iloveimg_settings__options__field__cols__2-format-container-col__2">
+                                    <div>
+                                        <label for="">Scale</label>
+                                        <input type="number" name="iloveimg_field_scale" id="iloveimg_field_scale" value="<?php echo isset($options_value['iloveimg_field_scale']) ? $options_value['iloveimg_field_scale'] : ""  ?>" placeholder="Scale" value=""/>
+                                        <span style="font-size: 10px;">% of the image to stamp width</span>
+                                    </div>
+                                    <div style="float: left; margin-right: 20px;">
+                                        <label for="">Opacity</label>
+                                        <select name="iloveimg_field_opacity" id="iloveimg_field_opacity">
+                                            <option value="25" <?php echo ($options_value['iloveimg_field_opacity'] == 25) ? "selected" : ""  ?>>25%</option>
+                                            <option value="50" <?php echo ($options_value['iloveimg_field_opacity'] == 50) ? "selected" : ""  ?>>50%</option>
+                                            <option value="75" <?php echo ($options_value['iloveimg_field_opacity'] == 75) ? "selected" : ""  ?>>75%</option>
+                                            <option value="100" <?php echo ($options_value['iloveimg_field_opacity'] == 100) ? "selected" : ""  ?>>100%</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label for="">Rotation</label>
+                                        <select name="iloveimg_field_rotation" id="iloveimg_field_rotation">
+                                            <option value="0" <?php echo ($options_value['iloveimg_field_rotation'] == 0) ? "selected" : ""  ?>>0º</option>
+                                            <option value="45" <?php echo ($options_value['iloveimg_field_rotation'] == 45) ? "selected" : ""  ?>>45º</option>
+                                            <option value="90" <?php echo ($options_value['iloveimg_field_rotation'] == 90) ? "selected" : ""  ?>>90º</option>
+                                            <option value="135" <?php echo ($options_value['iloveimg_field_rotation'] == 135) ? "selected" : ""  ?>>135º</option>
+                                            <option value="180" <?php echo ($options_value['iloveimg_field_rotation'] == 180) ? "selected" : ""  ?>>180º</option>
+                                            <option value="225" <?php echo ($options_value['iloveimg_field_rotation'] == 225) ? "selected" : ""  ?>>225º</option>
+                                            <option value="270" <?php echo ($options_value['iloveimg_field_rotation'] == 270) ? "selected" : ""  ?>>270º</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    
+
+                    <!-- <button class="button button-secondary" id="media-open">Add Image</button>
                     <input type="text" name="iloveimg_field_image" value="<?php echo isset($options_value['iloveimg_field_image']) ? $options_value['iloveimg_field_image'] : ""  ?>" placeholder="Image" value=""/>
                     <input type="text" name="iloveimg_field_text" value="<?php echo isset($options_value['iloveimg_field_text']) ? $options_value['iloveimg_field_text'] : ""  ?>" placeholder="Text" value=""/>
                     <input type="number" name="iloveimg_field_scale" value="<?php echo isset($options_value['iloveimg_field_scale']) ? $options_value['iloveimg_field_scale'] : ""  ?>" placeholder="Scale" value=""/>
                     <input type="number" name="iloveimg_field_opacity" value="<?php echo isset($options_value['iloveimg_field_opacity']) ? $options_value['iloveimg_field_opacity'] : ""  ?>" placeholder="Opacity" value=""/>
-                    <input type="number" name="iloveimg_field_rotation" value="<?php echo isset($options_value['iloveimg_field_rotation']) ? $options_value['iloveimg_field_rotation'] : ""  ?>" placeholder="Rotation" value=""/>
+                    <input type="number" name="iloveimg_field_rotation" value="<?php echo isset($options_value['iloveimg_field_rotation']) ? $options_value['iloveimg_field_rotation'] : ""  ?>" placeholder="Rotation" value=""/> -->
+
                 </div>
 
                 <div class="iloveimg_settings__options__field">

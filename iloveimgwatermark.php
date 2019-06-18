@@ -76,10 +76,11 @@ function iLoveIMG_Watermark_activate(){
                         //'iloveimg_field_watermark_activated' => 0,
                         //'iloveimg_field_autowatermark' => 1,
                         'iloveimg_field_type' => 'text',
-                        'iloveimg_field_text' => 'iLoveIMG',
-                        'iloveimg_field_scale' => 30,
+                        'iloveimg_field_text' => 'Sample',
+                        'iloveimg_field_scale' => 33,
                         'iloveimg_field_opacity' => 1,
                         'iloveimg_field_rotation' => 0,
+                        'iloveimg_field_position' => 1,
                         'iloveimg_field_sizes' => $iloveimg_thumbnails,
 
                     ]
