@@ -151,7 +151,7 @@
 
                             <div class="iloveimg_settings__options__field__cols__2-image" style="display: none; margin-bottom: 20px;">
                                 <button class="button button-secondary" id="media-open">Add Image</button>
-                                <input type="hidden" id="iloveimg_field_image" name="iloveimg_field_image" value="<?php echo isset($options_value['iloveimg_field_image']) ? $options_value['iloveimg_field_image'] : ""  ?>"/>
+                                <input type="text" id="iloveimg_field_image" name="iloveimg_field_image" value="<?php echo isset($options_value['iloveimg_field_image']) ? $options_value['iloveimg_field_image'] : ""  ?>"/>
                             </div>
 
                             <div class="iloveimg_settings__options__field__cols__2-format-container">
@@ -222,11 +222,12 @@
                 <div class="iloveimg_settings__options__field">
                     
                     <div class="switch">
-                        <input type="checkbox" name="iloveimg_field_autowatermark" <?php echo isset($options_value['iloveimg_field_backup']) ? "checked" : ""  ?> />
+                        <input type="checkbox" name="iloveimg_field_backup" <?php echo isset($options_value['iloveimg_field_backup']) ? "checked" : ""  ?> />
                         <span class="slider"></span>
                     </div>
-                    <label>Backup Original Images</label>
+                    <label>Backup Images</label>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <button type="button" class="button" id="iloveimg_restore_all" <?php echo isset($options_value['iloveimg_field_backup']) ? "" : "disabled"  ?>>Restore All</button>
                 </div>
 
                 

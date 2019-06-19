@@ -35,14 +35,32 @@ class iLoveIMG_Watermark_Process{
                 
                 array_unshift($_sizes,  "full");
                 $_aOptions = unserialize(get_option('iloveimg_options_watermark'));
+
+                if(isset($_aOptions['iloveimg_field_backup'])){
+                  if(!is_dir(iLoveIMG_upload_folder . "/iloveimg-backup")){
+                    mkdir(iLoveIMG_upload_folder . "/iloveimg-backup");
+                  }
+                  $images_restore = get_option('iloveimg_images_to_restore') ? unserialize(get_option('iloveimg_images_to_restore')) : array();
+                  $images_restore[] = $imagesID; 
+                  update_option('iloveimg_images_to_restore', serialize($images_restore));
+                }
                 
 
                 foreach ( $_sizes as $_size ) {
                     $image = wp_get_attachment_image_src($imagesID, $_size);
                     $pathFile = $_SERVER["DOCUMENT_ROOT"] . str_replace(site_url(), "", $image[0]);
-                    $images[$_size] = array("initial" => filesize($pathFile),  "compressed" => null);
+                    $images[$_size] = array("watermarked" => null);
                     if(in_array($_size, $_aOptions['iloveimg_field_sizes'])){
-                        
+                        //if enable backup
+                        if(isset($_aOptions['iloveimg_field_backup'])){
+
+                            $new_path = iLoveIMG_upload_folder . "/iloveimg-backup"  . str_replace(iLoveIMG_upload_folder, "", dirname($pathFile));
+                            if(!is_dir($new_path)){
+                              mkdir($new_path, 0777, true);
+                            }
+                            copy($pathFile, $new_path . "/" . basename($pathFile));
+                        }
+
                         $myTask = new WatermarkImageTask($this->proyect_public, $this->secret_key);
                         $file = $myTask->addFile($pathFile);
                         if(isset($_aOptions['iloveimg_field_type'])){
@@ -62,7 +80,7 @@ class iLoveIMG_Watermark_Process{
                                    'mosaic' => isset($_aOptions['iloveimg_field_mosaic']) ? true : false,
                                 ]);
                             }else{
-                                $watermark = $myTask->addFile('/Users/carlos/Documents/Proyectos/WordPress/wp-content/uploads/2019/05/kisspng-digital-watermarking-watercolor-watermark-5ad7f5dc840cc9.0658787515241026205409.jpg');
+                                $watermark = $myTask->addFileFromUrl($_aOptions['iloveimg_field_image']);
                                 $element = $myTask->addElement([
                                    'type' => 'image',
                                    'text' => isset($_aOptions['iloveimg_field_text']) ? $_aOptions['iloveimg_field_text'] : 'Sample',
@@ -77,9 +95,8 @@ class iLoveIMG_Watermark_Process{
                         }
                         $myTask->execute();
                         $myTask->download(dirname($pathFile));
-                        $images[$_size]["compressed"] = filesize($pathFile);
+                        $images[$_size]["watermarked"] = 1;
 
-                        
                     }
                 }
                 update_post_meta($imagesID, 'iloveimg_watermark', $images);

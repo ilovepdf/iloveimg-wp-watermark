@@ -272,7 +272,23 @@
     }
 
 
-
+    jQuery("#iloveimg_restore_all").on('click', function(element){
+        var element = jQuery(event.target);
+        element.attr('disabled', 'disabled');
+        jQuery.ajax({
+            url: ajaxurl,
+            type: 'POST',
+            data: {
+              action: 'iLoveIMG_Watermark_restore'
+            },
+            success: function(data) {
+                element.removeAttr('disabled');
+            },
+            error: function() {
+                element.removeAttr('disabled');
+            }
+          });
+    });
 
 
     var frame;

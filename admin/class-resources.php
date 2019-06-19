@@ -32,20 +32,41 @@ class iLoveIMG_Watermark_Resources{
         }
         return $sizes;
     }
+
+    public static function rrmdir($dir) {
+        if (is_dir($dir)) {
+            $files = scandir($dir);
+            foreach ($files as $file)
+                if ($file != "." && $file != "..") self::rrmdir("$dir/$file");
+            rmdir($dir);
+        }
+        else if (file_exists($dir)) unlink($dir);
+    }
+
+    public static function rcopy($src, $dst){
+        if (is_dir ( $src )) {
+            mkdir ( $dst );
+            $files = scandir ( $src );
+            foreach ( $files as $file )
+                if ($file != "." && $file != "..")
+                    self::rcopy ( "$src/$file", "$dst/$file" );
+        } else if (file_exists ( $src ))
+            copy ( $src, $dst );
+    }
     
     public static function getSaving($images){
         $initial = $compressed = 0;
         foreach($images as $image){
-            if(!is_null($image['compressed'])){
+            if(!is_null($image['watermarked'])){
                 $initial+=$image['initial'];
-                $compressed+=$image['compressed'];
+                $compressed+=$image['watermarked'];
             }
         }
         return round(100 - (($compressed * 100) / $initial));
     }
 
     public static function getSizesEnabled(){
-        $_aOptions = unserialize(get_option('iloveimg_options_compress'));
+        $_aOptions = unserialize(get_option('iloveimg_options_watermark'));
         $image_sizes = $_aOptions['iloveimg_field_sizes'];
         $count = 0;
         foreach($image_sizes as $image){
@@ -57,23 +78,25 @@ class iLoveIMG_Watermark_Resources{
     }
 
     public static function isAutoCompress(){
-        $_aOptions = unserialize(get_option('iloveimg_options_compress'));
+        $_aOptions = unserialize(get_option('iloveimg_options_watermark'));
         return (isset($_aOptions['iloveimg_field_autowatermark'])) ? 1 : 0;
     }
 
     public static function isActivated(){
-        $_aOptions = unserialize(get_option('iloveimg_options_compress'));
+        $_aOptions = unserialize(get_option('iloveimg_options_watermark'));
         return (isset($_aOptions['iloveimg_field_watermark_activated'])) ? 1 : 0;
     }
 
-    public static function getSizesCompressed($columnID){
+    public static function getSizesWatermarked($columnID){
         $images = get_post_meta($columnID, 'iloveimg_watermark', true);
         $count = 0;
         if(!$images)
             return $count;
         foreach($images as $image){
-            if(!is_null($image['compressed'])){
-                $count++;
+            if(isset($image['watermarked'])){
+                if(!is_null($image['watermarked'])){
+                    $count++;
+                }
             }
         }
         return $count;
@@ -93,29 +116,27 @@ class iLoveIMG_Watermark_Resources{
 
     public static function render_compress_details($imageID){
         $_sizes = get_post_meta($imageID, 'iloveimg_watermark', true);
-        $imagesCompressed = iLoveIMG_Watermark_Resources::getSizesCompressed($imageID);
+        $imagesCompressed = iLoveIMG_Watermark_Resources::getSizesWatermarked($imageID);
         
         ?>
         <div id="iloveimg_detaills_compress_<?php echo $imageID ?>" style="display:none;">
             <table class="table__details__sizes">
                 <tr>
-                    <th>Name</th><th>Initial</th><th>Compressed</th>
+                    <th>Name</th><th>Watermark</th>
                     <?php
-                    $total_size = 0;
-                    $total_compressed = 0;
                     foreach($_sizes as $key => $size){
                         ?>
                         <tr>
                             <td><?php echo $key ?></td>
-                            <td><?php echo round($size['initial']/1024) ?> KB</td>
                             <td><?php 
-                                if($size['compressed']){
-                                    echo round($size['compressed']/1024) . " KB";
-                                    $total_size = $total_size + (int)$size['initial'];
-                                    $total_compressed = $total_compressed + (int)$size['compressed'];
-                                    ?><small class="iloveimg__badge__percent">-<?php echo (100 - round(($size['compressed'] * 100) / $size['initial'])) ?>%</small><?php
+                                if(isset($size['watermarked'])){
+                                    if($size['watermarked']){
+                                        echo 'Applied';
+                                    }else{
+                                        echo 'Not applied';
+                                    }
                                 }else{
-                                    echo 'Not compressed';
+                                    echo 'Not applied';
                                 }
                                 ?></td>
                             </tr>
@@ -125,8 +146,7 @@ class iLoveIMG_Watermark_Resources{
                 </tr>
             </table>
         </div>
-        <!-- <p>Now <?php echo iLoveIMG_Watermark_Resources::getSaving($_sizes) ?>% smaller!</p> -->
-        <p><a href="#TB_inline?&width=450&height=340&inlineId=iloveimg_detaills_compress_<?php echo $imageID ?>" class="thickbox iloveimg_sizes_compressed" title="<?php echo get_the_title($imageID) ?>"><?php echo $imagesCompressed ?> sizes compressed</a><small class="iloveimg__badge__percent">-<?php echo (100 - round(($total_compressed * 100) / $total_size)) ?>%</small></p>
+        <p><a href="#TB_inline?&width=450&height=340&inlineId=iloveimg_detaills_compress_<?php echo $imageID ?>" class="thickbox iloveimg_sizes_compressed" title="<?php echo get_the_title($imageID) ?>"><?php echo $imagesCompressed ?> sizes watermark applied</a></p>
         <?php
     }
 
@@ -135,7 +155,7 @@ class iLoveIMG_Watermark_Resources{
         if(strpos($post->post_mime_type, "image/jpg") !== false or strpos($post->post_mime_type, "image/jpeg") !== false or strpos($post->post_mime_type, "image/png") !== false or strpos($post->post_mime_type, "image/gif") !== false):
             $_sizes = get_post_meta($columnID, 'iloveimg_watermark', true);
             $status_watermark = (int)get_post_meta($columnID, 'iloveimg_status_watermark', true);
-            $imagesCompressed = iLoveIMG_Watermark_Resources::getSizesCompressed($columnID);
+            $imagesCompressed = iLoveIMG_Watermark_Resources::getSizesWatermarked($columnID);
             
             if($_sizes && $imagesCompressed):
                 self::render_compress_details($columnID);
@@ -193,7 +213,7 @@ class iLoveIMG_Watermark_Resources{
             $stadistics = unserialize($row->meta_value);
             foreach ($stadistics as $key => $value) {
                 $total = $total + (int)$value['initial'];
-                $totalCompressed = $totalCompressed + (int)$value['compressed'];
+                $totalCompressed = $totalCompressed + (int)$value['watermarked'];
             }
         }
         return [$total, $totalCompressed];
