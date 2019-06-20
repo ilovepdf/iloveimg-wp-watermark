@@ -283,6 +283,26 @@
             },
             success: function(data) {
                 element.removeAttr('disabled');
+                location.reload();
+            },
+            error: function() {
+                element.removeAttr('disabled');
+            }
+          });
+    });
+
+    jQuery("#iloveimg_clear_backup").on('click', function(element){
+        var element = jQuery(event.target);
+        element.attr('disabled', 'disabled');
+        jQuery.ajax({
+            url: ajaxurl,
+            type: 'POST',
+            data: {
+              action: 'iLoveIMG_Watermark_clear_backup'
+            },
+            success: function(data) {
+                element.removeAttr('disabled');
+                location.reload();
             },
             error: function() {
                 element.removeAttr('disabled');

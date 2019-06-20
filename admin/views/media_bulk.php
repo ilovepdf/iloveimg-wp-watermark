@@ -12,7 +12,7 @@ $testListTable->prepare_items();
         <?php if($testListTable->total_items): ?>
             <div class="iloveimg_settings__overview__compressAll">
                 <button type="button" id="iloveimg_allcompress" class="iloveimg-compress-all button button-small button-primary">
-                    <span>Compress all</span>
+                    <span>Watermark all</span>
                     <div class="iloveimg-compress-all__percent" style="width: 0%;"></div>
                 </button>
             </div>

@@ -227,7 +227,11 @@
                     </div>
                     <label>Backup Images</label>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    <button type="button" class="button" id="iloveimg_restore_all" <?php echo isset($options_value['iloveimg_field_backup']) ? "" : "disabled"  ?>>Restore All</button>
+                    <?php if(iLoveIMG_Watermark_Resources::isThereBackup()) : ?>
+                        <button type="button" class="button" id="iloveimg_restore_all" <?php echo isset($options_value['iloveimg_field_backup']) ? "" : "disabled"  ?>>Restore All</button>
+                        <button type="button" class="button button-remove" id="iloveimg_clear_backup" <?php echo isset($options_value['iloveimg_field_backup']) ? "" : "disabled"  ?>>Clear backup</button>
+                        <span><?php echo round(iLoveIMG_Watermark_Resources::getSizeBackup(), 2) ?> MB</span>
+                    <?php endif; ?>
                 </div>
 
                 

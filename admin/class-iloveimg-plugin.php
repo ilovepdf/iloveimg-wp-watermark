@@ -13,6 +13,7 @@ class iLoveIMG_Watermark_Plugin {
         add_filter( 'manage_media_custom_column', array( $this, "column_id_row" ), 10, 2 );
         add_action( 'wp_ajax_iLoveIMG_Watermark_library', array($this, "iLoveIMG_Watermark_library") );
         add_action( 'wp_ajax_iLoveIMG_Watermark_restore', array($this, "iLoveIMG_Watermark_restore") );
+        add_action( 'wp_ajax_iLoveIMG_Watermark_clear_backup', array($this, "iLoveIMG_Watermark_clear_backup") );
         add_action( 'wp_ajax_iLoveIMG_Watermark_library_is_watermarked', array($this, "iLoveIMG_Watermark_library_is_watermarked") );
         add_filter( 'wp_generate_attachment_metadata', array($this, 'process_attachment' ), 10, 2);
         add_action( 'admin_action_iloveimg_bulk_action', array($this, "media_library_bulk_action"));
@@ -70,6 +71,14 @@ class iLoveIMG_Watermark_Plugin {
             }
         }
 
+        wp_die();
+    }
+
+    public function iLoveIMG_Watermark_clear_backup(){
+        if(is_dir(iLoveIMG_upload_folder . "/iloveimg-backup")){   
+            iLoveIMG_Watermark_Resources::rrmdir(iLoveIMG_upload_folder . "/iloveimg-backup");
+            delete_option('iloveimg_images_to_restore');
+        }
         wp_die();
     }
     

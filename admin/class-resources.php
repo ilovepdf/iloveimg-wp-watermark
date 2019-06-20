@@ -77,6 +77,18 @@ class iLoveIMG_Watermark_Resources{
         return $count;
     }
 
+    public static function isThereBackup(){
+        return is_dir(iLoveIMG_upload_folder . "/iloveimg-backup");
+    }
+
+    public static function getSizeBackup(){
+        $f = iLoveIMG_upload_folder . "/iloveimg-backup";
+        $io = popen ( '/usr/bin/du -sk ' . $f, 'r' );
+        $size = fgets ( $io, 4096);
+        $size = substr ( $size, 0, strpos ( $size, "\t" ) );
+        return $size /  1024;
+    }
+
     public static function isAutoCompress(){
         $_aOptions = unserialize(get_option('iloveimg_options_watermark'));
         return (isset($_aOptions['iloveimg_field_autowatermark'])) ? 1 : 0;
