@@ -143,7 +143,7 @@ class iLoveIMG_Watermark_Resources{
                     foreach($_sizes as $key => $size){
                         ?>
                         <tr>
-                            <td><?php echo $key ?></td>
+                            <td><a href="<?php echo wp_get_attachment_image_url($imageID, $key) ?>"  target="_blank"><?php echo $key ?></a></td>
                             <td><?php 
                                 if(isset($size['watermarked'])){
                                     if($size['watermarked']){
