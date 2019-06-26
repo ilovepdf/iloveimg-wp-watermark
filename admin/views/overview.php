@@ -12,6 +12,14 @@
             	<p>Total images protected with iLoveIMG</p>
             </div>
 		</div>
+		<div class="iloveimg_settings__overview__statistics__column_right">
+			
+            <div class="iloveimg_saving">
+            	<p class="iloveimg_saving__number"><?php echo round(iLoveIMG_Watermark_Resources::getSizeBackup(), 2) ?> MB</p>
+            	<p>From backup  images</p>
+            </div>
+		</div>
+
 	</div>
 </div>
 <!-- <div class="iloveimg_settings__overview__compress-all">

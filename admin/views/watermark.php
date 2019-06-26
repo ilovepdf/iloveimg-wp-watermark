@@ -58,15 +58,15 @@
                         <input type="checkbox" name="iloveimg_field_autowatermark" <?php echo isset($options_value['iloveimg_field_autowatermark']) ? "checked" : ""  ?> />
                         <span class="slider"></span>
                     </div>
-                    <label>Enable Watermark Images</label>
-                    <p>With autocompress enabled any image uploaded to your Media folder will be automatically compressed. Anyway you still will be able to compress uncompressed images from Media.</p>
+                    <label>Enable Auto Watermark</label>
+                    <p>With Auto Watermark enabled any image uploaded to your Media folder will be automatically stamped with your watermark. Yet will be able to stamp any unwatermarket images from Media.</p>
                 </div>
                 
                 <?php if(extension_loaded('gd')): ?>
                     <div class="iloveimg_settings__options__field">
                         <label>Images Sizes:</label>
                         <div class="iloveimg_settings__options__field__imagessizes">
-                            <p>All uploaded images to media create alternative size versions. Select here which image versions you want to compress.</p>
+                            <p>When an image is uploaded to Media, Wordpress generate alternative size versions for responsive purposes. You can select which image versions you want to to watermark.</p>
                             <ul>
                             <?php foreach(iLoveIMG_Watermark_Resources::getTypeImages() as $value): ?>
                                 <li>
@@ -82,12 +82,14 @@
 
                 <div class="iloveimg_settings__options__field iloveimg_settings__options__field-preview">
                     
-                    <label>Lorem ipsum</label>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    <select name="iloveimg_field_type" id="iloveimg_field_type">
+                    <label>Preview Settings </label>
+                    <p>You can choose to watermark by editable text or by uploading your own stamp image.</p>
+                    <select style="display: block; margin: 20px 0;" name="iloveimg_field_type" id="iloveimg_field_type">
                         <option value="text" <?php echo ($options_value['iloveimg_field_type'] == "text") ? "selected" : ""  ?>>Text</option>
                         <option value="image" <?php echo ($options_value['iloveimg_field_type'] == "image") ? "selected" : ""  ?>>Image</option>
                     </select>
+                    
+                    
 
                     
                     <div class="iloveimg_settings__options__field__cols">
@@ -128,7 +130,7 @@
                                     <div class="iloveimg_settings__options__texts-toolbar">
                                         <select name="iloveimg_field_text_family" id="iloveimg_field_text_family">
                                             <option value="Arial" <?php echo ($options_value['iloveimg_field_text_family'] == 'Arial') ? "selected" : ""  ?>>Arial</option>
-                                            <option value="Arial Unicode MS" <?php echo ($options_value['iloveimg_field_text_family'] == 'Arial') ? "selected" : ""  ?>>Arial Unicode MS</option>
+                                            <!-- <option value="Arial Unicode MS" <?php echo ($options_value['iloveimg_field_text_family'] == 'Arial Unicode MS') ? "selected" : ""  ?>>Arial Unicode MS</option> -->
                                             <option value="Impact" <?php echo ($options_value['iloveimg_field_text_family'] == 'Impact') ? "selected" : ""  ?>>Impact</option>
                                             <option value="Verdana" <?php echo ($options_value['iloveimg_field_text_family'] == 'Verdana') ? "selected" : ""  ?>>Verdana</option>
                                             <option value="Courier New" <?php echo ($options_value['iloveimg_field_text_family'] == 'Courier New') ? "selected" : ""  ?>>Courier</option>
@@ -139,7 +141,7 @@
                                         </select>
                                         <input type="checkbox" name="iloveimg_field_text_bold" id="iloveimg_field_text_bold" <?php echo isset($options_value['iloveimg_field_text_bold']) ? "checked" : ""  ?> />
                                         <input type="checkbox" name="iloveimg_field_text_italic" id="iloveimg_field_text_italic" <?php echo isset($options_value['iloveimg_field_text_italic']) ? "checked" : ""  ?> />
-                                        <input type="checkbox" name="iloveimg_field_text_underline" id="iloveimg_field_text_underline" <?php echo isset($options_value['iloveimg_field_text_underline']) ? "checked" : ""  ?> />
+                                        <!-- <input type="checkbox" name="iloveimg_field_text_underline" id="iloveimg_field_text_underline" <?php echo isset($options_value['iloveimg_field_text_underline']) ? "checked" : ""  ?> /> -->
                                         <input type='hidden' name="iloveimg_field_text_color" id="iloveimg_field_text_color" value="<?php echo isset($options_value['iloveimg_field_text_color']) ? $options_value['iloveimg_field_text_color'] : ""  ?>" />
                                         <a href="#" id="picker"></a>
                                     </div>
@@ -150,6 +152,8 @@
                             </div>
 
                             <div class="iloveimg_settings__options__field__cols__2-image" style="display: none; margin-bottom: 20px;">
+                                <label>Image</label>
+                                <p>Choose your watermark stamp from your Media or from an external URL. Then set the stamp position, scale, opacity and rotation.</p>
                                 <button class="button button-secondary" id="media-open">Add Image</button>
                                 <input type="text" id="iloveimg_field_image" name="iloveimg_field_image" value="<?php echo isset($options_value['iloveimg_field_image']) ? $options_value['iloveimg_field_image'] : ""  ?>"/>
                             </div>
@@ -219,21 +223,31 @@
 
                 </div>
 
-                <div class="iloveimg_settings__options__field">
+                <div class="iloveimg_settings__options__field" style="border-bottom: 0;">
                     
                     <div class="switch">
                         <input type="checkbox" name="iloveimg_field_backup" <?php echo isset($options_value['iloveimg_field_backup']) ? "checked" : ""  ?> />
                         <span class="slider"></span>
                     </div>
                     <label>Backup Images</label>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p>Enable this option if you want to backup your images before being watermarked. This will alow you to restore your original images but be aware that will fill up your server memory space.</p>
                     <?php if(iLoveIMG_Watermark_Resources::isThereBackup()) : ?>
                         <button type="button" class="button" id="iloveimg_restore_all" <?php echo isset($options_value['iloveimg_field_backup']) ? "" : "disabled"  ?>>Restore All</button>
-                        <button type="button" class="button button-remove" id="iloveimg_clear_backup" <?php echo isset($options_value['iloveimg_field_backup']) ? "" : "disabled"  ?>>Clear backup</button>
-                        <span><?php echo round(iLoveIMG_Watermark_Resources::getSizeBackup(), 2) ?> MB</span>
                     <?php endif; ?>
                 </div>
-
+                
+                <?php if(iLoveIMG_Watermark_Resources::isThereBackup()) : ?>
+                    <div class="iloveimg_settings__options__field">
+                        
+                        <label>Restore Original Images</label>
+                        <p>All backup images can be restored. This can be usefull in case you pretend to update your watermark or delete it.</p>
+                        <p>You can also clear all your backup images to free memory space. <span style="color: red;">Warning</span>: Clear backups won't allow you to restore original images.</p>
+                        
+                            <button type="button" class="button button-remove" id="iloveimg_clear_backup" <?php echo isset($options_value['iloveimg_field_backup']) ? "" : "disabled"  ?>>Clear backup</button>
+                            <span><?php echo round(iLoveIMG_Watermark_Resources::getSizeBackup(), 2) ?> MB</span>
+                        
+                    </div>
+                <?php endif; ?>
                 
 
 

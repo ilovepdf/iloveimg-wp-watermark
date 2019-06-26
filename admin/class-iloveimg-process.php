@@ -66,18 +66,30 @@ class iLoveIMG_Watermark_Process{
                         if(isset($_aOptions['iloveimg_field_type'])){
                             $gravity = ['NorthWest', 'North', 'NorthEast', 'CenterWest', 'Center', 'CenterEast', 'SouthWest', 'South', 'SouthEast'];
                             if($_aOptions['iloveimg_field_type'] == "text"){
+                                $font_style = null;
+                                if(isset($_aOptions['iloveimg_field_text_bold']) && isset($_aOptions['iloveimg_field_text_italic'])){
+                                  $font_style = "Bold-Italic";
+                                }else{
+                                  if(isset($_aOptions['iloveimg_field_text_bold'])){
+                                    $font_style = "Bold";
+                                  }else if(isset($_aOptions['iloveimg_field_text_italic'])){
+                                    $font_style = "Italic";
+                                  }
+                                }
                                 $element = $myTask->addElement([
                                    'type' => 'text',
                                    'text' => isset($_aOptions['iloveimg_field_text']) ? $_aOptions['iloveimg_field_text'] : 'Sample',
                                    'width_percent' => $_aOptions['iloveimg_field_scale'],
                                    'font_family' => $_aOptions['iloveimg_field_text_family'],
-                                   'font_style' => isset($_aOptions['iloveimg_field_text_italic']) ? 'Italic' : null,
+                                   'font_style' => $font_style,
                                    'font_weight' => isset($_aOptions['iloveimg_field_text_bold']) ? 'Bold' : null,
                                    'font_color' => isset($_aOptions['iloveimg_field_text_color']) ? $_aOptions['iloveimg_field_text_color'] : '#000',
                                    'transparency' => $_aOptions['iloveimg_field_opacity'],
                                    'rotation' => $_aOptions['iloveimg_field_rotation'],
                                    'gravity' => isset($_aOptions['iloveimg_field_position']) ? $gravity[$_aOptions['iloveimg_field_position'] - 1] : 'Center',
                                    'mosaic' => isset($_aOptions['iloveimg_field_mosaic']) ? true : false,
+                                   'vertical_adjustment_percent' => 2,
+                                   'horizontal_adjustment_percent' => 2
                                 ]);
                             }else{
                                 $watermark = $myTask->addFileFromUrl($_aOptions['iloveimg_field_image']);
@@ -90,6 +102,8 @@ class iLoveIMG_Watermark_Process{
                                    'rotation' => $_aOptions['iloveimg_field_rotation'],
                                    'gravity' => isset($_aOptions['iloveimg_field_position']) ? $gravity[$_aOptions['iloveimg_field_position'] - 1] : 'Center',
                                    'mosaic' => isset($_aOptions['iloveimg_field_mosaic']) ? true : false,
+                                   'vertical_adjustment_percent' => 2,
+                                   'horizontal_adjustment_percent' => 2
                                 ]);
                             }
                         }
@@ -112,7 +126,6 @@ class iLoveIMG_Watermark_Process{
             //print_r($imagesID);
         } catch (Exception $e)  {
             update_post_meta($imagesID, 'iloveimg_status_watermark', 0);
-            echo $e->getMessage();
             return false;
         }
         return false;

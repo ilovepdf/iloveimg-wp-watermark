@@ -82,11 +82,15 @@ class iLoveIMG_Watermark_Resources{
     }
 
     public static function getSizeBackup(){
-        $f = iLoveIMG_upload_folder . "/iloveimg-backup";
-        $io = popen ( '/usr/bin/du -sk ' . $f, 'r' );
-        $size = fgets ( $io, 4096);
-        $size = substr ( $size, 0, strpos ( $size, "\t" ) );
-        return $size /  1024;
+        if(is_dir(iLoveIMG_upload_folder . "/iloveimg-backup")){
+            $f = iLoveIMG_upload_folder . "/iloveimg-backup";
+            $io = popen ( '/usr/bin/du -sk ' . $f, 'r' );
+            $size = fgets ( $io, 4096);
+            $size = substr ( $size, 0, strpos ( $size, "\t" ) );
+            return $size /  1024;
+        }else{
+            return 0;
+        }
     }
 
     public static function isAutoCompress(){
@@ -126,7 +130,7 @@ class iLoveIMG_Watermark_Resources{
         }
     }
 
-    public static function render_compress_details($imageID){
+    public static function render_watermark_details($imageID){
         $_sizes = get_post_meta($imageID, 'iloveimg_watermark', true);
         $imagesCompressed = iLoveIMG_Watermark_Resources::getSizesWatermarked($imageID);
         
@@ -170,7 +174,7 @@ class iLoveIMG_Watermark_Resources{
             $imagesCompressed = iLoveIMG_Watermark_Resources::getSizesWatermarked($columnID);
             
             if($_sizes && $imagesCompressed):
-                self::render_compress_details($columnID);
+                self::render_watermark_details($columnID);
             else:
                 ?>                    
                     <?php if(iLoveIMG_Watermark_Resources::isLoggued()): ?>

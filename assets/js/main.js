@@ -45,16 +45,24 @@
             url: ajaxurl,
             type: 'POST',
             data: {
-              action: 'iLoveIMG_Watermark_library_is_compressed',
+              action: 'iLoveIMG_Watermark_library_is_watermarked',
               id: element.data('id') || element.attr('data-id')
             },
             success: function(data) {
-                
                 clearInterval(timesIntervals["ref_" + index]);
                 container.html(data);
-            },
-            error: function() {
 
+            },
+            error: function(err) {
+                console.log(err);
+            },
+            statusCode: {
+                500: function() {
+
+                },
+                400: function(){
+
+                }
             }
           });
     }
@@ -62,6 +70,7 @@
     switch (adminpage) {
         case 'upload-php':
         case 'media_page_iloveimg-media-page':
+        case 'media_page_iloveimg-media-watermark-page':
         case 'post-php':
             jQuery(document).on("click", "button.iloveimg-watermark", watermarkImage);
             jQuery(document).on("click", "button#iloveimg_allcompress", function(event){
@@ -331,9 +340,11 @@
 
         frame.on( 'select', function() {
             var attachment = frame.state().get('selection').first().toJSON();
-            console.log(attachment);
             jQuery("input[name='iloveimg_field_image']").val(attachment.url);
             jQuery("#iloveimg_settings__watermark__preview img").attr("src", attachment.url);
+            changeTextStyle();
+            resizeFont();
+            changePosition();
         });
 
         frame.open();

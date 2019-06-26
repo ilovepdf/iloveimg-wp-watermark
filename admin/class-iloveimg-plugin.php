@@ -47,7 +47,7 @@ class iLoveIMG_Watermark_Plugin {
         $ilove = new iLoveIMG_Watermark_Process();
         $images = $ilove->watermark($_POST['id']);
         if($images !== false){
-            iLoveIMG_Watermark_Resources::render_compress_details($_POST['id']);
+            iLoveIMG_Watermark_Resources::render_watermark_details($_POST['id']);
         }else{
             ?>
             <p>You need more files</p>
@@ -84,15 +84,15 @@ class iLoveIMG_Watermark_Plugin {
     
     public function iLoveIMG_Watermark_library_is_watermarked(){
         $status_watermark = get_post_meta($_POST['id'], 'iloveimg_status_watermark', true);
-
         $imagesCompressed = iLoveIMG_Watermark_Resources::getSizesWatermarked($_POST['id']);
         if(((int)$status_watermark === 1 || (int)$status_watermark === 3)){
-            //echo "processing";
-            http_response_code(404);
-            die();
+            http_respone_code(500);
         }else if((int)$status_watermark === 2){
-            iLoveIMG_Watermark_Resources::render_compress_details($_POST['id']);
+            iLoveIMG_Watermark_Resources::render_watermark_details($_POST['id']);
+        }else if((int)$status_watermark === 0 && !$status_watermark){
+            echo "Try again or buy more files";
         }
+
         wp_die();
     }
 
@@ -217,7 +217,7 @@ class iLoveIMG_Watermark_Plugin {
         $imagesCompressed = iLoveIMG_Watermark_Resources::getSizesWatermarked($post->ID);
         
         if((int)$status_watermark === 2){
-            iLoveIMG_Watermark_Resources::render_compress_details($post->ID);
+            iLoveIMG_Watermark_Resources::render_watermark_details($post->ID);
         }else{
             iLoveIMG_Watermark_Resources::getStatusOfColumn($post->ID);
         }
