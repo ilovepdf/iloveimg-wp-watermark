@@ -15,6 +15,7 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, bod
 					display: flex;
 					justify-content: space-between;
 					margin-bottom: 30px;
+					align-items: flex-end;
 					@media  (max-width: $width_small){
 						flex-direction: column;
 					}

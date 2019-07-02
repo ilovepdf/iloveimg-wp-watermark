@@ -21,7 +21,7 @@ class iLoveIMG_Watermark_Submenu_Page {
     }
 	
 	public function renderCompress() {
-		if(!is_plugin_active('iloveimg-compress/iloveimgcompress.php')){
+		if(!is_plugin_active('iloveimg/iloveimgcompress.php')){
         	require_once('views/compress.php');
     	}
 	}

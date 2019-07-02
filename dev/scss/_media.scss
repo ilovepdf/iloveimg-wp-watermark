@@ -96,7 +96,8 @@ body{
 	button.button.iloveimg-compress,
 	button.button.iloveimg-compress-all,
 	button.button.iloveimg-watermark,
-	button.button.iloveimg-watermark-all{
+	button.button.iloveimg-watermark-all,
+	button.button.button-style-iloveimg{
 		font-family: $font_family;
 		font-size: 13px;
 		color: #4D90FE;
@@ -112,10 +113,16 @@ body{
 		border-radius: 16.5px;
 		&:hover{
 			background-color: $primary_color !important;
+			border: 1px solid $primary_color;
+			color: #fff;
+			text-shadow: none !important;
 		}
 		&:disabled{
 			background-color: $primary_color !important;
-			opacity: .7;
+			opacity: .5 !important;
+			color: #fff !important;
+			font-weight: normal !important;
+			text-shadow: none !important;
 		}
 	}
 	table.table__details__sizes{

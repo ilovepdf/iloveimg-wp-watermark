@@ -93,9 +93,13 @@ class iLoveIMG_Watermark_Resources{
         }
     }
 
-    public static function isAutoCompress(){
+    public static function isAutoWatermark(){
         $_aOptions = unserialize(get_option('iloveimg_options_watermark'));
         return (isset($_aOptions['iloveimg_field_autowatermark'])) ? 1 : 0;
+    }
+
+    public static function isWatermarkImage(){
+        return get_option('iloveimg_options_is_watermark_image') ? 1 : 0;
     }
 
     public static function isActivated(){
@@ -135,7 +139,7 @@ class iLoveIMG_Watermark_Resources{
         $imagesCompressed = iLoveIMG_Watermark_Resources::getSizesWatermarked($imageID);
         
         ?>
-        <div id="iloveimg_detaills_compress_<?php echo $imageID ?>" style="display:none;">
+        <div id="iloveimg_detaills_watermark_<?php echo $imageID ?>" style="display:none;">
             <table class="table__details__sizes">
                 <tr>
                     <th>Name</th><th>Watermark</th>
@@ -162,7 +166,7 @@ class iLoveIMG_Watermark_Resources{
                 </tr>
             </table>
         </div>
-        <p><a href="#TB_inline?&width=450&height=340&inlineId=iloveimg_detaills_compress_<?php echo $imageID ?>" class="thickbox iloveimg_sizes_compressed" title="<?php echo get_the_title($imageID) ?>"><?php echo $imagesCompressed ?> sizes watermark applied</a></p>
+        <p><a href="#TB_inline?&width=450&height=340&inlineId=iloveimg_detaills_watermark_<?php echo $imageID ?>" class="thickbox iloveimg_sizes_compressed" title="<?php echo get_the_title($imageID) ?>"><?php echo $imagesCompressed ?> sizes watermark applied</a></p>
         <?php
     }
 

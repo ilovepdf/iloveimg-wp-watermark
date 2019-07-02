@@ -223,9 +223,12 @@
 
         if(jQuery('#iloveimg_field_mosaic').is(':checked')){
             jQuery("#iloveimg_settings__watermark__preview p, #iloveimg_settings__watermark__preview img").css({ 'visibility': 'visible' });
-            jQuery('input:radio[name=iloveimg_field_position]').attr("disabled", "disabled");
+            //jQuery('input:radio[name=iloveimg_field_position]').attr("disabled", "disabled");
+            jQuery("table.iloveimg_watermark_position").addClass('mode_mosaic');
+
         }else{
             jQuery('input:radio[name=iloveimg_field_position]').removeAttr("disabled");
+            jQuery("table.iloveimg_watermark_position").removeClass('mode_mosaic');
             jQuery("#iloveimg_settings__watermark__preview p, #iloveimg_settings__watermark__preview img").css({ 'visibility': 'hidden' });
             jQuery("#iloveimg_settings__watermark__preview .iloveimg_settings__watermark__preview-texts p").eq(parseInt(jQuery('input:radio[name=iloveimg_field_position]:checked').val()) - 1).css({ 'visibility': 'visible' });
             jQuery("#iloveimg_settings__watermark__preview .iloveimg_settings__watermark__preview-images img").eq(parseInt(jQuery('input:radio[name=iloveimg_field_position]:checked').val()) - 1).css({ 'visibility': 'visible' });
@@ -235,18 +238,18 @@
     };
 
     if (document.getElementById("iloveimg_settings__watermark__preview")) {
-        jQuery(".iloveimg_settings__options__field__cols__2-" + jQuery("#iloveimg_field_type").val()).show();
-        if( jQuery("#iloveimg_field_type").val() == "text"){
+        jQuery(".iloveimg_settings__options__field__cols__2-" + jQuery("#iloveimg_field_type input:checked").val()).show();
+        if( jQuery("#iloveimg_field_type input:checked").val() == "text"){
             jQuery("#iloveimg_settings__watermark__preview img").hide();
             jQuery("#iloveimg_settings__watermark__preview p").show();
         }else{
             jQuery("#iloveimg_settings__watermark__preview p").hide();
             jQuery("#iloveimg_settings__watermark__preview img").show();
         }
-        jQuery("#iloveimg_field_type").on('change', function(event){
+        jQuery("#iloveimg_field_type input").on('change', function(event){
             jQuery(".iloveimg_settings__options__field__cols__2-text,.iloveimg_settings__options__field__cols__2-image").hide();
-            jQuery(".iloveimg_settings__options__field__cols__2-" + jQuery("#iloveimg_field_type").val()).show();
-            if( jQuery("#iloveimg_field_type").val() == "text"){
+            jQuery(".iloveimg_settings__options__field__cols__2-" + jQuery("#iloveimg_field_type input:checked").val()).show();
+            if( jQuery("#iloveimg_field_type input:checked").val() == "text"){
                 jQuery("#iloveimg_settings__watermark__preview img").hide();
                 jQuery("#iloveimg_settings__watermark__preview p").show();
             }else{
@@ -269,7 +272,10 @@
         jQuery(".iloveimg_settings__options__field-preview input[type='checkbox']").on("change", function(element){
             
             if(jQuery('#iloveimg_field_mosaic').is(':checked')){
-                jQuery("#iloveimg_field_scale").val(33);
+
+                if(jQuery("#iloveimg_field_scale").val() > 33){
+                    jQuery("#iloveimg_field_scale").val(33);
+                }
             }
             changeTextStyle();
             resizeFont();
@@ -319,13 +325,28 @@
           });
     });
 
+    jQuery("input[name='iloveimg_field_image']").on('keyup change', function(event){
+        jQuery("#iloveimg_settings__watermark__preview img").attr("src", jQuery("input[name='iloveimg_field_image']").val());
+    });
 
     var frame;
     jQuery("#media-open").on("click", function(event){
         event.preventDefault();
+        jQuery.ajax({
+            url: ajaxurl,
+            type: 'POST',
+            data: {
+              action: 'iLoveIMG_Watermark_library_set_watermark_image'
+            },
+            success: function(data) {
+
+            }
+        });
         if ( frame ) {
-          frame.open();
-          return;
+
+            
+            frame.open();
+            return;
         }
         
         // Create a new media frame
@@ -349,6 +370,8 @@
 
         frame.open();
     });
+
+
 
 
 

@@ -28,7 +28,11 @@ class iLoveIMG_Watermark_Process{
             
             
             $filesProcessing = $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->postmeta WHERE meta_key = 'iloveimg_status_watermark' AND meta_value = 1" );
-            if( $filesProcessing <  iLoveIMG_Watermark_NUM_MAX_FILES){
+
+            $imageCompressProcessing = $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->postmeta WHERE meta_key = 'iloveimg_status_compress' AND meta_value = 1 AND post_id =  " . $imagesID );
+
+
+            if( $filesProcessing <  iLoveIMG_Watermark_NUM_MAX_FILES and $imageCompressProcessing == 0){
                 update_post_meta($imagesID, 'iloveimg_status_watermark', 1); //status compressing
 
                 $_sizes = get_intermediate_image_sizes();
@@ -110,6 +114,7 @@ class iLoveIMG_Watermark_Process{
                         $myTask->execute();
                         $myTask->download(dirname($pathFile));
                         $images[$_size]["watermarked"] = 1;
+                        do_action('iloveimg_watermarked_completed', $imagesID);
 
                     }
                 }

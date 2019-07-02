@@ -15,6 +15,7 @@ class iLoveIMG_Watermark_Plugin {
         add_action( 'wp_ajax_iLoveIMG_Watermark_restore', array($this, "iLoveIMG_Watermark_restore") );
         add_action( 'wp_ajax_iLoveIMG_Watermark_clear_backup', array($this, "iLoveIMG_Watermark_clear_backup") );
         add_action( 'wp_ajax_iLoveIMG_Watermark_library_is_watermarked', array($this, "iLoveIMG_Watermark_library_is_watermarked") );
+        add_action( 'wp_ajax_iLoveIMG_Watermark_library_set_watermark_image', array($this, "iLoveIMG_Watermark_library_set_watermark_image") );
         add_filter( 'wp_generate_attachment_metadata', array($this, 'process_attachment' ), 10, 2);
         add_action( 'admin_action_iloveimg_bulk_action', array($this, "media_library_bulk_action"));
         add_action( 'attachment_submitbox_misc_actions', array($this, 'show_media_info'));
@@ -100,27 +101,42 @@ class iLoveIMG_Watermark_Plugin {
         if((int)iLoveIMG_Watermark_Resources::isActivated() === 0){
             return $columns;
         }
-        $columns['iloveimg_status'] = __('Status');
+        $columns['iloveimg_status_watermark'] = __('Status Watermark');
         return $columns;
     }
 
     public function column_id_row($columnName, $columnID){
-        if($columnName == 'iloveimg_status'){
+        if($columnName == 'iloveimg_status_watermark'){
             iLoveIMG_Watermark_Resources::getStatusOfColumn($columnID);
         }
     }
 
     public function process_attachment($metadata, $attachment_id){
         update_post_meta($attachment_id, 'iloveimg_status_watermark', 0); //status no watermarked
-        if((int)iLoveIMG_Watermark_Resources::isAutoCompress() === 1 && iLoveIMG_Watermark_Resources::isLoggued() && (int)iLoveIMG_Watermark_Resources::isActivated() === 1){
+        if((int)iLoveIMG_Watermark_Resources::isAutoWatermark() === 1 && iLoveIMG_Watermark_Resources::isLoggued() && (int)iLoveIMG_Watermark_Resources::isActivated() === 1){
             wp_update_attachment_metadata($attachment_id, $metadata);
-            $this->async_compress($attachment_id);
+            $this->async_watermark($attachment_id);
+        }else{
+            if(!(int)iLoveIMG_Watermark_Resources::isAutoWatermark() && (int)iLoveIMG_Watermark_Resources::isWatermarkImage() == 1){
+                $_aOptions = unserialize(get_option('iloveimg_options_watermark'));
+                $_aOptions['iloveimg_field_autowatermark'] = 1;
+                update_option('iloveimg_options_watermark', serialize($_aOptions));
+                delete_option('iloveimg_options_is_watermark_image');
+            }
         }
         
         return $metadata;
     }
 
-    public function async_compress($attachment_id){
+    public function iLoveIMG_Watermark_library_set_watermark_image(){
+        $_aOptions = unserialize(get_option('iloveimg_options_watermark'));
+        unset($_aOptions['iloveimg_field_autowatermark']);
+        update_option('iloveimg_options_watermark', serialize($_aOptions));
+        update_option('iloveimg_options_is_watermark_image', 1);
+        wp_die();
+    }
+
+    public function async_watermark($attachment_id){
         $args = array(
             'method' => 'POST',
             'timeout' => 0.01,
@@ -143,7 +159,7 @@ class iLoveIMG_Watermark_Plugin {
             if(strpos($post->post_mime_type, "image/") !== false){
                 $status_watermark = get_post_meta($attachment_id, 'iloveimg_status_watermark', true);
                 if((int)$status_watermark === 0){
-                    $this->async_compress($attachment_id);
+                    $this->async_watermark($attachment_id);
                 }
             }
         }

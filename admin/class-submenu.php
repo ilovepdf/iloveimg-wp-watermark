@@ -32,7 +32,7 @@ class iLoveIMG_Watermark_Submenu {
 	 * the actual contents of the page.
 	 */
 	public function add_options_page() {
-		if(!is_plugin_active('iloveimg-compress/iloveimgcompress.php')){
+		if(!is_plugin_active('iloveimg/iloveimgcompress.php')){
 			
 			add_menu_page(
 				'iLoveIMG',
@@ -58,8 +58,8 @@ class iLoveIMG_Watermark_Submenu {
 
 			add_submenu_page(
 				'iloveimg-admin-page',
-				'Watermark Options',
-				'Watermark Options',
+				'Watermark settings',
+				'Watermark settings',
 				'manage_options',
 				'iloveimg-watermark-admin-page',
 				array(
@@ -72,8 +72,8 @@ class iLoveIMG_Watermark_Submenu {
 			remove_submenu_page('iloveimg-admin-page', 'iloveimg-watermark-admin-page');
 			add_submenu_page(
 				'iloveimg-admin-page',
-				'Watermark Options',
-				'Watermark Options',
+				'Watermark settings',
+				'Watermark settings',
 				'manage_options',
 				'iloveimg-watermark-admin-page',
 				array(
