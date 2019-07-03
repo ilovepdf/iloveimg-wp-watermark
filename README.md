@@ -12,7 +12,7 @@ Requires PHP: 7.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Optimize your website images and improve your page load speed. Reduce the file size of your photos and gain maximum compression while keeping sharp images.
+Protect your site from image theft with our reliable and easy-to-use watermark plugin. Effective protection for your images.
 
 == Description ==
 
@@ -77,6 +77,3 @@ iLoveIMG Watermark plugin can optimize images in JPG, PNG and GIF format.
 **Do you have an API REST?**
 
 Yes, we do. You can integrate our image optimization tools into your software apps. Learn more about [iLoveIMG API for developers](https://developer.iloveimg.com).
-
-
-== Changelog ==
