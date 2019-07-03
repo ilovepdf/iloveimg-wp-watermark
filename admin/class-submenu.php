@@ -46,8 +46,8 @@ class iLoveIMG_Watermark_Submenu {
 
 			add_submenu_page(
 				'iloveimg-admin-page',
-				'Compress Options',
-				'Compress Options',
+				'Compress settings',
+				'Compress settings',
 				'manage_options',
 				'iloveimg-compress-admin-page',
 				array(

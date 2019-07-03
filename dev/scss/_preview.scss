@@ -83,6 +83,9 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, bod
 							display: none;
 						}
 					}
+					&:disabled{
+						background-color: transparent !important;
+					}
 
 				}
 				select{

@@ -155,6 +155,13 @@
         var fontStyle = jQuery('#iloveimg_field_text_italic').is(':checked') ? 'italic': 'normal';
         var fontDecoration = jQuery('#iloveimg_field_text_underline').is(':checked') ? 'underline': 'none';
         var fontColor = jQuery('#iloveimg_field_text_color').val() ? jQuery('#iloveimg_field_text_color').val() : "#000";
+        if( ["Courier New", "Comic Sans MS", "WenQuanYi Zen Hei", "Lohit Marathi", "Impact"].indexOf(fontFamily) > -1 ){
+            jQuery(".iloveimg_font_none_style").show();
+            jQuery("#iloveimg_field_text_bold, #iloveimg_field_text_italic").attr("disabled", "disabled");
+        }else{
+            jQuery(".iloveimg_font_none_style").hide();
+            jQuery("#iloveimg_field_text_bold, #iloveimg_field_text_italic").removeAttr("disabled");
+        }
         jQuery("#iloveimg_settings__watermark__preview p").text(jQuery("#iloveimg_field_text").val());
         jQuery("#iloveimg_settings__watermark__preview p").css({
             opacity: jQuery("#iloveimg_field_opacity").val()/100,
@@ -264,15 +271,18 @@
         });
         jQuery(".iloveimg_settings__options__field-preview select").on("change", function(element){
             changeTextStyle();
+            resizeFont();
+            changePosition();
         });
 
         jQuery(".iloveimg_settings__options__field-preview input[type='radio']").on("change", function(element){
+            changeTextStyle();
+            resizeFont();
             changePosition();
         });
         jQuery(".iloveimg_settings__options__field-preview input[type='checkbox']").on("change", function(element){
             
             if(jQuery('#iloveimg_field_mosaic').is(':checked')){
-
                 if(jQuery("#iloveimg_field_scale").val() > 33){
                     jQuery("#iloveimg_field_scale").val(33);
                 }
@@ -370,10 +380,6 @@
 
         frame.open();
     });
-
-
-
-
 
 
 }).call();

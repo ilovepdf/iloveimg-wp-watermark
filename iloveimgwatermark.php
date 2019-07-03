@@ -101,5 +101,5 @@ define('iLoveIMG_Watermark_USER_URL', 'https://api.iloveimg.com/v1/user');
 define('iLoveIMG_Watermark_NUM_MAX_FILES', 2);
 define('iLoveIMG_Watermark_COMPRESS_DB_VERSION', '1.0');
 define('iLoveIMG_upload_folder', $upload_path['basedir']);
-
+define('iLoveIMG_Watermark_Plugin_URL', plugin_dir_url(__FILE__));
 set_time_limit(300);

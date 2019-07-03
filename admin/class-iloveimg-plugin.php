@@ -25,7 +25,9 @@ class iLoveIMG_Watermark_Plugin {
             new iLoveIMG_Library_init();
         }
         
-        add_action( 'admin_notices', array($this, 'show_notices'));
+        if(!is_plugin_active('iloveimg/iloveimgcompress.php')){
+            add_action( 'admin_notices', array($this, 'show_notices'));
+        }
         add_thickbox();
     }
 
@@ -45,14 +47,17 @@ class iLoveIMG_Watermark_Plugin {
     }
     
     public function iLoveIMG_Watermark_library(){
-        $ilove = new iLoveIMG_Watermark_Process();
-        $images = $ilove->watermark($_POST['id']);
-        if($images !== false){
-            iLoveIMG_Watermark_Resources::render_watermark_details($_POST['id']);
-        }else{
-            ?>
-            <p>You need more files</p>
-            <?php
+        if(isset($_POST['id'])){
+            $ilove = new iLoveIMG_Watermark_Process();
+            $attachment_id = intval($_POST['id']);
+            $images = $ilove->watermark($attachment_id);
+            if($images !== false){
+                iLoveIMG_Watermark_Resources::render_watermark_details($attachment_id);
+            }else{
+                ?>
+                <p>You need more files</p>
+                <?php
+            }
         }
         wp_die();
     }
@@ -68,6 +73,8 @@ class iLoveIMG_Watermark_Plugin {
             foreach ($images_restore as $key => $value) {
                 delete_post_meta($value, 'iloveimg_status_watermark');
                 delete_post_meta($value, 'iloveimg_watermark');
+                delete_post_meta($value, 'iloveimg_status_compress');
+                delete_post_meta($value, 'iloveimg_compress');
                 delete_option('iloveimg_images_to_restore');
             }
         }
@@ -84,16 +91,18 @@ class iLoveIMG_Watermark_Plugin {
     }
     
     public function iLoveIMG_Watermark_library_is_watermarked(){
-        $status_watermark = get_post_meta($_POST['id'], 'iloveimg_status_watermark', true);
-        $imagesCompressed = iLoveIMG_Watermark_Resources::getSizesWatermarked($_POST['id']);
-        if(((int)$status_watermark === 1 || (int)$status_watermark === 3)){
-            http_respone_code(500);
-        }else if((int)$status_watermark === 2){
-            iLoveIMG_Watermark_Resources::render_watermark_details($_POST['id']);
-        }else if((int)$status_watermark === 0 && !$status_watermark){
-            echo "Try again or buy more files";
+        if(isset($_POST['id'])){
+            $attachment_id = intval($_POST['id']);
+            $status_watermark = get_post_meta($attachment_id, 'iloveimg_status_watermark', true);
+            $imagesCompressed = iLoveIMG_Watermark_Resources::getSizesWatermarked($attachment_id);
+            if(((int)$status_watermark === 1 || (int)$status_watermark === 3)){
+                http_respone_code(500);
+            }else if((int)$status_watermark === 2){
+                iLoveIMG_Watermark_Resources::render_watermark_details($attachment_id);
+            }else if((int)$status_watermark === 0 && !$status_watermark){
+                echo "Try again or buy more files";
+            }
         }
-
         wp_die();
     }
 

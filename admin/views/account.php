@@ -31,6 +31,7 @@
                     <!-- <img src="<?php echo plugins_url("/iloveimg-watermark/assets/images/iloveimg_picture_login.svg") ?>" /> -->
                     <div class="iloveimg_settings__overview__account__picture"></div>
                     <form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>" autocomplete="off">
+                        <input type="hidden" name="action" value="update_watermark" />
                         <h3>Login to your account</h3>
                         <input type="hidden" name="iloveimg_action" value="iloveimg_action_login" />
                         <div>
@@ -41,7 +42,7 @@
                         </div>
                         <a class="forget" href="https://developer.iloveimg.com/login/reset" target="_blank">Forget Password?</a>
                         <?php
-                        wp_nonce_field( 'iloveimg_login', 'iloveimg_nonce_login' );
+                        wp_nonce_field();
                         submit_button('Login');
                         ?>
                         <div>
@@ -53,6 +54,7 @@
                 <div class="iloveimg_settings__overview__account iloveimg_settings__overview__account-register">
                     <div class="iloveimg_settings__overview__account__picture"></div>
                     <form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>" autocomplete="off">
+                        <input type="hidden" name="action" value="update_watermark" />
                         <h3>Register as iLovePDF developer</h3>
                         <input type="hidden" name="iloveimg_action" value="iloveimg_action_register" />
                         <div>
@@ -75,7 +77,7 @@
                             </div>
                         </div>
                         <?php
-                        wp_nonce_field( 'iloveimg_register', 'iloveimg_nonce_register' );
+                        wp_nonce_field();
                         submit_button('Register');
                         ?>
                         <div>
@@ -119,16 +121,18 @@
             </div>
             <div class="iloveimg_settings__overview__account-logged__column_right">
                 <form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>">
+                    <input type="hidden" name="action" value="update_watermark" />
                     <input type="hidden" name="iloveimg_action" value="iloveimg_action_logout" />
                     <h3>Account</h3>
                     <p style="margin: 0"><?php echo $account['name'] ?></p>
                     <p style="margin-top: 0; color: #4D90FE;"><?php echo $account['email'] ?></p>
                     
-                    <?php  wp_nonce_field( 'iloveimg_logout', 'iloveimg_nonce_logout' );  ?>
+                    <?php  wp_nonce_field();  ?>
                     <?php submit_button('Logout'); ?>
                 </form>
 
                 <form class="iloveimg_settings__overview__account-logged__column_right-proyects" method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>">
+                    <input type="hidden" name="action" value="update_watermark" />
                     <input type="hidden" name="iloveimg_action" value="iloveimg_action_proyect" />
                     <p><label>
                         Select your working proyect
@@ -146,7 +150,7 @@
                         </select>
                         <button type="submit" class="button button-secondary">Save</button>
                     </p>
-                    <?php  wp_nonce_field( 'iloveimg_proyect', 'iloveimg_nonce_proyect' );  ?>
+                    <?php  wp_nonce_field();  ?>
                     
                 </form>
             </div>
