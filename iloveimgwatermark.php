@@ -13,15 +13,15 @@
  * @package           iloveimgwatermark
  *
  * @wordpress-plugin
- * Plugin Name:       iLoveIMG - Watermark Images
+ * Plugin Name:       Best Watermark - Protect images on your site with iLoveIMG
  * Plugin URI:        https://developer.iloveimg.com/
- * Description:       Compress your images files and Stamp images or text into images files. This is the Official iLoveIMG plugin for Wordpress. You can optimize all your images and stamp them automatically as you do in iloveimg.com.
+ * Description:       Protect your site from image theft with our reliable and easy-to-use watermark plugin. Effective protection for your images.
  * Version:           1.0.0
  * Author:            iLoveIMG
  * Author URI:        https://iloveimg.com/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       iloveimg
+ * Text Domain:       iloveimg-watermark
  * Domain Path:       /languages
  */
 

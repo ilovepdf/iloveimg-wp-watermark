@@ -54,7 +54,7 @@ class iLoveIMG_Watermark_Serializer {
                     $options['iloveimg_field_autowatermark'] = 1;
                     update_option('iloveimg_options_watermark', serialize($options));
                 }else{
-                    update_option('iloveimg_account_error', serialize(["action" => "login", "email" => $_POST['iloveimg_field_email']]));
+                    update_option('iloveimg_account_error', serialize(["action" => "login", "email" => sanitize_email(wp_unslash($_POST['iloveimg_field_email']))]));
                 }
             }
 
@@ -94,7 +94,16 @@ class iLoveIMG_Watermark_Serializer {
                         update_option('iloveimg_account_error', serialize(["action" => "register_limit"]));
                     }
                 }else{
-                    update_option('iloveimg_account_error', serialize(["action" => "register", "email" => $_POST['iloveimg_field_email'], "name" => $_POST['iloveimg_field_name']]));
+                    update_option(
+                        'iloveimg_account_error', 
+                        serialize(
+                            [
+                                "action" => "register", 
+                                "email" => sanitize_email( wp_unslash($_POST['iloveimg_field_email'])), 
+                                "name" => sanitize_text_field( wp_unslash($_POST['iloveimg_field_name']))
+                            ]
+                        )
+                    );
                 }
             }
 

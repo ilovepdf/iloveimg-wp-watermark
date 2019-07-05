@@ -1,5 +1,5 @@
 === Best Watermark - Protect images on your site with iLoveIMG ===
-Plugin Name: Image Compressor & Optimizer - iLoveIMG
+Plugin Name: Best Watermark - Protect images on your site with iLoveIMG
 Version: 1.0.0
 Author: iLovePDF
 Author URI: https://www.iloveimg.com/
