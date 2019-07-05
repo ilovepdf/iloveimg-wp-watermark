@@ -76,7 +76,7 @@ iLoveIMG Watermark plugin can optimize images in JPG, PNG and GIF format.
 
 **Do you have an API REST?**
 
-Yes, and this plugin is supported in it. You can integrate our image optimization tools into your software apps too. Learn more about [iLoveIMG API for developers](https://developer.iloveimg.com).
+Yes, in fact this plugin is powered by our API. And you can integrate our image optimization tools into your software apps too! Learn more about [iLoveIMG API for developers](https://developer.iloveimg.com).
 
 **Do you care about the privacy of my images?**
 
