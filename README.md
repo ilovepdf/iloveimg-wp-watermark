@@ -1,13 +1,13 @@
 === Best Watermark - Protect images on your site with iLoveIMG ===
 Plugin Name: Best Watermark - Protect images on your site with iLoveIMG
-Version: 1.0.0
+Version: 1.0.1
 Author: iLovePDF
 Author URI: https://www.iloveimg.com/
 Contributors: iLovePDF
 Tags: watermark, image protection, photography, picture, e-commerce
 Requires at least: 4.6
 Tested up to: 5.2.1
-Stable tag: 1.0.3
+Stable tag: 1.0.1
 Requires PHP: 7.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -83,3 +83,9 @@ Yes, in fact this plugin is powered by our API. And you can integrate our image 
 All our servers are strictly monitored as we comply with the European Data Privacy Regulation, one of the highest standards in the EU.  All uploaded files use https/SSL and include our end-to-end encryption for further privacy of your data. 
 
 Moreover, all processed files are automatically deleted from our servers after being processed in a time range of one, two and twenty-four hours (depending on your user status). You can check detailed info at our [Privacy Policy](https://www.iloveimg.com/help/privacy) and our [Terms and Conditions](https://www.iloveimg.com/help/terms)
+
+== Changelog ==
+
+= 1.0.1 =
+
+- Fix: Bug fixes

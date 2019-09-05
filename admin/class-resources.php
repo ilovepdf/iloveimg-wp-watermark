@@ -81,13 +81,24 @@ class iLoveIMG_Watermark_Resources{
         return is_dir(iLoveIMG_upload_folder . "/iloveimg-backup");
     }
 
+    public static function folderSize ($dir) {
+        $size = 0;
+
+        foreach (glob(rtrim($dir, '/').'/*', GLOB_NOSORT) as $each) {
+            $size += is_file($each) ? filesize($each) : self::folderSize($each);
+        }
+
+        return $size;
+    }
+
     public static function getSizeBackup(){
         if(is_dir(iLoveIMG_upload_folder . "/iloveimg-backup")){
             $f = iLoveIMG_upload_folder . "/iloveimg-backup";
-            $io = popen ( '/usr/bin/du -sk ' . $f, 'r' );
+            /*$io = popen ( '/usr/bin/du -sk ' . $f, 'r' );
             $size = fgets ( $io, 4096);
-            $size = substr ( $size, 0, strpos ( $size, "\t" ) );
-            return $size /  1024;
+            $size = substr ( $size, 0, strpos ( $size, "\t" ) );*/
+            $size = self::folderSize($f);
+            return ($size /  1024)  / 1024;
         }else{
             return 0;
         }
