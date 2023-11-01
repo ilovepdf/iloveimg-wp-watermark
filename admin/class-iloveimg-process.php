@@ -45,7 +45,7 @@ class Ilove_Img_Wm_Process {
 
                 foreach ( $_sizes as $_size ) {
                     $image            = wp_get_attachment_image_src( $images_id, $_size );
-                    $path_file         = $_SERVER['DOCUMENT_ROOT'] . str_replace( site_url(), '', $image[0] );
+                    $path_file        = $_SERVER['DOCUMENT_ROOT'] . str_replace( site_url(), '', $image[0] );
                     $images[ $_size ] = array( 'watermarked' => null );
                     if ( in_array( $_size, $_wm_options['iloveimg_field_sizes'] ) ) {
                         // if enable backup
@@ -59,7 +59,7 @@ class Ilove_Img_Wm_Process {
                         }
 
                         $my_task = new WatermarkImageTask( $this->proyect_public, $this->secret_key );
-                        $file   = $my_task->addFile( $path_file );
+                        $file    = $my_task->addFile( $path_file );
                         if ( isset( $_wm_options['iloveimg_field_type'] ) ) {
                             $gravity = array( 'NorthWest', 'North', 'NorthEast', 'CenterWest', 'Center', 'CenterEast', 'SouthWest', 'South', 'SouthEast' );
                             if ( $_wm_options['iloveimg_field_type'] == 'text' ) {

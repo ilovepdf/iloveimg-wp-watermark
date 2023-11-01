@@ -72,7 +72,7 @@ class Ilove_Img_Wm_Resources {
     }
 
     public static function get_sizes_enabled() {
-        $_wm_options   = unserialize( get_option( 'iloveimg_options_watermark' ) );
+        $_wm_options = unserialize( get_option( 'iloveimg_options_watermark' ) );
         $image_sizes = $_wm_options['iloveimg_field_sizes'];
         $count       = 0;
         foreach ( $image_sizes as $image ) {
@@ -154,7 +154,7 @@ class Ilove_Img_Wm_Resources {
     }
 
     public static function render_watermark_details( $image_id ) {
-        $_sizes           = get_post_meta( $image_id, 'iloveimg_watermark', true );
+        $_sizes            = get_post_meta( $image_id, 'iloveimg_watermark', true );
         $images_compressed = self::get_sizes_watermarked( $image_id );
 
         ?>
@@ -194,8 +194,8 @@ class Ilove_Img_Wm_Resources {
     public static function get_status_of_column( $column_id ) {
         $post = get_post( $column_id );
         if ( strpos( $post->post_mime_type, 'image/jpg' ) !== false or strpos( $post->post_mime_type, 'image/jpeg' ) !== false or strpos( $post->post_mime_type, 'image/png' ) !== false or strpos( $post->post_mime_type, 'image/gif' ) !== false ) :
-            $_sizes           = get_post_meta( $column_id, 'iloveimg_watermark', true );
-            $status_watermark = (int) get_post_meta( $column_id, 'iloveimg_status_watermark', true );
+            $_sizes            = get_post_meta( $column_id, 'iloveimg_watermark', true );
+            $status_watermark  = (int) get_post_meta( $column_id, 'iloveimg_status_watermark', true );
             $images_compressed = self::get_sizes_watermarked( $column_id );
 
             if ( $_sizes && $images_compressed ) :
@@ -251,13 +251,13 @@ class Ilove_Img_Wm_Resources {
 
     public static function get_files_sizes() {
         global $wpdb;
-        $rows            = $wpdb->get_results( "SELECT * FROM $wpdb->postmeta WHERE meta_key = 'iloveimg_watermark'" );
-        $total           = 0;
+        $rows             = $wpdb->get_results( "SELECT * FROM $wpdb->postmeta WHERE meta_key = 'iloveimg_watermark'" );
+        $total            = 0;
         $total_compressed = 0;
         foreach ( $rows as $row ) {
             $stadistics = unserialize( $row->meta_value );
             foreach ( $stadistics as $key => $value ) {
-                $total           = $total + (int) $value['initial'];
+                $total            = $total + (int) $value['initial'];
                 $total_compressed = $total_compressed + (int) $value['watermarked'];
             }
         }

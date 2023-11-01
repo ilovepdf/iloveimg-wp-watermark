@@ -101,8 +101,8 @@ class Ilove_Img_Wm_Plugin {
 
     public function ilove_img_wm_library_is_watermarked() {
         if ( isset( $_POST['id'] ) ) {
-            $attachment_id    = intval( $_POST['id'] );
-            $status_watermark = get_post_meta( $attachment_id, 'iloveimg_status_watermark', true );
+            $attachment_id     = intval( $_POST['id'] );
+            $status_watermark  = get_post_meta( $attachment_id, 'iloveimg_status_watermark', true );
             $images_compressed = Ilove_Img_Wm_Resources::get_sizes_watermarked( $attachment_id );
             if ( ( (int) $status_watermark === 1 || (int) $status_watermark === 3 ) ) {
                 http_respone_code( 500 );
