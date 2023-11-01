@@ -1,7 +1,7 @@
 <?php
 
 class iLoveIMG_Watermark_Submenu {
- 
+
 	/**
 	 * A reference the class responsible for rendering the submenu page.
 	 *
@@ -32,8 +32,8 @@ class iLoveIMG_Watermark_Submenu {
 	 * the actual contents of the page.
 	 */
 	public function add_options_page() {
-		if(!is_plugin_active('iloveimg/iloveimgcompress.php')){
-			
+		if ( ! is_plugin_active( 'iloveimg/iloveimgcompress.php' ) ) {
+
 			add_menu_page(
 				'iLoveIMG',
 				'iLoveIMG',
@@ -42,7 +42,6 @@ class iLoveIMG_Watermark_Submenu {
 				array( $this->submenu_page, 'renderParent' ),
 				'https://www.iloveimg.com/img/favicons-img/favicon-16x16.png'
 			);
-			
 
 			add_submenu_page(
 				'iloveimg-admin-page',
@@ -52,7 +51,7 @@ class iLoveIMG_Watermark_Submenu {
 				'iloveimg-compress-admin-page',
 				array(
 					$this->submenu_page,
-					'renderCompress'
+					'renderCompress',
 				)
 			);
 
@@ -64,12 +63,12 @@ class iLoveIMG_Watermark_Submenu {
 				'iloveimg-watermark-admin-page',
 				array(
 					$this->submenu_page,
-					'renderWatermark'
+					'renderWatermark',
 				)
 			);
 
-		}else{
-			remove_submenu_page('iloveimg-admin-page', 'iloveimg-watermark-admin-page');
+		} else {
+			remove_submenu_page( 'iloveimg-admin-page', 'iloveimg-watermark-admin-page' );
 			add_submenu_page(
 				'iloveimg-admin-page',
 				'Watermark settings',
@@ -78,20 +77,20 @@ class iLoveIMG_Watermark_Submenu {
 				'iloveimg-watermark-admin-page',
 				array(
 					$this->submenu_page,
-					'renderWatermark'
+					'renderWatermark',
 				)
 			);
 		}
-		remove_submenu_page('iloveimg-admin-page', 'iloveimg-admin-page');
-		
+		remove_submenu_page( 'iloveimg-admin-page', 'iloveimg-admin-page' );
+
 		add_media_page(
-			'iLoveIMG Media', 
-			'Bulk Watermark', 
-			'manage_options', 
-			'iloveimg-media-watermark-page', 
+			'iLoveIMG Media',
+			'Bulk Watermark',
+			'manage_options',
+			'iloveimg-media-watermark-page',
 			array(
 				$this->submenu_page,
-				'renderMediaOptimization'
+				'renderMediaOptimization',
 			)
 		);
 	}
