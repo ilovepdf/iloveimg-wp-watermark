@@ -1,7 +1,7 @@
 <?php
 
 class iLoveIMG_Watermark_Plugin {
-    const VERSION = '1.0.0';
+    const VERSION = '1.0.3';
 	const NAME = 'iLoveIMG_Watermark_plugin';
     public function __construct() {
         add_action( 'admin_init', array( $this, "admin_init" ));
