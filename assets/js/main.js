@@ -24,7 +24,7 @@
 				url: ajaxurl,
 				type: 'POST',
 				data: {
-					action: 'iLoveIMG_Watermark_library',
+					action: 'ilove_img_wm_library',
 					id: element.data( 'id' ) || element.attr( 'data-id' )
 				},
 				success: function (data) {
@@ -48,7 +48,7 @@
 				url: ajaxurl,
 				type: 'POST',
 				data: {
-					action: 'iLoveIMG_Watermark_library_is_watermarked',
+					action: 'ilove_img_wm_library_is_watermarked',
 					id: element.data( 'id' ) || element.attr( 'data-id' )
 				},
 				success: function (data) {
@@ -355,7 +355,7 @@
 					url: ajaxurl,
 					type: 'POST',
 					data: {
-						action: 'iLoveIMG_Watermark_restore'
+						action: 'ilove_img_wm_restore'
 					},
 					success: function (data) {
 						element.removeAttr( 'disabled' );
@@ -379,7 +379,7 @@
 					url: ajaxurl,
 					type: 'POST',
 					data: {
-						action: 'iLoveIMG_Watermark_clear_backup'
+						action: 'ilove_img_wm_clear_backup'
 					},
 					success: function (data) {
 						element.removeAttr( 'disabled' );
@@ -410,7 +410,7 @@
 					url: ajaxurl,
 					type: 'POST',
 					data: {
-						action: 'iLoveIMG_Watermark_library_set_watermark_image'
+						action: 'ilove_img_wm_library_set_watermark_image'
 					},
 					success: function (data) {
 

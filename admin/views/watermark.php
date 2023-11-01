@@ -68,7 +68,7 @@
                         <div class="iloveimg_settings__options__field__imagessizes">
                             <p>When an image is uploaded to Media, WordPress generates alternative image size versions for responsive purposes. You can select which image versions you will watermark.</p>
                             <ul>
-                            <?php foreach ( iLoveIMG_Watermark_Resources::getTypeImages() as $value ) : ?>
+                            <?php foreach ( Ilove_Img_Wm_Resources::getTypeImages() as $value ) : ?>
                                 <li>
                                     <input type="checkbox" name="iloveimg_field_sizes[]" value="<?php echo $value['field_id']; ?>" <?php echo @( in_array( $value['field_id'], $options_value['iloveimg_field_sizes'] ) ) ? 'checked' : ''; ?> />
                                     <span><?php echo $value['label']; ?></span>
@@ -249,10 +249,10 @@
                         <label>Restore Original Images</label>
                         <p>All backup images can be restored. This action will recover the original images as they were before being stamped with Watermark. <span style="color: red;">Warning: Any changes made AFTER Watermark would be also restored.</span></p>
                         <p>You can also clear all your backup images to free memory space. <span style="color: red;">Warning: Clear backups will prevent you to restore original images.</span></p>
-                            <button type="button" class="button button-style-iloveimg" id="iloveimg_restore_all" <?php echo ( isset( $options_value['iloveimg_field_backup'] ) and iLoveIMG_Watermark_Resources::isThereBackup() ) ? '' : 'disabled'; ?>>Restore All</button>
+                            <button type="button" class="button button-style-iloveimg" id="iloveimg_restore_all" <?php echo ( isset( $options_value['iloveimg_field_backup'] ) and Ilove_Img_Wm_Resources::isThereBackup() ) ? '' : 'disabled'; ?>>Restore All</button>
                         
-                            <button type="button" class="button button-remove button-style-iloveimg" id="iloveimg_clear_backup" <?php echo ( isset( $options_value['iloveimg_field_backup'] ) and iLoveIMG_Watermark_Resources::isThereBackup() ) ? '' : 'disabled'; ?>>Clear backup</button>
-                            <span><?php echo round( iLoveIMG_Watermark_Resources::getSizeBackup(), 2 ); ?> MB</span>
+                            <button type="button" class="button button-remove button-style-iloveimg" id="iloveimg_clear_backup" <?php echo ( isset( $options_value['iloveimg_field_backup'] ) and Ilove_Img_Wm_Resources::isThereBackup() ) ? '' : 'disabled'; ?>>Clear backup</button>
+                            <span><?php echo round( Ilove_Img_Wm_Resources::getSizeBackup(), 2 ); ?> MB</span>
                     </div>
                 </div>
 

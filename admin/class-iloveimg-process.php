@@ -1,7 +1,7 @@
 <?php
 use Iloveimg\WatermarkImageTask;
 
-class iLoveIMG_Watermark_Process {
+class Ilove_Img_Wm_Process {
 
     public $proyect_public = '';
     public $secret_key     = '';

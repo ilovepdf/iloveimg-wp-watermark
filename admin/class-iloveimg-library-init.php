@@ -1,5 +1,5 @@
 <?php
-class iLoveIMG_Library_init {
+class ILove_Img_Wm_Library_Init {
 	function __construct() {
 		require_once dirname( __DIR__ ) . '/iloveimg-php/init.php';
 	}

@@ -1,6 +1,6 @@
 <?php
 
-class iLoveIMG_Watermark_Resources {
+class Ilove_Img_Wm_Resources {
 
     public static function getTypeImages() {
         global $_wp_additional_image_sizes;

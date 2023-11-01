@@ -3,7 +3,7 @@ if ( ! class_exists( 'WP_List_Table' ) ) {
     require_once ABSPATH . 'wp-admin/includes/class-wp-list-table.php';
 }
 
-class iLoveIMG_Watermark_Media_List_Table extends WP_List_Table {
+class Ilove_Img_Wm_Media_List_Table extends WP_List_Table {
 
     public $total_items;
 
@@ -29,7 +29,7 @@ class iLoveIMG_Watermark_Media_List_Table extends WP_List_Table {
             case 'post_date':
                 return $item[ $column_name ];
             case 'status':
-                return iLoveIMG_Watermark_Resources::getStatusOfColumn( $item['ID'] );
+                return Ilove_Img_Wm_Resources::getStatusOfColumn( $item['ID'] );
             default:
                 return print_r( $item, true ); // Show the whole array for troubleshooting purposes
         }

@@ -1,8 +1,8 @@
 <?php
 
-class iLoveIMG_Watermark_Plugin {
+class Ilove_Img_Wm_Plugin {
     const VERSION = '1.0.3';
-	const NAME    = 'iLoveIMG_Watermark_plugin';
+	const NAME    = 'ilove_img_watermark_plugin';
 
     public function __construct() {
         add_action( 'admin_init', array( $this, 'admin_init' ) );
@@ -12,18 +12,18 @@ class iLoveIMG_Watermark_Plugin {
         add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
         add_filter( 'manage_media_columns', array( $this, 'column_id' ) );
         add_filter( 'manage_media_custom_column', array( $this, 'column_id_row' ), 10, 2 );
-        add_action( 'wp_ajax_iLoveIMG_Watermark_library', array( $this, 'iLoveIMG_Watermark_library' ) );
-        add_action( 'wp_ajax_iLoveIMG_Watermark_restore', array( $this, 'iLoveIMG_Watermark_restore' ) );
-        add_action( 'wp_ajax_iLoveIMG_Watermark_clear_backup', array( $this, 'iLoveIMG_Watermark_clear_backup' ) );
-        add_action( 'wp_ajax_iLoveIMG_Watermark_library_is_watermarked', array( $this, 'iLoveIMG_Watermark_library_is_watermarked' ) );
-        add_action( 'wp_ajax_iLoveIMG_Watermark_library_set_watermark_image', array( $this, 'iLoveIMG_Watermark_library_set_watermark_image' ) );
+        add_action( 'wp_ajax_ilove_img_wm_library', array( $this, 'ilove_img_wm_library' ) );
+        add_action( 'wp_ajax_ilove_img_wm_restore', array( $this, 'ilove_img_wm_restore' ) );
+        add_action( 'wp_ajax_ilove_img_wm_clear_backup', array( $this, 'ilove_img_wm_clear_backup' ) );
+        add_action( 'wp_ajax_ilove_img_wm_library_is_watermarked', array( $this, 'ilove_img_wm_library_is_watermarked' ) );
+        add_action( 'wp_ajax_ilove_img_wm_library_set_watermark_image', array( $this, 'ilove_img_wm_library_set_watermark_image' ) );
         add_filter( 'wp_generate_attachment_metadata', array( $this, 'process_attachment' ), 10, 2 );
         add_action( 'admin_action_iloveimg_bulk_action', array( $this, 'media_library_bulk_action' ) );
         add_action( 'attachment_submitbox_misc_actions', array( $this, 'show_media_info' ) );
 
-        if ( ! class_exists( 'iLoveIMG_Library_init' ) ) {
+        if ( ! class_exists( 'ILove_Img_Wm_Library_Init' ) ) {
             require_once 'class-iloveimg-library-init.php';
-            new iLoveIMG_Library_init();
+            new ILove_Img_Wm_Library_Init();
         }
 
         if ( ! is_plugin_active( 'iloveimg/iloveimgcompress.php' ) ) {
@@ -55,13 +55,13 @@ class iLoveIMG_Watermark_Plugin {
 		);
     }
 
-    public function iLoveIMG_Watermark_library() {
+    public function ilove_img_wm_library() {
         if ( isset( $_POST['id'] ) ) {
-            $ilove         = new iLoveIMG_Watermark_Process();
+            $ilove         = new Ilove_Img_Wm_Process();
             $attachment_id = intval( $_POST['id'] );
             $images        = $ilove->watermark( $attachment_id );
             if ( $images !== false ) {
-                iLoveIMG_Watermark_Resources::render_watermark_details( $attachment_id );
+                Ilove_Img_Wm_Resources::render_watermark_details( $attachment_id );
             } else {
                 ?>
                 <p>You need more files</p>
@@ -71,13 +71,13 @@ class iLoveIMG_Watermark_Plugin {
         wp_die();
     }
 
-    public function iLoveIMG_Watermark_restore() {
+    public function ilove_img_wm_restore() {
         if ( is_dir( ILOVE_IMG_WM_UPLOAD_FOLDER . '/iloveimg-backup' ) ) {
             $folders = array_diff( scandir( ILOVE_IMG_WM_UPLOAD_FOLDER . '/iloveimg-backup' ), array( '..', '.' ) );
             foreach ( $folders as $key => $folder ) {
-                iLoveIMG_Watermark_Resources::rcopy( ILOVE_IMG_WM_UPLOAD_FOLDER . '/iloveimg-backup/' . $folder, ILOVE_IMG_WM_UPLOAD_FOLDER . '/' . $folder );
+                Ilove_Img_Wm_Resources::rcopy( ILOVE_IMG_WM_UPLOAD_FOLDER . '/iloveimg-backup/' . $folder, ILOVE_IMG_WM_UPLOAD_FOLDER . '/' . $folder );
             }
-            iLoveIMG_Watermark_Resources::rrmdir( ILOVE_IMG_WM_UPLOAD_FOLDER . '/iloveimg-backup' );
+            Ilove_Img_Wm_Resources::rrmdir( ILOVE_IMG_WM_UPLOAD_FOLDER . '/iloveimg-backup' );
             $images_restore = unserialize( get_option( 'iloveimg_images_to_restore' ) );
             foreach ( $images_restore as $key => $value ) {
                 delete_post_meta( $value, 'iloveimg_status_watermark' );
@@ -91,23 +91,23 @@ class iLoveIMG_Watermark_Plugin {
         wp_die();
     }
 
-    public function iLoveIMG_Watermark_clear_backup() {
+    public function ilove_img_wm_clear_backup() {
         if ( is_dir( ILOVE_IMG_WM_UPLOAD_FOLDER . '/iloveimg-backup' ) ) {
-            iLoveIMG_Watermark_Resources::rrmdir( ILOVE_IMG_WM_UPLOAD_FOLDER . '/iloveimg-backup' );
+            Ilove_Img_Wm_Resources::rrmdir( ILOVE_IMG_WM_UPLOAD_FOLDER . '/iloveimg-backup' );
             delete_option( 'iloveimg_images_to_restore' );
         }
         wp_die();
     }
 
-    public function iLoveIMG_Watermark_library_is_watermarked() {
+    public function ilove_img_wm_library_is_watermarked() {
         if ( isset( $_POST['id'] ) ) {
             $attachment_id    = intval( $_POST['id'] );
             $status_watermark = get_post_meta( $attachment_id, 'iloveimg_status_watermark', true );
-            $imagesCompressed = iLoveIMG_Watermark_Resources::getSizesWatermarked( $attachment_id );
+            $imagesCompressed = Ilove_Img_Wm_Resources::getSizesWatermarked( $attachment_id );
             if ( ( (int) $status_watermark === 1 || (int) $status_watermark === 3 ) ) {
                 http_respone_code( 500 );
             } elseif ( (int) $status_watermark === 2 ) {
-                iLoveIMG_Watermark_Resources::render_watermark_details( $attachment_id );
+                Ilove_Img_Wm_Resources::render_watermark_details( $attachment_id );
             } elseif ( (int) $status_watermark === 0 && ! $status_watermark ) {
                 echo 'Try again or buy more files';
             }
@@ -116,7 +116,7 @@ class iLoveIMG_Watermark_Plugin {
     }
 
     public function column_id( $columns ) {
-        if ( (int) iLoveIMG_Watermark_Resources::isActivated() === 0 ) {
+        if ( (int) Ilove_Img_Wm_Resources::isActivated() === 0 ) {
             return $columns;
         }
         $columns['iloveimg_status_watermark'] = __( 'Status Watermark' );
@@ -125,16 +125,16 @@ class iLoveIMG_Watermark_Plugin {
 
     public function column_id_row( $columnName, $columnID ) {
         if ( $columnName == 'iloveimg_status_watermark' ) {
-            iLoveIMG_Watermark_Resources::getStatusOfColumn( $columnID );
+            Ilove_Img_Wm_Resources::getStatusOfColumn( $columnID );
         }
     }
 
     public function process_attachment( $metadata, $attachment_id ) {
         update_post_meta( $attachment_id, 'iloveimg_status_watermark', 0 ); // status no watermarked
-        if ( (int) iLoveIMG_Watermark_Resources::isAutoWatermark() === 1 && iLoveIMG_Watermark_Resources::isLoggued() && (int) iLoveIMG_Watermark_Resources::isActivated() === 1 ) {
+        if ( (int) Ilove_Img_Wm_Resources::isAutoWatermark() === 1 && Ilove_Img_Wm_Resources::isLoggued() && (int) Ilove_Img_Wm_Resources::isActivated() === 1 ) {
             wp_update_attachment_metadata( $attachment_id, $metadata );
             $this->async_watermark( $attachment_id );
-        } elseif ( ! (int) iLoveIMG_Watermark_Resources::isAutoWatermark() && (int) iLoveIMG_Watermark_Resources::isWatermarkImage() == 1 ) {
+        } elseif ( ! (int) Ilove_Img_Wm_Resources::isAutoWatermark() && (int) Ilove_Img_Wm_Resources::isWatermarkImage() == 1 ) {
                 $_aOptions                                 = unserialize( get_option( 'iloveimg_options_watermark' ) );
                 $_aOptions['iloveimg_field_autowatermark'] = 1;
                 update_option( 'iloveimg_options_watermark', serialize( $_aOptions ) );
@@ -144,7 +144,7 @@ class iLoveIMG_Watermark_Plugin {
         return $metadata;
     }
 
-    public function iLoveIMG_Watermark_library_set_watermark_image() {
+    public function ilove_img_wm_library_set_watermark_image() {
         $_aOptions = unserialize( get_option( 'iloveimg_options_watermark' ) );
         unset( $_aOptions['iloveimg_field_autowatermark'] );
         update_option( 'iloveimg_options_watermark', serialize( $_aOptions ) );
@@ -158,7 +158,7 @@ class iLoveIMG_Watermark_Plugin {
             'timeout'   => 0.01,
             'blocking'  => false,
             'body'      => array(
-				'action' => 'iLoveIMG_Watermark_library',
+				'action' => 'ilove_img_wm_library',
 				'id'     => $attachment_id,
 			),
             'cookies'   => isset( $_COOKIE ) && is_array( $_COOKIE ) ? $_COOKIE : array(),
@@ -185,7 +185,7 @@ class iLoveIMG_Watermark_Plugin {
     }
 
     public function show_notices() {
-        if ( ! iLoveIMG_Watermark_Resources::isLoggued() ) {
+        if ( ! Ilove_Img_Wm_Resources::isLoggued() ) {
 			?>
             <div class="notice notice-warning is-dismissible">
                 <p><strong>iLoveIMG</strong> - Please you need to be logged or registered. <a href="<?php echo admin_url( 'admin.php?page=iloveimg-watermark-admin-page' ); ?>">Go to settings</a></p>
@@ -250,12 +250,12 @@ class iLoveIMG_Watermark_Plugin {
         echo '<table><tr><td>';
         $status_watermark = get_post_meta( $post->ID, 'iloveimg_status_watermark', true );
 
-        $imagesCompressed = iLoveIMG_Watermark_Resources::getSizesWatermarked( $post->ID );
+        $imagesCompressed = Ilove_Img_Wm_Resources::getSizesWatermarked( $post->ID );
 
         if ( (int) $status_watermark === 2 ) {
-            iLoveIMG_Watermark_Resources::render_watermark_details( $post->ID );
+            Ilove_Img_Wm_Resources::render_watermark_details( $post->ID );
         } else {
-            iLoveIMG_Watermark_Resources::getStatusOfColumn( $post->ID );
+            Ilove_Img_Wm_Resources::getStatusOfColumn( $post->ID );
         }
         echo '</td></tr></table>';
         echo '</div>';

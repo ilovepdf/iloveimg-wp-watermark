@@ -1,6 +1,6 @@
 <?php
 // Create an instance of our package class...
-$testListTable = new iLoveIMG_Watermark_Media_List_Table();
+$testListTable = new Ilove_Img_Wm_Media_List_Table();
 // Fetch, prepare, sort, and filter our data...
 $testListTable->prepare_items();
 

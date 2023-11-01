@@ -1,6 +1,6 @@
 <?php
 
-class iLoveIMG_Watermark_Serializer {
+class Ilove_Img_Wm_Serializer {
 
     public function init() {
         add_action( 'admin_post_update_watermark', array( $this, 'save' ) );

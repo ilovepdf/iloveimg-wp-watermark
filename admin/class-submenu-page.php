@@ -13,7 +13,7 @@
  *
  * @package Custom_Admin_Settings
  */
-class iLoveIMG_Watermark_Submenu_Page {
+class Ilove_Img_Wm_Submenu_Page {
 
     public function renderParent() {
     }

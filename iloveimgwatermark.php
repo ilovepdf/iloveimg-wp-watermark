@@ -36,17 +36,17 @@ require_once 'admin/class-submenu-page.php';
 require_once 'admin/class-submenu.php';
 require_once 'admin/class-table-media-bulk-optimized.php';
 
-function iLoveIMG_Watermark_custom_admin_settings() {
+function ilove_img_wm_custom_admin_settings() {
 
-    $serializer = new iLoveIMG_Watermark_Serializer();
+    $serializer = new Ilove_Img_Wm_Serializer();
     $serializer->init();
 
-    $plugin = new iLoveIMG_Watermark_Submenu( new iLoveIMG_Watermark_Submenu_Page() );
+    $plugin = new Ilove_Img_Wm_Submenu( new Ilove_Img_Wm_Submenu_Page() );
     $plugin->init();
 }
-add_action( 'plugins_loaded', 'iLoveIMG_Watermark_custom_admin_settings' );
+add_action( 'plugins_loaded', 'ilove_img_wm_custom_admin_settings' );
 
-function iLoveIMG_Watermark_add_plugin_page_settings_link( $links ) {
+function ilove_img_wm_add_plugin_page_settings_link( $links ) {
 	$links[] = '<a href="' .
 		admin_url( 'admin.php?page=iloveimg-watermark-admin-page' ) .
 		'">' . __( 'Settings' ) . '</a>';
@@ -55,10 +55,10 @@ function iLoveIMG_Watermark_add_plugin_page_settings_link( $links ) {
         '">' . __( 'Bulk Optimization' ) . '</a>';
 	return $links;
 }
-add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'iLoveIMG_Watermark_add_plugin_page_settings_link' );
+add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'ilove_img_wm_add_plugin_page_settings_link' );
 
-function iLoveIMG_Watermark_activate() {
-    add_option( 'iLoveIMG_Watermark_db_version', ILOVE_IMG_WM_COMPRESS_DB_VERSION );
+function ilove_img_wm_activate() {
+    add_option( 'ilove_img_wm_db_version', ILOVE_IMG_WM_COMPRESS_DB_VERSION );
 
     if ( ! get_option( 'iloveimg_options_watermark' ) ) {
         $iloveimg_thumbnails = array( 'full', 'thumbnail', 'medium', 'medium_large', 'large' );
@@ -84,9 +84,9 @@ function iLoveIMG_Watermark_activate() {
         );
     }
 }
-register_activation_hook( __FILE__, 'iLoveIMG_Watermark_activate' );
+register_activation_hook( __FILE__, 'ilove_img_wm_activate' );
 
-new iLoveIMG_Watermark_Plugin();
+new Ilove_Img_Wm_Plugin();
 
 $upload_path = wp_upload_dir();
 

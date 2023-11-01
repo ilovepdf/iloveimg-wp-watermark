@@ -1,6 +1,6 @@
 <?php
 
-class iLoveIMG_Watermark_Submenu {
+class Ilove_Img_Wm_Submenu {
 
 	/**
 	 * A reference the class responsible for rendering the submenu page.
