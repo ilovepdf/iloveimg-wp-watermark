@@ -6,7 +6,7 @@
         <?php require_once 'account.php'; ?>
     </div>
 
-    <?php if ( ! $isLogged ) : ?>    
+    <?php if ( ! $ilove_img_wm_is_logged ) : ?>    
         <div class="iloveimg_settings__info">
             <h3>The power of iLoveIMG in your WordPress!</h3>
             <p>Compress all your Media image files and Stamp other Images or text into your WordPress pictures. This is the Official iLoveIMG plugin for WordPress. You can optimize all your Images and stamp them automatically as you do in iloveimg.com.</p>
@@ -35,7 +35,7 @@
             <form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>">
                 <input type="hidden" name="action" value="update_watermark" />
                 <p class="submit">
-                    <button <?php echo ( ! $isLogged ) ? 'disabled' : ''; ?> type="submit" name="submit" id="submit" class="button button-secondary tooltip">
+                    <button <?php echo ( ! $ilove_img_wm_is_logged ) ? 'disabled' : ''; ?> type="submit" name="submit" id="submit" class="button button-secondary tooltip">
                         Save Changes
                         <span class="tooltiptext">Register and login with us to save settings changes</span>
                     </button>
@@ -53,7 +53,6 @@
                 </div>
 
                 <div class="iloveimg_settings__options__field">
-                    
                     <div class="switch">
                         <input type="checkbox" name="iloveimg_field_autowatermark" <?php echo isset( $options_value['iloveimg_field_autowatermark'] ) ? 'checked' : ''; ?> />
                         <span class="slider"></span>
@@ -68,10 +67,10 @@
                         <div class="iloveimg_settings__options__field__imagessizes">
                             <p>When an image is uploaded to Media, WordPress generates alternative image size versions for responsive purposes. You can select which image versions you will watermark.</p>
                             <ul>
-                            <?php foreach ( Ilove_Img_Wm_Resources::getTypeImages() as $value ) : ?>
+                            <?php foreach ( Ilove_Img_Wm_Resources::getTypeImages() as $ilove_img_wm_images_type ) : ?>
                                 <li>
-                                    <input type="checkbox" name="iloveimg_field_sizes[]" value="<?php echo $value['field_id']; ?>" <?php echo @( in_array( $value['field_id'], $options_value['iloveimg_field_sizes'] ) ) ? 'checked' : ''; ?> />
-                                    <span><?php echo $value['label']; ?></span>
+                                    <input type="checkbox" name="iloveimg_field_sizes[]" value="<?php echo $ilove_img_wm_images_type['field_id']; ?>" <?php echo @( in_array( $ilove_img_wm_images_type['field_id'], $options_value['iloveimg_field_sizes'] ) ) ? 'checked' : ''; ?> />
+                                    <span><?php echo $ilove_img_wm_images_type['label']; ?></span>
                                 </li>
                             <?php endforeach; ?>
                             </ul>
@@ -79,9 +78,8 @@
                     </div>
                 <?php endif; ?>
 
-
                 <div class="iloveimg_settings__options__field iloveimg_settings__options__field-preview">
-                    
+ 
                     <label>Preview Settings </label>
                     <p>You can choose to watermark by editable text or by uploading your own image stamp.</p>
                     <!--<select style="display: block; margin: 20px 0;" name="iloveimg_field_type" id="iloveimg_field_type">
@@ -93,9 +91,9 @@
                         <label for="iloveimg_field_type-text"><input type="radio" name="iloveimg_field_type" class="iloveimg_field_type" id="iloveimg_field_type-text" value="text" <?php echo ( $options_value['iloveimg_field_type'] == 'text' ) ? 'checked' : ''; ?>><span>Watermark text</span></label>
                         <label for="iloveimg_field_type-image"><input type="radio" name="iloveimg_field_type" class="iloveimg_field_type" id="iloveimg_field_type-image" value="image" <?php echo ( $options_value['iloveimg_field_type'] == 'image' ) ? 'checked' : ''; ?>><span>Watermark image</span></label>
                     </div>
-                    
+
                     <p class="iloveimg_font_none_style" style="color: #e21919; font-style: italic;">This font do not allow bold/italic styles for watermark</p>
-                    
+
                     <div class="iloveimg_settings__options__field__cols">
                         <div class="iloveimg_settings__options__field__cols__1">
                             <div id="iloveimg_settings__watermark__preview">
@@ -221,7 +219,6 @@
 
                         </div>
                     </div>
-                    
 
                     <!-- <button class="button button-secondary" id="media-open">Add Image</button>
                     <input type="text" name="iloveimg_field_image" value="<?php echo isset( $options_value['iloveimg_field_image'] ) ? $options_value['iloveimg_field_image'] : ''; ?>" placeholder="Image" value=""/>
@@ -260,7 +257,7 @@
                 wp_nonce_field();
                 ?>
                 <p class="submit">
-                    <button <?php echo ( ! $isLogged ) ? 'disabled' : ''; ?> type="submit" name="submit" id="submit" class="button button-secondary tooltip">
+                    <button <?php echo ( ! $ilove_img_wm_is_logged ) ? 'disabled' : ''; ?> type="submit" name="submit" id="submit" class="button button-secondary tooltip">
                         Save Changes
                         <span class="tooltiptext">Register and login with us to save settings changes</span>
                     </button>

@@ -5,7 +5,7 @@
         <?php require_once 'account.php'; ?>
     </div>
 
-    <?php if ( ! $isLogged ) : ?>
+    <?php if ( ! $ilove_img_wm_is_logged ) : ?>
         <div class="iloveimg_settings__info">
             <h3>The power of iLoveIMG in your WordPress!</h3>
             <p>Compress all your Media image files and Stamp other Images or text into your WordPress pictures. This is the Official iLoveIMG plugin for WordPress. You can optimize all your Images and stamp them automatically as you do in iloveimg.com.</p>

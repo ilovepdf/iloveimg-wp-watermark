@@ -88,14 +88,14 @@ register_activation_hook( __FILE__, 'ilove_img_wm_activate' );
 
 new Ilove_Img_Wm_Plugin();
 
-$upload_path = wp_upload_dir();
+$ilove_img_wm_upload_path = wp_upload_dir();
 
 define( 'ILOVE_IMG_WM_REGISTER_URL', 'https://api.iloveimg.com/v1/user' );
 define( 'ILOVE_IMG_WM_LOGIN_URL', 'https://api.iloveimg.com/v1/user/login' );
 define( 'ILOVE_IMG_WM_USER_URL', 'https://api.iloveimg.com/v1/user' );
 define( 'ILOVE_IMG_WM_NUM_MAX_FILES', 2 );
 define( 'ILOVE_IMG_WM_COMPRESS_DB_VERSION', '1.0' );
-define( 'ILOVE_IMG_WM_UPLOAD_FOLDER', $upload_path['basedir'] );
+define( 'ILOVE_IMG_WM_UPLOAD_FOLDER', $ilove_img_wm_upload_path['basedir'] );
 define( 'ILOVE_IMG_WM_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
 set_time_limit( 300 );
