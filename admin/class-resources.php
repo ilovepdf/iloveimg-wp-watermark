@@ -72,8 +72,8 @@ class Ilove_Img_Wm_Resources {
     }
 
     public static function getSizesEnabled() {
-        $_aOptions   = unserialize( get_option( 'iloveimg_options_watermark' ) );
-        $image_sizes = $_aOptions['iloveimg_field_sizes'];
+        $_wm_options   = unserialize( get_option( 'iloveimg_options_watermark' ) );
+        $image_sizes = $_wm_options['iloveimg_field_sizes'];
         $count       = 0;
         foreach ( $image_sizes as $image ) {
             if ( $image ) {
@@ -112,8 +112,8 @@ class Ilove_Img_Wm_Resources {
     }
 
     public static function isAutoWatermark() {
-        $_aOptions = unserialize( get_option( 'iloveimg_options_watermark' ) );
-        return ( isset( $_aOptions['iloveimg_field_autowatermark'] ) ) ? 1 : 0;
+        $_wm_options = unserialize( get_option( 'iloveimg_options_watermark' ) );
+        return ( isset( $_wm_options['iloveimg_field_autowatermark'] ) ) ? 1 : 0;
     }
 
     public static function isWatermarkImage() {
@@ -121,12 +121,12 @@ class Ilove_Img_Wm_Resources {
     }
 
     public static function isActivated() {
-        $_aOptions = unserialize( get_option( 'iloveimg_options_watermark' ) );
-        return ( isset( $_aOptions['iloveimg_field_watermark_activated'] ) ) ? 1 : 0;
+        $_wm_options = unserialize( get_option( 'iloveimg_options_watermark' ) );
+        return ( isset( $_wm_options['iloveimg_field_watermark_activated'] ) ) ? 1 : 0;
     }
 
-    public static function getSizesWatermarked( $columnID ) {
-        $images = get_post_meta( $columnID, 'iloveimg_watermark', true );
+    public static function getSizesWatermarked( $column_id ) {
+        $images = get_post_meta( $column_id, 'iloveimg_watermark', true );
         $count  = 0;
         if ( ! $images ) {
             return $count;
@@ -153,12 +153,12 @@ class Ilove_Img_Wm_Resources {
         }
     }
 
-    public static function render_watermark_details( $imageID ) {
-        $_sizes           = get_post_meta( $imageID, 'iloveimg_watermark', true );
-        $imagesCompressed = self::getSizesWatermarked( $imageID );
+    public static function render_watermark_details( $image_id ) {
+        $_sizes           = get_post_meta( $image_id, 'iloveimg_watermark', true );
+        $images_compressed = self::getSizesWatermarked( $image_id );
 
         ?>
-        <div id="iloveimg_detaills_watermark_<?php echo $imageID; ?>" style="display:none;">
+        <div id="iloveimg_detaills_watermark_<?php echo $image_id; ?>" style="display:none;">
             <table class="table__details__sizes">
                 <tr>
                     <th>Name</th><th>Watermark</th>
@@ -166,7 +166,7 @@ class Ilove_Img_Wm_Resources {
                     foreach ( $_sizes as $key => $size ) {
                         ?>
                         <tr>
-                            <td><a href="<?php echo wp_get_attachment_image_url( $imageID, $key ); ?>"  target="_blank"><?php echo $key; ?></a></td>
+                            <td><a href="<?php echo wp_get_attachment_image_url( $image_id, $key ); ?>"  target="_blank"><?php echo $key; ?></a></td>
                             <td>
                             <?php
 							if ( isset( $size['watermarked'] ) ) {
@@ -187,25 +187,25 @@ class Ilove_Img_Wm_Resources {
                 </tr>
             </table>
         </div>
-        <p><a href="#TB_inline?&width=450&height=340&inlineId=iloveimg_detaills_watermark_<?php echo $imageID; ?>" class="thickbox iloveimg_sizes_compressed" title="<?php echo get_the_title( $imageID ); ?>"><?php echo $imagesCompressed; ?> sizes watermark applied</a></p>
+        <p><a href="#TB_inline?&width=450&height=340&inlineId=iloveimg_detaills_watermark_<?php echo $image_id; ?>" class="thickbox iloveimg_sizes_compressed" title="<?php echo get_the_title( $image_id ); ?>"><?php echo $images_compressed; ?> sizes watermark applied</a></p>
         <?php
     }
 
-    public static function getStatusOfColumn( $columnID ) {
-        $post = get_post( $columnID );
+    public static function getStatusOfColumn( $column_id ) {
+        $post = get_post( $column_id );
         if ( strpos( $post->post_mime_type, 'image/jpg' ) !== false or strpos( $post->post_mime_type, 'image/jpeg' ) !== false or strpos( $post->post_mime_type, 'image/png' ) !== false or strpos( $post->post_mime_type, 'image/gif' ) !== false ) :
-            $_sizes           = get_post_meta( $columnID, 'iloveimg_watermark', true );
-            $status_watermark = (int) get_post_meta( $columnID, 'iloveimg_status_watermark', true );
-            $imagesCompressed = self::getSizesWatermarked( $columnID );
+            $_sizes           = get_post_meta( $column_id, 'iloveimg_watermark', true );
+            $status_watermark = (int) get_post_meta( $column_id, 'iloveimg_status_watermark', true );
+            $images_compressed = self::getSizesWatermarked( $column_id );
 
-            if ( $_sizes && $imagesCompressed ) :
-                self::render_watermark_details( $columnID );
+            if ( $_sizes && $images_compressed ) :
+                self::render_watermark_details( $column_id );
             else :
                 ?>
                                     
                     <?php if ( self::isLoggued() ) : ?>
 						<?php if ( self::getSizesEnabled() ) : ?>
-                            <button type="button" class="iloveimg-watermark button button-small button-primary" data-id="<?php echo $columnID; ?>" <?php echo ( $status_watermark === 1 || $status_watermark === 3 ) ? 'disabled="disabled"' : ''; ?>>Watermark</button>
+                            <button type="button" class="iloveimg-watermark button button-small button-primary" data-id="<?php echo $column_id; ?>" <?php echo ( $status_watermark === 1 || $status_watermark === 3 ) ? 'disabled="disabled"' : ''; ?>>Watermark</button>
                             <img src="<?php echo plugins_url( '/assets/images/spinner.gif', __DIR__ ); ?>" width="20" height="20" style="<?php echo ( $status_watermark === 1 || $status_watermark === 3 ) ? '' : 'display: none;'; ?>; margin-top: 7px" />
                             <?php if ( $status_watermark === 3 ) : ?>
                                 <!-- <p>In queue...</p> -->
@@ -222,7 +222,7 @@ class Ilove_Img_Wm_Resources {
                     endif;
                     if ( $status_watermark === 1 || $status_watermark === 3 ) :
 						?>
-                        <div class="iloveimg_watermarking" style="display: none;" data-id="<?php echo $columnID; ?>"></div>
+                        <div class="iloveimg_watermarking" style="display: none;" data-id="<?php echo $column_id; ?>"></div>
 						<?php
                     endif;
             endif;
@@ -253,14 +253,14 @@ class Ilove_Img_Wm_Resources {
         global $wpdb;
         $rows            = $wpdb->get_results( "SELECT * FROM $wpdb->postmeta WHERE meta_key = 'iloveimg_watermark'" );
         $total           = 0;
-        $totalCompressed = 0;
+        $total_compressed = 0;
         foreach ( $rows as $row ) {
             $stadistics = unserialize( $row->meta_value );
             foreach ( $stadistics as $key => $value ) {
                 $total           = $total + (int) $value['initial'];
-                $totalCompressed = $totalCompressed + (int) $value['watermarked'];
+                $total_compressed = $total_compressed + (int) $value['watermarked'];
             }
         }
-        return array( $total, $totalCompressed );
+        return array( $total, $total_compressed );
     }
 }

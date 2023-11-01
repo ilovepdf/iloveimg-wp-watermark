@@ -14,13 +14,13 @@ class Ilove_Img_Wm_Serializer {
         if ( isset( $_POST['iloveimg_action'] ) and $this->has_valid_nonce() ) {
             if ( $_POST['iloveimg_action'] == 'iloveimg_action_options_watermark' ) {
 
-                $postsValue = array();
-                foreach ( $_POST as $key => $postValue ) {
+                $posts_value = array();
+                foreach ( $_POST as $key => $post_value ) {
                     if ( strpos( $key, 'iloveimg_field_' ) === 0 ) {
-                        $postsValue[ $key ] = wp_unslash( $postValue );
+                        $posts_value[ $key ] = wp_unslash( $post_value );
                     }
                 }
-                update_option( 'iloveimg_options_watermark', serialize( $postsValue ) );
+                update_option( 'iloveimg_options_watermark', serialize( $posts_value ) );
             }
 
             if ( $_POST['iloveimg_action'] == 'iloveimg_action_logout' ) {
