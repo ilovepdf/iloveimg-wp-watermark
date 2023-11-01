@@ -2,7 +2,7 @@
 
 class Ilove_Img_Wm_Resources {
 
-    public static function getTypeImages() {
+    public static function get_type_images() {
         global $_wp_additional_image_sizes;
 
         $sizes   = array();
@@ -60,7 +60,7 @@ class Ilove_Img_Wm_Resources {
         }
     }
 
-    public static function getSaving( $images ) {
+    public static function get_saving( $images ) {
         $initial = $compressed = 0;
         foreach ( $images as $image ) {
             if ( ! is_null( $image['watermarked'] ) ) {
@@ -71,7 +71,7 @@ class Ilove_Img_Wm_Resources {
         return round( 100 - ( ( $compressed * 100 ) / $initial ) );
     }
 
-    public static function getSizesEnabled() {
+    public static function get_sizes_enabled() {
         $_wm_options   = unserialize( get_option( 'iloveimg_options_watermark' ) );
         $image_sizes = $_wm_options['iloveimg_field_sizes'];
         $count       = 0;
@@ -83,49 +83,49 @@ class Ilove_Img_Wm_Resources {
         return $count;
     }
 
-    public static function isThereBackup() {
+    public static function is_there_backup() {
         return is_dir( ILOVE_IMG_WM_UPLOAD_FOLDER . '/iloveimg-backup' );
     }
 
-    public static function folderSize( $dir ) {
+    public static function folder_size( $dir ) {
         $size = 0;
 
         foreach ( glob( rtrim( $dir, '/' ) . '/*', GLOB_NOSORT ) as $each ) {
-            $size += is_file( $each ) ? filesize( $each ) : self::folderSize( $each );
+            $size += is_file( $each ) ? filesize( $each ) : self::folder_size( $each );
         }
 
         return $size;
     }
 
-    public static function getSizeBackup() {
+    public static function get_size_backup() {
         if ( is_dir( ILOVE_IMG_WM_UPLOAD_FOLDER . '/iloveimg-backup' ) ) {
             $f = ILOVE_IMG_WM_UPLOAD_FOLDER . '/iloveimg-backup';
             /*
             $io = popen ( '/usr/bin/du -sk ' . $f, 'r' );
             $size = fgets ( $io, 4096);
             $size = substr ( $size, 0, strpos ( $size, "\t" ) );*/
-            $size = self::folderSize( $f );
+            $size = self::folder_size( $f );
             return ( $size / 1024 ) / 1024;
         } else {
             return 0;
         }
     }
 
-    public static function isAutoWatermark() {
+    public static function is_auto_watermark() {
         $_wm_options = unserialize( get_option( 'iloveimg_options_watermark' ) );
         return ( isset( $_wm_options['iloveimg_field_autowatermark'] ) ) ? 1 : 0;
     }
 
-    public static function isWatermarkImage() {
+    public static function is_watermark_image() {
         return get_option( 'iloveimg_options_is_watermark_image' ) ? 1 : 0;
     }
 
-    public static function isActivated() {
+    public static function is_activated() {
         $_wm_options = unserialize( get_option( 'iloveimg_options_watermark' ) );
         return ( isset( $_wm_options['iloveimg_field_watermark_activated'] ) ) ? 1 : 0;
     }
 
-    public static function getSizesWatermarked( $column_id ) {
+    public static function get_sizes_watermarked( $column_id ) {
         $images = get_post_meta( $column_id, 'iloveimg_watermark', true );
         $count  = 0;
         if ( ! $images ) {
@@ -141,7 +141,7 @@ class Ilove_Img_Wm_Resources {
         return $count;
     }
 
-    public static function isLoggued() {
+    public static function is_loggued() {
         if ( get_option( 'iloveimg_account' ) ) {
             $account = json_decode( get_option( 'iloveimg_account' ), true );
             if ( array_key_exists( 'error', $account ) ) {
@@ -155,7 +155,7 @@ class Ilove_Img_Wm_Resources {
 
     public static function render_watermark_details( $image_id ) {
         $_sizes           = get_post_meta( $image_id, 'iloveimg_watermark', true );
-        $images_compressed = self::getSizesWatermarked( $image_id );
+        $images_compressed = self::get_sizes_watermarked( $image_id );
 
         ?>
         <div id="iloveimg_detaills_watermark_<?php echo $image_id; ?>" style="display:none;">
@@ -191,20 +191,20 @@ class Ilove_Img_Wm_Resources {
         <?php
     }
 
-    public static function getStatusOfColumn( $column_id ) {
+    public static function get_status_of_column( $column_id ) {
         $post = get_post( $column_id );
         if ( strpos( $post->post_mime_type, 'image/jpg' ) !== false or strpos( $post->post_mime_type, 'image/jpeg' ) !== false or strpos( $post->post_mime_type, 'image/png' ) !== false or strpos( $post->post_mime_type, 'image/gif' ) !== false ) :
             $_sizes           = get_post_meta( $column_id, 'iloveimg_watermark', true );
             $status_watermark = (int) get_post_meta( $column_id, 'iloveimg_status_watermark', true );
-            $images_compressed = self::getSizesWatermarked( $column_id );
+            $images_compressed = self::get_sizes_watermarked( $column_id );
 
             if ( $_sizes && $images_compressed ) :
                 self::render_watermark_details( $column_id );
             else :
                 ?>
                                     
-                    <?php if ( self::isLoggued() ) : ?>
-						<?php if ( self::getSizesEnabled() ) : ?>
+                    <?php if ( self::is_loggued() ) : ?>
+						<?php if ( self::get_sizes_enabled() ) : ?>
                             <button type="button" class="iloveimg-watermark button button-small button-primary" data-id="<?php echo $column_id; ?>" <?php echo ( $status_watermark === 1 || $status_watermark === 3 ) ? 'disabled="disabled"' : ''; ?>>Watermark</button>
                             <img src="<?php echo plugins_url( '/assets/images/spinner.gif', __DIR__ ); ?>" width="20" height="20" style="<?php echo ( $status_watermark === 1 || $status_watermark === 3 ) ? '' : 'display: none;'; ?>; margin-top: 7px" />
                             <?php if ( $status_watermark === 3 ) : ?>
@@ -229,12 +229,12 @@ class Ilove_Img_Wm_Resources {
         endif;
     }
 
-    public static function getFilesCompressed() {
+    public static function get_files_compressed() {
         global $wpdb;
         return (int) $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->postmeta WHERE meta_key = 'iloveimg_watermark'" );
     }
 
-    public static function getTotalImages() {
+    public static function get_total_images() {
         $query_img_args = array(
 			'post_type'      => 'attachment',
 			'post_mime_type' => array(
@@ -249,7 +249,7 @@ class Ilove_Img_Wm_Resources {
         return (int) $query_img->post_count;
     }
 
-    public static function getFilesSizes() {
+    public static function get_files_sizes() {
         global $wpdb;
         $rows            = $wpdb->get_results( "SELECT * FROM $wpdb->postmeta WHERE meta_key = 'iloveimg_watermark'" );
         $total           = 0;

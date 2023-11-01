@@ -15,22 +15,22 @@
  */
 class Ilove_Img_Wm_Submenu_Page {
 
-    public function renderParent() {
+    public function render_parent() {
     }
 
-	public function renderCompress() {
+	public function render_compress() {
 		if ( ! is_plugin_active( 'iloveimg/iloveimgcompress.php' ) ) {
         	require_once 'views/compress.php';
     	}
 	}
 
-	public function renderWatermark() {
+	public function render_watermark() {
 		wp_enqueue_media();
         $options_value = unserialize( get_option( 'iloveimg_options_watermark' ) );
         require_once 'views/watermark.php';
 	}
 
-	public function renderMediaOptimization() {
+	public function render_media_optimization() {
 		$options_value = unserialize( get_option( 'iloveimg_options_compress' ) );
 		require_once 'views/media_bulk.php';
 	}

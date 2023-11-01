@@ -103,7 +103,7 @@ class Ilove_Img_Wm_Plugin {
         if ( isset( $_POST['id'] ) ) {
             $attachment_id    = intval( $_POST['id'] );
             $status_watermark = get_post_meta( $attachment_id, 'iloveimg_status_watermark', true );
-            $images_compressed = Ilove_Img_Wm_Resources::getSizesWatermarked( $attachment_id );
+            $images_compressed = Ilove_Img_Wm_Resources::get_sizes_watermarked( $attachment_id );
             if ( ( (int) $status_watermark === 1 || (int) $status_watermark === 3 ) ) {
                 http_respone_code( 500 );
             } elseif ( (int) $status_watermark === 2 ) {
@@ -116,7 +116,7 @@ class Ilove_Img_Wm_Plugin {
     }
 
     public function column_id( $columns ) {
-        if ( (int) Ilove_Img_Wm_Resources::isActivated() === 0 ) {
+        if ( (int) Ilove_Img_Wm_Resources::is_activated() === 0 ) {
             return $columns;
         }
         $columns['iloveimg_status_watermark'] = __( 'Status Watermark' );
@@ -125,16 +125,16 @@ class Ilove_Img_Wm_Plugin {
 
     public function column_id_row( $column_name, $column_id ) {
         if ( $column_name == 'iloveimg_status_watermark' ) {
-            Ilove_Img_Wm_Resources::getStatusOfColumn( $column_id );
+            Ilove_Img_Wm_Resources::get_status_of_column( $column_id );
         }
     }
 
     public function process_attachment( $metadata, $attachment_id ) {
         update_post_meta( $attachment_id, 'iloveimg_status_watermark', 0 ); // status no watermarked
-        if ( (int) Ilove_Img_Wm_Resources::isAutoWatermark() === 1 && Ilove_Img_Wm_Resources::isLoggued() && (int) Ilove_Img_Wm_Resources::isActivated() === 1 ) {
+        if ( (int) Ilove_Img_Wm_Resources::is_auto_watermark() === 1 && Ilove_Img_Wm_Resources::is_loggued() && (int) Ilove_Img_Wm_Resources::is_activated() === 1 ) {
             wp_update_attachment_metadata( $attachment_id, $metadata );
             $this->async_watermark( $attachment_id );
-        } elseif ( ! (int) Ilove_Img_Wm_Resources::isAutoWatermark() && (int) Ilove_Img_Wm_Resources::isWatermarkImage() == 1 ) {
+        } elseif ( ! (int) Ilove_Img_Wm_Resources::is_auto_watermark() && (int) Ilove_Img_Wm_Resources::is_watermark_image() == 1 ) {
                 $_wm_options                                 = unserialize( get_option( 'iloveimg_options_watermark' ) );
                 $_wm_options['iloveimg_field_autowatermark'] = 1;
                 update_option( 'iloveimg_options_watermark', serialize( $_wm_options ) );
@@ -185,7 +185,7 @@ class Ilove_Img_Wm_Plugin {
     }
 
     public function show_notices() {
-        if ( ! Ilove_Img_Wm_Resources::isLoggued() ) {
+        if ( ! Ilove_Img_Wm_Resources::is_loggued() ) {
 			?>
             <div class="notice notice-warning is-dismissible">
                 <p><strong>iLoveIMG</strong> - Please you need to be logged or registered. <a href="<?php echo admin_url( 'admin.php?page=iloveimg-watermark-admin-page' ); ?>">Go to settings</a></p>
@@ -250,12 +250,12 @@ class Ilove_Img_Wm_Plugin {
         echo '<table><tr><td>';
         $status_watermark = get_post_meta( $post->ID, 'iloveimg_status_watermark', true );
 
-        $images_compressed = Ilove_Img_Wm_Resources::getSizesWatermarked( $post->ID );
+        $images_compressed = Ilove_Img_Wm_Resources::get_sizes_watermarked( $post->ID );
 
         if ( (int) $status_watermark === 2 ) {
             Ilove_Img_Wm_Resources::render_watermark_details( $post->ID );
         } else {
-            Ilove_Img_Wm_Resources::getStatusOfColumn( $post->ID );
+            Ilove_Img_Wm_Resources::get_status_of_column( $post->ID );
         }
         echo '</td></tr></table>';
         echo '</div>';

@@ -39,7 +39,7 @@ class Ilove_Img_Wm_Submenu {
 				'iLoveIMG',
 				'manage_options',
 				'iloveimg-admin-page',
-				array( $this->submenu_page, 'renderParent' ),
+				array( $this->submenu_page, 'render_parent' ),
 				'https://www.iloveimg.com/img/favicons-img/favicon-16x16.png'
 			);
 
@@ -51,7 +51,7 @@ class Ilove_Img_Wm_Submenu {
 				'iloveimg-compress-admin-page',
 				array(
 					$this->submenu_page,
-					'renderCompress',
+					'render_compress',
 				)
 			);
 
@@ -63,7 +63,7 @@ class Ilove_Img_Wm_Submenu {
 				'iloveimg-watermark-admin-page',
 				array(
 					$this->submenu_page,
-					'renderWatermark',
+					'render_watermark',
 				)
 			);
 
@@ -77,7 +77,7 @@ class Ilove_Img_Wm_Submenu {
 				'iloveimg-watermark-admin-page',
 				array(
 					$this->submenu_page,
-					'renderWatermark',
+					'render_watermark',
 				)
 			);
 		}
@@ -90,7 +90,7 @@ class Ilove_Img_Wm_Submenu {
 			'iloveimg-media-watermark-page',
 			array(
 				$this->submenu_page,
-				'renderMediaOptimization',
+				'render_media_optimization',
 			)
 		);
 	}
