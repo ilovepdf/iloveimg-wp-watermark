@@ -32,6 +32,6 @@ class Ilove_Img_Wm_Submenu_Page {
 
 	public function render_media_optimization() {
 		$options_value = unserialize( get_option( 'iloveimg_options_compress' ) );
-		require_once 'views/media_bulk.php';
+		require_once 'views/media-bulk.php';
 	}
 }

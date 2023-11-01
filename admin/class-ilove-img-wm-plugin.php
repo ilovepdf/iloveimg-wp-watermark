@@ -22,7 +22,7 @@ class Ilove_Img_Wm_Plugin {
         add_action( 'attachment_submitbox_misc_actions', array( $this, 'show_media_info' ) );
 
         if ( ! class_exists( 'ILove_Img_Wm_Library_Init' ) ) {
-            require_once 'class-iloveimg-library-init.php';
+            require_once 'class-ilove-img-wm-library-init.php';
             new ILove_Img_Wm_Library_Init();
         }
 
