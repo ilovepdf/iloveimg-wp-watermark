@@ -72,12 +72,12 @@ class iLoveIMG_Watermark_Plugin {
     }
 
     public function iLoveIMG_Watermark_restore() {
-        if ( is_dir( iLoveIMG_upload_folder . '/iloveimg-backup' ) ) {
-            $folders = array_diff( scandir( iLoveIMG_upload_folder . '/iloveimg-backup' ), array( '..', '.' ) );
+        if ( is_dir( ILOVE_IMG_WM_UPLOAD_FOLDER . '/iloveimg-backup' ) ) {
+            $folders = array_diff( scandir( ILOVE_IMG_WM_UPLOAD_FOLDER . '/iloveimg-backup' ), array( '..', '.' ) );
             foreach ( $folders as $key => $folder ) {
-                iLoveIMG_Watermark_Resources::rcopy( iLoveIMG_upload_folder . '/iloveimg-backup/' . $folder, iLoveIMG_upload_folder . '/' . $folder );
+                iLoveIMG_Watermark_Resources::rcopy( ILOVE_IMG_WM_UPLOAD_FOLDER . '/iloveimg-backup/' . $folder, ILOVE_IMG_WM_UPLOAD_FOLDER . '/' . $folder );
             }
-            iLoveIMG_Watermark_Resources::rrmdir( iLoveIMG_upload_folder . '/iloveimg-backup' );
+            iLoveIMG_Watermark_Resources::rrmdir( ILOVE_IMG_WM_UPLOAD_FOLDER . '/iloveimg-backup' );
             $images_restore = unserialize( get_option( 'iloveimg_images_to_restore' ) );
             foreach ( $images_restore as $key => $value ) {
                 delete_post_meta( $value, 'iloveimg_status_watermark' );
@@ -92,8 +92,8 @@ class iLoveIMG_Watermark_Plugin {
     }
 
     public function iLoveIMG_Watermark_clear_backup() {
-        if ( is_dir( iLoveIMG_upload_folder . '/iloveimg-backup' ) ) {
-            iLoveIMG_Watermark_Resources::rrmdir( iLoveIMG_upload_folder . '/iloveimg-backup' );
+        if ( is_dir( ILOVE_IMG_WM_UPLOAD_FOLDER . '/iloveimg-backup' ) ) {
+            iLoveIMG_Watermark_Resources::rrmdir( ILOVE_IMG_WM_UPLOAD_FOLDER . '/iloveimg-backup' );
             delete_option( 'iloveimg_images_to_restore' );
         }
         wp_die();
@@ -220,7 +220,7 @@ class iLoveIMG_Watermark_Plugin {
             if ( ! array_key_exists( 'error', $account ) ) {
                 $token    = $account['token'];
                 $response = wp_remote_get(
-                    iLoveIMG_Watermark_USER_URL . '/' . $account['id'],
+                    ILOVE_IMG_WM_USER_URL . '/' . $account['id'],
                     array(
                         'headers' => array( 'Authorization' => 'Bearer ' . $token ),
                     )

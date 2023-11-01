@@ -38,7 +38,7 @@ class iLoveIMG_Watermark_Serializer {
                     $this->redirect();
                 }
                 $response = wp_remote_post(
-                    iLoveIMG_Watermark_LOGIN_URL,
+                    ILOVE_IMG_WM_LOGIN_URL,
                     array(
                         'body' => array(
                             'email'        => sanitize_email( wp_unslash( $_POST['iloveimg_field_email'] ) ),
@@ -71,7 +71,7 @@ class iLoveIMG_Watermark_Serializer {
                     $this->redirect();
                 }
                 $response = wp_remote_post(
-                    iLoveIMG_Watermark_REGISTER_URL,
+                    ILOVE_IMG_WM_REGISTER_URL,
                     array(
                         'body' => array(
                             'name'         => sanitize_text_field( wp_unslash( $_POST['iloveimg_field_name'] ) ),

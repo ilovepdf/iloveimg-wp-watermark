@@ -84,7 +84,7 @@ class iLoveIMG_Watermark_Resources {
     }
 
     public static function isThereBackup() {
-        return is_dir( iLoveIMG_upload_folder . '/iloveimg-backup' );
+        return is_dir( ILOVE_IMG_WM_UPLOAD_FOLDER . '/iloveimg-backup' );
     }
 
     public static function folderSize( $dir ) {
@@ -98,8 +98,8 @@ class iLoveIMG_Watermark_Resources {
     }
 
     public static function getSizeBackup() {
-        if ( is_dir( iLoveIMG_upload_folder . '/iloveimg-backup' ) ) {
-            $f = iLoveIMG_upload_folder . '/iloveimg-backup';
+        if ( is_dir( ILOVE_IMG_WM_UPLOAD_FOLDER . '/iloveimg-backup' ) ) {
+            $f = ILOVE_IMG_WM_UPLOAD_FOLDER . '/iloveimg-backup';
             /*
             $io = popen ( '/usr/bin/du -sk ' . $f, 'r' );
             $size = fgets ( $io, 4096);

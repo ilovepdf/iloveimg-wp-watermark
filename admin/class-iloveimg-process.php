@@ -26,7 +26,7 @@ class iLoveIMG_Watermark_Process {
 
             $imageCompressProcessing = $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->postmeta WHERE meta_key = 'iloveimg_status_compress' AND meta_value = 1 AND post_id =  " . $imagesID );
 
-            if ( $filesProcessing < iLoveIMG_Watermark_NUM_MAX_FILES and $imageCompressProcessing == 0 ) {
+            if ( $filesProcessing < ILOVE_IMG_WM_NUM_MAX_FILES and $imageCompressProcessing == 0 ) {
                 update_post_meta( $imagesID, 'iloveimg_status_watermark', 1 ); // status compressing
 
                 $_sizes = get_intermediate_image_sizes();
@@ -35,8 +35,8 @@ class iLoveIMG_Watermark_Process {
                 $_aOptions = unserialize( get_option( 'iloveimg_options_watermark' ) );
 
                 if ( isset( $_aOptions['iloveimg_field_backup'] ) ) {
-					if ( ! is_dir( iLoveIMG_upload_folder . '/iloveimg-backup' ) ) {
-						mkdir( iLoveIMG_upload_folder . '/iloveimg-backup' );
+					if ( ! is_dir( ILOVE_IMG_WM_UPLOAD_FOLDER . '/iloveimg-backup' ) ) {
+						mkdir( ILOVE_IMG_WM_UPLOAD_FOLDER . '/iloveimg-backup' );
 					}
 					$images_restore   = get_option( 'iloveimg_images_to_restore' ) ? unserialize( get_option( 'iloveimg_images_to_restore' ) ) : array();
 					$images_restore[] = $imagesID;
@@ -51,7 +51,7 @@ class iLoveIMG_Watermark_Process {
                         // if enable backup
                         if ( isset( $_aOptions['iloveimg_field_backup'] ) ) {
 
-                            $new_path = iLoveIMG_upload_folder . '/iloveimg-backup' . str_replace( iLoveIMG_upload_folder, '', dirname( $pathFile ) );
+                            $new_path = ILOVE_IMG_WM_UPLOAD_FOLDER . '/iloveimg-backup' . str_replace( ILOVE_IMG_WM_UPLOAD_FOLDER, '', dirname( $pathFile ) );
                             if ( ! is_dir( $new_path ) ) {
 								mkdir( $new_path, 0777, true );
                             }

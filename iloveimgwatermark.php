@@ -58,7 +58,7 @@ function iLoveIMG_Watermark_add_plugin_page_settings_link( $links ) {
 add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'iLoveIMG_Watermark_add_plugin_page_settings_link' );
 
 function iLoveIMG_Watermark_activate() {
-    add_option( 'iLoveIMG_Watermark_db_version', iLoveIMG_Watermark_COMPRESS_DB_VERSION );
+    add_option( 'iLoveIMG_Watermark_db_version', ILOVE_IMG_WM_COMPRESS_DB_VERSION );
 
     if ( ! get_option( 'iloveimg_options_watermark' ) ) {
         $iloveimg_thumbnails = array( 'full', 'thumbnail', 'medium', 'medium_large', 'large' );
@@ -90,12 +90,12 @@ new iLoveIMG_Watermark_Plugin();
 
 $upload_path = wp_upload_dir();
 
-define( 'iLoveIMG_Watermark_REGISTER_URL', 'https://api.iloveimg.com/v1/user' );
-define( 'iLoveIMG_Watermark_LOGIN_URL', 'https://api.iloveimg.com/v1/user/login' );
-define( 'iLoveIMG_Watermark_USER_URL', 'https://api.iloveimg.com/v1/user' );
-define( 'iLoveIMG_Watermark_NUM_MAX_FILES', 2 );
-define( 'iLoveIMG_Watermark_COMPRESS_DB_VERSION', '1.0' );
-define( 'iLoveIMG_upload_folder', $upload_path['basedir'] );
-define( 'iLoveIMG_Watermark_Plugin_URL', plugin_dir_url( __FILE__ ) );
+define( 'ILOVE_IMG_WM_REGISTER_URL', 'https://api.iloveimg.com/v1/user' );
+define( 'ILOVE_IMG_WM_LOGIN_URL', 'https://api.iloveimg.com/v1/user/login' );
+define( 'ILOVE_IMG_WM_USER_URL', 'https://api.iloveimg.com/v1/user' );
+define( 'ILOVE_IMG_WM_NUM_MAX_FILES', 2 );
+define( 'ILOVE_IMG_WM_COMPRESS_DB_VERSION', '1.0' );
+define( 'ILOVE_IMG_WM_UPLOAD_FOLDER', $upload_path['basedir'] );
+define( 'ILOVE_IMG_WM_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
 set_time_limit( 300 );

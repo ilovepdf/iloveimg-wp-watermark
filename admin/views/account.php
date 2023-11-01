@@ -7,7 +7,7 @@ if ( get_option( 'iloveimg_account' ) ) {
 	update_option( 'iloveimg_first_loggued', 1 );
 	$token    = $account['token'];
 	$response = wp_remote_get(
-        iLoveIMG_Watermark_USER_URL . '/' . $account['id'],
+        ILOVE_IMG_WM_USER_URL . '/' . $account['id'],
 		array(
 			'headers' => array( 'Authorization' => 'Bearer ' . $token ),
 		)
