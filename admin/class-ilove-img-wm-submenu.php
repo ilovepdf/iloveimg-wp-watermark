@@ -38,7 +38,7 @@ class Ilove_Img_Wm_Submenu {
 	 * the actual contents of the page.
 	 */
 	public function add_options_page() {
-		if ( ! is_plugin_active( 'iloveimg/iloveimgcompress.php' ) ) {
+		if ( ! Ilove_Img_Wm_Plugin::check_iloveimg_plugins_is_activated() ) {
 
 			add_menu_page(
 				'iLoveIMG',

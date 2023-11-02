@@ -1,18 +1,17 @@
 <div class="wrap iloveimg_settings">
- 
     <h1><img src="<?php echo plugins_url( '/iloveimg-watermark/assets/images/logo.svg' ); ?>" class="logo" /></h1>
-     
+
     <div class="iloveimg_settings__overview">
         <?php require_once 'account.php'; ?>
     </div>
 
-    <?php if ( ! $ilove_img_wm_is_logged ) : ?>    
+    <?php if ( ! $ilove_img_wm_is_logged ) : ?>
         <div class="iloveimg_settings__info">
             <h3>The power of iLoveIMG in your WordPress!</h3>
             <p>Compress all your Media image files and Stamp other Images or text into your WordPress pictures. This is the Official iLoveIMG plugin for WordPress. You can optimize all your Images and stamp them automatically as you do in iloveimg.com.</p>
             <p>Register now to get 500 free uses and start working with iLoveIMG plugin now!</p>
         </div>
-    <?php endif ?>
+    <?php endif; ?>
     
     <div class="iloveimg_settings__options">
         <div class="iloveimg_settings__options-nav">
@@ -31,6 +30,7 @@
                 </li>
             </ul>
         </div>
+
         <div class="iloveimg_settings__options-container">
             <form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>">
                 <input type="hidden" name="action" value="update_watermark" />

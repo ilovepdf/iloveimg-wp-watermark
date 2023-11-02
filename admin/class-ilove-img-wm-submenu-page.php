@@ -29,7 +29,7 @@ class Ilove_Img_Wm_Submenu_Page {
 	 * The method is typically used to display the compress-related view or user interface elements for the plugin, allowing users to interact with the compress feature. It ensures that the compress functionality is available when the required dependencies are met.
 	 */
 	public function render_compress() {
-		if ( ! is_plugin_active( 'iloveimg/iloveimgcompress.php' ) ) {
+		if ( ! Ilove_Img_Wm_Plugin::check_iloveimg_plugins_is_activated() ) {
         	require_once 'views/compress.php';
     	}
 	}

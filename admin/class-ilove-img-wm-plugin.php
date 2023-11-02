@@ -66,7 +66,7 @@ class Ilove_Img_Wm_Plugin {
             new ILove_Img_Wm_Library_Init();
         }
 
-        if ( ! is_plugin_active( 'iloveimg/iloveimgcompress.php' ) ) {
+        if ( ! self::check_iloveimg_plugins_is_activated() ) {
             add_action( 'admin_notices', array( $this, 'show_notices' ) );
         }
 
@@ -406,5 +406,37 @@ class Ilove_Img_Wm_Plugin {
         echo '</td></tr></table>';
         echo '</div>';
         echo '</div>';
+    }
+
+    /**
+     * Check if any 'iloveimg' related plugins are activated.
+     *
+     * This function iterates through all installed plugins and checks if any of them are related to 'iloveimg'. It specifically
+     * looks for plugins with names that start with 'iloveimg'. If such a plugin is found, it further checks if it is active.
+     * If an active 'iloveimg' plugin related to 'compress' is found, it returns true.
+     *
+     * @return bool True if an active 'iloveimg' related plugin is found, false otherwise.
+     */
+    public static function check_iloveimg_plugins_is_activated() {
+        $all_plugins = get_plugins();
+
+        $iloveimg_compress_found = false;
+
+        foreach ( $all_plugins as $plugin_file => $plugin_info ) {
+
+            if ( strpos( $plugin_file, 'iloveimg' ) === 0 ) {
+
+                if ( is_plugin_active( $plugin_file ) ) {
+
+                    if ( strpos( $plugin_file, 'compress' ) !== false ) {
+                        $iloveimg_compress_found = true;
+
+                        return $iloveimg_compress_found;
+                    }
+                }
+            }
+        }
+
+        return $iloveimg_compress_found;
     }
 }
