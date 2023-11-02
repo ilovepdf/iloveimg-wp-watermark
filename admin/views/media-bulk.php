@@ -1,7 +1,5 @@
 <?php
-// Create an instance of our package class...
 $ilove_img_wm_test_list_table = new Ilove_Img_Wm_Media_List_Table();
-// Fetch, prepare, sort, and filter our data...
 $ilove_img_wm_test_list_table->prepare_items();
 
 ?>

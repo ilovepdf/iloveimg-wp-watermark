@@ -1,11 +1,47 @@
 <?php
 use Iloveimg\WatermarkImageTask;
 
+/**
+ * Class for handling image watermark and processing using the iLoveIMG API.
+ *
+ * This class is responsible for image watermark and processing tasks
+ * using the iLoveIMG API. It provides methods for watermarked images
+ * and performing various image-related operations.
+ *
+ * @since 1.0.0
+ */
 class Ilove_Img_Wm_Process {
 
+    /**
+     * Public project key for iLoveIMG API.
+     *
+     * @var string $proyect_public The public project key for the iLoveIMG API.
+     *
+     * @since 1.0.0
+     * @access public
+     */
     public $proyect_public = '';
-    public $secret_key     = '';
 
+    /**
+     * Secret key for iLoveIMG API.
+     *
+     * @var string $secret_key The secret key for the iLoveIMG API.
+     *
+     * @since 1.0.0
+     * @access public
+     */
+    public $secret_key = '';
+
+    /**
+     * Apply watermark to an image in various sizes.
+     *
+     * This function takes an image's ID, applies a watermark to it in different sizes, and updates the image's metadata with watermarking status and information.
+     * It considers watermarking options and settings from the plugin's configuration.
+     *
+     * @param int $images_id The ID of the image to watermark.
+     *
+     * @return array|bool An array with watermarking information or false if an error occurs.
+     */
     public function watermark( $images_id ) {
         global $_wp_additional_image_sizes, $wpdb;
 
@@ -122,9 +158,7 @@ class Ilove_Img_Wm_Process {
                 sleep( 2 );
                 return $this->watermark( $images_id );
             }
-
-            // print_r($images_id);
-        } catch ( Exception $e ) {
+		} catch ( Exception $e ) {
             update_post_meta( $images_id, 'iloveimg_status_watermark', 0 );
             return false;
         }

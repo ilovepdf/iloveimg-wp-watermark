@@ -1,11 +1,41 @@
 <?php
-
+/**
+ * Class for handling serialization and management of iLoveIMG plugin settings.
+ *
+ * This class is responsible for managing the serialization and deserialization of iLoveIMG plugin settings, including options for watermark, login, registration, and project settings. It also handles the validation of nonces and redirects based on user actions.
+ *
+ * @since 1.0.0
+ */
 class Ilove_Img_Wm_Serializer {
-
+    /**
+     * Initialize the plugin and configure actions related to updating watermarks.
+     *
+     * This method sets up actions and hooks to handle watermark updates within the WordPress admin area. It specifically uses the 'admin_post_update_watermark' action to trigger the 'save' method when a relevant form is submitted.
+     *
+     * The 'admin_post_update_watermark' action is typically associated with processing form submissions related to watermark configuration. When this action is triggered, the 'save' method is called to handle the update and save the watermark settings.
+     *
+     * This method plays a key role in ensuring that watermark updates are handled effectively within the plugin.
+     */
     public function init() {
         add_action( 'admin_post_update_watermark', array( $this, 'save' ) );
     }
 
+    /**
+     * Handle various actions related to watermark configuration, user authentication, registration, and project settings.
+     *
+     * This function processes POST requests from forms in the WordPress admin area, specifically those related to watermark configuration, user authentication, registration, and project settings.
+     *
+     * The function checks for user capabilities, valid nonces, and the specific 'iloveimg_action' field in the submitted form to determine the action to take. The available actions and their functionality are as follows:
+     * - 'iloveimg_action_options_watermark': Updates watermark settings.
+     * - 'iloveimg_action_logout': Logs the user out and clears account-related settings.
+     * - 'iloveimg_action_login': Logs the user in using their email and password.
+     * - 'iloveimg_action_register': Registers a new user account.
+     * - 'iloveimg_action_proyect': Updates the project setting.
+     *
+     * Depending on the action, the function updates relevant options or sends API requests to authenticate or register users.
+     *
+     * This function plays a crucial role in configuring the plugin's settings and handling user interactions within the WordPress admin area.
+     */
     public function save() {
         if ( ! ( current_user_can( 'manage_options' ) ) ) {
             die();
@@ -121,11 +151,19 @@ class Ilove_Img_Wm_Serializer {
                 update_option( 'iloveimg_proyect', sanitize_text_field( $_POST['iloveimg_field_proyect'] ) );
             }
 		}
+
         $this->redirect();
 	}
 
+    /**
+     * Check the validity of a WordPress nonce.
+     *
+     * This private method checks if a WordPress nonce exists in the request and verifies its validity.
+     * A nonce is a security token used to verify the origin of a request, providing protection against CSRF attacks.
+     *
+     * @return bool Whether the nonce is valid (true) or not (false).
+     */
 	private function has_valid_nonce() {
-
         if ( ! isset( $_REQUEST['_wpnonce'] ) ) {
             return false;
         }
@@ -135,6 +173,12 @@ class Ilove_Img_Wm_Serializer {
         return wp_verify_nonce( $field );
     }
 
+    /**
+     * Perform a safe redirect to a specified URL.
+     *
+     * This private method is used to redirect to a specified URL after performing various checks
+     * to ensure the URL's safety and validity.
+     */
 	private function redirect() {
 
         // To make the Coding Standards happy, we have to initialize this.

@@ -1,5 +1,11 @@
 <?php
-
+/**
+ * Class for managing the iLoveIMG plugin's submenu and pages.
+ *
+ * This class is responsible for adding a submenu to the 'Tools' menu in the WordPress admin area and rendering the plugin's settings and content pages. It initializes the submenu and adds individual pages for watermark settings, and media optimization.
+ *
+ * @since 1.0.0
+ */
 class Ilove_Img_Wm_Submenu {
 
 	/**
@@ -95,6 +101,13 @@ class Ilove_Img_Wm_Submenu {
 		);
 	}
 
+	/**
+	 * Render the settings page content for the WordPress plugin.
+	 *
+	 * This method is responsible for displaying the content of the settings page for the WordPress plugin. In a real plugin, you would use this method to render and display the configuration options and settings that users can modify.
+	 *
+	 * The provided example simply displays a text message, "This is the page content," which should be replaced with the actual settings and user interface elements for your plugin.
+	 */
 	public function settings_page() {
 		echo 'This is the page content';
 	}

@@ -1,10 +1,3 @@
-// jQuery(function(){
-// alert('.field_'+ jQuery("#fieldrow-mode select").val())
-// jQuery('.field_'+ jQuery("#fieldrow-mode select").val()).show();
-// jQuery("#fieldrow-mode select").on("change", function(){
-// alert(jQuery("#fieldrow-mode select").val());
-// });
-// });
 (function () {
     var adminpage = '';
     if (typeof window.adminpage !== 'undefined') {

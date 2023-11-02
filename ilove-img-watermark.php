@@ -36,6 +36,11 @@ require_once 'admin/class-ilove-img-wm-submenu-page.php';
 require_once 'admin/class-ilove-img-wm-submenu.php';
 require_once 'admin/class-ilove-img-wm-media-list-table.php';
 
+/**
+ * Initialize admin settings
+ *
+ * This function runs when plugins are loaded in WordPress.
+ */
 function ilove_img_wm_custom_admin_settings() {
 
     $serializer = new Ilove_Img_Wm_Serializer();
@@ -46,31 +51,50 @@ function ilove_img_wm_custom_admin_settings() {
 }
 add_action( 'plugins_loaded', 'ilove_img_wm_custom_admin_settings' );
 
+/**
+ * Add links on WordPress admin
+ *
+ * This function adds links to the plugin's settings and bulk optimization pages in the WordPress admin dashboard.
+ *
+ * @param array $links An array of existing plugin action links.
+ * @return array An array with the added plugin action links.
+ */
 function ilove_img_wm_add_plugin_page_settings_link( $links ) {
+
 	$links[] = '<a href="' .
 		admin_url( 'admin.php?page=iloveimg-watermark-admin-page' ) .
 		'">' . __( 'Settings' ) . '</a>';
+
     $links[] = '<a href="' .
         admin_url( 'upload.php?page=iloveimg-media-page' ) .
         '">' . __( 'Bulk Optimization' ) . '</a>';
+
 	return $links;
 }
 add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'ilove_img_wm_add_plugin_page_settings_link' );
 
+/**
+ * Add Options to watermark page admin settings
+ *
+ * This function is executed when the plugin is activated. It performs the following tasks:
+ * 1. Adds an option to store the plugin's database version.
+ * 2. Sets default options for watermarking if they don't already exist in the WordPress options.
+ */
 function ilove_img_wm_activate() {
     add_option( 'ilove_img_wm_db_version', ILOVE_IMG_WM_COMPRESS_DB_VERSION );
 
     if ( ! get_option( 'iloveimg_options_watermark' ) ) {
+
         $iloveimg_thumbnails = array( 'full', 'thumbnail', 'medium', 'medium_large', 'large' );
+
         if ( ! extension_loaded( 'gd' ) ) {
             $iloveimg_thumbnails = array( 'full' );
         }
+
         update_option(
             'iloveimg_options_watermark',
             serialize(
                 array(
-					// 'iloveimg_field_watermark_activated' => 0,
-					// 'iloveimg_field_autowatermark' => 1,
 					'iloveimg_field_type'     => 'text',
 					'iloveimg_field_text'     => 'Sample',
 					'iloveimg_field_scale'    => 33,

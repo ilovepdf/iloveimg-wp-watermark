@@ -3,10 +3,32 @@ if ( ! class_exists( 'WP_List_Table' ) ) {
     require_once ABSPATH . 'wp-admin/includes/class-wp-list-table.php';
 }
 
+/**
+ * Custom table class for managing and displaying watermark media information in the WordPress media library.
+ *
+ * This class extends the WordPress WP_List_Table class to create a custom table for managing and displaying
+ * information related to the watermark of media files within the WordPress media library.
+ *
+ * @since 1.0.0
+ */
 class Ilove_Img_Wm_Media_List_Table extends WP_List_Table {
 
+    /**
+	 * Variable to track the total number of items.
+	 *
+	 * @since    1.0.0
+	 * @access   public
+	 * @var      int    total_items    The total number of items.
+	 */
     public $total_items;
 
+    /**
+     * Constructor method for the Image_List_Table class.
+     *
+     * Initializes the image list table, setting up parent defaults and properties.
+     *
+     * @since 1.0.0
+     */
     function __construct() {
         global $status, $page;
 
@@ -20,6 +42,18 @@ class Ilove_Img_Wm_Media_List_Table extends WP_List_Table {
         );
     }
 
+    /**
+     * Default callback method for rendering table columns in the Image_List_Table class.
+     *
+     * Renders the content for each column based on the specified column name.
+     *
+     * @since 1.0.0
+     *
+     * @param array  $item         The current row's data as an associative array.
+     * @param string $column_name  The name of the current column being rendered.
+     *
+     * @return string              The HTML content to display in the specified column.
+     */
     function column_default( $item, $column_name ) {
         switch ( $column_name ) {
             case 'file':
@@ -35,6 +69,17 @@ class Ilove_Img_Wm_Media_List_Table extends WP_List_Table {
         }
     }
 
+    /**
+     * Callback method for rendering the checkbox column in the Image_List_Table class.
+     *
+     * Renders a checkbox input for selecting items in the table.
+     *
+     * @since 1.0.0
+     *
+     * @param array $item The current row's data as an associative array.
+     *
+     * @return string The HTML content for the checkbox column.
+     */
     function column_cb( $item ) {
         return sprintf(
             '<input type="checkbox" name="%1$s[]" value="%2$s" />',
@@ -43,6 +88,13 @@ class Ilove_Img_Wm_Media_List_Table extends WP_List_Table {
         );
     }
 
+    /**
+     * Define the columns for the table in the Image_List_Table class.
+     *
+     * @since 1.0.0
+     *
+     * @return array An associative array of column names and their corresponding labels.
+     */
     function get_columns() {
         $columns = array(
             'cb'          => '<input type="checkbox" />', // Render a checkbox instead of text
@@ -51,25 +103,49 @@ class Ilove_Img_Wm_Media_List_Table extends WP_List_Table {
             'post_date'   => 'Date',
             'status'      => 'Status',
         );
+
         return $columns;
     }
 
+    /**
+     * Define sortable columns for the table in the Image_List_Table class.
+     *
+     * @since 1.0.0
+     *
+     * @return array An associative array of sortable column names and their sorting options.
+     */
     function get_sortable_columns() {
         $sortable_columns = array(
             'file'        => array( 'file', false ),     // true means it's already sorted
             'post_author' => array( 'post_author', false ),
             'post_date'   => array( 'post_date', false ),
         );
+
         return $sortable_columns;
     }
 
+    /**
+     * Define bulk actions for the table in the Image_List_Table class.
+     *
+     * @since 1.0.0
+     *
+     * @return array An associative array of bulk action names and their labels.
+     */
     function get_bulk_actions() {
         $actions = array(
             'delete' => 'Delete',
         );
+
         return $actions;
     }
 
+    /**
+     * Process bulk actions in the Image_List_Table class.
+     *
+     * Detects and handles bulk actions triggered by the user.
+     *
+     * @since 1.0.0
+     */
     function process_bulk_action() {
 
         // Detect when a bulk action is being triggered...
@@ -78,6 +154,13 @@ class Ilove_Img_Wm_Media_List_Table extends WP_List_Table {
         }
     }
 
+    /**
+     * Prepares the items and pagination for the Image_List_Table class.
+     *
+     * Initializes and prepares data for displaying in the table, including pagination.
+     *
+     * @since 1.0.0
+     */
     function prepare_items() {
         global $wpdb; // This is used only if making any database queries
 

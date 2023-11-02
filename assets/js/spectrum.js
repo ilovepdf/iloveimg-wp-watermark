@@ -1,7 +1,11 @@
-// Spectrum Colorpicker v1.8.0
-// https://github.com/bgrins/spectrum
-// Author: Brian Grinstead
-// License: MIT
+/**
+ * Spectrum Colorpicker v1.8.0
+ * https://github.com/bgrins/spectrum
+ * Author: Brian Grinstead
+ * License: MIT
+ *
+ * @package spectrum
+ */
 
 (function (factory) {
     "use strict";
@@ -1021,7 +1025,7 @@
 		}
 
 		/**
-		 * checkOffset - get the offset below/above and left/right element depending on screen position
+		 * CheckOffset - get the offset below/above and left/right element depending on screen position
 		 * Thanks https://github.com/jquery/jquery-ui/blob/master/ui/jquery.ui.datepicker.js
 		 */
 		function getOffset(picker, input) {
@@ -1054,14 +1058,14 @@
 		}
 
 		/**
-		 * noop - do nothing
+		 * Noop - do nothing
 		 */
 		function noop() {
 
 		}
 
 		/**
-		 * stopPropagation - makes the code only doing this a little easier to read in line
+		 * StopPropagation - makes the code only doing this a little easier to read in line
 		 */
 		function stopPropagation(e) {
 			e.stopPropagation();
