@@ -246,9 +246,9 @@
                         <label>Restore Original Images</label>
                         <p>All backup images can be restored. This action will recover the original images as they were before being stamped with Watermark. <span style="color: red;">Warning: Any changes made AFTER Watermark would be also restored.</span></p>
                         <p>You can also clear all your backup images to free memory space. <span style="color: red;">Warning: Clear backups will prevent you to restore original images.</span></p>
-                            <button type="button" class="button button-style-iloveimg" id="iloveimg_restore_all" <?php echo ( isset( $options_value['iloveimg_field_backup'] ) and Ilove_Img_Wm_Resources::is_there_backup() ) ? '' : 'disabled'; ?>>Restore All</button>
+                            <button type="button" class="button button-style-iloveimg" id="iloveimg_restore_all" <?php echo ( isset( $options_value['iloveimg_field_backup'] ) && Ilove_Img_Wm_Resources::is_there_backup() ) ? '' : 'disabled'; ?>>Restore All</button>
                         
-                            <button type="button" class="button button-remove button-style-iloveimg" id="iloveimg_clear_backup" <?php echo ( isset( $options_value['iloveimg_field_backup'] ) and Ilove_Img_Wm_Resources::is_there_backup() ) ? '' : 'disabled'; ?>>Clear backup</button>
+                            <button type="button" class="button button-remove button-style-iloveimg" id="iloveimg_clear_backup" <?php echo ( isset( $options_value['iloveimg_field_backup'] ) && Ilove_Img_Wm_Resources::is_there_backup() ) ? '' : 'disabled'; ?>>Clear backup</button>
                             <span><?php echo round( Ilove_Img_Wm_Resources::get_size_backup(), 2 ); ?> MB</span>
                     </div>
                 </div>

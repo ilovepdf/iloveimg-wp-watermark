@@ -327,7 +327,7 @@ class Ilove_Img_Wm_Resources {
     public static function get_status_of_column( $column_id ) {
         $post = get_post( $column_id );
 
-        if ( strpos( $post->post_mime_type, 'image/jpg' ) !== false or strpos( $post->post_mime_type, 'image/jpeg' ) !== false or strpos( $post->post_mime_type, 'image/png' ) !== false or strpos( $post->post_mime_type, 'image/gif' ) !== false ) :
+        if ( strpos( $post->post_mime_type, 'image/jpg' ) !== false || strpos( $post->post_mime_type, 'image/jpeg' ) !== false || strpos( $post->post_mime_type, 'image/png' ) !== false || strpos( $post->post_mime_type, 'image/gif' ) !== false ) :
 
             $_sizes            = get_post_meta( $column_id, 'iloveimg_watermark', true );
             $status_watermark  = (int) get_post_meta( $column_id, 'iloveimg_status_watermark', true );
