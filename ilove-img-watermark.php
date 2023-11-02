@@ -63,11 +63,11 @@ function ilove_img_wm_add_plugin_page_settings_link( $links ) {
 
 	$links[] = '<a href="' .
 		admin_url( 'admin.php?page=iloveimg-watermark-admin-page' ) .
-		'">' . __( 'Settings' ) . '</a>';
+		'">' . __( 'Settings', 'iloveimg-watermark' ) . '</a>';
 
     $links[] = '<a href="' .
         admin_url( 'upload.php?page=iloveimg-media-page' ) .
-        '">' . __( 'Bulk Optimization' ) . '</a>';
+        '">' . __( 'Bulk Optimization', 'iloveimg-watermark' ) . '</a>';
 
 	return $links;
 }

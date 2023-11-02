@@ -206,7 +206,7 @@ class Ilove_Img_Wm_Plugin {
             return $columns;
         }
 
-        $columns['iloveimg_status_watermark'] = __( 'Status Watermark' );
+        $columns['iloveimg_status_watermark'] = __( 'Status Watermark', 'iloveimg-watermark' );
 
         return $columns;
     }
@@ -389,7 +389,7 @@ class Ilove_Img_Wm_Plugin {
 
         echo '<div class="misc-pub-section iloveimg-compress-images">';
         echo '<h4>';
-        esc_html_e( 'iLoveIMG', 'iloveimg' );
+        esc_html_e( 'iLoveIMG', 'iloveimg-watermark' );
         echo '</h4>';
         echo '<div class="iloveimg-container">';
         echo '<table><tr><td>';
