@@ -14,7 +14,7 @@ if ( get_option( 'iloveimg_account' ) ) {
 		)
 	);
 
-	if ( isset( $ilove_img_wm_response['response']['code'] ) && $ilove_img_wm_response['response']['code'] == 200 ) {
+	if ( isset( $ilove_img_wm_response['response']['code'] ) && 200 == $ilove_img_wm_response['response']['code'] ) {
 		$ilove_img_wm_account          = json_decode( $ilove_img_wm_response['body'], true );
 		$ilove_img_wm_account['token'] = $ilove_img_wm_token;
 		update_option( 'iloveimg_account', json_encode( $ilove_img_wm_account ) );
@@ -25,7 +25,7 @@ if ( get_option( 'iloveimg_account' ) ) {
 }
 ?>
 <?php if ( ! $ilove_img_wm_is_logged ) : ?> 
-    <?php if ( @$_GET['section'] != 'register' ) : ?>
+    <?php if ( 'register' != @$_GET['section'] ) : ?>
         <div class="iloveimg_settings__overview__account iloveimg_settings__overview__account-login">
             <!-- <img src="<?php echo plugins_url( '/iloveimg-watermark/assets/images/iloveimg_picture_login.svg' ); ?>" /> -->
             <div class="iloveimg_settings__overview__account__picture"></div>

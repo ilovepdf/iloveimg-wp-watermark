@@ -83,13 +83,13 @@
                     <label>Preview Settings </label>
                     <p>You can choose to watermark by editable text or by uploading your own image stamp.</p>
                     <!--<select style="display: block; margin: 20px 0;" name="iloveimg_field_type" id="iloveimg_field_type">
-                        <option value="text" <?php echo ( $options_value['iloveimg_field_type'] == 'text' ) ? 'selected' : ''; ?>>Text</option>
-                        <option value="image" <?php echo ( $options_value['iloveimg_field_type'] == 'image' ) ? 'selected' : ''; ?>>Image</option>
+                        <option value="text" <?php echo ( 'text' == $options_value['iloveimg_field_type'] ) ? 'selected' : ''; ?>>Text</option>
+                        <option value="image" <?php echo ( 'image' == $options_value['iloveimg_field_type'] ) ? 'selected' : ''; ?>>Image</option>
                     </select>-->
                     
                     <div id="iloveimg_field_type">
-                        <label for="iloveimg_field_type-text"><input type="radio" name="iloveimg_field_type" class="iloveimg_field_type" id="iloveimg_field_type-text" value="text" <?php echo ( $options_value['iloveimg_field_type'] == 'text' ) ? 'checked' : ''; ?>><span>Watermark text</span></label>
-                        <label for="iloveimg_field_type-image"><input type="radio" name="iloveimg_field_type" class="iloveimg_field_type" id="iloveimg_field_type-image" value="image" <?php echo ( $options_value['iloveimg_field_type'] == 'image' ) ? 'checked' : ''; ?>><span>Watermark image</span></label>
+                        <label for="iloveimg_field_type-text"><input type="radio" name="iloveimg_field_type" class="iloveimg_field_type" id="iloveimg_field_type-text" value="text" <?php echo ( 'text' == $options_value['iloveimg_field_type'] ) ? 'checked' : ''; ?>><span>Watermark text</span></label>
+                        <label for="iloveimg_field_type-image"><input type="radio" name="iloveimg_field_type" class="iloveimg_field_type" id="iloveimg_field_type-image" value="image" <?php echo ( 'image' == $options_value['iloveimg_field_type'] ) ? 'checked' : ''; ?>><span>Watermark image</span></label>
                     </div>
 
                     <p class="iloveimg_font_none_style" style="color: #e21919; font-style: italic;">This font do not allow bold/italic styles for watermark</p>
@@ -131,15 +131,15 @@
                                 <div class="iloveimg_settings__options__texts">
                                     <div class="iloveimg_settings__options__texts-toolbar">
                                         <select name="iloveimg_field_text_family" id="iloveimg_field_text_family">
-                                            <option value="Arial" <?php echo ( $options_value['iloveimg_field_text_family'] == 'Arial' ) ? 'selected' : ''; ?>>Arial</option>
-                                            <!-- <option value="Arial Unicode MS" <?php echo ( $options_value['iloveimg_field_text_family'] == 'Arial Unicode MS' ) ? 'selected' : ''; ?>>Arial Unicode MS</option> -->
-                                            <option value="Impact" <?php echo ( $options_value['iloveimg_field_text_family'] == 'Impact' ) ? 'selected' : ''; ?>>Impact</option>
-                                            <option value="Verdana" <?php echo ( $options_value['iloveimg_field_text_family'] == 'Verdana' ) ? 'selected' : ''; ?>>Verdana</option>
-                                            <option value="Courier New" <?php echo ( $options_value['iloveimg_field_text_family'] == 'Courier New' ) ? 'selected' : ''; ?>>Courier</option>
-                                            <option value="Comic Sans MS" <?php echo ( $options_value['iloveimg_field_text_family'] == 'Comic Sans MS' ) ? 'selected' : ''; ?>>Comic</option>
-                                            <option value="Times New Roman" <?php echo ( $options_value['iloveimg_field_text_family'] == 'Times New Roman' ) ? 'selected' : ''; ?>>Times new roman</option>
-                                            <option value="WenQuanYi Zen Hei" <?php echo ( $options_value['iloveimg_field_text_family'] == 'WenQuanYi Zen Hei' ) ? 'selected' : ''; ?>>WenQuanYi Zen Hei</option>
-                                            <option value="Lohit Marathi" <?php echo ( $options_value['iloveimg_field_text_family'] == 'Lohit Marathi' ) ? 'selected' : ''; ?>>Lohit Marathi</option>
+                                            <option value="Arial" <?php echo ( 'Arial' == $options_value['iloveimg_field_text_family'] ) ? 'selected' : ''; ?>>Arial</option>
+                                            <!-- <option value="Arial Unicode MS" <?php echo ( 'Arial Unicode MS' == $options_value['iloveimg_field_text_family'] ) ? 'selected' : ''; ?>>Arial Unicode MS</option> -->
+                                            <option value="Impact" <?php echo ( 'Impact' == $options_value['iloveimg_field_text_family'] ) ? 'selected' : ''; ?>>Impact</option>
+                                            <option value="Verdana" <?php echo ( 'Verdana' == $options_value['iloveimg_field_text_family'] ) ? 'selected' : ''; ?>>Verdana</option>
+                                            <option value="Courier New" <?php echo ( 'Courier New' == $options_value['iloveimg_field_text_family'] ) ? 'selected' : ''; ?>>Courier</option>
+                                            <option value="Comic Sans MS" <?php echo ( 'Comic Sans MS' == $options_value['iloveimg_field_text_family'] ) ? 'selected' : ''; ?>>Comic</option>
+                                            <option value="Times New Roman" <?php echo ( 'Times New Roman' == $options_value['iloveimg_field_text_family'] ) ? 'selected' : ''; ?>>Times new roman</option>
+                                            <option value="WenQuanYi Zen Hei" <?php echo ( 'WenQuanYi Zen Hei' == $options_value['iloveimg_field_text_family'] ) ? 'selected' : ''; ?>>WenQuanYi Zen Hei</option>
+                                            <option value="Lohit Marathi" <?php echo ( 'Lohit Marathi' == $options_value['iloveimg_field_text_family'] ) ? 'selected' : ''; ?>>Lohit Marathi</option>
                                         </select>
                                         <input type="checkbox" name="iloveimg_field_text_bold" id="iloveimg_field_text_bold" <?php echo isset( $options_value['iloveimg_field_text_bold'] ) ? 'checked' : ''; ?> />
                                         <input type="checkbox" name="iloveimg_field_text_italic" id="iloveimg_field_text_italic" <?php echo isset( $options_value['iloveimg_field_text_italic'] ) ? 'checked' : ''; ?> />
@@ -168,19 +168,19 @@
                                     <label>Position</label>
                                     <table class="iloveimg_watermark_position" style="margin-top: 7px;">
                                         <tr>
-                                            <td><input type="radio" name="iloveimg_field_position" value="1" <?php echo ( @$options_value['iloveimg_field_position'] == 1 ) ? 'checked' : ''; ?>></td>
-                                            <td><input type="radio" name="iloveimg_field_position" value="2" <?php echo ( @$options_value['iloveimg_field_position'] == 2 ) ? 'checked' : ''; ?>></td>
-                                            <td><input type="radio" name="iloveimg_field_position" value="3" <?php echo ( @$options_value['iloveimg_field_position'] == 3 ) ? 'checked' : ''; ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="1" <?php echo ( 1 == @$options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="2" <?php echo ( 2 == @$options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="3" <?php echo ( 3 == @$options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
                                         </tr>
                                         <tr>
-                                            <td><input type="radio" name="iloveimg_field_position" value="4" <?php echo ( @$options_value['iloveimg_field_position'] == 4 ) ? 'checked' : ''; ?>></td>
-                                            <td><input type="radio" name="iloveimg_field_position" value="5" <?php echo ( @$options_value['iloveimg_field_position'] == 5 ) ? 'checked' : ''; ?>></td>
-                                            <td><input type="radio" name="iloveimg_field_position" value="6" <?php echo ( @$options_value['iloveimg_field_position'] == 6 ) ? 'checked' : ''; ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="4" <?php echo ( 4 == @$options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="5" <?php echo ( 5 == @$options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="6" <?php echo ( 6 == @$options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
                                         </tr>
                                         <tr>
-                                            <td><input type="radio" name="iloveimg_field_position" value="7" <?php echo ( @$options_value['iloveimg_field_position'] == 7 ) ? 'checked' : ''; ?>></td>
-                                            <td><input type="radio" name="iloveimg_field_position" value="8" <?php echo ( @$options_value['iloveimg_field_position'] == 8 ) ? 'checked' : ''; ?>></td>
-                                            <td><input type="radio" name="iloveimg_field_position" value="9" <?php echo ( @$options_value['iloveimg_field_position'] == 9 ) ? 'checked' : ''; ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="7" <?php echo ( 7 == @$options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="8" <?php echo ( 8 == @$options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="9" <?php echo ( 9 == @$options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
                                         </tr>
                                     </table>
                                     <input type="checkbox" name="iloveimg_field_mosaic" id="iloveimg_field_mosaic" <?php echo ( isset( $options_value['iloveimg_field_mosaic'] ) ) ? 'checked' : ''; ?>>
@@ -195,23 +195,23 @@
                                     <div style="float: left; margin-right: 20px;">
                                         <label for="">Opacity</label>
                                         <select name="iloveimg_field_opacity" id="iloveimg_field_opacity">
-                                            <option value="25" <?php echo ( $options_value['iloveimg_field_opacity'] == 25 ) ? 'selected' : ''; ?>>25%</option>
-                                            <option value="50" <?php echo ( $options_value['iloveimg_field_opacity'] == 50 ) ? 'selected' : ''; ?>>50%</option>
-                                            <option value="75" <?php echo ( $options_value['iloveimg_field_opacity'] == 75 ) ? 'selected' : ''; ?>>75%</option>
-                                            <option value="100" <?php echo ( $options_value['iloveimg_field_opacity'] == 100 ) ? 'selected' : ''; ?>>100%</option>
+                                            <option value="25" <?php echo ( 25 == $options_value['iloveimg_field_opacity'] ) ? 'selected' : ''; ?>>25%</option>
+                                            <option value="50" <?php echo ( 50 == $options_value['iloveimg_field_opacity'] ) ? 'selected' : ''; ?>>50%</option>
+                                            <option value="75" <?php echo ( 75 == $options_value['iloveimg_field_opacity'] ) ? 'selected' : ''; ?>>75%</option>
+                                            <option value="100" <?php echo ( 100 == $options_value['iloveimg_field_opacity'] ) ? 'selected' : ''; ?>>100%</option>
                                         </select>
                                     </div>
                                     <div>
                                         <label for="">Rotation</label>
                                         <select name="iloveimg_field_rotation" id="iloveimg_field_rotation">
-                                            <option value="0" <?php echo ( $options_value['iloveimg_field_rotation'] == 0 ) ? 'selected' : ''; ?>>0º</option>
-                                            <option value="45" <?php echo ( $options_value['iloveimg_field_rotation'] == 45 ) ? 'selected' : ''; ?>>45º</option>
-                                            <option value="90" <?php echo ( $options_value['iloveimg_field_rotation'] == 90 ) ? 'selected' : ''; ?>>90º</option>
-                                            <option value="135" <?php echo ( $options_value['iloveimg_field_rotation'] == 135 ) ? 'selected' : ''; ?>>135º</option>
-                                            <option value="180" <?php echo ( $options_value['iloveimg_field_rotation'] == 180 ) ? 'selected' : ''; ?>>180º</option>
-                                            <option value="225" <?php echo ( $options_value['iloveimg_field_rotation'] == 225 ) ? 'selected' : ''; ?>>225º</option>
-                                            <option value="270" <?php echo ( $options_value['iloveimg_field_rotation'] == 270 ) ? 'selected' : ''; ?>>270º</option>
-                                            <option value="315" <?php echo ( $options_value['iloveimg_field_rotation'] == 315 ) ? 'selected' : ''; ?>>315º</option>
+                                            <option value="0" <?php echo ( 0 == $options_value['iloveimg_field_rotation'] ) ? 'selected' : ''; ?>>0º</option>
+                                            <option value="45" <?php echo ( 45 == $options_value['iloveimg_field_rotation'] ) ? 'selected' : ''; ?>>45º</option>
+                                            <option value="90" <?php echo ( 90 == $options_value['iloveimg_field_rotation'] ) ? 'selected' : ''; ?>>90º</option>
+                                            <option value="135" <?php echo ( 135 == $options_value['iloveimg_field_rotation'] ) ? 'selected' : ''; ?>>135º</option>
+                                            <option value="180" <?php echo ( 180 == $options_value['iloveimg_field_rotation'] ) ? 'selected' : ''; ?>>180º</option>
+                                            <option value="225" <?php echo ( 225 == $options_value['iloveimg_field_rotation'] ) ? 'selected' : ''; ?>>225º</option>
+                                            <option value="270" <?php echo ( 270 == $options_value['iloveimg_field_rotation'] ) ? 'selected' : ''; ?>>270º</option>
+                                            <option value="315" <?php echo ( 315 == $options_value['iloveimg_field_rotation'] ) ? 'selected' : ''; ?>>315º</option>
                                         </select>
                                     </div>
                                 </div>

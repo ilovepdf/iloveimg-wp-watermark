@@ -44,7 +44,7 @@ class Ilove_Img_Wm_Resources {
             $sizes[] = array(
                 'field_id' => $_size,
                 'type'     => 'checkbox',
-                'label'    => $_size . ' (' . ( ( $width == '0' ) ? '?' : $width ) . 'x' . ( ( $height == '0' ) ? '?' : $height ) . ')',
+                'label'    => $_size . ' (' . ( ( '0' === $width ) ? '?' : $width ) . 'x' . ( ( '0' === $height ) ? '?' : $height ) . ')',
                 'default'  => true,
             );
         }
@@ -64,7 +64,7 @@ class Ilove_Img_Wm_Resources {
             $files = scandir( $dir );
 
             foreach ( $files as $file ) {
-				if ( $file != '.' && $file != '..' ) {
+				if ( '.' != $file && '..' != $file ) {
 					self::rrmdir( "$dir/$file" );
 				}
             }
@@ -91,7 +91,7 @@ class Ilove_Img_Wm_Resources {
             $files = scandir( $src );
 
             foreach ( $files as $file ) {
-				if ( $file != '.' && $file != '..' ) {
+				if ( '.' != $file && '..' != $file ) {
 					self::rcopy( "$src/$file", "$dst/$file" );
 				}
             }
@@ -340,9 +340,9 @@ class Ilove_Img_Wm_Resources {
                          
                     <?php if ( self::is_loggued() ) : ?>
 						<?php if ( self::get_sizes_enabled() ) : ?>
-                            <button type="button" class="iloveimg-watermark button button-small button-primary" data-id="<?php echo $column_id; ?>" <?php echo ( $status_watermark === 1 || $status_watermark === 3 ) ? 'disabled="disabled"' : ''; ?>>Watermark</button>
-                            <img src="<?php echo plugins_url( '/assets/images/spinner.gif', __DIR__ ); ?>" width="20" height="20" style="<?php echo ( $status_watermark === 1 || $status_watermark === 3 ) ? '' : 'display: none;'; ?>; margin-top: 7px" />
-                            <?php if ( $status_watermark === 3 ) : ?>
+                            <button type="button" class="iloveimg-watermark button button-small button-primary" data-id="<?php echo $column_id; ?>" <?php echo ( 1 === $status_watermark || 3 === $status_watermark ) ? 'disabled="disabled"' : ''; ?>>Watermark</button>
+                            <img src="<?php echo plugins_url( '/assets/images/spinner.gif', __DIR__ ); ?>" width="20" height="20" style="<?php echo ( 1 === $status_watermark || 3 === $status_watermark ) ? '' : 'display: none;'; ?>; margin-top: 7px" />
+                            <?php if ( 3 === $status_watermark ) : ?>
                                 <!-- <p>In queue...</p> -->
                             <?php endif; ?>
                         <?php else : ?>
@@ -355,7 +355,7 @@ class Ilove_Img_Wm_Resources {
                         <a href="<?php echo admin_url( 'admin.php?page=iloveimg-watermark-admin-page' ); ?>" class="iloveimg_link">Go to settings</button>
 						<?php
                     endif;
-                    if ( $status_watermark === 1 || $status_watermark === 3 ) :
+                    if ( 1 === $status_watermark || 3 === $status_watermark ) :
 						?>
                         <div class="iloveimg_watermarking" style="display: none;" data-id="<?php echo $column_id; ?>"></div>
 						<?php
