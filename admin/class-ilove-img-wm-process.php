@@ -145,7 +145,7 @@ class Ilove_Img_Wm_Process {
                         $my_task->execute();
                         $my_task->download( dirname( $path_file ) );
                         $images[ $_size ]['watermarked'] = 1;
-                        do_action( 'iloveimg_watermarked_completed', $images_id );
+                        do_action( 'ilove_img_wm_completed', $images_id );
 
                     }
                 }

@@ -284,7 +284,7 @@ class Ilove_Img_Wm_Plugin {
 				'id'     => $attachment_id,
 			),
             'cookies'   => isset( $_COOKIE ) && is_array( $_COOKIE ) ? $_COOKIE : array(),
-            'sslverify' => apply_filters( 'https_local_ssl_verify', false ),
+            'sslverify' => apply_filters( 'https_local_ssl_verify', false ), // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
         );
 
         if ( getenv( 'WORDPRESS_HOST' ) !== false ) {
