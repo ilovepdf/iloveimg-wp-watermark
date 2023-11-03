@@ -14,7 +14,7 @@ if ( get_option( 'iloveimg_account' ) ) {
 		)
 	);
 
-	if ( isset( $ilove_img_wm_response['response']['code'] ) && 200 == $ilove_img_wm_response['response']['code'] ) {
+	if ( isset( $ilove_img_wm_response['response']['code'] ) && 200 === $ilove_img_wm_response['response']['code'] ) {
 		$ilove_img_wm_account          = json_decode( $ilove_img_wm_response['body'], true );
 		$ilove_img_wm_account['token'] = $ilove_img_wm_token;
 		update_option( 'iloveimg_account', wp_json_encode( $ilove_img_wm_account ) );
@@ -25,7 +25,7 @@ if ( get_option( 'iloveimg_account' ) ) {
 }
 ?>
 <?php if ( ! $ilove_img_wm_is_logged ) : ?> 
-    <?php if ( 'register' != @$_GET['section'] ) : ?>
+    <?php if ( 'register' !== @$_GET['section'] ) : ?>
         <div class="iloveimg_settings__overview__account iloveimg_settings__overview__account-login">
             <!-- <img src="<?php echo plugins_url( '/iloveimg-watermark/assets/images/iloveimg_picture_login.svg' ); ?>" /> -->
             <div class="iloveimg_settings__overview__account__picture"></div>
@@ -140,7 +140,7 @@ if ( get_option( 'iloveimg_account' ) ) {
                         <?php foreach ( $ilove_img_wm_account['projects'] as $ilove_img_wm_key => $ilove_img_wm_project ) : ?>
                             <option value="<?php echo $ilove_img_wm_project['public_key']; ?>#<?php echo $ilove_img_wm_project['secret_key']; ?>" 
                                 <?php
-                                if ( get_option( 'iloveimg_proyect' ) == $ilove_img_wm_project['public_key'] . '#' . $ilove_img_wm_project['secret_key'] ) {
+                                if ( get_option( 'iloveimg_proyect' ) === $ilove_img_wm_project['public_key'] . '#' . $ilove_img_wm_project['secret_key'] ) {
                                     echo 'selected';
                                 }
                                 ?>

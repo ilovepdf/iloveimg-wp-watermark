@@ -220,7 +220,7 @@ class Ilove_Img_Wm_Plugin {
      * @param int    $column_id The ID of the media item associated with the current column.
      */
     public function column_id_row( $column_name, $column_id ) {
-        if ( 'iloveimg_status_watermark' == $column_name ) {
+        if ( 'iloveimg_status_watermark' === $column_name ) {
             Ilove_Img_Wm_Resources::get_status_of_column( $column_id );
         }
     }
@@ -241,7 +241,7 @@ class Ilove_Img_Wm_Plugin {
             wp_update_attachment_metadata( $attachment_id, $metadata );
             $this->async_watermark( $attachment_id );
 
-        } elseif ( ! (int) Ilove_Img_Wm_Resources::is_auto_watermark() && (int) Ilove_Img_Wm_Resources::is_watermark_image() == 1 ) {
+        } elseif ( ! (int) Ilove_Img_Wm_Resources::is_auto_watermark() && (int) Ilove_Img_Wm_Resources::is_watermark_image() === 1 ) {
                 $_wm_options                                 = unserialize( get_option( 'iloveimg_options_watermark' ) );
                 $_wm_options['iloveimg_field_autowatermark'] = 1;
 
@@ -333,18 +333,18 @@ class Ilove_Img_Wm_Plugin {
 
         if ( get_option( 'iloveimg_account_error' ) ) {
                 $iloveimg_account_error = unserialize( get_option( 'iloveimg_account_error' ) );
-            if ( 'login' == $iloveimg_account_error['action'] ) :
+            if ( 'login' === $iloveimg_account_error['action'] ) :
                 ?>
                 <div class="notice notice-error is-dismissible">
                     <p>Your email or password is wrong.</p>
                 </div>
             <?php endif; ?>
-            <?php if ( 'register' == $iloveimg_account_error['action'] ) : ?>
+            <?php if ( 'register' === $iloveimg_account_error['action'] ) : ?>
                 <div class="notice notice-error is-dismissible">
                     <p>This email address has already been taken.</p>
                 </div>
             <?php endif; ?>
-            <?php if ( 'register_limit' == $iloveimg_account_error['action'] ) : ?>
+            <?php if ( 'register_limit' === $iloveimg_account_error['action'] ) : ?>
                 <div class="notice notice-error is-dismissible">
                     <p>You have reached limit of different users to use this WordPress plugin. Please relogin with one of your existing users.</p>
                 </div>
@@ -364,7 +364,7 @@ class Ilove_Img_Wm_Plugin {
                     )
                 );
 
-                if ( isset( $response['response']['code'] ) && 200 == $response['response']['code'] ) {
+                if ( isset( $response['response']['code'] ) && 200 === $response['response']['code'] ) {
                     $account = json_decode( $response['body'], true );
                     if ( $account['files_used'] >= $account['free_files_limit'] && $account['package_files_used'] >= $account['package_files_limit'] && @$account['subscription_files_used'] >= $account['subscription_files_limit'] ) {
                         ?>

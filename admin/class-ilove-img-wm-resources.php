@@ -64,7 +64,7 @@ class Ilove_Img_Wm_Resources {
             $files = scandir( $dir );
 
             foreach ( $files as $file ) {
-				if ( '.' != $file && '..' != $file ) {
+				if ( '.' !== $file && '..' !== $file ) {
 					self::rrmdir( "$dir/$file" );
 				}
             }
@@ -91,7 +91,7 @@ class Ilove_Img_Wm_Resources {
             $files = scandir( $src );
 
             foreach ( $files as $file ) {
-				if ( '.' != $file && '..' != $file ) {
+				if ( '.' !== $file && '..' !== $file ) {
 					self::rcopy( "$src/$file", "$dst/$file" );
 				}
             }
