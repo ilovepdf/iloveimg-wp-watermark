@@ -373,7 +373,7 @@ class Ilove_Img_Wm_Resources {
      * @global wpdb $wpdb WordPress database access object.
      * @return int The count of posts or columns with compressed files.
      */
-    public static function get_files_compressed() {
+    public static function get_watermarked_files() {
         global $wpdb;
         return (int) $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->postmeta WHERE meta_key = 'iloveimg_watermark'" );
     }

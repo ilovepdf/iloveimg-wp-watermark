@@ -2,12 +2,12 @@
 	<h3>Overview</h3>
 	<div>
 		<div class="iloveimg_settings__overview__statistics__column_right">
-			<h4>Watermarked images <strong><?php echo Ilove_Img_Wm_Resources::get_files_compressed(); ?></strong> / Uploaded images <strong><?php echo Ilove_Img_Wm_Resources::get_total_images(); ?></strong></h4>
+			<h4>Watermarked images <strong><?php echo Ilove_Img_Wm_Resources::get_watermarked_files(); ?></strong> / Uploaded images <strong><?php echo Ilove_Img_Wm_Resources::get_total_images(); ?></strong></h4>
 			<div class="iloveimg_percent  ">
-                <div class="iloveimg_percent-total" style="width: <?php echo ( Ilove_Img_Wm_Resources::get_total_images() > 0 ) ? round( ( Ilove_Img_Wm_Resources::get_files_compressed() * 100 ) / Ilove_Img_Wm_Resources::get_total_images() ) : 0; ?>%;"></div>
+                <div class="iloveimg_percent-total" style="width: <?php echo ( Ilove_Img_Wm_Resources::get_total_images() > 0 ) ? round( ( Ilove_Img_Wm_Resources::get_watermarked_files() * 100 ) / Ilove_Img_Wm_Resources::get_total_images() ) : 0; ?>%;"></div>
             </div>
             <div class="iloveimg_saving">
-            	<p class="iloveimg_saving__number"><?php echo ( Ilove_Img_Wm_Resources::get_total_images() > 0 ) ? round( ( Ilove_Img_Wm_Resources::get_files_compressed() * 100 ) / Ilove_Img_Wm_Resources::get_total_images() ) : 0; ?>%</p>
+            	<p class="iloveimg_saving__number"><?php echo ( Ilove_Img_Wm_Resources::get_total_images() > 0 ) ? round( ( Ilove_Img_Wm_Resources::get_watermarked_files() * 100 ) / Ilove_Img_Wm_Resources::get_total_images() ) : 0; ?>%</p>
             	<p>Total images protected with iLoveIMG</p>
             </div>
 		</div>
