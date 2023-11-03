@@ -366,12 +366,12 @@ class Ilove_Img_Wm_Resources {
     }
 
     /**
-     * Get the count of posts or columns with compressed files (watermarked images).
+     * Get the count of posts or columns with watermark files (watermarked images).
      *
-     * This method retrieves the count of posts or columns that have associated compressed files (watermarked images) in the database.
+     * This method retrieves the count of posts or columns that have associated watermark files (watermarked images) in the database.
      *
      * @global wpdb $wpdb WordPress database access object.
-     * @return int The count of posts or columns with compressed files.
+     * @return int The count of posts or columns with watermark files.
      */
     public static function get_watermarked_files() {
         global $wpdb;
