@@ -11,7 +11,7 @@ class ILove_Img_Wm_Library_Init {
 	/**
      * Constructs an instance of the Ilove_Img_Library_Init class.
      */
-	function __construct() {
+	public function __construct() {
 		if ( ! Ilove_Img_Wm_Plugin::check_iloveimg_plugins_is_activated() ) {
 			require_once dirname( __DIR__ ) . '/iloveimg-php/init.php';
 		}
