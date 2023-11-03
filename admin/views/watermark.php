@@ -168,14 +168,14 @@
                                     <label>Position</label>
                                     <table class="iloveimg_watermark_position" style="margin-top: 7px;">
                                         <tr>
-                                            <td><input type="radio" name="iloveimg_field_position" value="1" <?php echo ( 1 === @$options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
-                                            <td><input type="radio" name="iloveimg_field_position" value="2" <?php echo ( 2 === @$options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
-                                            <td><input type="radio" name="iloveimg_field_position" value="3" <?php echo ( 3 === @$options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="1" <?php echo ( 1 === (int) @$options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="2" <?php echo ( 2 === (int) @$options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="3" <?php echo ( 3 === (int) @$options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
                                         </tr>
                                         <tr>
-                                            <td><input type="radio" name="iloveimg_field_position" value="4" <?php echo ( 4 === @$options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
-                                            <td><input type="radio" name="iloveimg_field_position" value="5" <?php echo ( 5 === @$options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
-                                            <td><input type="radio" name="iloveimg_field_position" value="6" <?php echo ( 6 === @$options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="4" <?php echo ( 4 === (int) @$options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="5" <?php echo ( 5 === (int) @$options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="6" <?php echo ( 6 === (int) @$options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
                                         </tr>
                                         <tr>
                                             <td><input type="radio" name="iloveimg_field_position" value="7" <?php echo ( 7 === @$options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
@@ -195,23 +195,23 @@
                                     <div style="float: left; margin-right: 20px;">
                                         <label for="">Opacity</label>
                                         <select name="iloveimg_field_opacity" id="iloveimg_field_opacity">
-                                            <option value="25" <?php echo ( 25 === $options_value['iloveimg_field_opacity'] ) ? 'selected' : ''; ?>>25%</option>
-                                            <option value="50" <?php echo ( 50 === $options_value['iloveimg_field_opacity'] ) ? 'selected' : ''; ?>>50%</option>
-                                            <option value="75" <?php echo ( 75 === $options_value['iloveimg_field_opacity'] ) ? 'selected' : ''; ?>>75%</option>
-                                            <option value="100" <?php echo ( 100 === $options_value['iloveimg_field_opacity'] ) ? 'selected' : ''; ?>>100%</option>
+                                            <option value="25" <?php echo ( 25 === (int) $options_value['iloveimg_field_opacity'] ) ? 'selected' : ''; ?>>25%</option>
+                                            <option value="50" <?php echo ( 50 === (int) $options_value['iloveimg_field_opacity'] ) ? 'selected' : ''; ?>>50%</option>
+                                            <option value="75" <?php echo ( 75 === (int) $options_value['iloveimg_field_opacity'] ) ? 'selected' : ''; ?>>75%</option>
+                                            <option value="100" <?php echo ( 100 === (int) $options_value['iloveimg_field_opacity'] ) ? 'selected' : ''; ?>>100%</option>
                                         </select>
                                     </div>
                                     <div>
                                         <label for="">Rotation</label>
                                         <select name="iloveimg_field_rotation" id="iloveimg_field_rotation">
-                                            <option value="0" <?php echo ( 0 === $options_value['iloveimg_field_rotation'] ) ? 'selected' : ''; ?>>0º</option>
-                                            <option value="45" <?php echo ( 45 === $options_value['iloveimg_field_rotation'] ) ? 'selected' : ''; ?>>45º</option>
-                                            <option value="90" <?php echo ( 90 === $options_value['iloveimg_field_rotation'] ) ? 'selected' : ''; ?>>90º</option>
-                                            <option value="135" <?php echo ( 135 === $options_value['iloveimg_field_rotation'] ) ? 'selected' : ''; ?>>135º</option>
-                                            <option value="180" <?php echo ( 180 === $options_value['iloveimg_field_rotation'] ) ? 'selected' : ''; ?>>180º</option>
-                                            <option value="225" <?php echo ( 225 === $options_value['iloveimg_field_rotation'] ) ? 'selected' : ''; ?>>225º</option>
-                                            <option value="270" <?php echo ( 270 === $options_value['iloveimg_field_rotation'] ) ? 'selected' : ''; ?>>270º</option>
-                                            <option value="315" <?php echo ( 315 === $options_value['iloveimg_field_rotation'] ) ? 'selected' : ''; ?>>315º</option>
+                                            <option value="0" <?php echo ( 0 === (int) $options_value['iloveimg_field_rotation'] ) ? 'selected' : ''; ?>>0º</option>
+                                            <option value="45" <?php echo ( 45 === (int) $options_value['iloveimg_field_rotation'] ) ? 'selected' : ''; ?>>45º</option>
+                                            <option value="90" <?php echo ( 90 === (int) $options_value['iloveimg_field_rotation'] ) ? 'selected' : ''; ?>>90º</option>
+                                            <option value="135" <?php echo ( 135 === (int) $options_value['iloveimg_field_rotation'] ) ? 'selected' : ''; ?>>135º</option>
+                                            <option value="180" <?php echo ( 180 === (int) $options_value['iloveimg_field_rotation'] ) ? 'selected' : ''; ?>>180º</option>
+                                            <option value="225" <?php echo ( 225 === (int) $options_value['iloveimg_field_rotation'] ) ? 'selected' : ''; ?>>225º</option>
+                                            <option value="270" <?php echo ( 270 === (int) $options_value['iloveimg_field_rotation'] ) ? 'selected' : ''; ?>>270º</option>
+                                            <option value="315" <?php echo ( 315 === (int) $options_value['iloveimg_field_rotation'] ) ? 'selected' : ''; ?>>315º</option>
                                         </select>
                                     </div>
                                 </div>
