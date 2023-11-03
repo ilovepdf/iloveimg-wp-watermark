@@ -110,7 +110,8 @@ class Ilove_Img_Wm_Resources {
      * @return float The percentage of space saved by watermarking the images.
      */
     public static function get_saving( $images ) {
-        $initial = $progress = 0;
+        $initial  = 0;
+        $progress = 0;
 
         foreach ( $images as $image ) {
             if ( ! is_null( $image['watermarked'] ) ) {
