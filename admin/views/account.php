@@ -17,7 +17,7 @@ if ( get_option( 'iloveimg_account' ) ) {
 	if ( isset( $ilove_img_wm_response['response']['code'] ) && 200 == $ilove_img_wm_response['response']['code'] ) {
 		$ilove_img_wm_account          = json_decode( $ilove_img_wm_response['body'], true );
 		$ilove_img_wm_account['token'] = $ilove_img_wm_token;
-		update_option( 'iloveimg_account', json_encode( $ilove_img_wm_account ) );
+		update_option( 'iloveimg_account', wp_json_encode( $ilove_img_wm_account ) );
 	}
 } elseif ( get_option( 'iloveimg_account_error' ) ) {
     $ilove_img_wm_account_error = unserialize( get_option( 'iloveimg_account_error' ) );
