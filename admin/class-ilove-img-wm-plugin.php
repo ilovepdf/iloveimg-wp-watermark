@@ -303,11 +303,11 @@ class Ilove_Img_Wm_Plugin {
     public function media_library_bulk_action() {
         die();
 
-        $media = isset( $_REQUEST['media'] ) ? wp_unslash( $_REQUEST['media'] ) : false;
+        $media = isset( $_REQUEST['media'] ) ? map_deep( wp_unslash( $_REQUEST['media'] ), 'absint' ) : false;
 
         if ( $media ) {
             foreach ( $media as $attachment_id ) {
-                $post = get_post( $attachment_id );
+                $post = get_post( (int) $attachment_id );
 
                 if ( strpos( $post->post_mime_type, 'image/' ) !== false ) {
                     $status_watermark = get_post_meta( $attachment_id, 'iloveimg_status_watermark', true );
