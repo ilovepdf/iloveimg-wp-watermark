@@ -69,7 +69,7 @@
                             <ul>
                             <?php foreach ( Ilove_Img_Wm_Resources::get_type_images() as $ilove_img_wm_images_type ) : ?>
                                 <li>
-                                    <input type="checkbox" name="iloveimg_field_sizes[]" value="<?php echo esc_html( $ilove_img_wm_images_type['field_id'] ); ?>" <?php echo @( in_array( $ilove_img_wm_images_type['field_id'], $options_value['iloveimg_field_sizes'], true ) ) ? 'checked' : ''; ?> />
+                                    <input type="checkbox" name="iloveimg_field_sizes[]" value="<?php echo esc_html( $ilove_img_wm_images_type['field_id'] ); ?>" <?php echo ( in_array( $ilove_img_wm_images_type['field_id'], $options_value['iloveimg_field_sizes'], true ) ) ? 'checked' : ''; ?> />
                                     <span><?php echo esc_html( $ilove_img_wm_images_type['label'] ); ?></span>
                                 </li>
                             <?php endforeach; ?>
@@ -168,19 +168,19 @@
                                     <label>Position</label>
                                     <table class="iloveimg_watermark_position" style="margin-top: 7px;">
                                         <tr>
-                                            <td><input type="radio" name="iloveimg_field_position" value="1" <?php echo ( 1 === (int) @$options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
-                                            <td><input type="radio" name="iloveimg_field_position" value="2" <?php echo ( 2 === (int) @$options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
-                                            <td><input type="radio" name="iloveimg_field_position" value="3" <?php echo ( 3 === (int) @$options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="1" <?php echo ( 1 === (int) $options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="2" <?php echo ( 2 === (int) $options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="3" <?php echo ( 3 === (int) $options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
                                         </tr>
                                         <tr>
-                                            <td><input type="radio" name="iloveimg_field_position" value="4" <?php echo ( 4 === (int) @$options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
-                                            <td><input type="radio" name="iloveimg_field_position" value="5" <?php echo ( 5 === (int) @$options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
-                                            <td><input type="radio" name="iloveimg_field_position" value="6" <?php echo ( 6 === (int) @$options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="4" <?php echo ( 4 === (int) $options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="5" <?php echo ( 5 === (int) $options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="6" <?php echo ( 6 === (int) $options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
                                         </tr>
                                         <tr>
-                                            <td><input type="radio" name="iloveimg_field_position" value="7" <?php echo ( 7 === @$options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
-                                            <td><input type="radio" name="iloveimg_field_position" value="8" <?php echo ( 8 === @$options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
-                                            <td><input type="radio" name="iloveimg_field_position" value="9" <?php echo ( 9 === @$options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="7" <?php echo ( 7 === $options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="8" <?php echo ( 8 === $options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="9" <?php echo ( 9 === $options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
                                         </tr>
                                     </table>
                                     <input type="checkbox" name="iloveimg_field_mosaic" id="iloveimg_field_mosaic" <?php echo ( isset( $options_value['iloveimg_field_mosaic'] ) ) ? 'checked' : ''; ?>>

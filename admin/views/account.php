@@ -25,7 +25,7 @@ if ( get_option( 'iloveimg_account' ) ) {
 }
 ?>
 <?php if ( ! $ilove_img_wm_is_logged ) : ?> 
-    <?php if ( isset( $_GET['section'] ) && 'register' !== sanitize_text_field( wp_unslash( @$_GET['section'] ) ) ) : ?>
+    <?php if ( isset( $_GET['section'] ) && 'register' !== sanitize_text_field( wp_unslash( $_GET['section'] ) ) ) : ?>
         <div class="iloveimg_settings__overview__account iloveimg_settings__overview__account-login">
             <!-- <img src="<?php echo esc_url( ILOVE_IMG_WM_PLUGIN_URL . 'assets/images/iloveimg_picture_login.svg' ); ?>" /> -->
             <div class="iloveimg_settings__overview__account__picture"></div>
@@ -97,7 +97,7 @@ if ( get_option( 'iloveimg_account' ) ) {
                 <p><?php echo (int) $ilove_img_wm_account['files_used']; ?>/<?php echo (int) $ilove_img_wm_account['free_files_limit']; ?> processed files this month. Free Tier.</p>
                 <?php if ( $ilove_img_wm_account['subscription_files_limit'] ) : ?>
                     <h4>Subscription files</h4>
-                    <?php $ilove_img_wm_percent = @( ( ( $ilove_img_wm_account['subscription_files_used'] * 100 ) / $ilove_img_wm_account['subscription_files_limit'] ) ); ?>
+                    <?php $ilove_img_wm_percent = ( ( $ilove_img_wm_account['subscription_files_used'] * 100 ) / $ilove_img_wm_account['subscription_files_limit'] ); ?>
                     <div class="iloveimg_percent <?php echo ( $ilove_img_wm_percent >= 100 ) ? 'iloveimg_percent-exceeded' : ''; ?> <?php echo ( $ilove_img_wm_percent >= 90 && $ilove_img_wm_percent < 100 ) ? 'iloveimg_percent-warning' : ''; ?>">
                         <div class="iloveimg_percent-total" style="width: <?php echo (float) $ilove_img_wm_percent; ?>%;"></div>
                     </div>
