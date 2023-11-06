@@ -6,7 +6,7 @@
  *
  * @package spectrum
  */
-
+// phpcs:ignoreFile
 (function (factory) {
     "use strict";
 
