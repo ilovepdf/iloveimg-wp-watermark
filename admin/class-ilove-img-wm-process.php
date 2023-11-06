@@ -84,9 +84,9 @@ class Ilove_Img_Wm_Process {
                     $document_root = '';
 
                     if ( isset( $_SERVER['DOCUMENT_ROOT'] ) ) {
-                        $document_root = $_SERVER['DOCUMENT_ROOT'];
+                        $document_root = wp_unslash( $_SERVER['DOCUMENT_ROOT'] );
                     } elseif ( isset( $_SERVER['SCRIPT_NAME'] ) && isset( $_SERVER['SCRIPT_FILENAME'] ) ) {
-                        $document_root = str_replace( $_SERVER['SCRIPT_NAME'], '', $_SERVER['SCRIPT_FILENAME'] );
+                        $document_root = str_replace( wp_unslash( $_SERVER['SCRIPT_NAME'] ), '', wp_unslash( $_SERVER['SCRIPT_FILENAME'] ) );
                     }
 
                     $image            = wp_get_attachment_image_src( $images_id, $_size );

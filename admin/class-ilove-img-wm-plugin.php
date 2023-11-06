@@ -303,10 +303,10 @@ class Ilove_Img_Wm_Plugin {
     public function media_library_bulk_action() {
         die();
 
-        $media = isset( $_REQUEST['media'] ) ? $_REQUEST['media'] : false;
+        $media = isset( $_REQUEST['media'] ) ? wp_unslash( $_REQUEST['media'] ) : false;
 
         if ( $media ) {
-            foreach ( $_REQUEST['media'] as $attachment_id ) {
+            foreach ( $media as $attachment_id ) {
                 $post = get_post( $attachment_id );
 
                 if ( strpos( $post->post_mime_type, 'image/' ) !== false ) {

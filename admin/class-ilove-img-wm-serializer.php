@@ -148,7 +148,7 @@ class Ilove_Img_Wm_Serializer {
                 if ( ! isset( $_POST['iloveimg_field_proyect'] ) ) {
                     $this->redirect();
                 }
-                update_option( 'iloveimg_proyect', sanitize_text_field( $_POST['iloveimg_field_proyect'] ) );
+                update_option( 'iloveimg_proyect', sanitize_text_field( wp_unslash( $_POST['iloveimg_field_proyect'] ) ) );
             }
 		}
 
