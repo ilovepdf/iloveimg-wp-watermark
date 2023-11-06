@@ -281,11 +281,11 @@ class Ilove_Img_Wm_Resources {
      * @param int $image_id The ID of the image for which watermark details should be rendered.
      */
     public static function render_watermark_details( $image_id ) {
-        $_sizes            = get_post_meta( $image_id, 'iloveimg_watermark', true );
-        $images_compressed = self::get_sizes_watermarked( $image_id );
+        $_sizes             = get_post_meta( $image_id, 'iloveimg_watermark', true );
+        $images_watermarked = self::get_sizes_watermarked( $image_id );
 
         ?>
-        <div id="iloveimg_detaills_watermark_<?php echo $image_id; ?>" style="display:none;">
+        <div id="iloveimg_detaills_watermark_<?php echo (int) $image_id; ?>" style="display:none;">
             <table class="table__details__sizes">
                 <tr>
                     <th>Name</th><th>Watermark</th>
@@ -293,7 +293,7 @@ class Ilove_Img_Wm_Resources {
                     foreach ( $_sizes as $key => $size ) {
                         ?>
                         <tr>
-                            <td><a href="<?php echo wp_get_attachment_image_url( $image_id, $key ); ?>"  target="_blank"><?php echo $key; ?></a></td>
+                            <td><a href="<?php echo esc_url( wp_get_attachment_image_url( $image_id, $key ) ); ?>"  target="_blank"><?php echo esc_html( $key ); ?></a></td>
                             <td>
                             <?php
 							if ( isset( $size['watermarked'] ) ) {
@@ -314,7 +314,7 @@ class Ilove_Img_Wm_Resources {
                 </tr>
             </table>
         </div>
-        <p><a href="#TB_inline?&width=450&height=340&inlineId=iloveimg_detaills_watermark_<?php echo $image_id; ?>" class="thickbox iloveimg_sizes_compressed" title="<?php echo get_the_title( $image_id ); ?>"><?php echo $images_compressed; ?> sizes watermark applied</a></p>
+        <p><a href="#TB_inline?&width=450&height=340&inlineId=iloveimg_detaills_watermark_<?php echo (int) $image_id; ?>" class="thickbox iloveimg_sizes_compressed" title="<?php echo esc_html( get_the_title( $image_id ) ); ?>"><?php echo (int) $images_watermarked; ?> sizes watermark applied</a></p>
         <?php
     }
 
@@ -341,24 +341,24 @@ class Ilove_Img_Wm_Resources {
                          
                     <?php if ( self::is_loggued() ) : ?>
 						<?php if ( self::get_sizes_enabled() ) : ?>
-                            <button type="button" class="iloveimg-watermark button button-small button-primary" data-id="<?php echo $column_id; ?>" <?php echo ( 1 === $status_watermark || 3 === $status_watermark ) ? 'disabled="disabled"' : ''; ?>>Watermark</button>
-                            <img src="<?php echo plugins_url( '/assets/images/spinner.gif', __DIR__ ); ?>" width="20" height="20" style="<?php echo ( 1 === $status_watermark || 3 === $status_watermark ) ? '' : 'display: none;'; ?>; margin-top: 7px" />
+                            <button type="button" class="iloveimg-watermark button button-small button-primary" data-id="<?php echo (int) $column_id; ?>" <?php echo ( 1 === $status_watermark || 3 === $status_watermark ) ? 'disabled="disabled"' : ''; ?>>Watermark</button>
+                            <img src="<?php echo esc_url( plugins_url( '/assets/images/spinner.gif', __DIR__ ) ); ?>" width="20" height="20" style="<?php echo ( 1 === $status_watermark || 3 === $status_watermark ) ? '' : 'display: none;'; ?>; margin-top: 7px" />
                             <?php if ( 3 === $status_watermark ) : ?>
                                 <!-- <p>In queue...</p> -->
                             <?php endif; ?>
                         <?php else : ?>
-                            <a href="<?php echo admin_url( 'admin.php?page=iloveimg-watermark-admin-page' ); ?>" class="iloveimg_link">Go to settings</button>
+                            <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-watermark-admin-page' ) ); ?>" class="iloveimg_link">Go to settings</button>
 							<?php
                         endif;
                     else :
 						?>
                         <p>You need to be registered</p>
-                        <a href="<?php echo admin_url( 'admin.php?page=iloveimg-watermark-admin-page' ); ?>" class="iloveimg_link">Go to settings</button>
+                        <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-watermark-admin-page' ) ); ?>" class="iloveimg_link">Go to settings</button>
 						<?php
                     endif;
                     if ( 1 === $status_watermark || 3 === $status_watermark ) :
 						?>
-                        <div class="iloveimg_watermarking" style="display: none;" data-id="<?php echo $column_id; ?>"></div>
+                        <div class="iloveimg_watermarking" style="display: none;" data-id="<?php echo (int) $column_id; ?>"></div>
 						<?php
                     endif;
             endif;

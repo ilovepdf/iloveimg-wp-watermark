@@ -326,7 +326,7 @@ class Ilove_Img_Wm_Plugin {
         if ( ! Ilove_Img_Wm_Resources::is_loggued() ) {
 			?>
             <div class="notice notice-warning is-dismissible">
-                <p><strong>iLoveIMG</strong> - Please you need to be logged or registered. <a href="<?php echo admin_url( 'admin.php?page=iloveimg-watermark-admin-page' ); ?>">Go to settings</a></p>
+                <p><strong>iLoveIMG</strong> - Please you need to be logged or registered. <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-watermark-admin-page' ) ); ?>">Go to settings</a></p>
             </div>
             <?php
         }
