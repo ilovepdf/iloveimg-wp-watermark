@@ -32,7 +32,7 @@ class Ilove_Img_Wm_Resources {
         );
 
         foreach ( get_intermediate_image_sizes() as $_size ) {
-            if ( in_array( $_size, array( 'thumbnail', 'medium', 'medium_large', 'large' ) ) ) {
+            if ( in_array( $_size, array( 'thumbnail', 'medium', 'medium_large', 'large' ), true ) ) {
                 $width  = get_option( "{$_size}_size_w" );
                 $height = get_option( "{$_size}_size_h" );
 

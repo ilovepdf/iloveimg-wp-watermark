@@ -69,7 +69,7 @@
                             <ul>
                             <?php foreach ( Ilove_Img_Wm_Resources::get_type_images() as $ilove_img_wm_images_type ) : ?>
                                 <li>
-                                    <input type="checkbox" name="iloveimg_field_sizes[]" value="<?php echo esc_html( $ilove_img_wm_images_type['field_id'] ); ?>" <?php echo @( in_array( $ilove_img_wm_images_type['field_id'], $options_value['iloveimg_field_sizes'] ) ) ? 'checked' : ''; ?> />
+                                    <input type="checkbox" name="iloveimg_field_sizes[]" value="<?php echo esc_html( $ilove_img_wm_images_type['field_id'] ); ?>" <?php echo @( in_array( $ilove_img_wm_images_type['field_id'], $options_value['iloveimg_field_sizes'], true ) ) ? 'checked' : ''; ?> />
                                     <span><?php echo esc_html( $ilove_img_wm_images_type['label'] ); ?></span>
                                 </li>
                             <?php endforeach; ?>

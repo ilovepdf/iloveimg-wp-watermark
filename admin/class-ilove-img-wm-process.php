@@ -92,7 +92,7 @@ class Ilove_Img_Wm_Process {
                     $image            = wp_get_attachment_image_src( $images_id, $_size );
                     $path_file        = $document_root . str_replace( site_url(), '', $image[0] );
                     $images[ $_size ] = array( 'watermarked' => null );
-                    if ( in_array( $_size, $_wm_options['iloveimg_field_sizes'] ) ) {
+                    if ( in_array( $_size, $_wm_options['iloveimg_field_sizes'], true ) ) {
                         // if enable backup
                         if ( isset( $_wm_options['iloveimg_field_backup'] ) ) {
 
