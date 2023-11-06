@@ -375,7 +375,7 @@ class Ilove_Img_Wm_Resources {
      */
     public static function get_watermarked_files() {
         global $wpdb;
-        return (int) $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->postmeta WHERE meta_key = 'iloveimg_watermark'" );
+        return (int) $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->postmeta WHERE meta_key = 'iloveimg_watermark'" ); // phpcs:ignore
     }
 
     /**
@@ -412,7 +412,7 @@ class Ilove_Img_Wm_Resources {
      */
     public static function get_files_sizes() {
         global $wpdb;
-        $rows          = $wpdb->get_results( "SELECT * FROM $wpdb->postmeta WHERE meta_key = 'iloveimg_watermark'" );
+        $rows          = $wpdb->get_results( "SELECT * FROM $wpdb->postmeta WHERE meta_key = 'iloveimg_watermark'" ); // phpcs:ignore
         $total         = 0;
         $total_process = 0;
 

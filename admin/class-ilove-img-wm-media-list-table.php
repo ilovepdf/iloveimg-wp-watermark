@@ -213,14 +213,14 @@ class Ilove_Img_Wm_Media_List_Table extends WP_List_Table {
             }
         }
 
-        $data = $wpdb->get_results(
+        $data = $wpdb->get_results(// phpcs:ignore
             "
             SELECT {$wpdb->prefix}posts.* 
             FROM {$wpdb->prefix}posts
             WHERE {$wpdb->prefix}posts.post_type = 'attachment' AND 
                 {$wpdb->prefix}posts.post_mime_type IN ('image/jpg', 'image/jpeg', 'image/png', 'image/gif') AND 
                 {$wpdb->prefix}posts.ID NOT IN (SELECT post_id FROM {$wpdb->prefix}postmeta WHERE {$wpdb->prefix}postmeta.meta_key = 'iloveimg_status_watermark' AND {$wpdb->prefix}postmeta.meta_value = 2)
-                " . $order,
+                " . $order, // phpcs:ignore
             ARRAY_A
         );
 

@@ -58,9 +58,9 @@ class Ilove_Img_Wm_Process {
                 $this->secret_key     = $account['projects'][0]['secret_key'];
             }
 
-            $files_processing = $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->postmeta WHERE meta_key = 'iloveimg_status_watermark' AND meta_value = 1" );
+            $files_processing = $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->postmeta WHERE meta_key = 'iloveimg_status_watermark' AND meta_value = 1" ); // phpcs:ignore
 
-            $image_compress_processing = $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->postmeta WHERE meta_key = 'iloveimg_status_compress' AND meta_value = 1 AND post_id =  " . $images_id );
+            $image_compress_processing = $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->postmeta WHERE meta_key = 'iloveimg_status_compress' AND meta_value = 1 AND post_id =  " . $images_id ); // phpcs:ignore
 
             if ( $files_processing < ILOVE_IMG_WM_NUM_MAX_FILES && 0 === $image_compress_processing ) {
                 update_post_meta( $images_id, 'iloveimg_status_watermark', 1 ); // status compressing
