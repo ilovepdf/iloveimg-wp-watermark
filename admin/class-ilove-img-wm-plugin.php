@@ -182,7 +182,7 @@ class Ilove_Img_Wm_Plugin {
             $images_compressed = Ilove_Img_Wm_Resources::get_sizes_watermarked( $attachment_id );
 
             if ( ( 1 === (int) $status_watermark || 3 === (int) $status_watermark ) ) {
-                http_respone_code( 500 );
+                http_response_code( 500 );
             } elseif ( 2 === (int) $status_watermark ) {
                 Ilove_Img_Wm_Resources::render_watermark_details( $attachment_id );
             } elseif ( 0 === (int) $status_watermark && ! $status_watermark ) {
