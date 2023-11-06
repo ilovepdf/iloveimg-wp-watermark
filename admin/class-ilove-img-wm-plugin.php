@@ -303,14 +303,18 @@ class Ilove_Img_Wm_Plugin {
     public function media_library_bulk_action() {
         die();
 
-        foreach ( $_REQUEST['media'] as $attachment_id ) {
-            $post = get_post( $attachment_id );
+        $media = isset( $_REQUEST['media'] ) ? $_REQUEST['media'] : false;
 
-            if ( strpos( $post->post_mime_type, 'image/' ) !== false ) {
-                $status_watermark = get_post_meta( $attachment_id, 'iloveimg_status_watermark', true );
+        if ( $media ) {
+            foreach ( $_REQUEST['media'] as $attachment_id ) {
+                $post = get_post( $attachment_id );
 
-                if ( 0 === (int) $status_watermark ) {
-                    $this->async_watermark( $attachment_id );
+                if ( strpos( $post->post_mime_type, 'image/' ) !== false ) {
+                    $status_watermark = get_post_meta( $attachment_id, 'iloveimg_status_watermark', true );
+
+                    if ( 0 === (int) $status_watermark ) {
+                        $this->async_watermark( $attachment_id );
+                    }
                 }
             }
         }

@@ -25,7 +25,7 @@ if ( get_option( 'iloveimg_account' ) ) {
 }
 ?>
 <?php if ( ! $ilove_img_wm_is_logged ) : ?> 
-    <?php if ( 'register' !== @$_GET['section'] ) : ?>
+    <?php if ( isset( $_GET['section'] ) && 'register' !== @$_GET['section'] ) : ?>
         <div class="iloveimg_settings__overview__account iloveimg_settings__overview__account-login">
             <!-- <img src="<?php echo esc_url( ILOVE_IMG_WM_PLUGIN_URL . 'assets/images/iloveimg_picture_login.svg' ); ?>" /> -->
             <div class="iloveimg_settings__overview__account__picture"></div>

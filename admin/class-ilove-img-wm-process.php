@@ -80,8 +80,17 @@ class Ilove_Img_Wm_Process {
                 }
 
                 foreach ( $_sizes as $_size ) {
+
+                    $document_root = '';
+
+                    if ( isset( $_SERVER['DOCUMENT_ROOT'] ) ) {
+                        $document_root = $_SERVER['DOCUMENT_ROOT'];
+                    } elseif ( isset( $_SERVER['SCRIPT_NAME'] ) && isset( $_SERVER['SCRIPT_FILENAME'] ) ) {
+                        $document_root = str_replace( $_SERVER['SCRIPT_NAME'], '', $_SERVER['SCRIPT_FILENAME'] );
+                    }
+
                     $image            = wp_get_attachment_image_src( $images_id, $_size );
-                    $path_file        = $_SERVER['DOCUMENT_ROOT'] . str_replace( site_url(), '', $image[0] );
+                    $path_file        = $document_root . str_replace( site_url(), '', $image[0] );
                     $images[ $_size ] = array( 'watermarked' => null );
                     if ( in_array( $_size, $_wm_options['iloveimg_field_sizes'] ) ) {
                         // if enable backup
