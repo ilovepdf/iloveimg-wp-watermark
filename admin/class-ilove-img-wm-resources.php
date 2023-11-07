@@ -311,7 +311,7 @@ class Ilove_Img_Wm_Resources {
                 <tr>
                     <th>Name</th><th>Watermark</th>
                     <?php
-                    if( $_sizes ) {
+                    if ( $_sizes ) {
                         foreach ( $_sizes as $key => $size ) {
                             ?>
                             <tr>

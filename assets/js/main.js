@@ -89,11 +89,11 @@
                                     jQuery( "button#iloveimg_allcompress .iloveimg-watermark-all__percent" ).width( _percent + "%" );
                                     if ( ! jQuery( "button.iloveimg-watermark" ).length) {
                                         clearInterval( timeReload );
-                                        location.reload();
                                     }
                                 },
                                 300
-                            )
+                            );
+                            location.reload();
                         }
 					);
 				}

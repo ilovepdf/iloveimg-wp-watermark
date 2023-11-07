@@ -40,7 +40,7 @@ class Ilove_Img_Wm_Process {
      *
      * @param int $images_id The ID of the image to watermark.
      *
-     * @return array|bool An array with watermarking information or false if an error occurs.
+     * @return array|bool|Exception An array with watermarking information or false if an error occurs.
      */
     public function watermark( $images_id ) {
 
@@ -66,8 +66,8 @@ class Ilove_Img_Wm_Process {
 
             $image_compress_processing = $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->postmeta WHERE meta_key = 'iloveimg_status_compress' AND meta_value = 1 AND post_id =  " . $images_id ); // phpcs:ignore
 
-            if ( $files_processing < ILOVE_IMG_WM_NUM_MAX_FILES && 0 === $image_compress_processing ) {
-                update_post_meta( $images_id, 'iloveimg_status_watermark', 1 ); // status compressing
+            if ( $files_processing < ILOVE_IMG_WM_NUM_MAX_FILES && 0 === (int) $image_compress_processing ) {
+                update_post_meta( $images_id, 'iloveimg_status_watermark', 1 ); // status watermark
 
                 $_sizes = get_intermediate_image_sizes();
 
@@ -110,6 +110,7 @@ class Ilove_Img_Wm_Process {
 
                         $my_task = new WatermarkImageTask( $this->proyect_public, $this->secret_key );
                         $file    = $my_task->addFile( $path_file );
+
                         if ( isset( $_wm_options['iloveimg_field_type'] ) ) {
                             $gravity = array( 'NorthWest', 'North', 'NorthEast', 'CenterWest', 'Center', 'CenterEast', 'SouthWest', 'South', 'SouthEast' );
                             if ( 'text' === $_wm_options['iloveimg_field_type'] ) {
@@ -156,6 +157,7 @@ class Ilove_Img_Wm_Process {
                                 );
                             }
                         }
+
                         $my_task->execute();
                         $my_task->download( dirname( $path_file ) );
                         $images[ $_size ]['watermarked'] = 1;
@@ -163,18 +165,21 @@ class Ilove_Img_Wm_Process {
 
                     }
                 }
+
                 update_post_meta( $images_id, 'iloveimg_watermark', $images );
-                update_post_meta( $images_id, 'iloveimg_status_watermark', 2 ); // status compressed
+                update_post_meta( $images_id, 'iloveimg_status_watermark', 2 ); // status watermarked
+
                 return $images;
 
             } else {
                 update_post_meta( $images_id, 'iloveimg_status_watermark', 3 ); // status queue
-                sleep( 2 );
-                return $this->watermark( $images_id );
+
+                return false;
             }
 		} catch ( Exception $e ) {
             update_post_meta( $images_id, 'iloveimg_status_watermark', 0 );
             error_log('Exception on watermark Method: ' . print_r($e, true)); // phpcs:ignore
+
             return false;
         }
     }
