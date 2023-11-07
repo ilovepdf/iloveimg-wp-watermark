@@ -23,7 +23,10 @@ class Ilove_Img_Wm_Resources {
     public static function get_type_images() {
         global $_wp_additional_image_sizes;
 
-        $sizes   = array();
+        $sizes  = array();
+        $width  = '';
+        $height = '';
+
         $sizes[] = array(
             'field_id' => 'full',
             'type'     => 'checkbox',

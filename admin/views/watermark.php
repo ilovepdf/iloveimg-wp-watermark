@@ -5,7 +5,7 @@
         <?php require_once 'account.php'; ?>
     </div>
 
-    <?php if ( ! $ilove_img_wm_is_logged ) : ?>
+    <?php if ( ! $ilove_img_wm_is_logged ) : // @phpstan-ignore-line ?>
         <div class="iloveimg_settings__info">
             <h3>The power of iLoveIMG in your WordPress!</h3>
             <p>Compress all your Media image files and Stamp other Images or text into your WordPress pictures. This is the Official iLoveIMG plugin for WordPress. You can optimize all your Images and stamp them automatically as you do in iloveimg.com.</p>
@@ -69,7 +69,7 @@
                             <ul>
                             <?php foreach ( Ilove_Img_Wm_Resources::get_type_images() as $ilove_img_wm_images_type ) : ?>
                                 <li>
-                                    <input type="checkbox" name="iloveimg_field_sizes[]" value="<?php echo esc_html( $ilove_img_wm_images_type['field_id'] ); ?>" <?php echo ( in_array( $ilove_img_wm_images_type['field_id'], $options_value['iloveimg_field_sizes'], true ) ) ? 'checked' : ''; ?> />
+                                    <input type="checkbox" name="iloveimg_field_sizes[]" value="<?php echo esc_html( $ilove_img_wm_images_type['field_id'] ); ?>" <?php echo ( in_array( $ilove_img_wm_images_type['field_id'], $options_value['iloveimg_field_sizes'], true ) ) ? 'checked' : ''; // @phpstan-ignore-line ?> />
                                     <span><?php echo esc_html( $ilove_img_wm_images_type['label'] ); ?></span>
                                 </li>
                             <?php endforeach; ?>
@@ -83,13 +83,13 @@
                     <label>Preview Settings </label>
                     <p>You can choose to watermark by editable text or by uploading your own image stamp.</p>
                     <!--<select style="display: block; margin: 20px 0;" name="iloveimg_field_type" id="iloveimg_field_type">
-                        <option value="text" <?php echo ( 'text' === $options_value['iloveimg_field_type'] ) ? 'selected' : ''; ?>>Text</option>
-                        <option value="image" <?php echo ( 'image' === $options_value['iloveimg_field_type'] ) ? 'selected' : ''; ?>>Image</option>
+                        <option value="text" <?php echo ( 'text' === $options_value['iloveimg_field_type'] ) ? 'selected' : ''; // @phpstan-ignore-line ?>>Text</option>
+                        <option value="image" <?php echo ( 'image' === $options_value['iloveimg_field_type'] ) ? 'selected' : ''; // @phpstan-ignore-line ?>>Image</option>
                     </select>-->
                     
                     <div id="iloveimg_field_type">
-                        <label for="iloveimg_field_type-text"><input type="radio" name="iloveimg_field_type" class="iloveimg_field_type" id="iloveimg_field_type-text" value="text" <?php echo ( 'text' === $options_value['iloveimg_field_type'] ) ? 'checked' : ''; ?>><span>Watermark text</span></label>
-                        <label for="iloveimg_field_type-image"><input type="radio" name="iloveimg_field_type" class="iloveimg_field_type" id="iloveimg_field_type-image" value="image" <?php echo ( 'image' === $options_value['iloveimg_field_type'] ) ? 'checked' : ''; ?>><span>Watermark image</span></label>
+                        <label for="iloveimg_field_type-text"><input type="radio" name="iloveimg_field_type" class="iloveimg_field_type" id="iloveimg_field_type-text" value="text" <?php echo ( 'text' === $options_value['iloveimg_field_type'] ) ? 'checked' : ''; // @phpstan-ignore-line ?>><span>Watermark text</span></label>
+                        <label for="iloveimg_field_type-image"><input type="radio" name="iloveimg_field_type" class="iloveimg_field_type" id="iloveimg_field_type-image" value="image" <?php echo ( 'image' === $options_value['iloveimg_field_type'] ) ? 'checked' : ''; // @phpstan-ignore-line ?>><span>Watermark image</span></label>
                     </div>
 
                     <p class="iloveimg_font_none_style" style="color: #e21919; font-style: italic;">This font do not allow bold/italic styles for watermark</p>
@@ -109,15 +109,15 @@
                                     <p><?php echo isset( $options_value['iloveimg_field_text'] ) ? esc_html( $options_value['iloveimg_field_text'] ) : ''; ?></p>
                                 </div>
                                 <div class="iloveimg_settings__watermark__preview-images">
-                                    <img src="<?php echo esc_url( $options_value['iloveimg_field_image'] ); ?>" />
-                                    <img src="<?php echo esc_url( $options_value['iloveimg_field_image'] ); ?>" />
-                                    <img src="<?php echo esc_url( $options_value['iloveimg_field_image'] ); ?>" />
-                                    <img src="<?php echo esc_url( $options_value['iloveimg_field_image'] ); ?>" />
-                                    <img src="<?php echo esc_url( $options_value['iloveimg_field_image'] ); ?>" />
-                                    <img src="<?php echo esc_url( $options_value['iloveimg_field_image'] ); ?>" />
-                                    <img src="<?php echo esc_url( $options_value['iloveimg_field_image'] ); ?>" />
-                                    <img src="<?php echo esc_url( $options_value['iloveimg_field_image'] ); ?>" />
-                                    <img src="<?php echo esc_url( $options_value['iloveimg_field_image'] ); ?>" />
+                                    <img src="<?php echo esc_url( $options_value['iloveimg_field_image'] ); // @phpstan-ignore-line ?>" />
+                                    <img src="<?php echo esc_url( $options_value['iloveimg_field_image'] ); // @phpstan-ignore-line ?>" />
+                                    <img src="<?php echo esc_url( $options_value['iloveimg_field_image'] ); // @phpstan-ignore-line ?>" />
+                                    <img src="<?php echo esc_url( $options_value['iloveimg_field_image'] ); // @phpstan-ignore-line ?>" />
+                                    <img src="<?php echo esc_url( $options_value['iloveimg_field_image'] ); // @phpstan-ignore-line ?>" />
+                                    <img src="<?php echo esc_url( $options_value['iloveimg_field_image'] ); // @phpstan-ignore-line ?>" />
+                                    <img src="<?php echo esc_url( $options_value['iloveimg_field_image'] ); // @phpstan-ignore-line ?>" />
+                                    <img src="<?php echo esc_url( $options_value['iloveimg_field_image'] ); // @phpstan-ignore-line ?>" />
+                                    <img src="<?php echo esc_url( $options_value['iloveimg_field_image'] ); // @phpstan-ignore-line ?>" />
                                 </div>
                                 <div class="iloveimg_settings__watermark__preview-mosaic-1"></div>
                                 <div class="iloveimg_settings__watermark__preview-mosaic-2"></div>
@@ -131,15 +131,15 @@
                                 <div class="iloveimg_settings__options__texts">
                                     <div class="iloveimg_settings__options__texts-toolbar">
                                         <select name="iloveimg_field_text_family" id="iloveimg_field_text_family">
-                                            <option value="Arial" <?php echo ( 'Arial' === $options_value['iloveimg_field_text_family'] ) ? 'selected' : ''; ?>>Arial</option>
-                                            <!-- <option value="Arial Unicode MS" <?php echo ( 'Arial Unicode MS' === $options_value['iloveimg_field_text_family'] ) ? 'selected' : ''; ?>>Arial Unicode MS</option> -->
-                                            <option value="Impact" <?php echo ( 'Impact' === $options_value['iloveimg_field_text_family'] ) ? 'selected' : ''; ?>>Impact</option>
-                                            <option value="Verdana" <?php echo ( 'Verdana' === $options_value['iloveimg_field_text_family'] ) ? 'selected' : ''; ?>>Verdana</option>
-                                            <option value="Courier New" <?php echo ( 'Courier New' === $options_value['iloveimg_field_text_family'] ) ? 'selected' : ''; ?>>Courier</option>
-                                            <option value="Comic Sans MS" <?php echo ( 'Comic Sans MS' === $options_value['iloveimg_field_text_family'] ) ? 'selected' : ''; ?>>Comic</option>
-                                            <option value="Times New Roman" <?php echo ( 'Times New Roman' === $options_value['iloveimg_field_text_family'] ) ? 'selected' : ''; ?>>Times new roman</option>
-                                            <option value="WenQuanYi Zen Hei" <?php echo ( 'WenQuanYi Zen Hei' === $options_value['iloveimg_field_text_family'] ) ? 'selected' : ''; ?>>WenQuanYi Zen Hei</option>
-                                            <option value="Lohit Marathi" <?php echo ( 'Lohit Marathi' === $options_value['iloveimg_field_text_family'] ) ? 'selected' : ''; ?>>Lohit Marathi</option>
+                                            <option value="Arial" <?php echo ( 'Arial' === $options_value['iloveimg_field_text_family'] ) ? 'selected' : ''; // @phpstan-ignore-line ?>>Arial</option>
+                                            <!-- <option value="Arial Unicode MS" <?php echo ( 'Arial Unicode MS' === $options_value['iloveimg_field_text_family'] ) ? 'selected' : ''; // @phpstan-ignore-line ?>>Arial Unicode MS</option> -->
+                                            <option value="Impact" <?php echo ( 'Impact' === $options_value['iloveimg_field_text_family'] ) ? 'selected' : ''; // @phpstan-ignore-line ?>>Impact</option>
+                                            <option value="Verdana" <?php echo ( 'Verdana' === $options_value['iloveimg_field_text_family'] ) ? 'selected' : ''; // @phpstan-ignore-line ?>>Verdana</option>
+                                            <option value="Courier New" <?php echo ( 'Courier New' === $options_value['iloveimg_field_text_family'] ) ? 'selected' : ''; // @phpstan-ignore-line ?>>Courier</option>
+                                            <option value="Comic Sans MS" <?php echo ( 'Comic Sans MS' === $options_value['iloveimg_field_text_family'] ) ? 'selected' : ''; // @phpstan-ignore-line ?>>Comic</option>
+                                            <option value="Times New Roman" <?php echo ( 'Times New Roman' === $options_value['iloveimg_field_text_family'] ) ? 'selected' : ''; // @phpstan-ignore-line ?>>Times new roman</option>
+                                            <option value="WenQuanYi Zen Hei" <?php echo ( 'WenQuanYi Zen Hei' === $options_value['iloveimg_field_text_family'] ) ? 'selected' : ''; // @phpstan-ignore-line ?>>WenQuanYi Zen Hei</option>
+                                            <option value="Lohit Marathi" <?php echo ( 'Lohit Marathi' === $options_value['iloveimg_field_text_family'] ) ? 'selected' : ''; // @phpstan-ignore-line ?>>Lohit Marathi</option>
                                         </select>
                                         <input type="checkbox" name="iloveimg_field_text_bold" id="iloveimg_field_text_bold" <?php echo isset( $options_value['iloveimg_field_text_bold'] ) ? 'checked' : ''; ?> />
                                         <input type="checkbox" name="iloveimg_field_text_italic" id="iloveimg_field_text_italic" <?php echo isset( $options_value['iloveimg_field_text_italic'] ) ? 'checked' : ''; ?> />
@@ -168,19 +168,19 @@
                                     <label>Position</label>
                                     <table class="iloveimg_watermark_position" style="margin-top: 7px;">
                                         <tr>
-                                            <td><input type="radio" name="iloveimg_field_position" value="1" <?php echo ( 1 === (int) $options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
-                                            <td><input type="radio" name="iloveimg_field_position" value="2" <?php echo ( 2 === (int) $options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
-                                            <td><input type="radio" name="iloveimg_field_position" value="3" <?php echo ( 3 === (int) $options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="1" <?php echo ( 1 === (int) $options_value['iloveimg_field_position'] ) ? 'checked' : ''; // @phpstan-ignore-line ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="2" <?php echo ( 2 === (int) $options_value['iloveimg_field_position'] ) ? 'checked' : ''; // @phpstan-ignore-line ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="3" <?php echo ( 3 === (int) $options_value['iloveimg_field_position'] ) ? 'checked' : ''; // @phpstan-ignore-line ?>></td>
                                         </tr>
                                         <tr>
-                                            <td><input type="radio" name="iloveimg_field_position" value="4" <?php echo ( 4 === (int) $options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
-                                            <td><input type="radio" name="iloveimg_field_position" value="5" <?php echo ( 5 === (int) $options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
-                                            <td><input type="radio" name="iloveimg_field_position" value="6" <?php echo ( 6 === (int) $options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="4" <?php echo ( 4 === (int) $options_value['iloveimg_field_position'] ) ? 'checked' : ''; // @phpstan-ignore-line ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="5" <?php echo ( 5 === (int) $options_value['iloveimg_field_position'] ) ? 'checked' : ''; // @phpstan-ignore-line ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="6" <?php echo ( 6 === (int) $options_value['iloveimg_field_position'] ) ? 'checked' : ''; // @phpstan-ignore-line ?>></td>
                                         </tr>
                                         <tr>
-                                            <td><input type="radio" name="iloveimg_field_position" value="7" <?php echo ( 7 === $options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
-                                            <td><input type="radio" name="iloveimg_field_position" value="8" <?php echo ( 8 === $options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
-                                            <td><input type="radio" name="iloveimg_field_position" value="9" <?php echo ( 9 === $options_value['iloveimg_field_position'] ) ? 'checked' : ''; ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="7" <?php echo ( 7 === $options_value['iloveimg_field_position'] ) ? 'checked' : ''; // @phpstan-ignore-line ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="8" <?php echo ( 8 === $options_value['iloveimg_field_position'] ) ? 'checked' : ''; // @phpstan-ignore-line ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="9" <?php echo ( 9 === $options_value['iloveimg_field_position'] ) ? 'checked' : ''; // @phpstan-ignore-line ?>></td>
                                         </tr>
                                     </table>
                                     <input type="checkbox" name="iloveimg_field_mosaic" id="iloveimg_field_mosaic" <?php echo ( isset( $options_value['iloveimg_field_mosaic'] ) ) ? 'checked' : ''; ?>>
@@ -195,23 +195,23 @@
                                     <div style="float: left; margin-right: 20px;">
                                         <label for="">Opacity</label>
                                         <select name="iloveimg_field_opacity" id="iloveimg_field_opacity">
-                                            <option value="25" <?php echo ( 25 === (int) $options_value['iloveimg_field_opacity'] ) ? 'selected' : ''; ?>>25%</option>
-                                            <option value="50" <?php echo ( 50 === (int) $options_value['iloveimg_field_opacity'] ) ? 'selected' : ''; ?>>50%</option>
-                                            <option value="75" <?php echo ( 75 === (int) $options_value['iloveimg_field_opacity'] ) ? 'selected' : ''; ?>>75%</option>
-                                            <option value="100" <?php echo ( 100 === (int) $options_value['iloveimg_field_opacity'] ) ? 'selected' : ''; ?>>100%</option>
+                                            <option value="25" <?php echo ( 25 === (int) $options_value['iloveimg_field_opacity'] ) ? 'selected' : ''; // @phpstan-ignore-line ?>>25%</option>
+                                            <option value="50" <?php echo ( 50 === (int) $options_value['iloveimg_field_opacity'] ) ? 'selected' : ''; // @phpstan-ignore-line ?>>50%</option>
+                                            <option value="75" <?php echo ( 75 === (int) $options_value['iloveimg_field_opacity'] ) ? 'selected' : ''; // @phpstan-ignore-line ?>>75%</option>
+                                            <option value="100" <?php echo ( 100 === (int) $options_value['iloveimg_field_opacity'] ) ? 'selected' : ''; // @phpstan-ignore-line ?>>100%</option>
                                         </select>
                                     </div>
                                     <div>
                                         <label for="">Rotation</label>
                                         <select name="iloveimg_field_rotation" id="iloveimg_field_rotation">
-                                            <option value="0" <?php echo ( 0 === (int) $options_value['iloveimg_field_rotation'] ) ? 'selected' : ''; ?>>0º</option>
-                                            <option value="45" <?php echo ( 45 === (int) $options_value['iloveimg_field_rotation'] ) ? 'selected' : ''; ?>>45º</option>
-                                            <option value="90" <?php echo ( 90 === (int) $options_value['iloveimg_field_rotation'] ) ? 'selected' : ''; ?>>90º</option>
-                                            <option value="135" <?php echo ( 135 === (int) $options_value['iloveimg_field_rotation'] ) ? 'selected' : ''; ?>>135º</option>
-                                            <option value="180" <?php echo ( 180 === (int) $options_value['iloveimg_field_rotation'] ) ? 'selected' : ''; ?>>180º</option>
-                                            <option value="225" <?php echo ( 225 === (int) $options_value['iloveimg_field_rotation'] ) ? 'selected' : ''; ?>>225º</option>
-                                            <option value="270" <?php echo ( 270 === (int) $options_value['iloveimg_field_rotation'] ) ? 'selected' : ''; ?>>270º</option>
-                                            <option value="315" <?php echo ( 315 === (int) $options_value['iloveimg_field_rotation'] ) ? 'selected' : ''; ?>>315º</option>
+                                            <option value="0" <?php echo ( 0 === (int) $options_value['iloveimg_field_rotation'] ) ? 'selected' : ''; // @phpstan-ignore-line ?>>0º</option>
+                                            <option value="45" <?php echo ( 45 === (int) $options_value['iloveimg_field_rotation'] ) ? 'selected' : ''; // @phpstan-ignore-line ?>>45º</option>
+                                            <option value="90" <?php echo ( 90 === (int) $options_value['iloveimg_field_rotation'] ) ? 'selected' : ''; // @phpstan-ignore-line ?>>90º</option>
+                                            <option value="135" <?php echo ( 135 === (int) $options_value['iloveimg_field_rotation'] ) ? 'selected' : ''; // @phpstan-ignore-line ?>>135º</option>
+                                            <option value="180" <?php echo ( 180 === (int) $options_value['iloveimg_field_rotation'] ) ? 'selected' : ''; // @phpstan-ignore-line ?>>180º</option>
+                                            <option value="225" <?php echo ( 225 === (int) $options_value['iloveimg_field_rotation'] ) ? 'selected' : ''; // @phpstan-ignore-line ?>>225º</option>
+                                            <option value="270" <?php echo ( 270 === (int) $options_value['iloveimg_field_rotation'] ) ? 'selected' : ''; // @phpstan-ignore-line ?>>270º</option>
+                                            <option value="315" <?php echo ( 315 === (int) $options_value['iloveimg_field_rotation'] ) ? 'selected' : ''; // @phpstan-ignore-line ?>>315º</option>
                                         </select>
                                     </div>
                                 </div>

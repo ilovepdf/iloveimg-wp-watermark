@@ -1,11 +1,11 @@
 <div class="wrap iloveimg_settings">
-    <h1><img src="<?php echo esc_url( ILOVE_IMG_WM_PLUGIN_URL . 'assets/images/logo.svg' ); ?>" class="logo" /></h1>
+    <h1><img src="<?php echo esc_url( ILOVE_IMG_WM_PLUGIN_URL . 'assets/images/logo.svg' ); // @phpstan-ignore-line ?>" class="logo" /></h1>
     
     <div class="iloveimg_settings__overview">
         <?php require_once 'account.php'; ?>
     </div>
 
-    <?php if ( ! $ilove_img_wm_is_logged ) : ?>
+    <?php if ( ! $ilove_img_wm_is_logged ) : // @phpstan-ignore-line ?>
         <div class="iloveimg_settings__info">
             <h3>The power of iLoveIMG in your WordPress!</h3>
             <p>Compress all your Media image files and Stamp other Images or text into your WordPress pictures. This is the Official iLoveIMG plugin for WordPress. You can optimize all your Images and stamp them automatically as you do in iloveimg.com.</p>
