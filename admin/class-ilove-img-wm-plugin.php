@@ -311,8 +311,6 @@ class Ilove_Img_Wm_Plugin {
      * This method is intended to be used as a callback for the 'admin_action_iloveimg_bulk_action' action hook.
      */
     public function media_library_bulk_action() {
-        die();
-
         $media = isset( $_REQUEST['media'] ) ? map_deep( wp_unslash( $_REQUEST['media'] ), 'absint' ) : false; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
         if ( $media ) {
