@@ -60,6 +60,16 @@ class Ilove_Img_Wm_Resources {
      * @param string $dir The path to the directory to be removed.
      */
     public static function rrmdir( $dir ) {
+
+        if ( ! WP_Filesystem() ) {
+			return new \WP_Error(
+				'Unable Filesystem',
+				esc_html__( 'Unable to connect to the filesystem', 'iloveimg-watermark' )
+			);
+		}
+
+        global $wp_filesystem;
+
         if ( is_dir( $dir ) ) {
             $files = scandir( $dir );
 
@@ -69,7 +79,7 @@ class Ilove_Img_Wm_Resources {
 				}
             }
 
-            rmdir( $dir );
+            $wp_filesystem->rmdir( $dir );
 
         } elseif ( file_exists( $dir ) ) {
 			wp_delete_file( $dir );
@@ -85,8 +95,18 @@ class Ilove_Img_Wm_Resources {
      * @param string $dst The destination directory where the contents will be copied to.
      */
     public static function rcopy( $src, $dst ) {
+
+        if ( ! WP_Filesystem() ) {
+			return new \WP_Error(
+				'Unable Filesystem',
+				esc_html__( 'Unable to connect to the filesystem', 'iloveimg-watermark' )
+			);
+		}
+
+        global $wp_filesystem;
+
         if ( is_dir( $src ) ) {
-            mkdir( $dst );
+            $wp_filesystem->mkdir( $dst );
 
             $files = scandir( $src );
 

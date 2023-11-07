@@ -43,9 +43,18 @@ class Ilove_Img_Wm_Process {
      * @return array|bool An array with watermarking information or false if an error occurs.
      */
     public function watermark( $images_id ) {
-        global $_wp_additional_image_sizes, $wpdb;
+
+        if ( ! WP_Filesystem() ) {
+			return new \WP_Error(
+				'Unable Filesystem',
+				esc_html__( 'Unable to connect to the filesystem', 'iloveimg-watermark' )
+			);
+		}
+
+        global $_wp_additional_image_sizes, $wpdb, $wp_filesystem;
 
         $images = array();
+
         try {
 
             if ( get_option( 'iloveimg_proyect' ) ) {
@@ -72,7 +81,7 @@ class Ilove_Img_Wm_Process {
 
                 if ( isset( $_wm_options['iloveimg_field_backup'] ) ) {
 					if ( ! is_dir( ILOVE_IMG_WM_UPLOAD_FOLDER . '/iloveimg-backup' ) ) {
-						mkdir( ILOVE_IMG_WM_UPLOAD_FOLDER . '/iloveimg-backup' );
+						$wp_filesystem->mkdir( ILOVE_IMG_WM_UPLOAD_FOLDER . '/iloveimg-backup' );
 					}
 					$images_restore   = get_option( 'iloveimg_images_to_restore' ) ? json_decode( get_option( 'iloveimg_images_to_restore' ), true ) : array();
 					$images_restore[] = $images_id;
@@ -92,13 +101,14 @@ class Ilove_Img_Wm_Process {
                     $image            = wp_get_attachment_image_src( $images_id, $_size );
                     $path_file        = $document_root . str_replace( site_url(), '', $image[0] );
                     $images[ $_size ] = array( 'watermarked' => null );
+
                     if ( in_array( $_size, $_wm_options['iloveimg_field_sizes'], true ) ) {
                         // if enable backup
                         if ( isset( $_wm_options['iloveimg_field_backup'] ) ) {
 
                             $new_path = ILOVE_IMG_WM_UPLOAD_FOLDER . '/iloveimg-backup' . str_replace( ILOVE_IMG_WM_UPLOAD_FOLDER, '', dirname( $path_file ) );
                             if ( ! is_dir( $new_path ) ) {
-								mkdir( $new_path, 0777, true );
+								$wp_filesystem->mkdir( $new_path, 0777, true );
                             }
                             copy( $path_file, $new_path . '/' . basename( $path_file ) );
                         }
@@ -169,6 +179,7 @@ class Ilove_Img_Wm_Process {
             }
 		} catch ( Exception $e ) {
             update_post_meta( $images_id, 'iloveimg_status_watermark', 0 );
+            error_log('Exception on watermark Method: ' . print_r($e, true)); // phpcs:ignore
             return false;
         }
         return false;
