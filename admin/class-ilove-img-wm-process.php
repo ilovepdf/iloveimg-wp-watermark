@@ -122,7 +122,7 @@ class Ilove_Img_Wm_Process {
 									$font_style = 'Italic';
                                 }
                                 $element = $my_task->addElement(
-                                    array(
+                                    array( // @phpstan-ignore-line
 										'type'          => 'text',
 										'text'          => isset( $_wm_options['iloveimg_field_text'] ) ? $_wm_options['iloveimg_field_text'] : 'Sample',
 										'width_percent' => $_wm_options['iloveimg_field_scale'],
@@ -141,7 +141,7 @@ class Ilove_Img_Wm_Process {
                             } else {
                                 $watermark = $my_task->addFileFromUrl( $_wm_options['iloveimg_field_image'] );
                                 $element   = $my_task->addElement(
-                                    array(
+                                    array( // @phpstan-ignore-line
 										'type'            => 'image',
 										'text'            => isset( $_wm_options['iloveimg_field_text'] ) ? $_wm_options['iloveimg_field_text'] : 'Sample',
 										'width_percent'   => $_wm_options['iloveimg_field_scale'],
