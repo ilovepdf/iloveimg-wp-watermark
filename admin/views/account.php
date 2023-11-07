@@ -7,6 +7,7 @@ if ( get_option( 'iloveimg_account' ) ) {
 	$ilove_img_wm_is_logged = true;
 	update_option( 'iloveimg_first_loggued', 1 );
 	$ilove_img_wm_token    = $ilove_img_wm_account['token'];
+
 	$ilove_img_wm_response = wp_remote_get(
         ILOVE_IMG_WM_USER_URL . '/' . $ilove_img_wm_account['id'],
 		array(
@@ -19,37 +20,14 @@ if ( get_option( 'iloveimg_account' ) ) {
 		$ilove_img_wm_account['token'] = $ilove_img_wm_token;
 		update_option( 'iloveimg_account', wp_json_encode( $ilove_img_wm_account ) );
 	}
+
 } elseif ( get_option( 'iloveimg_account_error' ) ) {
     $ilove_img_wm_account_error = unserialize( get_option( 'iloveimg_account_error' ) );
     delete_option( 'iloveimg_account_error' );
 }
 ?>
 <?php if ( ! $ilove_img_wm_is_logged ) : ?> 
-    <?php if ( isset( $_GET['section'] ) && 'register' !== sanitize_text_field( wp_unslash( $_GET['section'] ) ) ) : ?>
-        <div class="iloveimg_settings__overview__account iloveimg_settings__overview__account-login">
-            <!-- <img src="<?php echo esc_url( ILOVE_IMG_WM_PLUGIN_URL . 'assets/images/iloveimg_picture_login.svg' ); ?>" /> -->
-            <div class="iloveimg_settings__overview__account__picture"></div>
-            <form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>" autocomplete="off">
-                <input type="hidden" name="action" value="update_watermark" />
-                <h3>Login to your account</h3>
-                <input type="hidden" name="iloveimg_action" value="iloveimg_action_login" />
-                <div>
-                    <input type="email" class="iloveimg_field_email" name="iloveimg_field_email" placeholder="Email" required value="<?php echo isset( $ilove_img_wm_account_error['email'] ) ? esc_attr( $ilove_img_wm_account_error['email'] ) : ''; ?>" />
-                </div>
-                <div>
-                    <input type="password" class="iloveimg_field_password" name="iloveimg_field_password" placeholder="Password" required/>
-                </div>
-                <a class="forget" href="https://developer.iloveimg.com/login/reset" target="_blank">Forget Password?</a>
-                <?php
-                wp_nonce_field();
-                submit_button( 'Login' );
-                ?>
-                <div>
-                    <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-watermark-admin-page&section=register' ) ); ?>">Register as iLovePDF developer</a>
-                </div>
-            </form>
-        </div>
-    <?php else : ?>
+    <?php if ( isset( $_GET['section'] ) && 'register' === sanitize_text_field( wp_unslash( $_GET['section'] ) ) ) : ?>
         <div class="iloveimg_settings__overview__account iloveimg_settings__overview__account-register">
             <div class="iloveimg_settings__overview__account__picture"></div>
             <form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>" autocomplete="off">
@@ -81,6 +59,30 @@ if ( get_option( 'iloveimg_account' ) ) {
                 ?>
                 <div>
                     <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-watermark-admin-page' ) ); ?>">Login to your account</a>
+                </div>
+            </form>
+        </div>
+    <?php else : ?>
+        <div class="iloveimg_settings__overview__account iloveimg_settings__overview__account-login">
+            <!-- <img src="<?php echo esc_url( ILOVE_IMG_WM_PLUGIN_URL . 'assets/images/iloveimg_picture_login.svg' ); ?>" /> -->
+            <div class="iloveimg_settings__overview__account__picture"></div>
+            <form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>" autocomplete="off">
+                <input type="hidden" name="action" value="update_watermark" />
+                <h3>Login to your account</h3>
+                <input type="hidden" name="iloveimg_action" value="iloveimg_action_login" />
+                <div>
+                    <input type="email" class="iloveimg_field_email" name="iloveimg_field_email" placeholder="Email" required value="<?php echo isset( $ilove_img_wm_account_error['email'] ) ? esc_attr( $ilove_img_wm_account_error['email'] ) : ''; ?>" />
+                </div>
+                <div>
+                    <input type="password" class="iloveimg_field_password" name="iloveimg_field_password" placeholder="Password" required/>
+                </div>
+                <a class="forget" href="https://developer.iloveimg.com/login/reset" target="_blank">Forget Password?</a>
+                <?php
+                wp_nonce_field();
+                submit_button( 'Login' );
+                ?>
+                <div>
+                    <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-watermark-admin-page&section=register' ) ); ?>">Register as iLovePDF developer</a>
                 </div>
             </form>
         </div>
