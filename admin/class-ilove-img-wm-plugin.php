@@ -131,7 +131,7 @@ class Ilove_Img_Wm_Plugin {
                 Ilove_Img_Wm_Resources::render_watermark_details( $attachment_id );
             } else {
                 ?>
-                <p>You need more files</p>
+                <p>There was a problem processing your image.</p>
                 <?php
             }
         }
