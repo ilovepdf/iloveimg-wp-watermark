@@ -328,6 +328,8 @@ class Ilove_Img_Wm_Resources {
     public static function get_status_of_column( $column_id ) {
         $post = get_post( $column_id );
 
+        $img_nonce = Ilove_Img_Wm_Plugin::get_img_nonce();
+
         if ( strpos( $post->post_mime_type, 'image/jpg' ) !== false || strpos( $post->post_mime_type, 'image/jpeg' ) !== false || strpos( $post->post_mime_type, 'image/png' ) !== false || strpos( $post->post_mime_type, 'image/gif' ) !== false ) :
 
             $_sizes            = get_post_meta( $column_id, 'iloveimg_watermark', true );
@@ -341,7 +343,7 @@ class Ilove_Img_Wm_Resources {
                          
                     <?php if ( self::is_loggued() ) : ?>
 						<?php if ( self::get_sizes_enabled() ) : ?>
-                            <button type="button" class="iloveimg-watermark button button-small button-primary" data-id="<?php echo (int) $column_id; ?>" <?php echo ( 1 === $status_watermark || 3 === $status_watermark ) ? 'disabled="disabled"' : ''; ?>>Watermark</button>
+                            <button type="button" class="iloveimg-watermark button button-small button-primary" data-imgnonce="<?php echo sanitize_key( wp_unslash( $img_nonce ) ); ?>" data-id="<?php echo (int) $column_id; ?>" <?php echo ( 1 === $status_watermark || 3 === $status_watermark ) ? 'disabled="disabled"' : ''; ?>>Watermark</button>
                             <img src="<?php echo esc_url( plugins_url( '/assets/images/spinner.gif', __DIR__ ) ); ?>" width="20" height="20" style="<?php echo ( 1 === $status_watermark || 3 === $status_watermark ) ? '' : 'display: none;'; ?>; margin-top: 7px" />
                             <?php if ( 3 === $status_watermark ) : ?>
                                 <!-- <p>In queue...</p> -->

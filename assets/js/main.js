@@ -18,7 +18,8 @@
 				type: 'POST',
 				data: {
 					action: 'ilove_img_wm_library',
-					id: element.data( 'id' ) || element.attr( 'data-id' )
+					id: element.data( 'id' ) || element.attr( 'data-id' ),
+					imgnonce: element.data( 'imgnonce' ) || element.attr( 'data-imgnonce' )
 				},
 				success: function (data) {
 					element.removeAttr( 'disabled' );
@@ -42,7 +43,8 @@
 				type: 'POST',
 				data: {
 					action: 'ilove_img_wm_library_is_watermarked',
-					id: element.data( 'id' ) || element.attr( 'data-id' )
+					id: element.data( 'id' ) || element.attr( 'data-id' ),
+                    imgnonce: element.data( 'imgnonce' ) || element.attr( 'data-imgnonce' )
 				},
 				success: function (data) {
 					clearInterval( timesIntervals["ref_" + index] );
@@ -96,8 +98,8 @@
 					);
 				}
             );
-            jQuery( '<option>' ).val( 'iloveimg_bulk_action' ).text( "Compress Images" ).appendTo( 'select[name=action]' );
-            jQuery( '<option>' ).val( 'iloveimg_bulk_action' ).text( "Compress Images" ).appendTo( 'select[name=action2]' );
+            jQuery( '<option>' ).val( 'iloveimg_bulk_action' ).text( "Watermark Images" ).appendTo( 'select[name=action]' );
+            jQuery( '<option>' ).val( 'iloveimg_bulk_action' ).text( "Watermark Images" ).appendTo( 'select[name=action2]' );
             jQuery( '.iloveimg_watermarking' ).each(
                 function (index, element) {
 					timesIntervals["ref_" + index] = setInterval(

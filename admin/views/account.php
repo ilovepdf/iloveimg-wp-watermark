@@ -6,7 +6,7 @@ if ( get_option( 'iloveimg_account' ) ) {
 
 	$ilove_img_wm_is_logged = true;
 	update_option( 'iloveimg_first_loggued', 1 );
-	$ilove_img_wm_token    = $ilove_img_wm_account['token'];
+	$ilove_img_wm_token = $ilove_img_wm_account['token'];
 
 	$ilove_img_wm_response = wp_remote_get(
         ILOVE_IMG_WM_USER_URL . '/' . $ilove_img_wm_account['id'],
@@ -20,14 +20,13 @@ if ( get_option( 'iloveimg_account' ) ) {
 		$ilove_img_wm_account['token'] = $ilove_img_wm_token;
 		update_option( 'iloveimg_account', wp_json_encode( $ilove_img_wm_account ) );
 	}
-
 } elseif ( get_option( 'iloveimg_account_error' ) ) {
     $ilove_img_wm_account_error = unserialize( get_option( 'iloveimg_account_error' ) );
     delete_option( 'iloveimg_account_error' );
 }
 ?>
 <?php if ( ! $ilove_img_wm_is_logged ) : ?> 
-    <?php if ( isset( $_GET['section'] ) && 'register' === sanitize_text_field( wp_unslash( $_GET['section'] ) ) ) : ?>
+    <?php if ( isset( $_GET['section'] ) && 'register' === sanitize_text_field( wp_unslash( $_GET['section'] ) ) ) : // phpcs:ignore WordPress.Security.NonceVerification.Recommended ?>
         <div class="iloveimg_settings__overview__account iloveimg_settings__overview__account-register">
             <div class="iloveimg_settings__overview__account__picture"></div>
             <form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>" autocomplete="off">

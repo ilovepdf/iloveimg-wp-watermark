@@ -28,6 +28,15 @@ class Ilove_Img_Wm_Plugin {
 	const NAME = 'ilove_img_watermark_plugin';
 
     /**
+	 * The unique nonce identifier.
+	 *
+	 * @since    1.0.4
+	 * @access   public
+	 * @var      string    $img_nonce    The string used to uniquely nonce identify.
+	 */
+	protected static $img_nonce;
+
+    /**
 	 * This constructor defines the core functionality of the plugin.
      *
      * In this method, we set the plugin's name and version for reference throughout the codebase. We also load any necessary dependencies, define the plugin's locale for translation purposes, and set up hooks for the admin area.
@@ -110,7 +119,7 @@ class Ilove_Img_Wm_Plugin {
      * This method is responsible for processing an AJAX request to apply a watermark to a specific media item. It instantiates the `Ilove_Img_Wm_Process` class and uses it to watermark the attachment. The result is then rendered to display watermark details or an error message.
      */
     public function ilove_img_wm_library() {
-        if ( isset( $_POST['id'] ) ) {
+        if ( isset( $_POST['id'] ) && isset( $_POST['imgnonce'] ) && wp_verify_nonce( sanitize_key( wp_unslash( $_POST['imgnonce'] ) ) ) ) {
             $ilove         = new Ilove_Img_Wm_Process();
             $attachment_id = intval( $_POST['id'] );
             $images        = $ilove->watermark( $attachment_id );
@@ -176,7 +185,7 @@ class Ilove_Img_Wm_Plugin {
      * This method processes an AJAX request to determine if a specific media item has been watermarked. It checks the watermarking status and, based on the status, sends an appropriate response or error code to the client.
      */
     public function ilove_img_wm_library_is_watermarked() {
-        if ( isset( $_POST['id'] ) ) {
+        if ( isset( $_POST['id'] ) && isset( $_POST['imgnonce'] ) && wp_verify_nonce( sanitize_key( wp_unslash( $_POST['imgnonce'] ) ) ) ) {
             $attachment_id     = intval( $_POST['id'] );
             $status_watermark  = get_post_meta( $attachment_id, 'iloveimg_status_watermark', true );
             $images_compressed = Ilove_Img_Wm_Resources::get_sizes_watermarked( $attachment_id );
@@ -280,8 +289,9 @@ class Ilove_Img_Wm_Plugin {
             'timeout'   => 0.01,
             'blocking'  => false,
             'body'      => array(
-				'action' => 'ilove_img_wm_library',
-				'id'     => $attachment_id,
+				'action'   => 'ilove_img_wm_library',
+				'id'       => $attachment_id,
+                'imgnonce' => self::get_img_nonce(),
 			),
             'cookies'   => isset( $_COOKIE ) && is_array( $_COOKIE ) ? $_COOKIE : array(),
             'sslverify' => apply_filters( 'https_local_ssl_verify', false ), // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
@@ -303,7 +313,7 @@ class Ilove_Img_Wm_Plugin {
     public function media_library_bulk_action() {
         die();
 
-        $media = isset( $_REQUEST['media'] ) ? map_deep( wp_unslash( $_REQUEST['media'] ), 'absint' ) : false;
+        $media = isset( $_REQUEST['media'] ) ? map_deep( wp_unslash( $_REQUEST['media'] ), 'absint' ) : false; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
         if ( $media ) {
             foreach ( $media as $attachment_id ) {
@@ -443,5 +453,15 @@ class Ilove_Img_Wm_Plugin {
         }
 
         return $iloveimg_compress_found;
+    }
+
+    /**
+     * Return Nonce security code.
+     *
+     * @since 1.0.4
+     * @access public
+     */
+    public static function get_img_nonce() {
+        return self::$img_nonce;
     }
 }

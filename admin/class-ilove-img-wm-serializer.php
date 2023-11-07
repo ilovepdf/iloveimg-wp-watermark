@@ -41,11 +41,11 @@ class Ilove_Img_Wm_Serializer {
             die();
         }
 
-        if ( isset( $_POST['iloveimg_action'] ) && $this->has_valid_nonce() ) {
-            if ( 'iloveimg_action_options_watermark' === $_POST['iloveimg_action'] ) {
+        if ( isset( $_POST['iloveimg_action'] ) && $this->has_valid_nonce() ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+            if ( 'iloveimg_action_options_watermark' === $_POST['iloveimg_action'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 
                 $posts_value = array();
-                foreach ( $_POST as $key => $post_value ) {
+                foreach ( $_POST as $key => $post_value ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
                     if ( strpos( $key, 'iloveimg_field_' ) === 0 ) {
                         $posts_value[ $key ] = wp_unslash( $post_value );
                     }
@@ -53,7 +53,7 @@ class Ilove_Img_Wm_Serializer {
                 update_option( 'iloveimg_options_watermark', serialize( $posts_value ) );
             }
 
-            if ( 'iloveimg_action_logout' === $_POST['iloveimg_action'] ) {
+            if ( 'iloveimg_action_logout' === $_POST['iloveimg_action'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
                 delete_option( 'iloveimg_account' );
                 delete_option( 'iloveimg_proyect' );
                 $options = unserialize( get_option( 'iloveimg_options_watermark' ) );
@@ -63,16 +63,16 @@ class Ilove_Img_Wm_Serializer {
                 update_option( 'iloveimg_options_watermark', serialize( $options ) );
             }
 
-            if ( 'iloveimg_action_login' === $_POST['iloveimg_action'] ) {
-                if ( ! isset( $_POST['iloveimg_field_email'] ) && ! isset( $_POST['iloveimg_field_password'] ) ) {
+            if ( 'iloveimg_action_login' === $_POST['iloveimg_action'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+                if ( ! isset( $_POST['iloveimg_field_email'] ) && ! isset( $_POST['iloveimg_field_password'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
                     $this->redirect();
                 }
                 $response = wp_remote_post(
                     ILOVE_IMG_WM_LOGIN_URL,
                     array(
                         'body' => array(
-                            'email'        => sanitize_email( wp_unslash( $_POST['iloveimg_field_email'] ) ),
-                            'password'     => sanitize_text_field( wp_unslash( $_POST['iloveimg_field_password'] ) ),
+                            'email'        => sanitize_email( wp_unslash( $_POST['iloveimg_field_email'] ) ), // phpcs:ignore WordPress.Security.NonceVerification.Missing
+                            'password'     => sanitize_text_field( wp_unslash( $_POST['iloveimg_field_password'] ) ), // phpcs:ignore WordPress.Security.NonceVerification.Missing
                             'wordpress_id' => md5( get_option( 'siteurl' ) . get_option( 'admin_email' ) ),
                         ),
                     )
@@ -89,24 +89,24 @@ class Ilove_Img_Wm_Serializer {
                         serialize(
                             array(
 								'action' => 'login',
-								'email'  => sanitize_email( wp_unslash( $_POST['iloveimg_field_email'] ) ),
+								'email'  => sanitize_email( wp_unslash( $_POST['iloveimg_field_email'] ) ), // phpcs:ignore WordPress.Security.NonceVerification.Missing
                             )
                         )
                     );
                 }
             }
 
-            if ( 'iloveimg_action_register' === $_POST['iloveimg_action'] ) {
-                if ( ! isset( $_POST['iloveimg_field_name'] ) && ! isset( $_POST['iloveimg_field_email'] ) && ! isset( $_POST['iloveimg_field_password'] ) ) {
+            if ( 'iloveimg_action_register' === $_POST['iloveimg_action'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+                if ( ! isset( $_POST['iloveimg_field_name'] ) && ! isset( $_POST['iloveimg_field_email'] ) && ! isset( $_POST['iloveimg_field_password'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
                     $this->redirect();
                 }
                 $response = wp_remote_post(
                     ILOVE_IMG_WM_REGISTER_URL,
                     array(
                         'body' => array(
-                            'name'         => sanitize_text_field( wp_unslash( $_POST['iloveimg_field_name'] ) ),
-                            'email'        => sanitize_email( wp_unslash( $_POST['iloveimg_field_email'] ) ),
-                            'new_password' => sanitize_text_field( wp_unslash( $_POST['iloveimg_field_password'] ) ),
+                            'name'         => sanitize_text_field( wp_unslash( $_POST['iloveimg_field_name'] ) ), // phpcs:ignore WordPress.Security.NonceVerification.Missing
+                            'email'        => sanitize_email( wp_unslash( $_POST['iloveimg_field_email'] ) ), // phpcs:ignore WordPress.Security.NonceVerification.Missing
+                            'new_password' => sanitize_text_field( wp_unslash( $_POST['iloveimg_field_password'] ) ), // phpcs:ignore WordPress.Security.NonceVerification.Missing
                             'free_files'   => 0,
                             'wordpress_id' => md5( get_option( 'siteurl' ) . get_option( 'admin_email' ) ),
                         ),
@@ -136,19 +136,19 @@ class Ilove_Img_Wm_Serializer {
                         serialize(
                             array(
                                 'action' => 'register',
-                                'email'  => sanitize_email( wp_unslash( $_POST['iloveimg_field_email'] ) ),
-                                'name'   => sanitize_text_field( wp_unslash( $_POST['iloveimg_field_name'] ) ),
+                                'email'  => sanitize_email( wp_unslash( $_POST['iloveimg_field_email'] ) ), // phpcs:ignore WordPress.Security.NonceVerification.Missing
+                                'name'   => sanitize_text_field( wp_unslash( $_POST['iloveimg_field_name'] ) ), // phpcs:ignore WordPress.Security.NonceVerification.Missing
                             )
                         )
                     );
                 }
             }
 
-            if ( 'iloveimg_action_proyect' === $_POST['iloveimg_action'] ) {
-                if ( ! isset( $_POST['iloveimg_field_proyect'] ) ) {
+            if ( 'iloveimg_action_proyect' === $_POST['iloveimg_action'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+                if ( ! isset( $_POST['iloveimg_field_proyect'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
                     $this->redirect();
                 }
-                update_option( 'iloveimg_proyect', sanitize_text_field( wp_unslash( $_POST['iloveimg_field_proyect'] ) ) );
+                update_option( 'iloveimg_proyect', sanitize_text_field( wp_unslash( $_POST['iloveimg_field_proyect'] ) ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
             }
 		}
 
@@ -182,7 +182,7 @@ class Ilove_Img_Wm_Serializer {
 	private function redirect() {
 
         // To make the Coding Standards happy, we have to initialize this.
-        if ( ! isset( $_POST['_wp_http_referer'] ) ) { // Input var okay.
+        if ( ! isset( $_POST['_wp_http_referer'] ) && isset( $_POST['_wpnonce'] ) && wp_verify_nonce( sanitize_key( wp_unslash( $_POST['_wpnonce'] ) ) ) ) {
             $_POST['_wp_http_referer'] = wp_login_url();
         }
 
