@@ -268,9 +268,7 @@ class Ilove_Img_Wm_Resources {
 
         foreach ( $images as $image ) {
             if ( isset( $image['watermarked'] ) ) {
-                if ( ! is_null( $image['watermarked'] ) ) {
-                    ++$count;
-                }
+                ++$count;
             }
         }
 
