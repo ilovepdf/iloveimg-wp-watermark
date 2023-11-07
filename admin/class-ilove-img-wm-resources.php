@@ -311,25 +311,27 @@ class Ilove_Img_Wm_Resources {
                 <tr>
                     <th>Name</th><th>Watermark</th>
                     <?php
-                    foreach ( $_sizes as $key => $size ) {
-                        ?>
-                        <tr>
-                            <td><a href="<?php echo esc_url( wp_get_attachment_image_url( $image_id, $key ) ); ?>"  target="_blank"><?php echo esc_html( $key ); ?></a></td>
-                            <td>
+                    if( $_sizes ) {
+                        foreach ( $_sizes as $key => $size ) {
+                            ?>
+                            <tr>
+                                <td><a href="<?php echo esc_url( wp_get_attachment_image_url( $image_id, $key ) ); ?>"  target="_blank"><?php echo esc_html( $key ); ?></a></td>
+                                <td>
+                                <?php
+                                if ( isset( $size['watermarked'] ) ) {
+                                    if ( $size['watermarked'] ) {
+                                        echo 'Applied';
+                                    } else {
+                                        echo 'Not applied';
+                                    }
+                                } else {
+                                    echo 'Not applied';
+                                }
+                                ?>
+                                    </td>
+                                </tr>
                             <?php
-							if ( isset( $size['watermarked'] ) ) {
-								if ( $size['watermarked'] ) {
-									echo 'Applied';
-								} else {
-									echo 'Not applied';
-								}
-							} else {
-								echo 'Not applied';
-							}
-							?>
-                                </td>
-                            </tr>
-                        <?php
+                        }
                     }
                     ?>
                 </tr>
