@@ -58,6 +58,9 @@ class Ilove_Img_Wm_Plugin {
 	 * @access   public
      */
     public function admin_init() {
+        // create nonce
+        self::$img_nonce = wp_create_nonce();
+
         add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
         add_filter( 'manage_media_columns', array( $this, 'column_id' ) );
         add_filter( 'manage_media_custom_column', array( $this, 'column_id_row' ), 10, 2 );
