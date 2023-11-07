@@ -44,12 +44,7 @@ class Ilove_Img_Wm_Process {
      */
     public function watermark( $images_id ) {
 
-        if ( ! WP_Filesystem() ) {
-			return new \WP_Error(
-				'Unable Filesystem',
-				esc_html__( 'Unable to connect to the filesystem', 'iloveimg-watermark' )
-			);
-		}
+        WP_Filesystem();
 
         global $_wp_additional_image_sizes, $wpdb, $wp_filesystem;
 
@@ -182,6 +177,5 @@ class Ilove_Img_Wm_Process {
             error_log('Exception on watermark Method: ' . print_r($e, true)); // phpcs:ignore
             return false;
         }
-        return false;
     }
 }
