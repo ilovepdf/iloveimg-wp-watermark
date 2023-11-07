@@ -72,7 +72,7 @@ class Ilove_Img_Wm_Resources {
             rmdir( $dir );
 
         } elseif ( file_exists( $dir ) ) {
-			unlink( $dir );
+			wp_delete_file( $dir );
         }
     }
 
