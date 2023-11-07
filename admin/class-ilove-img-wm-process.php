@@ -68,15 +68,15 @@ class Ilove_Img_Wm_Process {
                 $_sizes = get_intermediate_image_sizes();
 
                 array_unshift( $_sizes, 'full' );
-                $_wm_options = unserialize( get_option( 'iloveimg_options_watermark' ) );
+                $_wm_options = json_decode( get_option( 'iloveimg_options_watermark' ), true );
 
                 if ( isset( $_wm_options['iloveimg_field_backup'] ) ) {
 					if ( ! is_dir( ILOVE_IMG_WM_UPLOAD_FOLDER . '/iloveimg-backup' ) ) {
 						mkdir( ILOVE_IMG_WM_UPLOAD_FOLDER . '/iloveimg-backup' );
 					}
-					$images_restore   = get_option( 'iloveimg_images_to_restore' ) ? unserialize( get_option( 'iloveimg_images_to_restore' ) ) : array();
+					$images_restore   = get_option( 'iloveimg_images_to_restore' ) ? json_decode( get_option( 'iloveimg_images_to_restore' ), true ) : array();
 					$images_restore[] = $images_id;
-					update_option( 'iloveimg_images_to_restore', serialize( $images_restore ) );
+					update_option( 'iloveimg_images_to_restore', wp_json_encode( $images_restore ) );
                 }
 
                 foreach ( $_sizes as $_size ) {

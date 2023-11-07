@@ -93,7 +93,7 @@ function ilove_img_wm_activate() {
 
         update_option(
             'iloveimg_options_watermark',
-            serialize(
+            wp_json_encode(
                 array(
 					'iloveimg_field_type'     => 'text',
 					'iloveimg_field_text'     => 'Sample',
@@ -106,6 +106,13 @@ function ilove_img_wm_activate() {
 				)
             )
         );
+    } else {
+        $old_data = get_option( 'iloveimg_options_watermark' );
+
+        if ( is_serialized( $old_data ) ) {
+            $old_data_serialize = unserialize( get_option( 'iloveimg_options_watermark' ) ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_unserialize
+            update_option( 'iloveimg_options_watermark', wp_json_encode( $old_data_serialize ) );
+        }
     }
 }
 register_activation_hook( __FILE__, 'ilove_img_wm_activate' );

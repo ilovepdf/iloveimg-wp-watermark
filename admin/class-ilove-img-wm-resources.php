@@ -131,7 +131,7 @@ class Ilove_Img_Wm_Resources {
      * @return int The count of image sizes that are enabled for watermarking.
      */
     public static function get_sizes_enabled() {
-        $_wm_options = unserialize( get_option( 'iloveimg_options_watermark' ) );
+        $_wm_options = json_decode( get_option( 'iloveimg_options_watermark' ), true );
         $image_sizes = $_wm_options['iloveimg_field_sizes'];
         $count       = 0;
 
@@ -200,7 +200,7 @@ class Ilove_Img_Wm_Resources {
      * @return int Returns 1 if automatic watermarking is enabled, and 0 if it's not.
      */
     public static function is_auto_watermark() {
-        $_wm_options = unserialize( get_option( 'iloveimg_options_watermark' ) );
+        $_wm_options = json_decode( get_option( 'iloveimg_options_watermark' ), true );
         return ( isset( $_wm_options['iloveimg_field_autowatermark'] ) ) ? 1 : 0;
     }
 
@@ -223,7 +223,7 @@ class Ilove_Img_Wm_Resources {
      * @return int Returns 1 if watermarking is activated, and 0 if it's not.
      */
     public static function is_activated() {
-        $_wm_options = unserialize( get_option( 'iloveimg_options_watermark' ) );
+        $_wm_options = json_decode( get_option( 'iloveimg_options_watermark' ), true );
         return ( isset( $_wm_options['iloveimg_field_watermark_activated'] ) ) ? 1 : 0;
     }
 
@@ -419,7 +419,7 @@ class Ilove_Img_Wm_Resources {
         $total_process = 0;
 
         foreach ( $rows as $row ) {
-            $stadistics = unserialize( $row->meta_value );
+            $stadistics = json_decode( $row->meta_value, true );
 
             foreach ( $stadistics as $key => $value ) {
                 $total         = $total + (int) $value['initial'];

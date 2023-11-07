@@ -151,7 +151,7 @@ class Ilove_Img_Wm_Plugin {
 
             Ilove_Img_Wm_Resources::rrmdir( ILOVE_IMG_WM_UPLOAD_FOLDER . '/iloveimg-backup' );
 
-            $images_restore = unserialize( get_option( 'iloveimg_images_to_restore' ) );
+            $images_restore = json_decode( get_option( 'iloveimg_images_to_restore' ), true );
 
             foreach ( $images_restore as $key => $value ) {
                 delete_post_meta( $value, 'iloveimg_status_watermark' );
@@ -251,10 +251,10 @@ class Ilove_Img_Wm_Plugin {
             $this->async_watermark( $attachment_id );
 
         } elseif ( ! (int) Ilove_Img_Wm_Resources::is_auto_watermark() && (int) Ilove_Img_Wm_Resources::is_watermark_image() === 1 ) {
-                $_wm_options                                 = unserialize( get_option( 'iloveimg_options_watermark' ) );
+                $_wm_options                                 = json_decode( get_option( 'iloveimg_options_watermark' ), true );
                 $_wm_options['iloveimg_field_autowatermark'] = 1;
 
-                update_option( 'iloveimg_options_watermark', serialize( $_wm_options ) );
+                update_option( 'iloveimg_options_watermark', wp_json_encode( $_wm_options ) );
                 delete_option( 'iloveimg_options_is_watermark_image' );
         }
 
@@ -267,10 +267,10 @@ class Ilove_Img_Wm_Plugin {
      * This method handles an AJAX request to set the watermark image option in user settings. It unsets the automatic watermarking option and updates the watermark image option in user settings.
      */
     public function ilove_img_wm_library_set_watermark_image() {
-        $_wm_options = unserialize( get_option( 'iloveimg_options_watermark' ) );
+        $_wm_options = json_decode( get_option( 'iloveimg_options_watermark' ), true );
         unset( $_wm_options['iloveimg_field_autowatermark'] );
 
-        update_option( 'iloveimg_options_watermark', serialize( $_wm_options ) );
+        update_option( 'iloveimg_options_watermark', wp_json_encode( $_wm_options ) );
         update_option( 'iloveimg_options_is_watermark_image', 1 );
 
         wp_die();
@@ -346,7 +346,7 @@ class Ilove_Img_Wm_Plugin {
         }
 
         if ( get_option( 'iloveimg_account_error' ) ) {
-                $iloveimg_account_error = unserialize( get_option( 'iloveimg_account_error' ) );
+                $iloveimg_account_error = json_decode( get_option( 'iloveimg_account_error' ), true );
             if ( 'login' === $iloveimg_account_error['action'] ) :
                 ?>
                 <div class="notice notice-error is-dismissible">
