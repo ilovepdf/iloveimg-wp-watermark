@@ -64,7 +64,7 @@ if ( get_option( 'iloveimg_account' ) ) {
         </div>
     <?php else : ?>
         <div class="iloveimg_settings__overview__account iloveimg_settings__overview__account-login">
-            <!-- <img src="<?php echo esc_url( ILOVE_IMG_WM_PLUGIN_URL . 'assets/images/iloveimg_picture_login.svg' ); ?>" /> -->
+            <!-- <img src="<?php echo esc_url( ILOVE_IMG_WM_PLUGIN_URL . 'assets/images/iloveimg_picture_login.svg' ); // @phpstan-ignore-line ?>" /> -->
             <div class="iloveimg_settings__overview__account__picture"></div>
             <form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>" autocomplete="off">
                 <input type="hidden" name="action" value="update_watermark" />
