@@ -1,6 +1,6 @@
 === Best Watermark - Protect images on your site with iLoveIMG ===
 Plugin Name: Best Watermark - Protect images on your site with iLoveIMG
-Version: 1.0.3
+Version: 1.0.4
 Author: iLovePDF
 Author URI: https://www.iloveimg.com/
 Contributors: iLovePDF
@@ -85,6 +85,48 @@ All our servers are strictly monitored as we comply with the European Data Priva
 Moreover, all processed files are automatically deleted from our servers after being processed in a time range of one, two and twenty-four hours (depending on your user status). You can check detailed info at our [Privacy Policy](https://www.iloveimg.com/help/privacy) and our [Terms and Conditions](https://www.iloveimg.com/help/terms)
 
 == Changelog ==
+
+= 1.0.4 =
+Changed
+* Formatting and comment files according to php/wordpress standards.
+* remove comments.
+* dirname() to __DIR__ constant.
+* constant names in uppercase.
+* function names is not snake case format.
+* classes name with prefix and capital letter.
+* variables name is not snake case  format and include prefix.
+* classes files rename.
+* Use Yoda Conditions to check.
+* hook names with prefix.
+* Increment operators.
+* gmdate() instead date().
+* change from json_encode() to wp_json_encode().
+* change from unlink() to wp_delete_file().
+* Use WP_Filesystem.
+* Update iloveimg-php library to V1.1.16
+
+Added
+* missing documentation.
+* Missing Domain text.
+* Escape/sanitize data.
+* using strict comparison for in_array.
+
+Fixed
+* Logical operator "and" changed to "&&"
+* Logical operator "or" changed to "||"
+* Visibility must be declared on method.
+* Assignments must be the first block of code on a line.
+* Loose comparisons are not allowed.
+* Fix conversion from number string to int.
+* Check if superglobal variables exist.
+* name of function.
+* Error checking.
+* Noce verification.
+* Serialized data has known vulnerability problems with Object Injection. Changed to JSON Encode.
+* Variables $height, $width, $options_value, $ilove_img_wm_is_logged not be defined.
+* Negated boolean expression is always true.
+* An infinite loop was generated. The method itself called itself every time the process failed.
+* on some servers, the $path_file variable did not contain the correct url.
 
 = 1.0.3 =
 * Synchronize repositories
