@@ -440,11 +440,11 @@ class Ilove_Img_Wm_Plugin {
 
         foreach ( $all_plugins as $plugin_file => $plugin_info ) {
 
-            if ( strpos( $plugin_file, 'iloveimg' ) === 0 ) {
+            if ( strpos( $plugin_file, 'iloveimg' ) || strpos( $plugin_file, 'ilove-img' ) ) {
 
                 if ( is_plugin_active( $plugin_file ) ) {
 
-                    if ( strpos( $plugin_file, 'compress' ) !== false ) {
+                    if ( strpos( $plugin_file, 'compress' ) !== false || $plugin_file === 'iloveimg/ilove-img-compress.php' ) {
                         $iloveimg_compress_found = true;
 
                         return $iloveimg_compress_found;
