@@ -93,8 +93,8 @@ class Ilove_Img_Wm_Process {
                     $images[ $_size ] = array( 'watermarked' => null );
 
                     if ( isset( $_SERVER['DOCUMENT_ROOT'] ) ) {
-                        $document_root = sanitize_url( wp_unslash( $_SERVER['DOCUMENT_ROOT'] ) );
-                        $path_file     = sanitize_text_field( wp_unslash( $_SERVER['DOCUMENT_ROOT'] ) ) . $parse_image_url['path'];
+                        $document_root = sanitize_text_field( wp_unslash( $_SERVER['DOCUMENT_ROOT'] ) );
+                        $path_file     = $document_root . $parse_image_url['path'];
 
                     } elseif ( isset( $_SERVER['SCRIPT_NAME'] ) && isset( $_SERVER['SCRIPT_FILENAME'] ) ) {
                         $document_root = str_replace( sanitize_url( wp_unslash( $_SERVER['SCRIPT_NAME'] ) ), '', sanitize_url( wp_unslash( $_SERVER['SCRIPT_FILENAME'] ) ) );
@@ -163,7 +163,7 @@ class Ilove_Img_Wm_Process {
                             }
                         }
 
-                        $my_task->execute();
+                        $execute_task = $my_task->execute();
                         $my_task->download( dirname( $path_file ) );
                         $images[ $_size ]['watermarked'] = 1;
                         do_action( 'ilove_img_wm_completed', $images_id );
