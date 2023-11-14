@@ -1,4 +1,6 @@
 <?php
+namespace Ilove_Img_Wm;
+
 /**
  * The admin-specific functionality of the plugin.
  *
@@ -16,7 +18,7 @@ class Ilove_Img_Wm_Plugin {
 	 * @access   public
 	 * @var      string    VERSION    The current version of the plugin.
 	 */
-    const VERSION = '2.0.0';
+    const VERSION = '2.0.1';
 
     /**
 	 * The unique identifier of this plugin.
@@ -25,7 +27,7 @@ class Ilove_Img_Wm_Plugin {
 	 * @access   public
 	 * @var      string    NAME    The string used to uniquely identify this plugin.
 	 */
-	const NAME = 'ilove_img_watermark_plugin';
+	const NAME = 'Ilove_Img_Wm_plugin';
 
     /**
 	 * The unique nonce identifier.
@@ -72,11 +74,6 @@ class Ilove_Img_Wm_Plugin {
         add_filter( 'wp_generate_attachment_metadata', array( $this, 'process_attachment' ), 10, 2 );
         add_action( 'admin_action_iloveimg_bulk_action', array( $this, 'media_library_bulk_action' ) );
         add_action( 'attachment_submitbox_misc_actions', array( $this, 'show_media_info' ) );
-
-        if ( ! class_exists( 'ILove_Img_Wm_Library_Init' ) ) {
-            require_once 'class-ilove-img-wm-library-init.php';
-            new ILove_Img_Wm_Library_Init();
-        }
 
         if ( ! self::check_iloveimg_plugins_is_activated() ) {
             add_action( 'admin_notices', array( $this, 'show_notices' ) );
