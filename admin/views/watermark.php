@@ -112,15 +112,15 @@ use Ilove_Img_Wm\Ilove_Img_Wm_Resources;
                                     <p><?php echo isset( $options_value['iloveimg_field_text'] ) ? esc_html( $options_value['iloveimg_field_text'] ) : ''; ?></p>
                                 </div>
                                 <div class="iloveimg_settings__watermark__preview-images">
-                                    <img src="<?php echo esc_url( $options_value['iloveimg_field_image'] ); // @phpstan-ignore-line ?>" />
-                                    <img src="<?php echo esc_url( $options_value['iloveimg_field_image'] ); // @phpstan-ignore-line ?>" />
-                                    <img src="<?php echo esc_url( $options_value['iloveimg_field_image'] ); // @phpstan-ignore-line ?>" />
-                                    <img src="<?php echo esc_url( $options_value['iloveimg_field_image'] ); // @phpstan-ignore-line ?>" />
-                                    <img src="<?php echo esc_url( $options_value['iloveimg_field_image'] ); // @phpstan-ignore-line ?>" />
-                                    <img src="<?php echo esc_url( $options_value['iloveimg_field_image'] ); // @phpstan-ignore-line ?>" />
-                                    <img src="<?php echo esc_url( $options_value['iloveimg_field_image'] ); // @phpstan-ignore-line ?>" />
-                                    <img src="<?php echo esc_url( $options_value['iloveimg_field_image'] ); // @phpstan-ignore-line ?>" />
-                                    <img src="<?php echo esc_url( $options_value['iloveimg_field_image'] ); // @phpstan-ignore-line ?>" />
+                                    <img src="<?php echo isset( $options_value['iloveimg_field_image'] ) ? esc_url( $options_value['iloveimg_field_image'] ) : ''; ?>" />
+                                    <img src="<?php echo isset( $options_value['iloveimg_field_image'] ) ? esc_url( $options_value['iloveimg_field_image'] ) : ''; ?>" />
+                                    <img src="<?php echo isset( $options_value['iloveimg_field_image'] ) ? esc_url( $options_value['iloveimg_field_image'] ) : ''; ?>" />
+                                    <img src="<?php echo isset( $options_value['iloveimg_field_image'] ) ? esc_url( $options_value['iloveimg_field_image'] ) : ''; ?>" />
+                                    <img src="<?php echo isset( $options_value['iloveimg_field_image'] ) ? esc_url( $options_value['iloveimg_field_image'] ) : ''; ?>" />
+                                    <img src="<?php echo isset( $options_value['iloveimg_field_image'] ) ? esc_url( $options_value['iloveimg_field_image'] ) : ''; ?>" />
+                                    <img src="<?php echo isset( $options_value['iloveimg_field_image'] ) ? esc_url( $options_value['iloveimg_field_image'] ) : ''; ?>" />
+                                    <img src="<?php echo isset( $options_value['iloveimg_field_image'] ) ? esc_url( $options_value['iloveimg_field_image'] ) : ''; ?>" />
+                                    <img src="<?php echo isset( $options_value['iloveimg_field_image'] ) ? esc_url( $options_value['iloveimg_field_image'] ) : ''; ?>" />
                                 </div>
                                 <div class="iloveimg_settings__watermark__preview-mosaic-1"></div>
                                 <div class="iloveimg_settings__watermark__preview-mosaic-2"></div>
