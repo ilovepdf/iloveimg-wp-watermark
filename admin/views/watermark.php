@@ -1,3 +1,6 @@
+<?php
+use Ilove_Img_Wm\Ilove_Img_Wm_Resources;
+?>
 <div class="wrap iloveimg_settings">
     <h1><img src="<?php echo esc_url( ILOVE_IMG_WM_PLUGIN_URL . 'assets/images/logo.svg' ); // @phpstan-ignore-line ?>" class="logo" /></h1>
 

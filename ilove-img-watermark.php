@@ -30,13 +30,12 @@ if ( ! defined( 'WPINC' ) ) {
     die;
 }
 
-require_once 'admin/class-ilove-img-wm-plugin.php';
-require_once 'admin/class-ilove-img-wm-process.php';
-require_once 'admin/class-ilove-img-wm-resources.php';
-require_once 'admin/class-ilove-img-wm-serializer.php';
-require_once 'admin/class-ilove-img-wm-submenu-page.php';
-require_once 'admin/class-ilove-img-wm-submenu.php';
-require_once 'admin/class-ilove-img-wm-media-list-table.php';
+require_once plugin_dir_path( __FILE__ ) . '/vendor/autoload.php';
+
+use Ilove_Img_Wm\Ilove_Img_Wm_Plugin;
+use Ilove_Img_Wm\Ilove_Img_Wm_Serializer;
+use Ilove_Img_Wm\Ilove_Img_Wm_Submenu;
+use Ilove_Img_Wm\Ilove_Img_Wm_Submenu_Page;
 
 /**
  * Initialize admin settings

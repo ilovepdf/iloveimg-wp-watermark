@@ -1,4 +1,6 @@
 <?php
+namespace Ilove_Img_Wm;
+
 use Iloveimg\WatermarkImageTask;
 
 /**
@@ -40,7 +42,7 @@ class Ilove_Img_Wm_Process {
      *
      * @param int $images_id The ID of the image to watermark.
      *
-     * @return array|bool|Exception An array with watermarking information or false if an error occurs.
+     * @return array|bool|\Exception An array with watermarking information or false if an error occurs.
      */
     public function watermark( $images_id ) {
 
@@ -181,7 +183,7 @@ class Ilove_Img_Wm_Process {
 
                 return false;
             }
-		} catch ( Exception $e ) {
+		} catch ( \Exception $e ) {
             update_post_meta( $images_id, 'iloveimg_status_watermark', 0 );
             error_log('Exception on watermark Method: ' . print_r($e, true)); // phpcs:ignore
 

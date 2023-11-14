@@ -1,3 +1,6 @@
+<?php
+use Ilove_Img_Wm\Ilove_Img_Wm_Resources;
+?>
 <div class="iloveimg_settings__overview__statistics">
 	<h3>Overview</h3>
 	<div>

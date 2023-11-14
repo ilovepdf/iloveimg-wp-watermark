@@ -1,4 +1,6 @@
 <?php
+use Ilove_Img_Wm\Ilove_Img_Wm_Media_List_Table;
+
 $ilove_img_wm_test_list_table = new Ilove_Img_Wm_Media_List_Table();
 $ilove_img_wm_test_list_table->prepare_items();
 
