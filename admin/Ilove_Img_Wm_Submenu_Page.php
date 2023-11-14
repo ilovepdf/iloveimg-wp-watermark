@@ -5,6 +5,8 @@
  * @package iloveimgwatermark
  */
 
+namespace Ilove_Img_Wm;
+
 /**
  * Creates the submenu page for the plugin.
  *

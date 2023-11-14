@@ -1,4 +1,6 @@
 <?php
+namespace Ilove_Img_Wm;
+
 /**
  * Class for handling serialization and management of iLoveIMG plugin settings.
  *

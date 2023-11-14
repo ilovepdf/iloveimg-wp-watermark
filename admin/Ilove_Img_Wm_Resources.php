@@ -1,4 +1,7 @@
 <?php
+namespace Ilove_Img_Wm;
+
+use WP_Query;
 /**
  * Utility class for managing resources and functionality related to image watermark.
  *
