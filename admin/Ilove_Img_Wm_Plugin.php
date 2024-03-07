@@ -18,7 +18,7 @@ class Ilove_Img_Wm_Plugin {
 	 * @access   public
 	 * @var      string    VERSION    The current version of the plugin.
 	 */
-    const VERSION = '2.0.2';
+    const VERSION = '2.0.3';
 
     /**
 	 * The unique identifier of this plugin.
@@ -93,21 +93,21 @@ class Ilove_Img_Wm_Plugin {
     public function enqueue_scripts() {
         wp_enqueue_script(
             self::NAME . '_spectrum_admin',
-            plugins_url( '/assets/js/spectrum.js', __DIR__ ),
+            plugins_url( '/assets/js/spectrum.min.js', __DIR__ ),
             array(),
-            self::VERSION,
+            '1.8.0',
             true
         );
         wp_enqueue_script(
             self::NAME . '_admin',
-            plugins_url( '/assets/js/main.js', __DIR__ ),
+            plugins_url( '/assets/js/main.min.js', __DIR__ ),
 			array(),
             self::VERSION,
             true
         );
         wp_enqueue_style(
             self::NAME . '_admin',
-            plugins_url( '/assets/css/app.css', __DIR__ ),
+            plugins_url( '/assets/css/app.min.css', __DIR__ ),
 			array(),
             self::VERSION
 		);

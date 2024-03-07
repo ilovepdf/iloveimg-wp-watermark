@@ -7,6 +7,7 @@ vendor/*
 composer.lock
 package-lock.json
 dev/package-lock.json
+dev/node_modules/
 
 # Compiled Java class files
 *.class
