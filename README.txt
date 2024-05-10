@@ -86,16 +86,6 @@ Moreover, all processed files are automatically deleted from our servers after b
 
 == Changelog ==
 
-== 2.1.0 ==
-Added
-* New Backup option added in General Settings.
-* Now you can restore all the files or just the ones you need.
-
-Improved
-* Update Node Libraries.
-* Time limit is set for PHP when it is less than 300.
-* On the individual page of a file, iloveimg compress buttons are now displayed whenever the file is a IMAGE.
-
 == 2.0.3 ==
 Added
 * Update libraries.
