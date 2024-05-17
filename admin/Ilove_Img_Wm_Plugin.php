@@ -95,7 +95,7 @@ class Ilove_Img_Wm_Plugin {
 
         global $pagenow, $hook_suffix;
 
-		if ( ( 'upload.php' === $pagenow || 'iloveimg_page_iloveimg-watermark-admin-page' === $hook_suffix || 'media-new.php' === $pagenow || 'post.php' === $pagenow ) && get_current_screen()->post_type !== 'product' ) {
+		if ( ( 'upload.php' === $pagenow || 'iloveimg_page_iloveimg-watermark-admin-page' === $hook_suffix || 'iloveimg_page_iloveimg-compress-admin-page' === $hook_suffix || 'media-new.php' === $pagenow || 'post.php' === $pagenow ) && get_current_screen()->post_type !== 'product' ) {
 
             wp_enqueue_script(
                 self::NAME . '_spectrum_admin',
