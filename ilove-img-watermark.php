@@ -15,7 +15,7 @@
  * Plugin Name:       Best Watermark - Protect images on your site with iLoveIMG
  * Plugin URI:        https://developer.iloveimg.com/
  * Description:       Protect your site from image theft with our reliable and easy-to-use watermark plugin. Effective protection for your images.
- * Version:           2.0.3
+ * Version:           2.1.0
  * Requires at least: 5.3
  * Requires PHP:      7.4
  * Author:            iLoveIMG
@@ -31,6 +31,21 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 require_once plugin_dir_path( __FILE__ ) . '/vendor/autoload.php';
+
+if ( ini_get( 'max_execution_time' ) < 300 ) {
+    set_time_limit( 300 );
+}
+
+$ilove_img_wm_upload_path = wp_upload_dir();
+
+define( 'ILOVE_IMG_WM_REGISTER_URL', 'https://api.iloveimg.com/v1/user' );
+define( 'ILOVE_IMG_WM_LOGIN_URL', 'https://api.iloveimg.com/v1/user/login' );
+define( 'ILOVE_IMG_WM_USER_URL', 'https://api.iloveimg.com/v1/user' );
+define( 'ILOVE_IMG_WM_NUM_MAX_FILES', 2 );
+define( 'ILOVE_IMG_WM_COMPRESS_DB_VERSION', '1.0' );
+define( 'ILOVE_IMG_WM_UPLOAD_FOLDER', $ilove_img_wm_upload_path['basedir'] );
+define( 'ILOVE_IMG_WM_BACKUP_FOLDER', $ilove_img_wm_upload_path['basedir'] . '/iloveimg-backup/' );
+define( 'ILOVE_IMG_WM_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
 use Ilove_Img_Wm\Ilove_Img_Wm_Plugin;
 use Ilove_Img_Wm\Ilove_Img_Wm_Serializer;
@@ -84,6 +99,10 @@ add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'ilove_img_wm_
 function ilove_img_wm_activate() {
     add_option( 'ilove_img_wm_db_version', ILOVE_IMG_WM_COMPRESS_DB_VERSION );
 
+    if ( ! file_exists( ILOVE_IMG_WM_BACKUP_FOLDER ) ) {
+        wp_mkdir_p( ILOVE_IMG_WM_BACKUP_FOLDER );
+    }
+
     if ( ! get_option( 'iloveimg_options_watermark' ) ) {
 
         $iloveimg_thumbnails = array( 'full', 'thumbnail', 'medium', 'medium_large', 'large' );
@@ -103,7 +122,7 @@ function ilove_img_wm_activate() {
 					'iloveimg_field_rotation' => 0,
 					'iloveimg_field_position' => 1,
 					'iloveimg_field_sizes'    => $iloveimg_thumbnails,
-
+                    'iloveimg_field_backup'   => 'on',
 				)
             )
         );
@@ -119,15 +138,3 @@ function ilove_img_wm_activate() {
 register_activation_hook( __FILE__, 'ilove_img_wm_activate' );
 
 new Ilove_Img_Wm_Plugin();
-
-$ilove_img_wm_upload_path = wp_upload_dir();
-
-define( 'ILOVE_IMG_WM_REGISTER_URL', 'https://api.iloveimg.com/v1/user' );
-define( 'ILOVE_IMG_WM_LOGIN_URL', 'https://api.iloveimg.com/v1/user/login' );
-define( 'ILOVE_IMG_WM_USER_URL', 'https://api.iloveimg.com/v1/user' );
-define( 'ILOVE_IMG_WM_NUM_MAX_FILES', 2 );
-define( 'ILOVE_IMG_WM_COMPRESS_DB_VERSION', '1.0' );
-define( 'ILOVE_IMG_WM_UPLOAD_FOLDER', $ilove_img_wm_upload_path['basedir'] );
-define( 'ILOVE_IMG_WM_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-
-set_time_limit( 300 );

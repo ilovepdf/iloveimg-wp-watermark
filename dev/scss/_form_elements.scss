@@ -1,6 +1,17 @@
-body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page,  body.admin_page_iloveimg-watermark-admin-page, body.iloveimg_page_iloveimg-compress-admin-page, body.iloveimg_page_iloveimg-watermark-options-admin-page, body.iloveimg_page_iloveimg-watermark-admin-page, body.media_page_iloveimg-media-watermark-page{
-	.iloveimg_settings{
-		input[type="text"], input[type="email"], input[type="password"]{
+body.toplevel_page_iloveimg-admin-page,
+body.media_page_iloveimg-media-page,
+body.admin_page_iloveimg-watermark-admin-page,
+body.iloveimg_page_iloveimg-compress-admin-page,
+body.iloveimg_page_iloveimg-watermark-options-admin-page,
+body.iloveimg_page_iloveimg-watermark-admin-page,
+body.media_page_iloveimg-media-watermark-page,
+body.upload-php,
+body.post-php {
+	.iloveimg_settings,
+	.iloveimg_restore_button_wrapper {
+		input[type="text"],
+		input[type="email"],
+		input[type="password"] {
 			background: #FFFFFF;
 			border: 1px solid #969696;
 			border-radius: 2px;
@@ -29,14 +40,15 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page,  bo
 			    text-indent: 0;
 			}
 		}
-		select{
+		select {
 			    border: 1px solid #383e48;
 		    max-width: 130px;
 		    height: 32px;
 		    border-radius: 0px;
 		    margin-right: 10px;
 		}
-		input[type="submit"], input[type="button"]{
+		input[type="submit"],
+		input[type="button"] {
 			background-color: $primary_color;
 			color: #fff;
 			text-shadow: none;
@@ -53,7 +65,7 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page,  bo
 			}
 
 		}
-		input[type="checkbox"]{
+		input[type="checkbox"] {
 			appearance: none;
 			background: #FFFFFF;
 			border: 1px solid #969696;
@@ -78,7 +90,7 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page,  bo
 				}
 			}
 		}
-		p.submit{
+		p.submit {
 			margin: 0;
 			padding: 0;
 			button[disabled]{
@@ -87,7 +99,7 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page,  bo
 				cursor: not-allowed;
 			}
 		}
-		.button{
+		.button {
 			&.button-secondary{
 				background-color: #383E45;
 				color: #fff !important;
@@ -101,7 +113,7 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page,  bo
 			}
 		}
 
-		.iloveimg_percent{
+		.iloveimg_percent {
 			height: 16px;
 			width: 100%;
 			background-color: #fff;
@@ -275,7 +287,7 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page,  bo
 		  border-style: solid;
 		  border-color: black transparent transparent transparent;
 		}
-		.submit{
+		.submit {
 			button.need_saving{
 				animation: shadow-pulse 1s infinite;
 			}
@@ -284,6 +296,22 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page,  bo
 				  visibility: visible;
 				}
 			}
+		}
+
+		.success,
+		.compress-success,
+		.applied-success {
+			display: none;
+			color: #46b450;
+		}
+		
+		.error,
+		.compress-error,
+		.applied-error,
+		.compress-abort,
+		.applied-abort {
+			display: none;
+			color: #a00;
 		}
 
 	}
