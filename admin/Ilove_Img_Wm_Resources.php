@@ -122,7 +122,18 @@ class Ilove_Img_Wm_Resources {
 				}
             }
 		} elseif ( file_exists( $src ) ) {
-            copy( $src, $dst );
+            $base_file_name             = basename( $src );
+            $compare_dst_base_file_name = basename( $dst );
+
+            if ( ! file_exists( $dst ) ) {
+                $wp_filesystem->mkdir( $dst );
+            }
+
+            if ( $compare_dst_base_file_name === $base_file_name ) {
+                copy( $src, $dst );
+            } else {
+                copy( $src, $dst . '/' . $base_file_name );
+            }
         }
     }
 
@@ -178,7 +189,7 @@ class Ilove_Img_Wm_Resources {
      * @return bool True if the backup directory exists, false otherwise.
      */
     public static function is_there_backup() {
-        return is_dir( ILOVE_IMG_WM_UPLOAD_FOLDER . '/iloveimg-backup' );
+        return is_dir( ILOVE_IMG_WM_BACKUP_FOLDER );
     }
 
     /**
@@ -207,8 +218,8 @@ class Ilove_Img_Wm_Resources {
      * @return float The size of the backup folder in megabytes (MB). Returns 0 if the backup directory doesn't exist.
      */
     public static function get_size_backup() {
-        if ( is_dir( ILOVE_IMG_WM_UPLOAD_FOLDER . '/iloveimg-backup' ) ) {
-            $folder = ILOVE_IMG_WM_UPLOAD_FOLDER . '/iloveimg-backup';
+        if ( is_dir( ILOVE_IMG_WM_BACKUP_FOLDER ) ) {
+            $folder = ILOVE_IMG_WM_BACKUP_FOLDER;
 
             $size = self::folder_size( $folder );
 
@@ -364,6 +375,7 @@ class Ilove_Img_Wm_Resources {
 
             if ( $_sizes && $images_compressed ) :
                 self::render_watermark_details( $column_id );
+                self::render_button_restore( $column_id );
             else :
                 ?>
                          
@@ -454,5 +466,61 @@ class Ilove_Img_Wm_Resources {
         }
 
         return array( $total, $total_process );
+    }
+
+    /**
+     * Render the restore button for an image.
+     *
+     * This method generates and displays button restore of image compression for a specific attachment
+     * identified by its image ID.
+     *
+     * @param int $image_id The ID of the attachment in the WordPress media library.
+     *
+     * @since 2.1.0
+     */
+    public static function render_button_restore( $image_id ) {
+        $iloveimg_options_watermark = json_decode( get_option( 'iloveimg_options_watermark' ), true );
+        $iloveimg_options_compress  = json_decode( get_option( 'iloveimg_options_compress' ), true );
+        $backup_activated           = false;
+
+        if ( ( isset( $iloveimg_options_compress['iloveimg_field_backup'] ) && 'on' === $iloveimg_options_compress['iloveimg_field_backup'] ) || ( isset( $iloveimg_options_watermark['iloveimg_field_backup'] ) && 'on' === $iloveimg_options_watermark['iloveimg_field_backup'] ) ) {
+            $backup_activated = true;
+        }
+
+        $images_restore = get_option( 'iloveimg_images_to_restore' ) ? json_decode( get_option( 'iloveimg_images_to_restore' ), true ) : array();
+        $img_nonce      = Ilove_Img_Wm_Plugin::get_img_nonce();
+
+        ?>
+            <?php if ( $backup_activated && in_array( $image_id, $images_restore, true ) ) : ?>
+                <div class="iloveimg-watermark iloveimg_restore_button_wrapper">
+                    <button class="iloveimg_restore_button button button-secondary" data-id="<?php echo intval( $image_id ); ?>" data-action="ilove_img_wm_restore">
+                        <?php esc_html_e( 'Restore original file', 'iloveimg-watermark' ); ?>
+                    </button>
+                    <br/>
+                    <input type="hidden" id="_wpnonce" name="_wpnonce" value="<?php echo esc_html( $img_nonce ); ?>">
+                    <p class="loading iloveimg-status" style="display: none; margin-top: 5px;"><span><?php esc_html_e( 'Loading', 'iloveimg-watermark' ); ?>...</span></p>
+                    <p class="error iloveimg-status" style="margin-top: 5px;"><span><?php esc_html_e( 'Error', 'iloveimg-watermark' ); ?></span></p>
+                    <p class="success iloveimg-status" style="margin-top: 5px;"><span><?php esc_html_e( 'Completed, please refresh the page.', 'iloveimg-watermark' ); ?></span></p>
+                </div>
+            <?php endif; ?>
+        <?php
+    }
+
+    /**
+     * Regenerate attachment metadata
+     *
+     * @since      2.1.0
+     * @param int $attachment_id File ID.
+     */
+    public static function regenerate_attachment_data( $attachment_id ) {
+
+        if ( ! $attachment_id ) {
+            return;
+        }
+
+        $file_path = get_attached_file( $attachment_id ); // Get File path of attachment
+        $metadata  = wp_generate_attachment_metadata( $attachment_id, $file_path ); // Regenerate attachment metadata
+
+        wp_update_attachment_metadata( $attachment_id, $metadata ); // Update new attachment metadata
     }
 }

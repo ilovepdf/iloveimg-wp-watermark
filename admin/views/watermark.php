@@ -2,7 +2,7 @@
 use Ilove_Img_Wm\Ilove_Img_Wm_Resources;
 ?>
 <div class="wrap iloveimg_settings">
-    <h1><img src="<?php echo esc_url( ILOVE_IMG_WM_PLUGIN_URL . 'assets/images/logo.svg' ); // @phpstan-ignore-line ?>" class="logo" /></h1>
+    <h1><img src="<?php echo esc_url( ILOVE_IMG_WM_PLUGIN_URL . 'assets/images/logo.svg' ); ?>" class="logo" /></h1>
 
     <div class="iloveimg_settings__overview">
         <?php require_once 'account.php'; ?>
@@ -240,14 +240,15 @@ use Ilove_Img_Wm\Ilove_Img_Wm_Resources;
                             <span class="slider"></span>
                         </div>
                         <label>Backup original Images</label>
-                        <p>Enable this option to make a backup of your images before being watermarked. These backups will allow you to restore your original images at cost of taking server memory space.</p>
+                        <p>Enable this option to make a backup of your images before being watermarked or compress. These backups will allow you to restore your original images at cost of taking server memory space.</p>
+                        <p>You can find the original files at: <code>wp-content/uploads/iloveimg-backup</code></p>
                         
                     </div>
                     
                     <div class="iloveimg_settings__options__field">
                         
                         <label>Restore Original Images</label>
-                        <p>All backup images can be restored. This action will recover the original images as they were before being stamped with Watermark. <span style="color: red;">Warning: Any changes made AFTER Watermark would be also restored.</span></p>
+                        <p>All backup images can be restored. This action will recover the original images as they were before being stamped with Watermark or Compress. <span style="color: red;">Warning: Any changes made AFTER Watermark/Compress would be also restored.</span></p>
                         <p>You can also clear all your backup images to free memory space. <span style="color: red;">Warning: Clear backups will prevent you to restore original images.</span></p>
                             <button type="button" class="button button-style-iloveimg" id="iloveimg_restore_all" <?php echo ( isset( $options_value['iloveimg_field_backup'] ) && Ilove_Img_Wm_Resources::is_there_backup() ) ? '' : 'disabled'; ?>>Restore All</button>
                         
