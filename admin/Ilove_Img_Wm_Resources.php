@@ -519,7 +519,7 @@ class Ilove_Img_Wm_Resources {
         }
 
         $file_path = get_attached_file( $attachment_id ); // Get File path of attachment
-        $metadata = wp_generate_attachment_metadata( $attachment_id, $file_path ); // Regenerate attachment metadata
+        $metadata  = wp_generate_attachment_metadata( $attachment_id, $file_path ); // Regenerate attachment metadata
 
         wp_update_attachment_metadata( $attachment_id, $metadata ); // Update new attachment metadata
     }
