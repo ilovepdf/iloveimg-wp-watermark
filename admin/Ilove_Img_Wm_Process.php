@@ -46,9 +46,7 @@ class Ilove_Img_Wm_Process {
      */
     public function watermark( $images_id ) {
 
-        WP_Filesystem();
-
-        global $_wp_additional_image_sizes, $wpdb, $wp_filesystem;
+        global $wpdb;
 
         $images = array();
 
@@ -74,14 +72,21 @@ class Ilove_Img_Wm_Process {
                 $_sizes = get_intermediate_image_sizes();
 
                 array_unshift( $_sizes, 'full' );
-                $_wm_options = json_decode( get_option( 'iloveimg_options_watermark' ), true );
 
-                if ( isset( $_wm_options['iloveimg_field_backup'] ) ) {
-					if ( ! is_dir( ILOVE_IMG_WM_UPLOAD_FOLDER . '/iloveimg-backup' ) ) {
-						$wp_filesystem->mkdir( ILOVE_IMG_WM_UPLOAD_FOLDER . '/iloveimg-backup' );
-					}
-					$images_restore   = get_option( 'iloveimg_images_to_restore' ) ? json_decode( get_option( 'iloveimg_images_to_restore' ), true ) : array();
+                $_wm_options      = json_decode( get_option( 'iloveimg_options_watermark' ), true );
+                $options_compress = json_decode( get_option( 'iloveimg_options_compress' ), true );
+                $images_restore   = get_option( 'iloveimg_images_to_restore' ) ? json_decode( get_option( 'iloveimg_images_to_restore' ), true ) : array();
+
+                if ( ( isset( $options_compress['iloveimg_field_backup'] ) || isset( $_wm_options['iloveimg_field_backup'] ) ) && ! in_array( $images_id, $images_restore, true ) ) {
+
+                    $attached_file = get_attached_file( $images_id );
+
+                    Ilove_Img_Wm_Resources::rcopy( $attached_file, ILOVE_IMG_WM_BACKUP_FOLDER );
+
 					$images_restore[] = $images_id;
+
+                    $images_restore = array_unique( $images_restore );
+
 					update_option( 'iloveimg_images_to_restore', wp_json_encode( $images_restore ) );
                 }
 
@@ -105,15 +110,6 @@ class Ilove_Img_Wm_Process {
                     $path_file = $document_root . str_replace( site_url(), '', $image[0] );
 
                     if ( in_array( $_size, $_wm_options['iloveimg_field_sizes'], true ) ) {
-                        // if enable backup
-                        if ( isset( $_wm_options['iloveimg_field_backup'] ) ) {
-
-                            $new_path = ILOVE_IMG_WM_UPLOAD_FOLDER . '/iloveimg-backup' . str_replace( ILOVE_IMG_WM_UPLOAD_FOLDER, '', dirname( $path_file ) );
-                            if ( ! is_dir( $new_path ) ) {
-								$wp_filesystem->mkdir( $new_path, 0777, true );
-                            }
-                            copy( $path_file, $new_path . '/' . basename( $path_file ) );
-                        }
 
                         $my_task = new WatermarkImageTask( $this->proyect_public, $this->secret_key );
                         $file    = $my_task->addFile( $path_file );
