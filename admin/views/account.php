@@ -8,11 +8,11 @@ if ( get_option( 'iloveimg_account' ) ) {
 
         delete_option( 'iloveimg_account' );
         delete_option( 'iloveimg_proyect' );
-        $ilove_img_options = json_decode( get_option( 'iloveimg_options_watermark' ), true );
+        $ilove_img_wm_options = json_decode( get_option( 'iloveimg_options_watermark' ), true );
         unset( $options['iloveimg_field_watermark_activated'] );
         unset( $options['iloveimg_field_autowatermark'] );
         unset( $options['iloveimg_field_resize_full'] );
-        update_option( 'iloveimg_options_watermark', wp_json_encode( $ilove_img_options ) );
+        update_option( 'iloveimg_options_watermark', wp_json_encode( $ilove_img_wm_options ) );
 
         wp_safe_redirect( admin_url( 'admin.php?page=iloveimg-watermark-admin-page' ) );
         exit();
