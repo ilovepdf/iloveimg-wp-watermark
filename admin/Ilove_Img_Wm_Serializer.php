@@ -81,6 +81,7 @@ class Ilove_Img_Wm_Serializer {
                 );
                 if ( wp_remote_retrieve_response_code( $response ) === 200 ) {
                     update_option( 'iloveimg_account', $response['body'] );
+                    update_option( 'iloveimg_user_is_migrated', 1 );
                     $options                                       = json_decode( get_option( 'iloveimg_options_watermark' ), true );
                     $options['iloveimg_field_watermark_activated'] = 1;
                     $options['iloveimg_field_autowatermark']       = 1;
