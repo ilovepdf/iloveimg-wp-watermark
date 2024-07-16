@@ -13,9 +13,9 @@
  *
  * @wordpress-plugin
  * Plugin Name:       Best Watermark - Protect images on your site with iLoveIMG
- * Plugin URI:        https://developer.iloveimg.com/
+ * Plugin URI:        https://iloveapi.com/
  * Description:       Protect your site from image theft with our reliable and easy-to-use watermark plugin. Effective protection for your images.
- * Version:           2.1.0
+ * Version:           2.2.0
  * Requires at least: 5.3
  * Requires PHP:      7.4
  * Author:            iLoveIMG
@@ -38,9 +38,9 @@ if ( ini_get( 'max_execution_time' ) < 300 ) {
 
 $ilove_img_wm_upload_path = wp_upload_dir();
 
-define( 'ILOVE_IMG_WM_REGISTER_URL', 'https://api.iloveimg.com/v1/user' );
-define( 'ILOVE_IMG_WM_LOGIN_URL', 'https://api.iloveimg.com/v1/user/login' );
-define( 'ILOVE_IMG_WM_USER_URL', 'https://api.iloveimg.com/v1/user' );
+define( 'ILOVE_IMG_WM_REGISTER_URL', 'https://api.ilovepdf.com/v1/user' );
+define( 'ILOVE_IMG_WM_LOGIN_URL', 'https://api.ilovepdf.com/v1/user/login' );
+define( 'ILOVE_IMG_WM_USER_URL', 'https://api.ilovepdf.com/v1/user' );
 define( 'ILOVE_IMG_WM_NUM_MAX_FILES', 2 );
 define( 'ILOVE_IMG_WM_COMPRESS_DB_VERSION', '1.0' );
 define( 'ILOVE_IMG_WM_UPLOAD_FOLDER', $ilove_img_wm_upload_path['basedir'] );

@@ -1,13 +1,13 @@
 === Best Watermark - Protect images on your site with iLoveIMG ===
 Plugin Name: Best Watermark - Protect images on your site with iLoveIMG
-Version: 2.1.0
+Version: 2.2.0
 Author: iLovePDF
 Author URI: https://www.iloveimg.com/
 Contributors: iLovePDF
 Tags: watermark, image protection, photography, picture, e-commerce
 Requires at least: 5.3
-Tested up to: 6.5.3
-Stable tag: 2.1.0
+Tested up to: 6.6
+Stable tag: 2.2.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -38,7 +38,7 @@ Trust reliable developers. **Best Watermark - Protect images on your site with i
 - **Good for eCommerce** - Works great for eCommerce websites using WooCommerce, NextGen Gallery and other plugins for e-commerce. 
 - **Security first** - Your data is not stored nor collected on our services. We are GDPR compliant.
 - **Frequent updates** - Get a stable and frequently updated image compression plugin.
-- **Freemium service** - Freely process up to 500 images per month. Need more? Subscribe our Premium plan o buy a prepaid package to use at your convenience.
+- **Freemium service** - Freely up to 2500 credits per month. Need more? Subscribe our [Premium plan](https://iloveapi.com/pricing) or buy a [prepaid package](https://iloveapi.com/pricing) to use at your convenience.
 
 With online images being shared and re-shared all over the Internet, it's easy to lose track of the original author. iLoveIMG Watermark plugin helps you protect the rights of your online photos. 
 
@@ -52,7 +52,7 @@ With online images being shared and re-shared all over the Internet, it's easy t
 
 **Can I use the plugin for free?**
 
-Absolutely. As a free user, you can optimise a maximum of 500 images per month. Once this limit is reached, you cannot compress new images until next month unless you purchase credits. 
+Absolutely. As a free user, we let you process your first 2500 monthly credits. Once this limit is reached, you cannot watermark new images until next month unless you purchase credits.
 
 **Can I make a one-time payment?**
 
@@ -76,7 +76,7 @@ iLoveIMG Watermark plugin can optimize images in JPG, PNG and GIF format.
 
 **Do you have an API REST?**
 
-Yes, in fact this plugin is powered by our API. And you can integrate our image optimization tools into your software apps too! Learn more about [iLoveIMG API for developers](https://developer.iloveimg.com).
+Yes, in fact this plugin is powered by our API. And you can integrate our image optimization tools into your software apps too! Learn more about [iLoveIMG API for developers](https://iloveapi.com).
 
 **Do you care about the privacy of my images?**
 
@@ -85,6 +85,16 @@ All our servers are strictly monitored as we comply with the European Data Priva
 Moreover, all processed files are automatically deleted from our servers after being processed in a time range of one, two and twenty-four hours (depending on your user status). You can check detailed info at our [Privacy Policy](https://www.iloveimg.com/help/privacy) and our [Terms and Conditions](https://www.iloveimg.com/help/terms)
 
 == Changelog ==
+
+== 2.2.0 ==
+Improved
+* Update Libraries.
+* Now IloveIMG will use credits to process the files.
+* Now iloveimg accounts have been migrated to ilovepdf.
+* Improved the function to restore all files.
+
+Fixed
+* When autowatermark is activated and you wanted to restore a specific file, it was watermarked again.
 
 == 2.1.0 ==
 Added
