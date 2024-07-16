@@ -158,21 +158,16 @@ class Ilove_Img_Wm_Plugin {
     public function ilove_img_wm_restore_all() {
 
         if ( is_dir( ILOVE_IMG_WM_BACKUP_FOLDER ) ) {
-            $folders = array_diff( scandir( ILOVE_IMG_WM_BACKUP_FOLDER ), array( '..', '.' ) );
-
-            foreach ( $folders as $key => $folder ) {
-                Ilove_Img_Wm_Resources::rcopy( ILOVE_IMG_WM_BACKUP_FOLDER . $folder, ILOVE_IMG_WM_UPLOAD_FOLDER . '/' . $folder );
-            }
-
-            Ilove_Img_Wm_Resources::rrmdir( ILOVE_IMG_WM_BACKUP_FOLDER );
-
             $images_restore = json_decode( get_option( 'iloveimg_images_to_restore' ), true );
 
             foreach ( $images_restore as $key => $value ) {
+                Ilove_Img_Wm_Resources::rcopy( ILOVE_IMG_WM_BACKUP_FOLDER . basename( get_attached_file( $value ) ), get_attached_file( $value ) );
+
                 delete_post_meta( $value, 'iloveimg_status_watermark' );
                 delete_post_meta( $value, 'iloveimg_watermark' );
                 delete_post_meta( $value, 'iloveimg_status_compress' );
                 delete_post_meta( $value, 'iloveimg_compress' );
+                wp_delete_file( ILOVE_IMG_WM_BACKUP_FOLDER . basename( get_attached_file( $value ) ) );
                 delete_option( 'iloveimg_images_to_restore' );
             }
         }
