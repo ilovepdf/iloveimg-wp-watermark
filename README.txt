@@ -38,7 +38,7 @@ Trust reliable developers. **Best Watermark - Protect images on your site with i
 - **Good for eCommerce** - Works great for eCommerce websites using WooCommerce, NextGen Gallery and other plugins for e-commerce. 
 - **Security first** - Your data is not stored nor collected on our services. We are GDPR compliant.
 - **Frequent updates** - Get a stable and frequently updated image compression plugin.
-- **Freemium service** - Freely process up to 500 images per month. Need more? Subscribe our Premium plan o buy a prepaid package to use at your convenience.
+- **Freemium service** - Freely up to 2500 credits per month. Need more? Subscribe our Premium plan (https://iloveapi.com/pricing) or buy a prepaid package (https://iloveapi.com/pricing) to use at your convenience.
 
 With online images being shared and re-shared all over the Internet, it's easy to lose track of the original author. iLoveIMG Watermark plugin helps you protect the rights of your online photos. 
 
@@ -52,7 +52,7 @@ With online images being shared and re-shared all over the Internet, it's easy t
 
 **Can I use the plugin for free?**
 
-Absolutely. As a free user, you can optimise a maximum of 500 images per month. Once this limit is reached, you cannot compress new images until next month unless you purchase credits. 
+Absolutely. As a free user, we let you process your first 2500 monthly credits. Once this limit is reached, you cannot compress new images until next month unless you purchase credits.
 
 **Can I make a one-time payment?**
 
@@ -76,7 +76,7 @@ iLoveIMG Watermark plugin can optimize images in JPG, PNG and GIF format.
 
 **Do you have an API REST?**
 
-Yes, in fact this plugin is powered by our API. And you can integrate our image optimization tools into your software apps too! Learn more about [iLoveIMG API for developers](https://developer.iloveimg.com).
+Yes, in fact this plugin is powered by our API. And you can integrate our image optimization tools into your software apps too! Learn more about [iLoveIMG API for developers](https://iloveapi.com).
 
 **Do you care about the privacy of my images?**
 

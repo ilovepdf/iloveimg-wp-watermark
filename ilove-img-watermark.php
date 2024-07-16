@@ -13,7 +13,7 @@
  *
  * @wordpress-plugin
  * Plugin Name:       Best Watermark - Protect images on your site with iLoveIMG
- * Plugin URI:        https://developer.iloveimg.com/
+ * Plugin URI:        https://iloveapi.com/
  * Description:       Protect your site from image theft with our reliable and easy-to-use watermark plugin. Effective protection for your images.
  * Version:           2.1.0
  * Requires at least: 5.3
