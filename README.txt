@@ -44,9 +44,16 @@ With online images being shared and re-shared all over the Internet, it's easy t
 
 == Installation ==
 
-1. **Click the ‘Install Now’ button**. WordPress will download and install the plugin for you. 
-2. **Wait for the success message**. A pop-up window with a link to activate the plugin will appear.
-3. **Activate the plugin**. iLoveIMG plugin can be installed on your site, but it will not work unless you activate it. So go ahead and click on the link to activate the plugin on your WordPress site.
+From your Admin panel:
+1. Visit Plugins > Add New.
+2. Search for **iloveIMG** and press the **Install Now** button.
+3. Activate the plugin from your Plugins page.
+
+Manual:
+1. Upload `watermark-protect-images` to the `/wp-content/plugins/` directory
+2. Activate the plugin through the 'Plugins' menu in WordPress
+3. Create a free account in the plugin settings page, or use your existing one
+4. Configure the plugin as you like
 
 == Frequently Asked Questions ==
 
@@ -76,7 +83,7 @@ iLoveIMG Watermark plugin can optimize images in JPG, PNG and GIF format.
 
 **Do you have an API REST?**
 
-Yes, in fact this plugin is powered by our API. And you can integrate our image optimization tools into your software apps too! Learn more about [iLoveIMG API for developers](https://iloveapi.com).
+Yes, in fact this plugin is powered by our API. And you can integrate our image optimization tools into your software apps too! Learn more about [iLoveAPI for developers](https://iloveapi.com).
 
 **Do you care about the privacy of my images?**
 
@@ -84,9 +91,16 @@ All our servers are strictly monitored as we comply with the European Data Priva
 
 Moreover, all processed files are automatically deleted from our servers after being processed in a time range of one, two and twenty-four hours (depending on your user status). You can check detailed info at our [Privacy Policy](https://www.iloveimg.com/help/privacy) and our [Terms and Conditions](https://www.iloveimg.com/help/terms)
 
+== Screenshots ==
+
+1. Account settings and tool configuration.
+2. Configure Watermark IMG.
+3. Backup available.
+4. Image listing page.
+
 == Changelog ==
 
-== 2.2.0 ==
+= 2.2.0 =
 Improved
 * Update Libraries.
 * Now IloveIMG will use credits to process the files.
@@ -96,7 +110,7 @@ Improved
 Fixed
 * When autowatermark is activated and you wanted to restore a specific file, it was watermarked again.
 
-== 2.1.0 ==
+= 2.1.0 =
 Added
 * Functionality to restore images individually.
 
@@ -108,23 +122,23 @@ Improved
 Fixed
 * Fixed a problem with restoring files and cleaning backups.
 
-== 2.0.3 ==
+= 2.0.3 =
 Added
 * Update libraries.
 * Assets files were optimized.
 
-== 2.0.2 ==
+= 2.0.2 =
 Added
 * Update iloveimg-php library
 
-== 2.0.1 ==
+= 2.0.1 =
 Added
 * Improved class loading.
 
 Fixed
 * check if key iloveimg_field_image exist.
 
-== 2.0.0 ==
+= 2.0.0 =
 Changed
 * Minimum Support WP Version to 5.3
 * Minimum Support PHP to 7.4
