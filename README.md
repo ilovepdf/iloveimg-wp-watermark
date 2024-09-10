@@ -1,186 +1,65 @@
-=== Best Watermark - Protect images on your site with iLoveIMG ===
-Plugin Name: Best Watermark - Protect images on your site with iLoveIMG
-Version: 2.2.0
-Author: iLovePDF
-Author URI: https://www.iloveimg.com/
-Contributors: iLovePDF
-Tags: watermark, image protection, photography, picture, e-commerce
-Requires at least: 5.3
-Tested up to: 6.6
-Stable tag: 2.2.0
-Requires PHP: 7.4
-License: GPLv2 or later
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
+# Best Watermark - Protect Images on Your Site with iLoveIMG
 
 Protect your site from image theft with our reliable and easy-to-use watermark plugin. Effective protection for your images.
 
-== Description ==
+## Description
 
-Protect your images from theft. Now you can get a powerful, easy to use, and reliable Watermark plugin for your image protection needs. With full automation and powerful features, iLoveIMG makes it easy to prevent unauthorized usage of your images by helping you create highly customized watermarks in just a few seconds. 
+**Best Watermark - Protect Images on Your Site with iLoveIMG** is a powerful, easy-to-use watermarking plugin designed to safeguard your images from unauthorized use. In just a few seconds, you can create highly customizable watermarks, combining image and text to prevent your images from being shared or displayed without your consent.
 
-Create custom watermarks combining image and text and protect your images from being shared or featured without owner consent.
+**Key Features:**
 
-Trust reliable developers. **Best Watermark - Protect images on your site with iLoveIMG** is brought to you by the same developers of iLoveIMG.com, popular image editor trusted by millions. 
+- **Text and Image Watermarks**: Add text or image watermarks anywhere on your photos.
+- **Extensive Customization**: Adjust typography, font size, transparency, and rotation to personalize your watermark.
+- **Batch Processing**: Watermark multiple images at once, saving time for more important tasks.
+- **Popular Image Formats Supported**: Works with JPG, PNG, and GIF formats.
+- **Media Library Protection**: Apply watermarks to images already uploaded to your WordPress media library.
+- **Restore Option**: Automatically backs up images before applying a watermark, allowing you to restore the original version if needed.
+- **Ease of Use**: Intuitive design for effortless image protection.
 
-**If you are looking for the best watermarking tool, iLoveIMG plugin comes packed with plenty of features.**
+**Advanced Capabilities:**
 
-- **Text and image watermarks** - Place image or text watermarks anywhere on your photo.
-- **Plenty of custom settings** - Adjust typography, font, size, transparency, and rotation to personalize watermark.
-- **Bulk protection** - Batch protect your images in a single click and save time for more important concerns. 
-- **Popular image formats supported** - Watermark JPG, PNG and GIF to ensure fast site navigation. 
-- **Extensive coverage** - Protect images already uploaded to Media Library.
-- **Restore option** - Image backup is created before watermark is added. 
-- **Incredibly easy to use** - Designed with ease of use in mind.
+- **Image Optimization**: Fully compatible with our Image Compression plugin to optimize images, improve page speed, and boost SEO.
+- **eCommerce Friendly**: Perfect for WooCommerce, NextGen Gallery, and other eCommerce solutions.
+- **Privacy Focused**: No data is stored or collected. Complies with GDPR.
+- **Freemium Service**: Use up to 2500 credits per month for free. Need more? Subscribe to [Premium](https://iloveapi.com/pricing) or buy a [prepaid package](https://iloveapi.com/pricing).
 
-**Beyond the basics, iLoveIMG is a fully compatible and extendable image watermarking plugin.**
+Ensure your online images are protected from unauthorized use with iLoveIMG Watermark plugin.
 
-- **Optimization option available** - Full Compatible with our Image Compressor plugin. Optimize your Wordpress images and make your site load faster to boost search engine ranking.
-- **Good for eCommerce** - Works great for eCommerce websites using WooCommerce, NextGen Gallery and other plugins for e-commerce. 
-- **Security first** - Your data is not stored nor collected on our services. We are GDPR compliant.
-- **Frequent updates** - Get a stable and frequently updated image compression plugin.
-- **Freemium service** - Freely up to 2500 credits per month. Need more? Subscribe our [Premium plan](https://iloveapi.com/pricing) or buy a [prepaid package](https://iloveapi.com/pricing) to use at your convenience.
+## Installation
 
-With online images being shared and re-shared all over the Internet, it's easy to lose track of the original author. iLoveIMG Watermark plugin helps you protect the rights of your online photos. 
+### From the WordPress Admin Panel:
+1. Navigate to **Plugins > Add New**.
+2. Search for "iLoveIMG" and click **Install Now**.
+3. After installation, activate the plugin from your **Plugins page.**
 
-== Installation ==
+### Manual Installation:
+1. Upload the `watermark-protect-images` folder to the `/wp-content/plugins/` directory.
+2. Activate the plugin through the **Plugins** menu in WordPress.
+3. Go to the plugin settings page and create a free account or log in with an existing iLoveAPI account.
+4. Configure the settings as per your requirements.
 
-1. **Click the ‘Install Now’ button**. WordPress will download and install the plugin for you. 
-2. **Wait for the success message**. A pop-up window with a link to activate the plugin will appear.
-3. **Activate the plugin**. iLoveIMG plugin can be installed on your site, but it will not work unless you activate it. So go ahead and click on the link to activate the plugin on your WordPress site.
+## Frequently Asked Questions
 
-== Frequently Asked Questions ==
+### Can I use the plugin for free?
+Yes, free users have up to 2500 credits per month. Once you reach this limit, you will need to wait until the next month or purchase credits.
 
-**Can I use the plugin for free?**
+### Can I make a one-time payment?
+Absolutely. You can buy a prepaid package with credits that never expire.
 
-Absolutely. As a free user, we let you process your first 2500 monthly credits. Once this limit is reached, you cannot watermark new images until next month unless you purchase credits.
+### What happens to my original images?
+iLoveIMG creates backups of your original images before watermarking. You can restore them anytime.
 
-**Can I make a one-time payment?**
+### Do I need coding skills to use this plugin?
+No. The plugin is designed for users of all skill levels, requiring no technical knowledge.
 
-Yes, you can. You can buy a pre-paid package, which will never expire.
+### How can I optimize my photos?
+You can install the iLoveIMG Image Compression plugin to optimize your site images for faster load times.
 
-**What happens with my original images?**
+### Which image formats are supported?
+The plugin supports watermarking for JPG, PNG, and GIF formats.
 
-iLoveIMG automatically replaces your uploaded images with an optimized version.
+### Do you have a REST API?
+Yes! This plugin is powered by our API, and you can integrate it into your own software. Learn more about the [iLoveAPI](https://iloveapi.com).
 
-**Do I need to have coding skills to use iLoveIMG Plugin?**
-
-Absolutely not. You can watermark image galleries without any coding or technical knowledge. We like to make things easy.
-
-**How can I optimize my photos?**
-
-Get Image Compression Plugin by iLoveIMG to optimize your site images and speed up your website.  
-
-**Which formats can be protected?**
-
-iLoveIMG Watermark plugin can optimize images in JPG, PNG and GIF format. 
-
-**Do you have an API REST?**
-
-Yes, in fact this plugin is powered by our API. And you can integrate our image optimization tools into your software apps too! Learn more about [iLoveIMG API for developers](https://iloveapi.com).
-
-**Do you care about the privacy of my images?**
-
-All our servers are strictly monitored as we comply with the European Data Privacy Regulation, one of the highest standards in the EU.  All uploaded files use https/SSL and include our end-to-end encryption for further privacy of your data. 
-
-Moreover, all processed files are automatically deleted from our servers after being processed in a time range of one, two and twenty-four hours (depending on your user status). You can check detailed info at our [Privacy Policy](https://www.iloveimg.com/help/privacy) and our [Terms and Conditions](https://www.iloveimg.com/help/terms)
-
-== Changelog ==
-
-== 2.2.0 ==
-Improved
-* Update Libraries.
-* Now IloveIMG will use credits to process the files.
-* Now iloveimg accounts have been migrated to ilovepdf.
-* Improved the function to restore all files.
-
-Fixed
-* When autowatermark is activated and you wanted to restore a specific file, it was watermarked again.
-
-== 2.1.0 ==
-Added
-* Functionality to restore images individually.
-
-Improved
-* Update Libraries.
-* Time limit is set for PHP when it is less than 300.
-* On the individual page of a file, iloveimg watermark buttons are now displayed whenever the file is a IMAGE.
-
-Fixed
-* Fixed a problem with restoring files and cleaning backups.
-
-== 2.0.3 ==
-Added
-* Update libraries.
-* Assets files were optimized.
-
-== 2.0.2 ==
-Added
-* Update iloveimg-php library
-
-== 2.0.1 ==
-Added
-* Improved class loading.
-
-Fixed
-* check if key iloveimg_field_image exist.
-
-== 2.0.0 ==
-Changed
-* Minimum Support WP Version to 5.3
-* Minimum Support PHP to 7.4
-* Support WP 6.4.1
-
-Fixed
-* catch processing error for php 8.
-
-= 1.0.4 =
-Changed
-* Formatting and comment files according to php/wordpress standards.
-* remove comments.
-* dirname() to __DIR__ constant.
-* constant names in uppercase.
-* function names is not snake case format.
-* classes name with prefix and capital letter.
-* variables name is not snake case  format and include prefix.
-* classes files rename.
-* Use Yoda Conditions to check.
-* hook names with prefix.
-* Increment operators.
-* gmdate() instead date().
-* change from json_encode() to wp_json_encode().
-* change from unlink() to wp_delete_file().
-* Use WP_Filesystem.
-* Update iloveimg-php library to V1.1.16
-
-Added
-* missing documentation.
-* Missing Domain text.
-* Escape/sanitize data.
-* using strict comparison for in_array.
-
-Fixed
-* Logical operator "and" changed to "&&"
-* Logical operator "or" changed to "||"
-* Visibility must be declared on method.
-* Assignments must be the first block of code on a line.
-* Loose comparisons are not allowed.
-* Fix conversion from number string to int.
-* Check if superglobal variables exist.
-* name of function.
-* Error checking.
-* Noce verification.
-* Serialized data has known vulnerability problems with Object Injection. Changed to JSON Encode.
-* Variables $height, $width, $options_value, $ilove_img_wm_is_logged not be defined.
-* Negated boolean expression is always true.
-* An infinite loop was generated. The method itself called itself every time the process failed.
-* on some servers, the $path_file variable did not contain the correct url.
-
-= 1.0.3 =
-* Synchronize repositories
-
-= 1.0.2 =
-- Fix: Bug fixes
-
-= 1.0.1 =
-
-- Fix: Bug fixes
+### How do you ensure the privacy of my images?
+We comply with the GDPR and use end-to-end encryption. Files are automatically deleted from our servers within a time range of 1 to 24 hours, depending on your user status. Read more in our [Privacy Policy](https://www.iloveimg.com/help/privacy) and [Terms and Conditions](https://www.iloveimg.com/help/terms).
