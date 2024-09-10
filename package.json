@@ -1,7 +1,7 @@
 {
   "name": "iloveimg-wp-watermark",
   "version": "1.0.0",
-  "description": "=== Best Watermark - Protect images on your site with iLoveIMG ===\r Plugin Name: Best Watermark - Protect images on your site with iLoveIMG\r Version: 2.0.3\r Author: iLovePDF\r Author URI: https://www.iloveimg.com/\r Contributors: iLovePDF\r Tags: watermark, image protection, photography, picture, e-commerce\r Requires at least: 5.3\r Tested up to: 6.4.3\r Stable tag: 2.0.3\r Requires PHP: 7.4\r License: GPLv2 or later\r License URI: https://www.gnu.org/licenses/gpl-2.0.html",
+  "description": "Best Watermark - Protect images on your site with iLoveIMG. Protect your site from image theft with our reliable and easy-to-use watermark plugin. Effective protection for your images.",
   "main": "index.js",
   "scripts": {
     "dev": "gulp"
@@ -16,6 +16,6 @@
     "gulp-sass": "^5.1.0",
     "gulp-uglify": "^3.0.2",
     "merge-stream": "^2.0.0",
-    "sass": "^1.77.8"
+    "sass": "^1.78"
   }
 }
