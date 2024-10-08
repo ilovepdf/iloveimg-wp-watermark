@@ -110,14 +110,15 @@ function ilove_img_wm_activate() {
             'iloveimg_options_watermark',
             wp_json_encode(
                 array(
-					'iloveimg_field_type'     => 'text',
-					'iloveimg_field_text'     => 'Sample',
-					'iloveimg_field_scale'    => 33,
-					'iloveimg_field_opacity'  => 1,
-					'iloveimg_field_rotation' => 0,
-					'iloveimg_field_position' => 1,
-					'iloveimg_field_sizes'    => $iloveimg_thumbnails,
-                    'iloveimg_field_backup'   => 'on',
+					'iloveimg_field_type'        => 'text',
+					'iloveimg_field_text_family' => 'Arial',
+					'iloveimg_field_text'        => 'Sample',
+					'iloveimg_field_scale'       => 33,
+					'iloveimg_field_opacity'     => 1,
+					'iloveimg_field_rotation'    => 0,
+					'iloveimg_field_position'    => 1,
+					'iloveimg_field_sizes'       => $iloveimg_thumbnails,
+                    'iloveimg_field_backup'      => 'on',
 				)
             )
         );
@@ -127,6 +128,13 @@ function ilove_img_wm_activate() {
         if ( is_serialized( $old_data ) ) {
             $old_data_serialize = unserialize( get_option( 'iloveimg_options_watermark' ) ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_unserialize
             update_option( 'iloveimg_options_watermark', wp_json_encode( $old_data_serialize ) );
+        } else {
+            $iloveimg_options_watermark = json_decode( $old_data, true );
+
+            if ( ! array_key_exists( 'iloveimg_field_text_family', $iloveimg_options_watermark ) ) {
+                $iloveimg_options_watermark['iloveimg_field_text_family'] = 'Arial';
+                update_option( 'iloveimg_options_watermark', wp_json_encode( $iloveimg_options_watermark ) );
+            }
         }
     }
 }
