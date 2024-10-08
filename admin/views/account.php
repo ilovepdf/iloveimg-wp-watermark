@@ -31,11 +31,19 @@ if ( get_option( 'iloveimg_account' ) ) {
 		)
 	);
 
-	if ( isset( $ilove_img_wm_response['response']['code'] ) && 200 === $ilove_img_wm_response['response']['code'] ) {
-		$ilove_img_wm_account          = json_decode( $ilove_img_wm_response['body'], true );
-		$ilove_img_wm_account['token'] = $ilove_img_wm_token;
-		update_option( 'iloveimg_account', wp_json_encode( $ilove_img_wm_account ) );
-	}
+    if ( ! is_wp_error( $ilove_img_wm_response ) ) {
+        if ( 200 === $ilove_img_wm_response['response']['code'] ) {
+            $ilove_img_wm_account          = json_decode( $ilove_img_wm_response['body'], true );
+            $ilove_img_wm_account['token'] = $ilove_img_wm_token;
+            update_option( 'iloveimg_account', wp_json_encode( $ilove_img_wm_account ) );
+        }
+    } else {
+        ?>
+        <div class="notice notice-error is-dismissible">
+            <p><strong>iLoveIMG</strong> - We were unable to verify the status of your iloveAPI account. Please try again later.</p>
+        </div>
+        <?php
+    }
 } elseif ( get_option( 'iloveimg_account_error' ) ) {
     $ilove_img_wm_account_error = json_decode( get_option( 'iloveimg_account_error' ), true );
     delete_option( 'iloveimg_account_error' );

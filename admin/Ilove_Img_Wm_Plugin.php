@@ -388,18 +388,33 @@ class Ilove_Img_Wm_Plugin {
                     )
                 );
 
-                if ( isset( $response['response']['code'] ) && 200 === $response['response']['code'] ) {
-                    $account = json_decode( $response['body'], true );
+                if ( ! is_wp_error( $response ) ) {
 
-                    if ( $account['files_used'] >= $account['free_files_limit'] && $account['package_files_used'] >= $account['package_files_limit'] && (int) $account['subscription_files_used'] >= $account['subscription_files_limit'] ) {
+                    if ( 200 === $response['response']['code'] ) {
+                        $account = json_decode( $response['body'], true );
+
+                        if ( $account['files_used'] >= $account['free_files_limit'] && $account['package_files_used'] >= $account['package_files_limit'] && (int) $account['subscription_files_used'] >= $account['subscription_files_limit'] ) {
+                            ?>
+                            <div class="notice notice-warning is-dismissible">
+                                <p><strong>iLoveIMG</strong> - Please you need more credits. <a href="https://iloveapi.com/pricing" target="_blank">Buy more credits</a></p>
+                            </div>
+                            <?php
+                        }
+                    } else {
                         ?>
-                        <div class="notice notice-warning is-dismissible">
-                            <p><strong>iLoveIMG</strong> - Please you need more credits. <a href="https://iloveapi.com/pricing" target="_blank">Buy more credits</a></p>
+                        <div class="notice notice-error is-dismissible">
+                            <p><strong>iLoveIMG</strong> - We were unable to verify the status of your iloveAPI account. Please try again later.</p>
                         </div>
                         <?php
                     }
+                } else {
+                    ?>
+                    <div class="notice notice-error is-dismissible">
+                        <p><strong>iLoveIMG</strong> - We were unable to verify the status of your iloveAPI account. Please try again later.</p>
+                    </div>
+                    <?php
                 }
-            }
+			}
         }
     }
 
