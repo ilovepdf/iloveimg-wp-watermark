@@ -77,8 +77,8 @@ function ilove_img_wm_add_plugin_page_settings_link( $links ) {
 		'">' . __( 'Settings', 'iloveimg-watermark' ) . '</a>';
 
     $links[] = '<a href="' .
-        admin_url( 'upload.php?page=iloveimg-media-page' ) .
-        '">' . __( 'Bulk Optimization', 'iloveimg-watermark' ) . '</a>';
+        admin_url( 'upload.php?page=iloveimg-media-watermark-page' ) .
+        '">' . __( 'Bulk Watermark', 'iloveimg-watermark' ) . '</a>';
 
 	return $links;
 }
