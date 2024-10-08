@@ -347,7 +347,7 @@ class Ilove_Img_Wm_Plugin {
      * This method is typically used to show notices in the WordPress dashboard and is called within the admin_init() method.
      */
     public function show_notices() {
-        if ( ! Ilove_Img_Wm_Resources::is_loggued() ) {
+        if ( ! Ilove_Img_Wm_Resources::is_loggued() && get_current_screen()->parent_base !== 'iloveimg-admin-page' ) {
 			?>
             <div class="notice notice-warning is-dismissible">
                 <p><strong>iLoveIMG</strong> - Please you need to be logged or registered. <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-watermark-admin-page' ) ); ?>">Go to settings</a></p>
