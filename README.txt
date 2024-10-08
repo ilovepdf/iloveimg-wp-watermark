@@ -110,6 +110,7 @@ Improved
 Fixed
 * Fixed an issue with vendor dependencies.
 * Fixed warning for key 'iloveimg_field_text_family'.
+* Fixed link and text to 'Bulk Watermark'.
 
 = 2.2.1 =
 Improved
