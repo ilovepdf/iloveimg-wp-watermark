@@ -18,7 +18,7 @@ class Ilove_Img_Wm_Plugin {
 	 * @access   public
 	 * @var      string    VERSION    The current version of the plugin.
 	 */
-    const VERSION = '2.2.1';
+    const VERSION = '2.2.2';
 
     /**
 	 * The unique identifier of this plugin.
@@ -205,7 +205,7 @@ class Ilove_Img_Wm_Plugin {
             } elseif ( 2 === (int) $status_watermark ) {
                 Ilove_Img_Wm_Resources::render_watermark_details( $attachment_id );
             } elseif ( 0 === (int) $status_watermark && ! $status_watermark ) {
-                echo 'Try again or buy more files';
+                echo 'Try again or buy more credits';
             }
         }
 
@@ -347,7 +347,7 @@ class Ilove_Img_Wm_Plugin {
      * This method is typically used to show notices in the WordPress dashboard and is called within the admin_init() method.
      */
     public function show_notices() {
-        if ( ! Ilove_Img_Wm_Resources::is_loggued() ) {
+        if ( ! Ilove_Img_Wm_Resources::is_loggued() && get_current_screen()->parent_base !== 'iloveimg-admin-page' ) {
 			?>
             <div class="notice notice-warning is-dismissible">
                 <p><strong>iLoveIMG</strong> - Please you need to be logged or registered. <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-watermark-admin-page' ) ); ?>">Go to settings</a></p>
@@ -388,18 +388,33 @@ class Ilove_Img_Wm_Plugin {
                     )
                 );
 
-                if ( isset( $response['response']['code'] ) && 200 === $response['response']['code'] ) {
-                    $account = json_decode( $response['body'], true );
+                if ( ! is_wp_error( $response ) ) {
 
-                    if ( $account['files_used'] >= $account['free_files_limit'] && $account['package_files_used'] >= $account['package_files_limit'] && (int) $account['subscription_files_used'] >= $account['subscription_files_limit'] ) {
+                    if ( 200 === $response['response']['code'] ) {
+                        $account = json_decode( $response['body'], true );
+
+                        if ( $account['files_used'] >= $account['free_files_limit'] && $account['package_files_used'] >= $account['package_files_limit'] && (int) $account['subscription_files_used'] >= $account['subscription_files_limit'] ) {
+                            ?>
+                            <div class="notice notice-warning is-dismissible">
+                                <p><strong>iLoveIMG</strong> - Please you need more credits. <a href="https://iloveapi.com/pricing" target="_blank">Buy more credits</a></p>
+                            </div>
+                            <?php
+                        }
+                    } else {
                         ?>
-                        <div class="notice notice-warning is-dismissible">
-                            <p><strong>iLoveIMG</strong> - Please you need more files. <a href="https://iloveapi.com/pricing" target="_blank">Buy more files</a></p>
+                        <div class="notice notice-error is-dismissible">
+                            <p><strong>iLoveIMG</strong> - We were unable to verify the status of your iloveAPI account. Please try again later.</p>
                         </div>
                         <?php
                     }
+                } else {
+                    ?>
+                    <div class="notice notice-error is-dismissible">
+                        <p><strong>iLoveIMG</strong> - We were unable to verify the status of your iloveAPI account. Please try again later.</p>
+                    </div>
+                    <?php
                 }
-            }
+			}
         }
     }
 

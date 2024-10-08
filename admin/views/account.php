@@ -31,11 +31,19 @@ if ( get_option( 'iloveimg_account' ) ) {
 		)
 	);
 
-	if ( isset( $ilove_img_wm_response['response']['code'] ) && 200 === $ilove_img_wm_response['response']['code'] ) {
-		$ilove_img_wm_account          = json_decode( $ilove_img_wm_response['body'], true );
-		$ilove_img_wm_account['token'] = $ilove_img_wm_token;
-		update_option( 'iloveimg_account', wp_json_encode( $ilove_img_wm_account ) );
-	}
+    if ( ! is_wp_error( $ilove_img_wm_response ) ) {
+        if ( 200 === $ilove_img_wm_response['response']['code'] ) {
+            $ilove_img_wm_account          = json_decode( $ilove_img_wm_response['body'], true );
+            $ilove_img_wm_account['token'] = $ilove_img_wm_token;
+            update_option( 'iloveimg_account', wp_json_encode( $ilove_img_wm_account ) );
+        }
+    } else {
+        ?>
+        <div class="notice notice-error is-dismissible">
+            <p><strong>iLoveIMG</strong> - We were unable to verify the status of your iloveAPI account. Please try again later.</p>
+        </div>
+        <?php
+    }
 } elseif ( get_option( 'iloveimg_account_error' ) ) {
     $ilove_img_wm_account_error = json_decode( get_option( 'iloveimg_account_error' ), true );
     delete_option( 'iloveimg_account_error' );
@@ -47,7 +55,7 @@ if ( get_option( 'iloveimg_account' ) ) {
             <div class="iloveimg_settings__overview__account__picture"></div>
             <form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>" autocomplete="off">
                 <input type="hidden" name="action" value="update_watermark" />
-                <h3>Register as iLovePDF developer</h3>
+                <h3>Register as iLoveAPI developer</h3>
                 <input type="hidden" name="iloveimg_action" value="iloveimg_action_register" />
                 <div>
                     <div style="width: 100%;">
@@ -97,7 +105,7 @@ if ( get_option( 'iloveimg_account' ) ) {
                 submit_button( 'Login' );
                 ?>
                 <div>
-                    <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-watermark-admin-page&section=register' ) ); ?>">Register as iLovePDF developer</a>
+                    <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-watermark-admin-page&section=register' ) ); ?>">Register as iLoveAPI developer</a>
                 </div>
             </form>
         </div>
