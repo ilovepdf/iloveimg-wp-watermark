@@ -205,7 +205,7 @@ class Ilove_Img_Wm_Plugin {
             } elseif ( 2 === (int) $status_watermark ) {
                 Ilove_Img_Wm_Resources::render_watermark_details( $attachment_id );
             } elseif ( 0 === (int) $status_watermark && ! $status_watermark ) {
-                echo 'Try again or buy more files';
+                echo 'Try again or buy more credits';
             }
         }
 
@@ -394,7 +394,7 @@ class Ilove_Img_Wm_Plugin {
                     if ( $account['files_used'] >= $account['free_files_limit'] && $account['package_files_used'] >= $account['package_files_limit'] && (int) $account['subscription_files_used'] >= $account['subscription_files_limit'] ) {
                         ?>
                         <div class="notice notice-warning is-dismissible">
-                            <p><strong>iLoveIMG</strong> - Please you need more files. <a href="https://iloveapi.com/pricing" target="_blank">Buy more files</a></p>
+                            <p><strong>iLoveIMG</strong> - Please you need more credits. <a href="https://iloveapi.com/pricing" target="_blank">Buy more credits</a></p>
                         </div>
                         <?php
                     }
