@@ -47,7 +47,7 @@ if ( get_option( 'iloveimg_account' ) ) {
             <div class="iloveimg_settings__overview__account__picture"></div>
             <form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>" autocomplete="off">
                 <input type="hidden" name="action" value="update_watermark" />
-                <h3>Register as iLovePDF developer</h3>
+                <h3>Register as iLoveAPI developer</h3>
                 <input type="hidden" name="iloveimg_action" value="iloveimg_action_register" />
                 <div>
                     <div style="width: 100%;">
@@ -97,7 +97,7 @@ if ( get_option( 'iloveimg_account' ) ) {
                 submit_button( 'Login' );
                 ?>
                 <div>
-                    <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-watermark-admin-page&section=register' ) ); ?>">Register as iLovePDF developer</a>
+                    <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-watermark-admin-page&section=register' ) ); ?>">Register as iLoveAPI developer</a>
                 </div>
             </form>
         </div>
