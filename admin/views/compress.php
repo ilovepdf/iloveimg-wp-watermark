@@ -31,8 +31,8 @@
             </ul>
         </div>
         <div class="iloveimg_settings__options-container">
-            <p>You can also stamp images automatically as easy as you work with all our iLoveIMG plugins. Our iLoveIMG Watermark plugin let you stamp images or customizable text into all your WordPress Media images at once or stamp only your new uploaded images. Combine it with the Compress iLoveIMG plugin to optimize your images at maximum!</p>
-            <p><a href="#" target="_blank">Discover all the Watermark iLoveIMG</a> features and install it now!</a></p>
+            <p>You can also compress images automatically just as easily as you do with all of our iLoveIMG plugins. Our Image Compressor & Optimizer - iLoveIMG plugin allows you to optimize your WordPress media images all at once or just the images you need.</p>
+            <p><a href="/wp-admin/plugin-install.php?tab=plugin-information&plugin=iloveimg" target="_blank">Discover all the Image Compressor & Optimizer - iLoveIMG</a> features and install it now!</a></p>
         </div>
     </div>
 </div><!-- .wrap -->

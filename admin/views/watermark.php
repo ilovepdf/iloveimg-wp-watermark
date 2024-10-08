@@ -52,7 +52,7 @@ use Ilove_Img_Wm\Ilove_Img_Wm_Resources;
                         <span class="slider"></span>
                     </div>
                     <label>Watermark Activated</label>
-                    <p>Activate this plugin in your WordPress dashboard. Activation will work only once you have registered and login as an iLoveIMG developer.</p>
+                    <p>Activate this plugin in your WordPress dashboard. Activation will work only once you have registered and login as an iLoveAPI developer.</p>
                 </div>
 
                 <div class="iloveimg_settings__options__field">

@@ -1,11 +1,6 @@
 <?php
 /**
- * The plugin bootstrap file
- *
- * This file is read by WordPress to generate the plugin information in the plugin
- * admin area. This file also includes all of the dependencies used by the plugin,
- * registers the activation and deactivation functions, and defines a function
- * that starts the plugin.
+ * Best Watermark - Protect images on your site with iLoveIMG
  *
  * @link              https://iloveimg.com/
  * @since             1.0.1
@@ -15,7 +10,7 @@
  * Plugin Name:       Best Watermark - Protect images on your site with iLoveIMG
  * Plugin URI:        https://iloveapi.com/
  * Description:       Protect your site from image theft with our reliable and easy-to-use watermark plugin. Effective protection for your images.
- * Version:           2.2.1
+ * Version:           2.2.2
  * Requires at least: 5.3
  * Requires PHP:      7.4
  * Author:            iLoveIMG
@@ -82,8 +77,8 @@ function ilove_img_wm_add_plugin_page_settings_link( $links ) {
 		'">' . __( 'Settings', 'iloveimg-watermark' ) . '</a>';
 
     $links[] = '<a href="' .
-        admin_url( 'upload.php?page=iloveimg-media-page' ) .
-        '">' . __( 'Bulk Optimization', 'iloveimg-watermark' ) . '</a>';
+        admin_url( 'upload.php?page=iloveimg-media-watermark-page' ) .
+        '">' . __( 'Bulk Watermark', 'iloveimg-watermark' ) . '</a>';
 
 	return $links;
 }
@@ -115,14 +110,15 @@ function ilove_img_wm_activate() {
             'iloveimg_options_watermark',
             wp_json_encode(
                 array(
-					'iloveimg_field_type'     => 'text',
-					'iloveimg_field_text'     => 'Sample',
-					'iloveimg_field_scale'    => 33,
-					'iloveimg_field_opacity'  => 1,
-					'iloveimg_field_rotation' => 0,
-					'iloveimg_field_position' => 1,
-					'iloveimg_field_sizes'    => $iloveimg_thumbnails,
-                    'iloveimg_field_backup'   => 'on',
+					'iloveimg_field_type'        => 'text',
+					'iloveimg_field_text_family' => 'Arial',
+					'iloveimg_field_text'        => 'Sample',
+					'iloveimg_field_scale'       => 33,
+					'iloveimg_field_opacity'     => 1,
+					'iloveimg_field_rotation'    => 0,
+					'iloveimg_field_position'    => 1,
+					'iloveimg_field_sizes'       => $iloveimg_thumbnails,
+                    'iloveimg_field_backup'      => 'on',
 				)
             )
         );
@@ -132,6 +128,13 @@ function ilove_img_wm_activate() {
         if ( is_serialized( $old_data ) ) {
             $old_data_serialize = unserialize( get_option( 'iloveimg_options_watermark' ) ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_unserialize
             update_option( 'iloveimg_options_watermark', wp_json_encode( $old_data_serialize ) );
+        } else {
+            $iloveimg_options_watermark = json_decode( $old_data, true );
+
+            if ( ! array_key_exists( 'iloveimg_field_text_family', $iloveimg_options_watermark ) ) {
+                $iloveimg_options_watermark['iloveimg_field_text_family'] = 'Arial';
+                update_option( 'iloveimg_options_watermark', wp_json_encode( $iloveimg_options_watermark ) );
+            }
         }
     }
 }
