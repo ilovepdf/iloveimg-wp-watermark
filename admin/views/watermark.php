@@ -181,9 +181,9 @@ use Ilove_Img_Wm\Ilove_Img_Wm_Resources;
                                             <td><input type="radio" name="iloveimg_field_position" value="6" <?php echo ( 6 === (int) $options_value['iloveimg_field_position'] ) ? 'checked' : ''; // @phpstan-ignore-line ?>></td>
                                         </tr>
                                         <tr>
-                                            <td><input type="radio" name="iloveimg_field_position" value="7" <?php echo ( 7 === $options_value['iloveimg_field_position'] ) ? 'checked' : ''; // @phpstan-ignore-line ?>></td>
-                                            <td><input type="radio" name="iloveimg_field_position" value="8" <?php echo ( 8 === $options_value['iloveimg_field_position'] ) ? 'checked' : ''; // @phpstan-ignore-line ?>></td>
-                                            <td><input type="radio" name="iloveimg_field_position" value="9" <?php echo ( 9 === $options_value['iloveimg_field_position'] ) ? 'checked' : ''; // @phpstan-ignore-line ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="7" <?php echo ( 7 === (int) $options_value['iloveimg_field_position'] ) ? 'checked' : ''; // @phpstan-ignore-line ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="8" <?php echo ( 8 === (int) $options_value['iloveimg_field_position'] ) ? 'checked' : ''; // @phpstan-ignore-line ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="9" <?php echo ( 9 === (int) $options_value['iloveimg_field_position'] ) ? 'checked' : ''; // @phpstan-ignore-line ?>></td>
                                         </tr>
                                     </table>
                                     <input type="checkbox" name="iloveimg_field_mosaic" id="iloveimg_field_mosaic" <?php echo ( isset( $options_value['iloveimg_field_mosaic'] ) ) ? 'checked' : ''; ?>>
