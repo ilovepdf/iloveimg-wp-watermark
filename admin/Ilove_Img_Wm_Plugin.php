@@ -105,16 +105,9 @@ class Ilove_Img_Wm_Plugin {
                 true
             );
             wp_enqueue_script(
-                self::NAME . '_sweetalert2',
-                plugins_url( '/assets/js/sweetalert2.all.min.js', __DIR__ ),
-                array(),
-                '11.11.0',
-                true
-            );
-            wp_enqueue_script(
                 self::NAME . '_admin',
                 plugins_url( '/assets/js/main.min.js', __DIR__ ),
-                array( self::NAME . '_spectrum_admin', self::NAME . '_sweetalert2' ),
+                array( self::NAME . '_spectrum_admin' ),
                 self::VERSION,
                 true
             );
