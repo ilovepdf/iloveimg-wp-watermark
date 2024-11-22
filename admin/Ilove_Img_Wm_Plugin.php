@@ -423,8 +423,9 @@ class Ilove_Img_Wm_Plugin {
      */
     public function show_media_info( $post ) {
         $mime_type_accepted = array( 'image/jpeg', 'image/png', 'image/gif' );
+        $options            = json_decode( get_option( 'iloveimg_options_watermark' ), true );
 
-        if ( in_array( $post->post_mime_type, $mime_type_accepted, true ) ) {
+        if ( in_array( $post->post_mime_type, $mime_type_accepted, true ) && isset( $options['iloveimg_field_watermark_activated'] ) ) {
 
             echo '<div class="misc-pub-section iloveimg-compress-images">';
             echo '<h4>';
