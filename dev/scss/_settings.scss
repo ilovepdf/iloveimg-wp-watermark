@@ -1,12 +1,13 @@
+@use "variables" as *;
+@use "functions" as *;
+
 body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, body.admin_page_iloveimg-watermark-admin-page, body.iloveimg_page_iloveimg-compress-admin-page, body.iloveimg_page_iloveimg-watermark-options-admin-page, body.iloveimg_page_iloveimg-watermark-admin-page, body.media_page_iloveimg-media-watermark-page{
 	background-color: $background_color;
 	.iloveimg_settings{
 		h1{
 			padding: 0;
 		}
-		//width: 100%;
-		//max-width: 1200px;
-		//margin: auto;
+
 		@include placeholder {
 		    opacity: 0.5;
 			color: #555D66;
@@ -112,21 +113,13 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, bod
 						margin-right: 30px;
 						padding: 20px 24px;
 						min-height: 280px;
-						@media  (max-width: $width_small){
-							width: 100%;
-							margin-bottom: 20px;
-						}
-						*{
-							color: #626870;
-						}
+
 						h4{
 							margin: 0 0 10px 0;
 						}
 						display: flex;
 						justify-content: space-between;
-						@media  (max-width: $width_medium){
-							flex-direction: column;
-						}
+						
 						> div{
 							width: 45%;
 							@media  (max-width: $width_medium){
@@ -150,6 +143,17 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, bod
 								    }
 								}
 							}
+						}
+						@media  (max-width: $width_small){
+							width: 100%;
+							margin-bottom: 20px;
+						}
+
+						@media  (max-width: $width_medium){
+							flex-direction: column;
+						}
+						*{
+							color: #626870;
 						}
 					}
 					.iloveimg_settings__overview__account-logged__column_right{

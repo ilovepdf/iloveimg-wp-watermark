@@ -1,4 +1,6 @@
-body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, body.admin_page_iloveimg-watermark-admin-page, body.iloveimg_page_iloveimg-compress-admin-page, , body.iloveimg_page_iloveimg-watermark-options-admin-page, body.iloveimg_page_iloveimg-watermark-admin-page, body.media_page_iloveimg-media-watermark-page{
+@use "variables" as *;
+
+body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, body.admin_page_iloveimg-watermark-admin-page, body.iloveimg_page_iloveimg-compress-admin-page, body.iloveimg_page_iloveimg-watermark-options-admin-page, body.iloveimg_page_iloveimg-watermark-admin-page, body.media_page_iloveimg-media-watermark-page{
 	.iloveimg_settings{
 		.iloveimg_settings__overview{
 			.iloveimg_settings__overview__statistics{
@@ -31,9 +33,7 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, bod
 				}
 				.iloveimg_saving{
 					padding: 20px;
-					*{
-						color:  $primary_color;
-					}
+
 					p{
 						margin: 0
 					}
@@ -47,6 +47,10 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, bod
 						letter-spacing: 0;
 						line-height: 44px;
 						margin-right: 10px;
+					}
+
+					*{
+						color: $primary_color;
 					}
 				}
 				.iloveimg_settings__overview__statistics__column_right{
