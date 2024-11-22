@@ -52,7 +52,8 @@ class Ilove_Img_Wm_Serializer {
                         $posts_value[ $key ] = wp_unslash( $post_value );
                     }
                 }
-                update_option( 'iloveimg_options_watermark', wp_json_encode( $posts_value ) );
+
+                Ilove_Img_Wm_Resources::update_option( 'iloveimg_options_watermark', wp_json_encode( $posts_value ) );
             }
 
             if ( 'iloveimg_action_logout' === $_POST['iloveimg_action'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
@@ -62,7 +63,7 @@ class Ilove_Img_Wm_Serializer {
                 unset( $options['iloveimg_field_watermark_activated'] );
                 unset( $options['iloveimg_field_autowatermark'] );
                 unset( $options['iloveimg_field_resize_full'] );
-                update_option( 'iloveimg_options_watermark', wp_json_encode( $options ) );
+                Ilove_Img_Wm_Resources::update_option( 'iloveimg_options_watermark', wp_json_encode( $options ) );
             }
 
             if ( 'iloveimg_action_login' === $_POST['iloveimg_action'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
@@ -80,14 +81,14 @@ class Ilove_Img_Wm_Serializer {
                     )
                 );
                 if ( wp_remote_retrieve_response_code( $response ) === 200 ) {
-                    update_option( 'iloveimg_account', $response['body'] );
-                    update_option( 'iloveimg_user_is_migrated', 1 );
+                    Ilove_Img_Wm_Resources::update_option( 'iloveimg_account', $response['body'] );
+                    Ilove_Img_Wm_Resources::update_option( 'iloveimg_user_is_migrated', 1 );
                     $options                                       = json_decode( get_option( 'iloveimg_options_watermark' ), true );
                     $options['iloveimg_field_watermark_activated'] = 1;
                     $options['iloveimg_field_autowatermark']       = 1;
-                    update_option( 'iloveimg_options_watermark', wp_json_encode( $options ) );
+                    Ilove_Img_Wm_Resources::update_option( 'iloveimg_options_watermark', wp_json_encode( $options ) );
                 } else {
-                    update_option(
+                    Ilove_Img_Wm_Resources::update_option(
                         'iloveimg_account_error',
                         wp_json_encode(
                             array(
@@ -120,27 +121,27 @@ class Ilove_Img_Wm_Serializer {
                     if ( get_option( $key ) ) {
                         $num = (int) get_option( $key );
                         ++$num;
-                        update_option( $key, $num );
+                        Ilove_Img_Wm_Resources::update_option( $key, $num );
                     } else {
-                        update_option( $key, 1 );
+                        Ilove_Img_Wm_Resources::update_option( $key, 1 );
                     }
                     if ( (int) get_option( $key ) <= 3 ) {
-                        update_option( 'iloveimg_account', $response['body'] );
+                        Ilove_Img_Wm_Resources::update_option( 'iloveimg_account', $response['body'] );
                         $options                                       = json_decode( get_option( 'iloveimg_options_watermark' ), true );
                         $options['iloveimg_field_watermark_activated'] = 1;
                         $options['iloveimg_field_autowatermark']       = 1;
-                        update_option( 'iloveimg_options_watermark', wp_json_encode( $options ) );
+                        Ilove_Img_Wm_Resources::update_option( 'iloveimg_options_watermark', wp_json_encode( $options ) );
                     } else {
-                        update_option( 'iloveimg_account_error', wp_json_encode( array( 'action' => 'register_limit' ) ) );
+                        Ilove_Img_Wm_Resources::update_option( 'iloveimg_account_error', wp_json_encode( array( 'action' => 'register_limit' ) ) );
                     }
                 } else {
-                    update_option(
+                    Ilove_Img_Wm_Resources::update_option(
                         'iloveimg_account_error',
                         wp_json_encode(
                             array(
-                                'action' => 'register',
-                                'email'  => sanitize_email( wp_unslash( $_POST['iloveimg_field_email'] ) ), // phpcs:ignore WordPress.Security.NonceVerification.Missing
-                                'name'   => sanitize_text_field( wp_unslash( $_POST['iloveimg_field_name'] ) ), // phpcs:ignore WordPress.Security.NonceVerification.Missing
+								'action' => 'register',
+								'email'  => sanitize_email( wp_unslash( $_POST['iloveimg_field_email'] ) ), // phpcs:ignore WordPress.Security.NonceVerification.Missing
+                            'name'       => sanitize_text_field( wp_unslash( $_POST['iloveimg_field_name'] ) ), // phpcs:ignore WordPress.Security.NonceVerification.Missing
                             )
                         )
                     );
@@ -151,7 +152,8 @@ class Ilove_Img_Wm_Serializer {
                 if ( ! isset( $_POST['iloveimg_field_proyect'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
                     $this->redirect();
                 }
-                update_option( 'iloveimg_proyect', sanitize_text_field( wp_unslash( $_POST['iloveimg_field_proyect'] ) ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
+
+                Ilove_Img_Wm_Resources::update_option( 'iloveimg_proyect', sanitize_text_field( wp_unslash( $_POST['iloveimg_field_proyect'] ) ) );// phpcs:ignore WordPress.Security.NonceVerification.Missing
             }
 		}
 

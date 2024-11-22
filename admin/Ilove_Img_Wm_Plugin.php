@@ -259,7 +259,7 @@ class Ilove_Img_Wm_Plugin {
                 $_wm_options                                 = json_decode( get_option( 'iloveimg_options_watermark' ), true );
                 $_wm_options['iloveimg_field_autowatermark'] = 1;
 
-                update_option( 'iloveimg_options_watermark', wp_json_encode( $_wm_options ) );
+                Ilove_Img_Wm_Resources::update_option( 'iloveimg_options_watermark', wp_json_encode( $_wm_options ) );
                 delete_option( 'iloveimg_options_is_watermark_image' );
         }
 
@@ -275,8 +275,8 @@ class Ilove_Img_Wm_Plugin {
         $_wm_options = json_decode( get_option( 'iloveimg_options_watermark' ), true );
         unset( $_wm_options['iloveimg_field_autowatermark'] );
 
-        update_option( 'iloveimg_options_watermark', wp_json_encode( $_wm_options ) );
-        update_option( 'iloveimg_options_is_watermark_image', 1 );
+        Ilove_Img_Wm_Resources::update_option( 'iloveimg_options_watermark', wp_json_encode( $_wm_options ) );
+        Ilove_Img_Wm_Resources::update_option( 'iloveimg_options_is_watermark_image', 1 );
 
         wp_die();
     }
@@ -528,7 +528,7 @@ class Ilove_Img_Wm_Plugin {
         if ( false !== $key_founded ) {
             unset( $images_restore[ $key_founded ] );
             wp_delete_file( ILOVE_IMG_WM_BACKUP_FOLDER . basename( get_attached_file( $attachment_id ) ) );
-            update_option( 'iloveimg_images_to_restore', wp_json_encode( $images_restore ) );
+            Ilove_Img_Wm_Resources::update_option( 'iloveimg_images_to_restore', wp_json_encode( $images_restore ) );
         }
 
         wp_send_json_success( __( 'It was restored correctly', 'iloveimg-watermark' ), 200 );
