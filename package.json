@@ -4,7 +4,8 @@
   "description": "Best Watermark - Protect images on your site with iLoveIMG. Protect your site from image theft with our reliable and easy-to-use watermark plugin. Effective protection for your images.",
   "main": "index.js",
   "scripts": {
-    "dev": "gulp"
+    "dev": "NODE_ENV='development' gulp",
+    "build": "NODE_ENV='production' gulp"
   },
   "author": "ilovepdf",
   "license": "ISC",
@@ -12,10 +13,12 @@
     "gulp": "^5.0.0",
     "gulp-autoprefixer": "^9.0.0",
     "gulp-clean-css": "^4.3.0",
+    "gulp-if": "^3.0.0",
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^5.1.0",
+    "gulp-sourcemaps": "^3.0.0",
     "gulp-uglify": "^3.0.2",
     "merge-stream": "^2.0.0",
-    "sass": "^1.79"
+    "sass": "^1.81"
   }
 }
