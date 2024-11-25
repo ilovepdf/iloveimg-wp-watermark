@@ -10,7 +10,7 @@
  * Plugin Name:       Best Watermark - Protect images on your site with iLoveIMG
  * Plugin URI:        https://iloveapi.com/
  * Description:       Protect your site from image theft with our reliable and easy-to-use watermark plugin. Effective protection for your images.
- * Version:           2.2.3
+ * Version:           2.2.4
  * Requires at least: 5.3
  * Requires PHP:      7.4
  * Author:            iLoveIMG
@@ -43,6 +43,7 @@ define( 'ILOVE_IMG_WM_BACKUP_FOLDER', $ilove_img_wm_upload_path['basedir'] . '/i
 define( 'ILOVE_IMG_WM_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
 use Ilove_Img_Wm\Ilove_Img_Wm_Plugin;
+use Ilove_Img_Wm\Ilove_Img_Wm_Resources;
 use Ilove_Img_Wm\Ilove_Img_Wm_Serializer;
 use Ilove_Img_Wm\Ilove_Img_Wm_Submenu;
 use Ilove_Img_Wm\Ilove_Img_Wm_Submenu_Page;
@@ -92,7 +93,7 @@ add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'ilove_img_wm_
  * 2. Sets default options for watermarking if they don't already exist in the WordPress options.
  */
 function ilove_img_wm_activate() {
-    add_option( 'ilove_img_wm_db_version', ILOVE_IMG_WM_COMPRESS_DB_VERSION );
+    Ilove_Img_Wm_Resources::update_option( 'ilove_img_wm_db_version', ILOVE_IMG_WM_COMPRESS_DB_VERSION, true );
 
     if ( ! file_exists( ILOVE_IMG_WM_BACKUP_FOLDER ) ) {
         wp_mkdir_p( ILOVE_IMG_WM_BACKUP_FOLDER );
@@ -106,7 +107,7 @@ function ilove_img_wm_activate() {
             $iloveimg_thumbnails = array( 'full' );
         }
 
-        update_option(
+        Ilove_Img_Wm_Resources::update_option(
             'iloveimg_options_watermark',
             wp_json_encode(
                 array(
@@ -118,22 +119,23 @@ function ilove_img_wm_activate() {
 					'iloveimg_field_rotation'    => 0,
 					'iloveimg_field_position'    => 1,
 					'iloveimg_field_sizes'       => $iloveimg_thumbnails,
-                    'iloveimg_field_backup'      => 'on',
-				)
-            )
+					'iloveimg_field_backup'      => 'on',
+                )
+            ),
+            true
         );
     } else {
         $old_data = get_option( 'iloveimg_options_watermark' );
 
         if ( is_serialized( $old_data ) ) {
             $old_data_serialize = unserialize( get_option( 'iloveimg_options_watermark' ) ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_unserialize
-            update_option( 'iloveimg_options_watermark', wp_json_encode( $old_data_serialize ) );
+            Ilove_Img_Wm_Resources::update_option( 'iloveimg_options_watermark', wp_json_encode( $old_data_serialize ), true );
         } else {
             $iloveimg_options_watermark = json_decode( $old_data, true );
 
             if ( ! array_key_exists( 'iloveimg_field_text_family', $iloveimg_options_watermark ) ) {
                 $iloveimg_options_watermark['iloveimg_field_text_family'] = 'Arial';
-                update_option( 'iloveimg_options_watermark', wp_json_encode( $iloveimg_options_watermark ) );
+                Ilove_Img_Wm_Resources::update_option( 'iloveimg_options_watermark', wp_json_encode( $iloveimg_options_watermark ), true );
             }
         }
     }

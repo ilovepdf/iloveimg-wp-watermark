@@ -1,9 +1,7 @@
+@use "form_elements";
+@use "settings";
+@use "media";
+@use "overview";
+@use "preview";
+@use "spectrum";
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
-@import "variables";
-@import "functions";
-@import "form_elements";
-@import "settings";
-@import "media";
-@import "overview";
-@import "preview";
-@import "spectrum";

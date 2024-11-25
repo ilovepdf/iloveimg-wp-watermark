@@ -87,7 +87,7 @@ class Ilove_Img_Wm_Process {
 
                     $images_restore = array_unique( $images_restore );
 
-					update_option( 'iloveimg_images_to_restore', wp_json_encode( $images_restore, JSON_FORCE_OBJECT ) );
+                    Ilove_Img_Wm_Resources::update_option( 'iloveimg_images_to_restore', wp_json_encode( $images_restore, JSON_FORCE_OBJECT ) );
                 }
 
                 foreach ( $_sizes as $_size ) {
@@ -107,7 +107,7 @@ class Ilove_Img_Wm_Process {
                         $document_root = str_replace( sanitize_url( wp_unslash( $_SERVER['SCRIPT_NAME'] ) ), '', sanitize_url( wp_unslash( $_SERVER['SCRIPT_FILENAME'] ) ) );
                     }
 
-                    $path_file = $document_root . str_replace( site_url(), '', $image[0] );
+                    $path_file = $document_root . str_replace( site_url( '', $parse_image_url['scheme'] ), '', $image[0] );
 
                     if ( in_array( $_size, $_wm_options['iloveimg_field_sizes'], true ) ) {
 
