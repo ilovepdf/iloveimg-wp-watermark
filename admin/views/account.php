@@ -1,4 +1,6 @@
 <?php
+use Ilove_Img_Wm\Ilove_Img_Wm_Resources;
+
 $ilove_img_wm_is_logged = false;
 $ilove_img_wm_account   = array();
 
@@ -12,7 +14,7 @@ if ( get_option( 'iloveimg_account' ) ) {
         unset( $options['iloveimg_field_watermark_activated'] );
         unset( $options['iloveimg_field_autowatermark'] );
         unset( $options['iloveimg_field_resize_full'] );
-        update_option( 'iloveimg_options_watermark', wp_json_encode( $ilove_img_wm_options ) );
+        Ilove_Img_Wm_Resources::update_option( 'iloveimg_options_watermark', wp_json_encode( $ilove_img_wm_options ) );
 
         wp_safe_redirect( admin_url( 'admin.php?page=iloveimg-watermark-admin-page' ) );
         exit();
@@ -21,7 +23,7 @@ if ( get_option( 'iloveimg_account' ) ) {
 	$ilove_img_wm_account = json_decode( get_option( 'iloveimg_account' ), true );
 
 	$ilove_img_wm_is_logged = true;
-	update_option( 'iloveimg_first_loggued', 1 );
+    Ilove_Img_Wm_Resources::update_option( 'iloveimg_first_loggued', 1 );
 	$ilove_img_wm_token = $ilove_img_wm_account['token'];
 
 	$ilove_img_wm_response = wp_remote_get(
@@ -35,7 +37,7 @@ if ( get_option( 'iloveimg_account' ) ) {
         if ( 200 === $ilove_img_wm_response['response']['code'] ) {
             $ilove_img_wm_account          = json_decode( $ilove_img_wm_response['body'], true );
             $ilove_img_wm_account['token'] = $ilove_img_wm_token;
-            update_option( 'iloveimg_account', wp_json_encode( $ilove_img_wm_account ) );
+            Ilove_Img_Wm_Resources::update_option( 'iloveimg_account', wp_json_encode( $ilove_img_wm_account ) );
         }
     } else {
         ?>

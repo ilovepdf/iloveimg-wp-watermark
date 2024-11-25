@@ -181,9 +181,9 @@ use Ilove_Img_Wm\Ilove_Img_Wm_Resources;
                                             <td><input type="radio" name="iloveimg_field_position" value="6" <?php echo ( 6 === (int) $options_value['iloveimg_field_position'] ) ? 'checked' : ''; // @phpstan-ignore-line ?>></td>
                                         </tr>
                                         <tr>
-                                            <td><input type="radio" name="iloveimg_field_position" value="7" <?php echo ( 7 === $options_value['iloveimg_field_position'] ) ? 'checked' : ''; // @phpstan-ignore-line ?>></td>
-                                            <td><input type="radio" name="iloveimg_field_position" value="8" <?php echo ( 8 === $options_value['iloveimg_field_position'] ) ? 'checked' : ''; // @phpstan-ignore-line ?>></td>
-                                            <td><input type="radio" name="iloveimg_field_position" value="9" <?php echo ( 9 === $options_value['iloveimg_field_position'] ) ? 'checked' : ''; // @phpstan-ignore-line ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="7" <?php echo ( 7 === (int) $options_value['iloveimg_field_position'] ) ? 'checked' : ''; // @phpstan-ignore-line ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="8" <?php echo ( 8 === (int) $options_value['iloveimg_field_position'] ) ? 'checked' : ''; // @phpstan-ignore-line ?>></td>
+                                            <td><input type="radio" name="iloveimg_field_position" value="9" <?php echo ( 9 === (int) $options_value['iloveimg_field_position'] ) ? 'checked' : ''; // @phpstan-ignore-line ?>></td>
                                         </tr>
                                     </table>
                                     <input type="checkbox" name="iloveimg_field_mosaic" id="iloveimg_field_mosaic" <?php echo ( isset( $options_value['iloveimg_field_mosaic'] ) ) ? 'checked' : ''; ?>>
@@ -250,9 +250,9 @@ use Ilove_Img_Wm\Ilove_Img_Wm_Resources;
                         <label>Restore Original Images</label>
                         <p>All backup images can be restored. This action will recover the original images as they were before being stamped with Watermark or Compress. <span style="color: red;">Warning: Any changes made AFTER Watermark/Compress would be also restored.</span></p>
                         <p>You can also clear all your backup images to free memory space. <span style="color: red;">Warning: Clear backups will prevent you to restore original images.</span></p>
-                            <button type="button" class="button button-style-iloveimg" id="iloveimg_restore_all" <?php echo ( isset( $options_value['iloveimg_field_backup'] ) && Ilove_Img_Wm_Resources::is_there_backup() ) ? '' : 'disabled'; ?>>Restore All</button>
+                            <button type="button" class="button button-style-iloveimg" id="iloveimg_restore_all" <?php echo ( isset( $options_value['iloveimg_field_backup'] ) && Ilove_Img_Wm_Resources::get_size_backup() ) ? '' : 'disabled'; ?>>Restore All</button>
                         
-                            <button type="button" class="button button-remove button-style-iloveimg" id="iloveimg_clear_backup" <?php echo ( isset( $options_value['iloveimg_field_backup'] ) && Ilove_Img_Wm_Resources::is_there_backup() ) ? '' : 'disabled'; ?>>Clear backup</button>
+                            <button type="button" class="button button-remove button-style-iloveimg" id="iloveimg_clear_backup" <?php echo ( isset( $options_value['iloveimg_field_backup'] ) && Ilove_Img_Wm_Resources::get_size_backup() ) ? '' : 'disabled'; ?>>Clear backup</button>
                             <span><?php echo (float) round( Ilove_Img_Wm_Resources::get_size_backup(), 2 ); ?> MB</span>
                     </div>
                 </div>
