@@ -18,7 +18,7 @@ class Ilove_Img_Wm_Plugin {
 	 * @access   public
 	 * @var      string    VERSION    The current version of the plugin.
 	 */
-    const VERSION = '2.2.4';
+    const VERSION = '2.2.5';
 
     /**
 	 * The unique identifier of this plugin.
@@ -247,6 +247,13 @@ class Ilove_Img_Wm_Plugin {
      * @return array Modified metadata for the attachment.
      */
     public function process_attachment( $metadata, $attachment_id ) {
+        $file                 = get_post( $attachment_id );
+        $accepted_file_format = array( 'image/jpeg', 'image/jpg', 'image/png', 'image/gif' );
+
+        if ( ! in_array( $file->post_mime_type, $accepted_file_format, true ) ) {
+            return $metadata;
+        }
+
         update_post_meta( $attachment_id, 'iloveimg_status_watermark', 0 ); // status no watermarked
 
         $images_restore = null !== get_option( 'iloveimg_images_to_restore', null ) ? json_decode( get_option( 'iloveimg_images_to_restore' ), true ) : array();
