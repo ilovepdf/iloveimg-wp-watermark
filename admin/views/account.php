@@ -80,7 +80,7 @@ if ( get_option( 'iloveimg_account' ) ) {
                 </div>
                 <?php
                 wp_nonce_field();
-                submit_button( 'Register' );
+                submit_button( __( 'Register', 'iloveimg-watermark' ) );
                 ?>
                 <div>
                     <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-watermark-admin-page' ) ); ?>"><?php esc_html_e( 'Login to your account', 'iloveimg-watermark' ); ?></a>
