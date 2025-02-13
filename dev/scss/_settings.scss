@@ -231,6 +231,12 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, bod
 							border-radius: 2px;
 							svg{
 								margin-right: 10px;
+								min-width: max-content;
+							}
+
+							span {
+								line-height: normal;
+								text-wrap: auto;
 							}
 						}
 						&.iloveimg_settings__options-nav__selected,
