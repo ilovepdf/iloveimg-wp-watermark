@@ -53,8 +53,8 @@ class Ilove_Img_Wm_Submenu {
 
 			add_submenu_page(
 				'iloveimg-admin-page',
-				'Compress settings',
-				'Compress settings',
+				__( 'Compress settings', 'iloveimg-watermark' ),
+				__( 'Compress settings', 'iloveimg-watermark' ),
 				'manage_options',
 				'iloveimg-compress-admin-page',
 				array(
@@ -65,8 +65,8 @@ class Ilove_Img_Wm_Submenu {
 
 			add_submenu_page(
 				'iloveimg-admin-page',
-				'Watermark settings',
-				'Watermark settings',
+				__( 'Watermark settings', 'iloveimg-watermark' ),
+				__( 'Watermark settings', 'iloveimg-watermark' ),
 				'manage_options',
 				'iloveimg-watermark-admin-page',
 				array(
@@ -79,8 +79,8 @@ class Ilove_Img_Wm_Submenu {
 			remove_submenu_page( 'iloveimg-admin-page', 'iloveimg-watermark-admin-page' );
 			add_submenu_page(
 				'iloveimg-admin-page',
-				'Watermark settings',
-				'Watermark settings',
+				__( 'Watermark settings', 'iloveimg-watermark' ),
+				__( 'Watermark settings', 'iloveimg-watermark' ),
 				'manage_options',
 				'iloveimg-watermark-admin-page',
 				array(
@@ -93,7 +93,7 @@ class Ilove_Img_Wm_Submenu {
 
 		add_media_page(
 			'iLoveIMG Media',
-			'Bulk Watermark',
+			__( 'Bulk Watermark', 'iloveimg-watermark' ),
 			'manage_options',
 			'iloveimg-media-watermark-page',
 			array(
@@ -111,6 +111,6 @@ class Ilove_Img_Wm_Submenu {
 	 * The provided example simply displays a text message, "This is the page content," which should be replaced with the actual settings and user interface elements for your plugin.
 	 */
 	public function settings_page() {
-		echo 'This is the page content';
+		esc_html_e( 'This is the page content', 'iloveimg-watermark' );
 	}
 }
