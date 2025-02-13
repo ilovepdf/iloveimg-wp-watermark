@@ -220,6 +220,10 @@ msgstr "Contraseña"
 msgid "Confirm Password"
 msgstr "Confirmar Contraseña"
 
+#: admin/views/account.php:83
+msgid "Register"
+msgstr "Registrarse"
+
 #: admin/views/account.php:86 admin/views/account.php:96
 msgid "Login to your account"
 msgstr "Inicie sesión en su cuenta"
@@ -344,7 +348,7 @@ msgstr "Compresor & Optimizador de Imágenes - iLoveIMG"
 
 #: admin/views/compress.php:35
 msgid "and install it now!"
-msgstr "e instalado ¡ahora!"
+msgstr "e instalalo ¡ahora!"
 
 #: admin/views/media-bulk.php:15
 msgid "Watermark all"

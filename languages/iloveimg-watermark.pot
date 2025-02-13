@@ -214,6 +214,10 @@ msgstr ""
 msgid "Confirm Password"
 msgstr ""
 
+#: admin/views/account.php:83
+msgid "Register"
+msgstr ""
+
 #: admin/views/account.php:86
 #: admin/views/account.php:96
 msgid "Login to your account"
