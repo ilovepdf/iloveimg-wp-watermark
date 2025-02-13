@@ -47,6 +47,7 @@ use Ilove_Img_Wm\Ilove_Img_Wm_Resources;
 use Ilove_Img_Wm\Ilove_Img_Wm_Serializer;
 use Ilove_Img_Wm\Ilove_Img_Wm_Submenu;
 use Ilove_Img_Wm\Ilove_Img_Wm_Submenu_Page;
+use Ilove_Img_Wm\Ilove_Img_Wm_I18n;
 
 /**
  * Initialize admin settings
@@ -60,6 +61,9 @@ function ilove_img_wm_custom_admin_settings() {
 
     $plugin = new Ilove_Img_Wm_Submenu( new Ilove_Img_Wm_Submenu_Page() );
     $plugin->init();
+
+    $i18 = new Ilove_Img_Wm_I18n();
+    $i18->init();
 }
 add_action( 'plugins_loaded', 'ilove_img_wm_custom_admin_settings' );
 
