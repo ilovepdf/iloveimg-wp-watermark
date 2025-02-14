@@ -19,7 +19,8 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, bod
 			margin-bottom: 20px;
 			display: flex;
 			overflow: hidden;
-			width: 290px;
+			width: auto;
+			max-width: 450px;
 			label{
 				font-size: 13px;
 				line-height: 28px;
