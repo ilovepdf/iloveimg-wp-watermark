@@ -189,10 +189,10 @@ class Ilove_Img_Wm_Process {
             update_post_meta( $images_id, 'iloveimg_status_watermark', 0 );
             error_log('Exception on watermark Method: ' . print_r($e, true)); // phpcs:ignore
 
-            $error_msg = 'There was a problem processing your image.';
+            $error_msg = __( 'There was a problem processing your image.', 'iloveimg-watermark' );
 
             if ( 401 === $e->getCode() ) {
-                $error_msg = 'Check your credentials in the plugin settings page. If you recently deleted a project in your iloveapi account, try switching to another project to correctly save your API Keys.';
+                $error_msg = __( 'Check your credentials in the plugin settings page. If you recently deleted a project in your iloveapi account, try switching to another project to correctly save your API Keys.', 'iloveimg-watermark' );
             }
 
             return array(

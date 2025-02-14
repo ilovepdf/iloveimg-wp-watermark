@@ -12,7 +12,7 @@ $ilove_img_wm_test_list_table->prepare_items();
         <?php if ( $ilove_img_wm_test_list_table->total_items ) : ?>
             <div class="iloveimg_settings__overview__compressAll">
                 <button type="button" id="iloveimg_allcompress" class="iloveimg-compress-all button button-small button-primary">
-                    <span>Watermark all</span>
+                    <span><?php esc_html_e( 'Watermark all', 'iloveimg-watermark' ); ?></span>
                     <div class="iloveimg-compress-all__percent" style="width: 0%;"></div>
                 </button>
             </div>

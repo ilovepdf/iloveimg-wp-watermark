@@ -99,10 +99,10 @@ class Ilove_Img_Wm_Media_List_Table extends WP_List_Table {
     public function get_columns() {
         $columns = array(
             'cb'          => '<input type="checkbox" />', // Render a checkbox instead of text
-            'file'        => 'File',
-            'post_author' => 'Author',
-            'post_date'   => 'Date',
-            'status'      => 'Status',
+            'file'        => __( 'File', 'iloveimg-watermark' ),
+            'post_author' => __( 'Author', 'iloveimg-watermark' ),
+            'post_date'   => __( 'Date', 'iloveimg-watermark' ),
+            'status'      => __( 'Status', 'iloveimg-watermark' ),
         );
 
         return $columns;
@@ -134,7 +134,7 @@ class Ilove_Img_Wm_Media_List_Table extends WP_List_Table {
      */
     protected function get_bulk_actions() {
         $actions = array(
-            'delete' => 'Delete',
+            'delete' => __( 'Delete', 'iloveimg-watermark' ),
         );
 
         return $actions;
@@ -151,7 +151,7 @@ class Ilove_Img_Wm_Media_List_Table extends WP_List_Table {
 
         // Detect when a bulk action is being triggered...
         if ( 'delete' === $this->current_action() ) {
-            wp_die( 'Items deleted (or they would be if we had items to delete)!' );
+            wp_die( esc_html__( 'Items deleted (or they would be if we had items to delete)!', 'iloveimg-watermark' ) );
         }
     }
 

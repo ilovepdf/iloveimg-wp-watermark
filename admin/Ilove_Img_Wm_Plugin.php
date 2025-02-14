@@ -18,7 +18,7 @@ class Ilove_Img_Wm_Plugin {
 	 * @access   public
 	 * @var      string    VERSION    The current version of the plugin.
 	 */
-    const VERSION = '2.2.5';
+    const VERSION = '2.2.6';
 
     /**
 	 * The unique identifier of this plugin.
@@ -198,7 +198,7 @@ class Ilove_Img_Wm_Plugin {
             } elseif ( 2 === (int) $status_watermark ) {
                 Ilove_Img_Wm_Resources::render_watermark_details( $attachment_id );
             } elseif ( 0 === (int) $status_watermark && ! $status_watermark ) {
-                echo 'Try again or buy more credits';
+                esc_html_e( 'Try again or buy more credits', 'iloveimg-watermark' );
             }
         }
 
@@ -350,7 +350,7 @@ class Ilove_Img_Wm_Plugin {
         if ( ! Ilove_Img_Wm_Resources::is_loggued() && get_current_screen()->parent_base !== 'iloveimg-admin-page' ) {
 			?>
             <div class="notice notice-warning is-dismissible">
-                <p><strong>iLoveIMG</strong> - Please you need to be logged or registered. <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-watermark-admin-page' ) ); ?>">Go to settings</a></p>
+                <p><strong>iLoveIMG</strong> - <?php esc_html_e( 'Please you need to be logged or registered.', 'iloveimg-watermark' ); ?> <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-watermark-admin-page' ) ); ?>"><?php esc_html_e( 'Go to settings', 'iloveimg-watermark' ); ?></a></p>
             </div>
             <?php
         }
@@ -360,17 +360,17 @@ class Ilove_Img_Wm_Plugin {
             if ( 'login' === $iloveimg_account_error['action'] ) :
                 ?>
                 <div class="notice notice-error is-dismissible">
-                    <p>Your email or password is wrong.</p>
+                    <p><?php esc_html_e( 'Your email or password is wrong.', 'iloveimg-watermark' ); ?></p>
                 </div>
             <?php endif; ?>
             <?php if ( 'register' === $iloveimg_account_error['action'] ) : ?>
                 <div class="notice notice-error is-dismissible">
-                    <p>This email address has already been taken.</p>
+                    <p><?php esc_html_e( 'This email address has already been taken.', 'iloveimg-watermark' ); ?></p>
                 </div>
             <?php endif; ?>
             <?php if ( 'register_limit' === $iloveimg_account_error['action'] ) : ?>
                 <div class="notice notice-error is-dismissible">
-                    <p>You have reached limit of different users to use this WordPress plugin. Please relogin with one of your existing users.</p>
+                    <p><?php esc_html_e( 'You have reached limit of different users to use this WordPress plugin. Please relogin with one of your existing users.', 'iloveimg-watermark' ); ?></p>
                 </div>
             <?php endif; ?>
             <?php
@@ -396,21 +396,21 @@ class Ilove_Img_Wm_Plugin {
                         if ( $account['files_used'] >= $account['free_files_limit'] && $account['package_files_used'] >= $account['package_files_limit'] && (int) $account['subscription_files_used'] >= $account['subscription_files_limit'] ) {
                             ?>
                             <div class="notice notice-warning is-dismissible">
-                                <p><strong>iLoveIMG</strong> - Please you need more credits. <a href="https://iloveapi.com/pricing" target="_blank">Buy more credits</a></p>
+                                <p><strong>iLoveIMG</strong> - <?php esc_html_e( 'Please you need more credits.', 'iloveimg-watermark' ); ?> <a href="https://iloveapi.com/pricing" target="_blank"><?php esc_html_e( 'Buy more credits', 'iloveimg-watermark' ); ?></a></p>
                             </div>
                             <?php
                         }
                     } else {
                         ?>
                         <div class="notice notice-error is-dismissible">
-                            <p><strong>iLoveIMG</strong> - We were unable to verify the status of your iloveAPI account. Please try again later.</p>
+                            <p><strong>iLoveIMG</strong> - <?php esc_html_e( 'We were unable to verify the status of your iloveAPI account. Please try again later.', 'iloveimg-watermark' ); ?></p>
                         </div>
                         <?php
                     }
                 } else {
                     ?>
                     <div class="notice notice-error is-dismissible">
-                        <p><strong>iLoveIMG</strong> - We were unable to verify the status of your iloveAPI account. Please try again later.</p>
+                        <p><strong>iLoveIMG</strong> - <?php esc_html_e( 'We were unable to verify the status of your iloveAPI account. Please try again later.', 'iloveimg-watermark' ); ?></p>
                     </div>
                     <?php
                 }
@@ -436,7 +436,7 @@ class Ilove_Img_Wm_Plugin {
 
             echo '<div class="misc-pub-section iloveimg-compress-images">';
             echo '<h4>';
-            esc_html_e( 'iLoveIMG', 'iloveimg-watermark' );
+            echo esc_html( 'iLoveIMG' );
             echo '</h4>';
             echo '<div class="iloveimg-container">';
             echo '<table><tr><td>';
@@ -509,11 +509,11 @@ class Ilove_Img_Wm_Plugin {
     public function ilove_img_restore() {
 
         if ( ! isset( $_POST['_wpnonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_wpnonce'] ) ) ) ) {
-            wp_send_json_error( 'Error processing your request. Invalid Nonce code', 401 );
+            wp_send_json_error( __( 'Error processing your request. Invalid Nonce code', 'iloveimg-watermark' ), 401 );
         }
 
         if ( ! isset( $_POST['id'] ) ) {
-            wp_send_json_error( 'Error processing your request. Invalid Image ID', 400 );
+            wp_send_json_error( __( 'Error processing your request. Invalid Image ID', 'iloveimg-watermark' ), 400 );
         }
 
         $attachment_id  = intval( $_POST['id'] );
@@ -521,7 +521,7 @@ class Ilove_Img_Wm_Plugin {
         $key_founded    = array_search( $attachment_id, $images_restore, true );
 
         if ( ! in_array( $attachment_id, $images_restore, true ) ) {
-            wp_send_json_error( 'Sorry. There is no backup for this file', 404 );
+            wp_send_json_error( __( 'Sorry. There is no backup for this file', 'iloveimg-watermark' ), 404 );
         }
 
         Ilove_Img_Wm_Resources::rcopy( ILOVE_IMG_WM_BACKUP_FOLDER . basename( get_attached_file( $attachment_id ) ), get_attached_file( $attachment_id ) );
