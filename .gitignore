@@ -11,8 +11,6 @@ vendor/*
 !/vendor/psr/
 composer.lock
 package-lock.json
-dev/package-lock.json
-dev/node_modules/
 
 # Compiled Java class files
 *.class
@@ -42,3 +40,12 @@ Thumbs.db
 *.app
 *.exe
 *.war
+*.zip
+
+# Large media files
+*.mp4
+*.tiff
+*.avi
+*.flv
+*.mov
+*.wmv
