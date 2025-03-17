@@ -18,7 +18,7 @@ class Ilove_Img_Wm_Plugin {
 	 * @access   public
 	 * @var      string    VERSION    The current version of the plugin.
 	 */
-    const VERSION = '2.2.7';
+    const VERSION = '2.2.8';
 
     /**
 	 * The unique identifier of this plugin.
