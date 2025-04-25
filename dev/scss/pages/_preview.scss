@@ -1,0 +1,392 @@
+@use "variables" as *;
+@use "components" as *;
+
+body {
+	&.toplevel_page_iloveimg-admin-page,
+	&.media_page_iloveimg-media-page,
+	&.admin_page_iloveimg-watermark-admin-page,
+	&.iloveimg_page_iloveimg-compress-admin-page,
+	&.iloveimg_page_iloveimg-watermark-options-admin-page,
+	&.iloveimg_page_iloveimg-watermark-admin-page,
+	&.media_page_iloveimg-media-watermark-page {
+		.iloveimg_settings {
+			input {
+				&[type="text"],
+				&[type="number"] {
+					border-radius: 3px;
+				}
+		
+				&[type="url"] {
+					width: 241px;
+					height: 32px;
+					box-shadow: none;
+					background: $white;
+					border: 1px solid $secondary_300_color;
+					color: $secondary_color !important;
+				}
+			}
+	
+			#iloveimg_field_type {
+				position: relative;
+				height: 28px;
+				border: 1px solid $light_500_color;
+				border-radius: 3px;
+				margin-bottom: 20px;
+				display: flex;
+				overflow: hidden;
+				width: auto;
+				max-width: 450px;
+	
+				label {
+					font-size: 13px;
+					line-height: 28px;
+					color: $secondary_color;
+					display: inline-block;
+					position: relative;
+					width: 50%;
+	
+					span {
+						position: relative;
+						z-index: 10;
+						margin-left: 15px;
+					}
+				}
+	
+				input {
+					appearance: none;
+					position: absolute;
+					margin: 0;
+					top: 0;
+					height: 100%;
+					left: 0;
+					width: 100%;
+					border-radius: 0;
+					border: 0;
+					box-shadow: none;
+					background-color: $light_300_color;
+	
+					&:checked {
+						background: $primary_color;
+	
+						+span {
+							color: $white;
+						}
+	
+						&:before {
+							display: none;
+						}
+					}
+	
+				}
+	
+				button.button-secondary {
+					display: none;
+				}
+			}
+	
+			.iloveimg_settings__options__texts {
+				border: 1px solid $light_500_color;
+				margin-bottom: 20px;
+
+				&-toolbar {
+					border-bottom: 1px solid $light_500_color;
+					padding: 3px 7px;
+					display: flex;
+					align-items: center;
+	
+					>* {
+						margin: 0 2px;
+					}
+	
+					input[type="checkbox"] {
+						appearance: none;
+						border: 0;
+						background-repeat: no-repeat;
+						background-position: center center;
+						padding: 0;
+	
+						&:hover,
+						&:checked {
+							background-color: $light_300_color;
+	
+							&:before {
+								display: none;
+							}
+						}
+	
+						&:disabled {
+							background-color: transparent !important;
+						}
+	
+					}
+	
+					select {
+						width: 71px;
+						margin-right: 20px;
+					}
+	
+					#picker {
+						width: 32px;
+						height: 32px;
+						display: block;
+						background-image: url("../images/text_color.svg");
+						background-repeat: no-repeat;
+						background-position: center center;
+	
+						&:hover {
+							background-color: $light_300_color;
+						}
+					}
+	
+					#iloveimg_field_text_bold {
+						background-image: url("../images/bold.svg");
+						background-size: 10px 12px;
+						width: 32px;
+						height: 32px;
+					}
+	
+					#iloveimg_field_text_italic {
+						background-image: url("../images/italic.svg");
+						background-size: 8.5px 12px;
+						width: 32px;
+						height: 32px;
+					}
+	
+					#iloveimg_field_text_underline {
+						background-image: url("../images/underline.svg");
+						background-size: 12.4px 14px;
+						width: 32px;
+						height: 32px;
+					}
+				}
+	
+				&-container {
+					padding: 7px 14px;
+	
+					input {
+						margin: 0;
+						border: 0;
+						box-shadow: none;
+						font-size: 32px;
+						line-height: 38px;
+						height: 38px;
+						padding: 0;
+					}
+				}
+			}
+	
+			.iloveimg_settings__options__field-preview {
+				.iloveimg_settings__options__field__cols {
+					display: flex;
+	
+					@media (max-width: 1160px) {
+						flex-direction: column;
+					}
+	
+					&__1 {
+						width: 450px;
+	
+						#iloveimg_settings__watermark__preview {
+							position: relative;
+							background: url("../images/bloom-plugin.jpg") no-repeat;
+							background-size: contain;
+							height: 323px;
+							overflow: hidden;
+	
+							.iloveimg_settings__watermark__preview-texts,
+							.iloveimg_settings__watermark__preview-images {
+								width: 100%;
+								height: 100%;
+								position: absolute;
+								top: 0;
+								left: 0;
+							}
+	
+							p {
+								font-family: Arial;
+								visibility: hidden;
+								position: absolute;
+								padding: 2%;
+								margin: 0;
+								display: inline-block;
+								white-space: nowrap;
+								font-size: 0;
+								z-index: 10;
+								color: $secondary_color;
+	
+							}
+	
+							img {
+								padding: 2%;
+								margin: 0;
+								display: block;
+								z-index: 10;
+								position: absolute;
+								width: 0;
+								visibility: hidden;
+							}
+	
+							.iloveimg_settings__watermark__preview-mosaic-1 {
+								border-top: 1px solid $white;
+								top: 33.3%;
+								left: 0;
+								position: absolute;
+								width: 100%;
+							}
+	
+							.iloveimg_settings__watermark__preview-mosaic-2 {
+								border-top: 1px solid $white;
+								top: 66.6%;
+								left: 0;
+								position: absolute;
+								width: 100%;
+							}
+	
+							.iloveimg_settings__watermark__preview-mosaic-3 {
+								border-left: 1px solid $white;
+								top: 0;
+								left: 33.3%;
+								position: absolute;
+								height: 100%;
+							}
+	
+							.iloveimg_settings__watermark__preview-mosaic-4 {
+								border-left: 1px solid $white;
+								top: 0;
+								left: 66.6%;
+								height: 100%;
+								position: absolute;
+							}
+						}
+					}
+	
+					&__2 {
+						width: calc(100% - 450px);
+						padding-left: 30px;
+	
+						@media (max-width: 1160px) {
+							width: 100%;
+							padding: 0px;
+							margin-top: 30px;
+						}
+	
+						button {
+							height: 34px;
+							box-shadow: none;
+							margin-right: 10px;
+							background-image: url("../images/icon_upload.svg");
+							background-repeat: no-repeat;
+							background-position: 10px center;
+							padding-left: 30px;
+							margin-bottom: 10px;
+	
+							span {
+								line-height: 34px;
+							}
+						}
+	
+						.iloveimg_settings__options__field__cols__2-format-container {
+							display: flex;
+	
+							.iloveimg_settings__options__field__cols__2-format-container-col__1 {
+								table {
+									border: 1px solid $secondary_color;
+									border-spacing: 0px;
+									margin-bottom: 15px;
+									margin-right: 20px;
+	
+									tr {
+										td {
+											border-right: 1px solid $secondary_color;
+											border-bottom: 1px solid $secondary_color;
+	
+											&:last-child {
+												border-right: 0;
+											}
+	
+											input {
+												appearance: none;
+												margin: 0;
+												padding: 0;
+												width: 34px;
+												height: 34px;
+												border: 0;
+												box-shadow: none;
+												position: relative;
+	
+												&:checked:before {
+													display: block;
+													content: "";
+													width: 16px;
+													height: 16px;
+													background: $primary_color;
+													border-radius: 100%;
+													border: 0;
+													padding: 0;
+													margin: 0;
+													box-shadow: none;
+													position: absolute;
+													top: 8px;
+													left: 8px;
+												}
+											}
+										}
+	
+										&:last-child {
+											td {
+												border-bottom: 0;
+											}
+										}
+									}
+	
+									&.mode_mosaic {
+										tr {
+											td {
+												input {
+													opacity: .6;
+	
+													&:before {
+														display: block;
+														content: "";
+														width: 16px;
+														height: 16px;
+														background: $primary_color;
+														border-radius: 100%;
+														border: 0;
+														padding: 0;
+														margin: 0;
+														box-shadow: none;
+														position: absolute;
+														top: 8px;
+														left: 8px;
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+	
+							.iloveimg_settings__options__field__cols__2-format-container-col__2 {
+								>div {
+									margin-bottom: 10px;
+	
+									label {
+										display: block;
+										margin-bottom: 5px;
+									}
+	
+									input {
+										background: $white;
+										border: 1px solid $secondary_color;
+										width: 77px;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

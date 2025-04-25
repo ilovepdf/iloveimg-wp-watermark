@@ -217,6 +217,9 @@ License: MIT
 .sp-cf:before, .sp-cf:after { content: ""; display: table; }
 .sp-cf:after { clear: both; }
 .sp-cf { *zoom: 1; }
+.sp-cf:not(:first-child) {
+  margin-top: 10px;
+}
 
 /* Mobile devices, make hue slider bigger so it is easier to slide */
 @media (max-device-width: 480px) {
@@ -359,6 +362,7 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
 .sp-palette-button-container,
 .sp-button-container {
     float: right;
+    margin-top: 20px;
 }
 
 /* Replacer (the little preview div that shows up instead of the <input>) */
