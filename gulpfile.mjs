@@ -13,26 +13,26 @@ import babel from 'gulp-babel';
 const sass = gulpSass(dartSass);
 
 const config = {
-    sourceMaps: process.env.NODE_ENV === 'development'
+    sourceMaps: process.env.NODE_ENV === 'development',
+    cleanCSS: process.env.NODE_ENV === 'production'
 }
 
 // Task to compile Sass and minify CSS
-gulp.task('build-css', function() {
+gulp.task('build-css', function () {
     return gulp.src('dev/scss/**/*.scss')
         .pipe(gulpIf(config.sourceMaps, sourcemaps.init()))
         .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer({
-                overrideBrowserslist: ["last 2 versions"],
-                cascade: false,
-         }))
-        .pipe(cleanCSS())
+            cascade: false
+        }))
+        .pipe(gulpIf(config.cleanCSS, cleanCSS()))
         .pipe(rename({ suffix: '.min' }))
         .pipe(gulpIf(config.sourceMaps, sourcemaps.write()))
         .pipe(gulp.dest('assets/css'));
 });
 
 // Task to compile and minify JavaScript
-gulp.task('build-js', function() {
+gulp.task('build-js', function () {
     // Process main.js in this file you can import others files js
     const mainJsStream = gulp.src('dev/js/main.js')
         .pipe(babel({
@@ -53,7 +53,7 @@ gulp.task('build-js', function() {
 });
 
 // Task to watch for changes in Sass files
-gulp.task('watch', function() {
+gulp.task('watch', function () {
     gulp.watch('dev/scss/**/*.scss', gulp.series('build-css'));
     gulp.watch('dev/js/**/*.js', gulp.series('build-js'));
 });
