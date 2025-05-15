@@ -436,7 +436,7 @@ class Ilove_Img_Wm_Plugin {
 
             echo '<div class="misc-pub-section iloveimg-compress-images">';
             echo '<h4>';
-            echo esc_html( 'iLoveIMG' );
+            echo esc_html( 'iLoveIMG Watermark' );
             echo '</h4>';
             echo '<div class="iloveimg-container">';
             echo '<table><tr><td>';
