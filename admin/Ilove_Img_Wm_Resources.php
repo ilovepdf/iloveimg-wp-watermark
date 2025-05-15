@@ -352,7 +352,7 @@ class Ilove_Img_Wm_Resources {
                 </tr>
             </table>
         </div>
-        <p><a href="#TB_inline?&width=450&height=340&inlineId=iloveimg_detaills_watermark_<?php echo (int) $image_id; ?>" class="thickbox iloveimg_sizes_compressed" title="<?php echo esc_html( get_the_title( $image_id ) ); ?>"><?php echo (int) $images_watermarked; ?> <?php esc_html_e( 'sizes watermark applied', 'iloveimg-watermark' ); ?></a></p>
+        <p><a href="#TB_inline?&width=550&height=440&inlineId=iloveimg_detaills_watermark_<?php echo (int) $image_id; ?>" class="thickbox iloveimg_sizes_compressed" title="<?php echo esc_html( get_the_title( $image_id ) ); ?>"><?php echo (int) $images_watermarked; ?> <?php esc_html_e( 'sizes watermark applied', 'iloveimg-watermark' ); ?></a></p>
         <?php
     }
 
