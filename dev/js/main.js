@@ -58,7 +58,6 @@
     }
     var totalImagesToCompress = 0;
     switch (adminpage) {
-        case 'upload-php':
         case 'media_page_iloveimg-media-page':
         case 'media_page_iloveimg-media-watermark-page':
         case 'post-php':

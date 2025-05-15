@@ -498,7 +498,7 @@ class Ilove_Img_Wm_Resources {
                         <?php esc_html_e( 'Restore original file', 'iloveimg-watermark' ); ?>
                     </button>
                     <br/>
-                    <input type="hidden" id="_wpnonce" name="_wpnonce" value="<?php echo esc_html( $img_nonce ); ?>">
+                    <input type="hidden" id="_wpnonce" name="_wpnonce_iloveimg_wm_restore" value="<?php echo esc_html( $img_nonce ); ?>">
                     <p class="loading iloveimg-status" style="display: none; margin-top: 5px;"><span><?php esc_html_e( 'Loading', 'iloveimg-watermark' ); ?>...</span></p>
                     <p class="error iloveimg-status" style="margin-top: 5px;"><span><?php esc_html_e( 'Error', 'iloveimg-watermark' ); ?></span></p>
                     <p class="success iloveimg-status" style="margin-top: 5px;"><span><?php esc_html_e( 'Completed, please refresh the page.', 'iloveimg-watermark' ); ?></span></p>
