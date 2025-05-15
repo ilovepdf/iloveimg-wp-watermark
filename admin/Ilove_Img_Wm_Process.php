@@ -48,9 +48,21 @@ class Ilove_Img_Wm_Process {
 
         global $wpdb;
 
-        $images = array();
+        $images         = array();
+        $file_mime_type = get_post_mime_type( $images_id );
 
         try {
+
+            if ( ! in_array( $file_mime_type, Ilove_Img_Wm_Plugin::$accepted_file_format, true ) ) {
+                return array(
+                    'error'     => true,
+                    'error_msg' => sprintf(
+                        /* translators: %d: ID of File */
+                        __( 'The file %d is not an image.', 'iloveimg-watermark' ),
+                        $images_id
+                    ),
+                );
+            }
 
             if ( get_option( 'iloveimg_proyect' ) ) {
                 $proyect              = explode( '#', get_option( 'iloveimg_proyect' ) );
