@@ -39,6 +39,15 @@ class Ilove_Img_Wm_Plugin {
 	protected static $img_nonce;
 
     /**
+	 * File formats.
+	 *
+	 * @since    2.2.10
+	 * @access   public
+	 * @var      array    $accepted_file_format    List of accepted file formats.
+	 */
+	public static $accepted_file_format = array( 'image/jpeg', 'image/jpg', 'image/png', 'image/gif' );
+
+    /**
 	 * This constructor defines the core functionality of the plugin.
      *
      * In this method, we set the plugin's name and version for reference throughout the codebase. We also load any necessary dependencies, define the plugin's locale for translation purposes, and set up hooks for the admin area.
@@ -247,10 +256,9 @@ class Ilove_Img_Wm_Plugin {
      * @return array Modified metadata for the attachment.
      */
     public function process_attachment( $metadata, $attachment_id ) {
-        $file                 = get_post( $attachment_id );
-        $accepted_file_format = array( 'image/jpeg', 'image/jpg', 'image/png', 'image/gif' );
+        $file = get_post( $attachment_id );
 
-        if ( ! in_array( $file->post_mime_type, $accepted_file_format, true ) ) {
+        if ( ! in_array( $file->post_mime_type, self::$accepted_file_format, true ) ) {
             return $metadata;
         }
 
@@ -429,10 +437,9 @@ class Ilove_Img_Wm_Plugin {
      * @param \WP_Post $post Post object.
      */
     public function show_media_info( $post ) {
-        $mime_type_accepted = array( 'image/jpeg', 'image/png', 'image/gif' );
-        $options            = json_decode( get_option( 'iloveimg_options_watermark' ), true );
+        $options = json_decode( get_option( 'iloveimg_options_watermark' ), true );
 
-        if ( in_array( $post->post_mime_type, $mime_type_accepted, true ) && isset( $options['iloveimg_field_watermark_activated'] ) ) {
+        if ( in_array( $post->post_mime_type, self::$accepted_file_format, true ) && isset( $options['iloveimg_field_watermark_activated'] ) ) {
 
             echo '<div class="misc-pub-section iloveimg-compress-images">';
             echo '<h4>';
