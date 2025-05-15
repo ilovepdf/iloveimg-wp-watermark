@@ -49,18 +49,9 @@
 				success: function (data) {
 					clearInterval( timesIntervals["ref_" + index] );
 					container.html( data );
-
 				},
 				error: function (err) {
 					console.log( err );
-				},
-				statusCode: {
-					500: function () {
-
-					},
-					400: function () {
-
-					}
 				}
             }
         );
