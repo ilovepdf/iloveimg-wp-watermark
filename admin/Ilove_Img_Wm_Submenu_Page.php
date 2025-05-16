@@ -57,7 +57,6 @@ class Ilove_Img_Wm_Submenu_Page {
 	 * The "views/media-bulk.php" file is expected to contain the HTML, form elements, and UI components for configuring and performing bulk media optimization operations. This method ensures that the media optimization functionality is accessible to users.
 	 */
 	public function render_media_optimization() {
-		$options_value = json_decode( get_option( 'iloveimg_options_compress' ), true );
 		require_once 'views/media-bulk.php';
 	}
 }

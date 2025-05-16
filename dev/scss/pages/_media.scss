@@ -94,15 +94,6 @@ body {
 				}
 			}
 		}
-	
-		.iloveimg_settings__overview__compress-all {
-			display: flex;
-			justify-content: center;
-	
-			#iloveimg_allcompress {
-				margin-top: 20px;
-			}
-		}
 	}
 
 	small.iloveimg__badge__percent {
@@ -116,8 +107,6 @@ body {
 
 	button {
 		&.button {
-			&.iloveimg-compress,
-			&.iloveimg-compress-all,
 			&.iloveimg-watermark,
 			&.iloveimg-watermark-all,
 			&.button-style-iloveimg {
@@ -131,8 +120,8 @@ body {
 		font-size: 13px;
 		color: $text_light;
 		letter-spacing: 0.2px;
-		width: 360px;
-		margin: 20px auto;
+		width: 100%;
+		margin: 10px auto;
 		border-spacing: 0;
 	
 		tbody {
@@ -141,7 +130,7 @@ body {
 				td,
 				th {
 					line-height: 34px;
-					padding: 0 15px;
+					padding: 5px 15px;
 					border: 0;
 				}
 	

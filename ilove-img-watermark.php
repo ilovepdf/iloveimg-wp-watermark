@@ -10,7 +10,7 @@
  * Plugin Name:       Best Watermark - Protect images on your site with iLoveIMG
  * Plugin URI:        https://iloveapi.com/
  * Description:       Protect your site from image theft with our reliable and easy-to-use watermark plugin. Effective protection for your images.
- * Version:           2.2.9
+ * Version:           2.2.10
  * Requires at least: 5.3
  * Requires PHP:      7.4
  * Author:            iLoveIMG

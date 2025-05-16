@@ -49,44 +49,38 @@
 				success: function (data) {
 					clearInterval( timesIntervals["ref_" + index] );
 					container.html( data );
-
 				},
 				error: function (err) {
 					console.log( err );
-				},
-				statusCode: {
-					500: function () {
-
-					},
-					400: function () {
-
-					}
 				}
             }
         );
     }
-    var totalImagesToCompress = 0;
+
+    let totalImagesToWatermark = 0;
+
     switch (adminpage) {
         case 'upload-php':
-        case 'media_page_iloveimg-media-page':
+            jQuery( document ).on( "click", "button.iloveimg-watermark", watermarkImage );
+            break;
         case 'media_page_iloveimg-media-watermark-page':
         case 'post-php':
             jQuery( document ).on( "click", "button.iloveimg-watermark", watermarkImage );
             jQuery( document ).on(
                 "click",
-                "button#iloveimg_allcompress",
+                "button#iloveimg_watermarkall",
                 function (event) {
-					totalImagesToCompress = jQuery( "button.iloveimg-watermark" ).length;
+					totalImagesToWatermark = jQuery( "button.iloveimg-watermark" ).length;
 
-					jQuery( "button#iloveimg_allcompress" ).attr( 'disabled', 'disabled' );
+					jQuery( "button#iloveimg_watermarkall" ).attr( 'disabled', 'disabled' );
 					jQuery( "button.iloveimg-watermark" ).each(
                         function (index, element) {
-                            var buttonCompress = jQuery( element );
-                            buttonCompress.trigger( "click" );
+                            let buttonWatermark = jQuery( element );
+                            buttonWatermark.trigger( "click" );
                             timeReload = setInterval(
                                 function () {
-                                    var _percent = ( 100 - (jQuery( "button.iloveimg-watermark" ).length * 100) / totalImagesToCompress);
-                                    jQuery( "button#iloveimg_allcompress .iloveimg-watermark-all__percent" ).width( _percent + "%" );
+                                    let percent = ( 100 - (jQuery( "button.iloveimg-watermark" ).length * 100) / totalImagesToWatermark);
+                                    jQuery( "button#iloveimg_watermarkall .iloveimg-watermark-all__percent" ).width( percent + "%" );
                                     if ( ! jQuery( "button.iloveimg-watermark" ).length) {
                                         clearInterval( timeReload );
                                     }
