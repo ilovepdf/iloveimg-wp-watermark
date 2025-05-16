@@ -110,6 +110,7 @@ Improved
 * Refactoring.
 
 Fixed
+* Problem with class in charge of translations.
 * Before watermarking an image, the file type is checked.
 * SUV images are not regenerated when all images are restored from backup.
 
