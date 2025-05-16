@@ -94,15 +94,6 @@ body {
 				}
 			}
 		}
-	
-		.iloveimg_settings__overview__compress-all {
-			display: flex;
-			justify-content: center;
-	
-			#iloveimg_allcompress {
-				margin-top: 20px;
-			}
-		}
 	}
 
 	small.iloveimg__badge__percent {
@@ -116,8 +107,6 @@ body {
 
 	button {
 		&.button {
-			&.iloveimg-compress,
-			&.iloveimg-compress-all,
 			&.iloveimg-watermark,
 			&.iloveimg-watermark-all,
 			&.button-style-iloveimg {

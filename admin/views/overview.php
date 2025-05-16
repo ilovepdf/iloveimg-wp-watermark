@@ -23,6 +23,3 @@ use Ilove_Img_Wm\Ilove_Img_Wm_Resources;
 		</div>
 	</div>
 </div>
-<!-- <div class="iloveimg_settings__overview__compress-all">
-	<button type="button" id="iloveimg_allcompress" class="iloveimg-compress-all button button-small button-primary">Compress All</button>
-</div> -->

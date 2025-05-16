@@ -200,9 +200,9 @@ class Ilove_Img_Wm_Plugin {
      */
     public function ilove_img_wm_library_is_watermarked() {
         if ( isset( $_POST['id'] ) && isset( $_POST['imgnonce'] ) && wp_verify_nonce( sanitize_key( wp_unslash( $_POST['imgnonce'] ) ) ) ) {
-            $attachment_id     = intval( $_POST['id'] );
-            $status_watermark  = get_post_meta( $attachment_id, 'iloveimg_status_watermark', true );
-            $images_compressed = Ilove_Img_Wm_Resources::get_sizes_watermarked( $attachment_id );
+            $attachment_id    = intval( $_POST['id'] );
+            $status_watermark = get_post_meta( $attachment_id, 'iloveimg_status_watermark', true );
+            Ilove_Img_Wm_Resources::get_sizes_watermarked( $attachment_id );
 
             if ( ( 1 === (int) $status_watermark || 3 === (int) $status_watermark ) ) {
                 http_response_code( 500 );
@@ -504,7 +504,7 @@ class Ilove_Img_Wm_Plugin {
 
         if ( in_array( $post->post_mime_type, self::$accepted_file_format, true ) && isset( $options['iloveimg_field_watermark_activated'] ) ) {
 
-            echo '<div class="misc-pub-section iloveimg-compress-images">';
+            echo '<div class="misc-pub-section iloveimg-watermark-images">';
             echo '<h4>';
             echo esc_html( 'iLoveIMG Watermark' );
             echo '</h4>';
@@ -512,7 +512,7 @@ class Ilove_Img_Wm_Plugin {
             echo '<table><tr><td>';
             $status_watermark = get_post_meta( $post->ID, 'iloveimg_status_watermark', true );
 
-            $images_compressed = Ilove_Img_Wm_Resources::get_sizes_watermarked( $post->ID );
+            Ilove_Img_Wm_Resources::get_sizes_watermarked( $post->ID );
 
             if ( 2 === (int) $status_watermark ) {
                 Ilove_Img_Wm_Resources::render_watermark_details( $post->ID );
