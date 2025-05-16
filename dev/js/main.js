@@ -63,7 +63,6 @@
         case 'upload-php':
             jQuery( document ).on( "click", "button.iloveimg-watermark", watermarkImage );
             break;
-        case 'media_page_iloveimg-media-page':
         case 'media_page_iloveimg-media-watermark-page':
         case 'post-php':
             jQuery( document ).on( "click", "button.iloveimg-watermark", watermarkImage );
