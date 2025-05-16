@@ -1,13 +1,13 @@
 === Best Watermark - Protect images on your site with iLoveIMG ===
 Plugin Name: Best Watermark - Protect images on your site with iLoveIMG
-Version: 2.2.9
+Version: 2.2.10
 Author: iLovePDF
 Author URI: https://www.iloveimg.com/
 Contributors: iLovePDF
 Tags: watermark, image protection, photography, picture, e-commerce
 Requires at least: 5.3
 Tested up to: 6.8
-Stable tag: 2.2.9
+Stable tag: 2.2.10
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -99,6 +99,19 @@ Moreover, all processed files are automatically deleted from our servers after b
 4. Image listing page.
 
 == Changelog ==
+
+= 2.2.10 =
+Improved
+* Update Libraries.
+* CSS optimized.
+* Added bulk compression functionality compatible with WordPress core.
+* Improvement in details box.
+* Enhanced titles.
+* Refactoring.
+
+Fixed
+* Before watermarking an image, the file type is checked.
+* SUV images are not regenerated when all images are restored from backup.
 
 = 2.2.9 =
 Improved
