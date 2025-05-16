@@ -166,6 +166,7 @@ class Ilove_Img_Wm_Plugin {
 
             foreach ( $images_restore as $key => $value ) {
                 Ilove_Img_Wm_Resources::rcopy( ILOVE_IMG_WM_BACKUP_FOLDER . basename( get_attached_file( $value ) ), get_attached_file( $value ) );
+                Ilove_Img_Wm_Resources::regenerate_attachment_data( $value );
 
                 delete_post_meta( $value, 'iloveimg_status_watermark' );
                 delete_post_meta( $value, 'iloveimg_watermark' );
