@@ -352,7 +352,7 @@ class Ilove_Img_Wm_Resources {
                 </tr>
             </table>
         </div>
-        <p><a href="#TB_inline?&width=450&height=340&inlineId=iloveimg_detaills_watermark_<?php echo (int) $image_id; ?>" class="thickbox iloveimg_sizes_compressed" title="<?php echo esc_html( get_the_title( $image_id ) ); ?>"><?php echo (int) $images_watermarked; ?> <?php esc_html_e( 'sizes watermark applied', 'iloveimg-watermark' ); ?></a></p>
+        <p><a href="#TB_inline?&width=550&height=440&inlineId=iloveimg_detaills_watermark_<?php echo (int) $image_id; ?>" class="thickbox iloveimg_sizes_watermarked" title="<?php echo esc_html( get_the_title( $image_id ) ); ?>"><?php echo (int) $images_watermarked; ?> <?php esc_html_e( 'sizes watermark applied', 'iloveimg-watermark' ); ?></a></p>
         <?php
     }
 
@@ -370,11 +370,11 @@ class Ilove_Img_Wm_Resources {
 
         if ( strpos( $post->post_mime_type, 'image/jpg' ) !== false || strpos( $post->post_mime_type, 'image/jpeg' ) !== false || strpos( $post->post_mime_type, 'image/png' ) !== false || strpos( $post->post_mime_type, 'image/gif' ) !== false ) :
 
-            $_sizes            = get_post_meta( $column_id, 'iloveimg_watermark', true );
-            $status_watermark  = (int) get_post_meta( $column_id, 'iloveimg_status_watermark', true );
-            $images_compressed = self::get_sizes_watermarked( $column_id );
+            $_sizes             = get_post_meta( $column_id, 'iloveimg_watermark', true );
+            $status_watermark   = (int) get_post_meta( $column_id, 'iloveimg_status_watermark', true );
+            $images_watermarked = self::get_sizes_watermarked( $column_id );
 
-            if ( $_sizes && $images_compressed ) :
+            if ( $_sizes && $images_watermarked ) :
                 self::render_watermark_details( $column_id );
                 self::render_button_restore( $column_id );
             else :
@@ -498,7 +498,7 @@ class Ilove_Img_Wm_Resources {
                         <?php esc_html_e( 'Restore original file', 'iloveimg-watermark' ); ?>
                     </button>
                     <br/>
-                    <input type="hidden" id="_wpnonce" name="_wpnonce" value="<?php echo esc_html( $img_nonce ); ?>">
+                    <input type="hidden" id="_wpnonce" name="_wpnonce_iloveimg_wm_restore" value="<?php echo esc_html( $img_nonce ); ?>">
                     <p class="loading iloveimg-status" style="display: none; margin-top: 5px;"><span><?php esc_html_e( 'Loading', 'iloveimg-watermark' ); ?>...</span></p>
                     <p class="error iloveimg-status" style="margin-top: 5px;"><span><?php esc_html_e( 'Error', 'iloveimg-watermark' ); ?></span></p>
                     <p class="success iloveimg-status" style="margin-top: 5px;"><span><?php esc_html_e( 'Completed, please refresh the page.', 'iloveimg-watermark' ); ?></span></p>

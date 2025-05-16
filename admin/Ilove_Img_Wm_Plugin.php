@@ -18,7 +18,7 @@ class Ilove_Img_Wm_Plugin {
 	 * @access   public
 	 * @var      string    VERSION    The current version of the plugin.
 	 */
-    const VERSION = '2.2.9';
+    const VERSION = '2.2.10';
 
     /**
 	 * The unique identifier of this plugin.
@@ -37,6 +37,15 @@ class Ilove_Img_Wm_Plugin {
 	 * @var      string    $img_nonce    The string used to uniquely nonce identify.
 	 */
 	protected static $img_nonce;
+
+    /**
+	 * File formats.
+	 *
+	 * @since    2.2.10
+	 * @access   public
+	 * @var      array    $accepted_file_format    List of accepted file formats.
+	 */
+	public static $accepted_file_format = array( 'image/jpeg', 'image/jpg', 'image/png', 'image/gif' );
 
     /**
 	 * This constructor defines the core functionality of the plugin.
@@ -73,7 +82,9 @@ class Ilove_Img_Wm_Plugin {
         add_action( 'wp_ajax_ilove_img_wm_library_is_watermarked', array( $this, 'ilove_img_wm_library_is_watermarked' ) );
         add_action( 'wp_ajax_ilove_img_wm_library_set_watermark_image', array( $this, 'ilove_img_wm_library_set_watermark_image' ) );
         add_filter( 'wp_generate_attachment_metadata', array( $this, 'process_attachment' ), 10, 2 );
-        add_action( 'admin_action_iloveimg_bulk_action', array( $this, 'media_library_bulk_action' ) );
+        add_filter( 'bulk_actions-upload', array( $this, 'add_bulk_watermark_action' ) );
+        add_filter( 'handle_bulk_actions-upload', array( $this, 'handle_bulk_watermark_action' ), 10, 3 );
+        add_filter( 'query_vars', array( $this, 'add_iloveimgwm_custom_query_vars' ) );
         add_action( 'attachment_submitbox_misc_actions', array( $this, 'show_media_info' ) );
 
         if ( ! self::check_iloveimg_plugins_is_activated() ) {
@@ -155,6 +166,7 @@ class Ilove_Img_Wm_Plugin {
 
             foreach ( $images_restore as $key => $value ) {
                 Ilove_Img_Wm_Resources::rcopy( ILOVE_IMG_WM_BACKUP_FOLDER . basename( get_attached_file( $value ) ), get_attached_file( $value ) );
+                Ilove_Img_Wm_Resources::regenerate_attachment_data( $value );
 
                 delete_post_meta( $value, 'iloveimg_status_watermark' );
                 delete_post_meta( $value, 'iloveimg_watermark' );
@@ -189,9 +201,9 @@ class Ilove_Img_Wm_Plugin {
      */
     public function ilove_img_wm_library_is_watermarked() {
         if ( isset( $_POST['id'] ) && isset( $_POST['imgnonce'] ) && wp_verify_nonce( sanitize_key( wp_unslash( $_POST['imgnonce'] ) ) ) ) {
-            $attachment_id     = intval( $_POST['id'] );
-            $status_watermark  = get_post_meta( $attachment_id, 'iloveimg_status_watermark', true );
-            $images_compressed = Ilove_Img_Wm_Resources::get_sizes_watermarked( $attachment_id );
+            $attachment_id    = intval( $_POST['id'] );
+            $status_watermark = get_post_meta( $attachment_id, 'iloveimg_status_watermark', true );
+            Ilove_Img_Wm_Resources::get_sizes_watermarked( $attachment_id );
 
             if ( ( 1 === (int) $status_watermark || 3 === (int) $status_watermark ) ) {
                 http_response_code( 500 );
@@ -247,10 +259,9 @@ class Ilove_Img_Wm_Plugin {
      * @return array Modified metadata for the attachment.
      */
     public function process_attachment( $metadata, $attachment_id ) {
-        $file                 = get_post( $attachment_id );
-        $accepted_file_format = array( 'image/jpeg', 'image/jpg', 'image/png', 'image/gif' );
+        $file = get_post( $attachment_id );
 
-        if ( ! in_array( $file->post_mime_type, $accepted_file_format, true ) ) {
+        if ( ! in_array( $file->post_mime_type, self::$accepted_file_format, true ) ) {
             return $metadata;
         }
 
@@ -416,6 +427,67 @@ class Ilove_Img_Wm_Plugin {
                 }
 			}
         }
+
+        if ( get_current_screen()->parent_base === 'upload' && get_query_var( 'iloveimg-bulk-watermark' ) === 'success' ) {
+            $files_success = get_transient( 'iloveimgwm_bulk_success' );
+
+            foreach ( $files_success as $file ) {
+                ?>
+                <div class="notice notice-success is-dismissible">
+                    <p>
+                    <?php
+                    printf(
+                        /* translators: %d: ID of File */
+                        esc_html__( 'Image %d was watermarked correctly', 'iloveimg-watermark' ),
+                        esc_html( $file )
+                    );
+					?>
+                    </p>
+                </div>
+                <?php
+            }
+        }
+
+        if ( get_current_screen()->parent_base === 'upload' && get_query_var( 'iloveimg-bulk-watermark' ) === 'error' ) {
+            $files_with_errors = get_transient( 'iloveimgwm_bulk_errors' );
+
+            foreach ( $files_with_errors as $file ) {
+                ?>
+                <div class="notice notice-error is-dismissible">
+                    <p><?php echo esc_html( $file['message'] ); ?></p>
+                </div>
+                <?php
+            }
+        }
+
+        if ( get_current_screen()->parent_base === 'upload' && get_query_var( 'iloveimg-bulk-watermark' ) === 'partial' ) {
+            $files_success     = get_transient( 'iloveimgwm_bulk_success' );
+            $files_with_errors = get_transient( 'iloveimgwm_bulk_errors' );
+
+            foreach ( $files_success as $file ) {
+                ?>
+                <div class="notice notice-success is-dismissible">
+                    <p>
+                    <?php
+                    printf(
+                        /* translators: %d: ID of File */
+                        esc_html__( 'Image %d was watermarked correctly', 'iloveimg-watermark' ),
+                        esc_html( $file )
+                    );
+					?>
+                    </p>
+                </div>
+                <?php
+            }
+
+			foreach ( $files_with_errors as $file ) {
+                ?>
+                <div class="notice notice-error is-dismissible">
+                    <p><?php echo esc_html( $file['message'] ); ?></p>
+                </div>
+                <?php
+            }
+        }
     }
 
     /**
@@ -429,20 +501,19 @@ class Ilove_Img_Wm_Plugin {
      * @param \WP_Post $post Post object.
      */
     public function show_media_info( $post ) {
-        $mime_type_accepted = array( 'image/jpeg', 'image/png', 'image/gif' );
-        $options            = json_decode( get_option( 'iloveimg_options_watermark' ), true );
+        $options = json_decode( get_option( 'iloveimg_options_watermark' ), true );
 
-        if ( in_array( $post->post_mime_type, $mime_type_accepted, true ) && isset( $options['iloveimg_field_watermark_activated'] ) ) {
+        if ( in_array( $post->post_mime_type, self::$accepted_file_format, true ) && isset( $options['iloveimg_field_watermark_activated'] ) ) {
 
-            echo '<div class="misc-pub-section iloveimg-compress-images">';
+            echo '<div class="misc-pub-section iloveimg-watermark-images">';
             echo '<h4>';
-            echo esc_html( 'iLoveIMG' );
+            echo esc_html( 'iLoveIMG Watermark' );
             echo '</h4>';
             echo '<div class="iloveimg-container">';
             echo '<table><tr><td>';
             $status_watermark = get_post_meta( $post->ID, 'iloveimg_status_watermark', true );
 
-            $images_compressed = Ilove_Img_Wm_Resources::get_sizes_watermarked( $post->ID );
+            Ilove_Img_Wm_Resources::get_sizes_watermarked( $post->ID );
 
             if ( 2 === (int) $status_watermark ) {
                 Ilove_Img_Wm_Resources::render_watermark_details( $post->ID );
@@ -540,5 +611,85 @@ class Ilove_Img_Wm_Plugin {
         }
 
         wp_send_json_success( __( 'It was restored correctly', 'iloveimg-watermark' ), 200 );
+    }
+
+    /**
+     * Add bulk action
+     *
+     * @since 2.2.10
+     * @param array $actions An array of the available bulk actions.
+     */
+    public function add_bulk_watermark_action( $actions ) {
+
+        if ( get_option( 'iloveimg_account' ) ) {
+            $actions['iloveimg_watermark'] = __( 'Watermark Images', 'iloveimg-watermark' );
+        }
+
+        return $actions;
+    }
+
+    /**
+     * Handle bulk watermark action
+     *
+     * @since 2.2.10
+     * @param string $redirect_to The redirect URL.
+     * @param string $doaction The action being taken.
+     * @param array  $post_ids An array of post IDs.
+     */
+    public function handle_bulk_watermark_action( $redirect_to, $doaction, $post_ids ) {
+        if ( 'iloveimg_watermark' !== $doaction ) {
+            return $redirect_to;
+        }
+
+        $iloveimg_process = new Ilove_Img_Wm_Process();
+
+		$success_ids = array();
+		$error_items = array();
+
+		foreach ( $post_ids as $id ) {
+			$image = $iloveimg_process->watermark( $id );
+
+			if ( ! empty( $image['error'] ) ) {
+				$error_items[] = array(
+					'id'      => $id,
+					'message' => $image['error_msg'],
+				);
+			} else {
+				$success_ids[] = $id;
+			}
+		}
+
+		set_transient( 'iloveimgwm_bulk_success', $success_ids, 600 );
+		set_transient( 'iloveimgwm_bulk_errors', $error_items, 600 );
+
+		$status = 'success';
+
+		if ( ! empty( $error_items ) && ! empty( $success_ids ) ) {
+			$status = 'partial';
+		} elseif ( ! empty( $error_items ) ) {
+			$status = 'error';
+		}
+
+		wp_safe_redirect(
+            add_query_arg(
+                array(
+					'iloveimg-bulk-watermark' => $status,
+                ),
+                'upload.php'
+            )
+		);
+		exit();
+    }
+
+    /**
+     * Add custom query variables
+     *
+     * @since 2.2.10
+     * @param array $qvars An array of query variables.
+     */
+    public function add_iloveimgwm_custom_query_vars( $qvars ) {
+        $qvars[] = 'iloveimg-bulk-watermark';
+
+        return $qvars;
     }
 }
