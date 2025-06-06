@@ -1,13 +1,13 @@
 === Best Watermark - Protect images on your site with iLoveIMG ===
 Plugin Name: Best Watermark - Protect images on your site with iLoveIMG
-Version: 2.2.10
+Version: 2.2.11
 Author: iLovePDF
 Author URI: https://www.iloveimg.com/
 Contributors: iLovePDF
 Tags: watermark, image protection, photography, picture, e-commerce
 Requires at least: 5.3
 Tested up to: 6.8
-Stable tag: 2.2.10
+Stable tag: 2.2.11
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -99,6 +99,15 @@ Moreover, all processed files are automatically deleted from our servers after b
 4. Image listing page.
 
 == Changelog ==
+
+= 2.2.11 =
+Improved
+* Update Libraries.
+* Added text strings and updated translation files.
+* Refactoring.
+
+Fixed
+* Incorrect closing HTML tag.
 
 = 2.2.10 =
 Improved
