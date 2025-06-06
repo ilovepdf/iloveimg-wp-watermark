@@ -398,13 +398,13 @@ class Ilove_Img_Wm_Resources {
                                 <!-- <p>In queue...</p> -->
                             <?php endif; ?>
                         <?php else : ?>
-                            <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-watermark-admin-page' ) ); ?>" class="iloveimg_link"><?php echo esc_html_x( 'Go to settings', 'button', 'iloveimg-watermark' ); ?></button>
+                            <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-watermark-admin-page' ) ); ?>" class="iloveimg_link"><?php echo esc_html_x( 'Go to settings', 'button', 'iloveimg-watermark' ); ?></a>
 							<?php
                         endif;
                     else :
 						?>
                         <p><?php esc_html_e( 'You need to be registered', 'iloveimg-watermark' ); ?></p>
-                        <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-watermark-admin-page' ) ); ?>" class="iloveimg_link"><?php echo esc_html_x( 'Go to settings', 'button', 'iloveimg-watermark' ); ?></button>
+                        <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-watermark-admin-page' ) ); ?>" class="iloveimg_link"><?php echo esc_html_x( 'Go to settings', 'button', 'iloveimg-watermark' ); ?></a>
 						<?php
                     endif;
                     if ( 1 === $status_watermark || 3 === $status_watermark ) :
