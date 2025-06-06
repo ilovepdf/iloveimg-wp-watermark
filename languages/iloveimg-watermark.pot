@@ -2,7 +2,7 @@
 # This file is distributed under the GPL-2.0+.
 msgid ""
 msgstr ""
-"Project-Id-Version: Best Watermark - Protect images on your site with iLoveIMG 1.0.0\n"
+"Project-Id-Version: Best Watermark - Protect images on your site with iLoveIMG 2.2.10\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/watermark-protect-images\n"
 "Last-Translator: ilovepdf <info@ilovepdf.com>\n"
 "Language-Team: ilovepdf <info@ilovepdf.com>\n"
@@ -10,8 +10,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2025-02-13T12:38:31+00:00\n"
-"PO-Revision-Date: \n"
-"X-Generator: WP-CLI 2.11.0\n"
+"PO-Revision-Date: 2025-06-06T14:15:21+00:00\n"
+"X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: iloveimg-watermark\n"
 
 #. Plugin Name of the plugin
@@ -25,22 +25,27 @@ msgid "Protect your site from image theft with our reliable and easy-to-use wate
 msgstr ""
 
 #: admin/Ilove_Img_Wm_Media_List_Table.php:102
+msgctxt "column name"
 msgid "File"
 msgstr ""
 
 #: admin/Ilove_Img_Wm_Media_List_Table.php:103
+msgctxt "column name"
 msgid "Author"
 msgstr ""
 
 #: admin/Ilove_Img_Wm_Media_List_Table.php:104
+msgctxt "column name"
 msgid "Date"
 msgstr ""
 
 #: admin/Ilove_Img_Wm_Media_List_Table.php:105
+msgctxt "column name"
 msgid "Status"
 msgstr ""
 
 #: admin/Ilove_Img_Wm_Media_List_Table.php:137
+msgctxt "button"
 msgid "Delete"
 msgstr ""
 
@@ -48,77 +53,104 @@ msgstr ""
 msgid "Items deleted (or they would be if we had items to delete)!"
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Plugin.php:201
+#: admin/Ilove_Img_Wm_Plugin.php:213
 msgid "Try again or buy more credits"
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Plugin.php:221
+#: admin/Ilove_Img_Wm_Plugin.php:233
+msgctxt "column name"
 msgid "Status Watermark"
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Plugin.php:353
+#: admin/Ilove_Img_Wm_Plugin.php:364
 msgid "Please you need to be logged or registered."
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Plugin.php:353
-#: admin/Ilove_Img_Wm_Resources.php:391
-#: admin/Ilove_Img_Wm_Resources.php:397
+#: admin/Ilove_Img_Wm_Plugin.php:364
+#: admin/Ilove_Img_Wm_Resources.php:401
+#: admin/Ilove_Img_Wm_Resources.php:407
+msgctxt "button"
 msgid "Go to settings"
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Plugin.php:363
+#: admin/Ilove_Img_Wm_Plugin.php:374
 msgid "Your email or password is wrong."
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Plugin.php:368
+#: admin/Ilove_Img_Wm_Plugin.php:379
 msgid "This email address has already been taken."
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Plugin.php:373
+#: admin/Ilove_Img_Wm_Plugin.php:384
 msgid "You have reached limit of different users to use this WordPress plugin. Please relogin with one of your existing users."
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Plugin.php:399
+#: admin/Ilove_Img_Wm_Plugin.php:410
 msgid "Please you need more credits."
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Plugin.php:399
-#: admin/views/account.php:145
+#: admin/Ilove_Img_Wm_Plugin.php:410
+#: admin/views/account.php:218
+msgctxt "button"
 msgid "Buy more credits"
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Plugin.php:406
-#: admin/Ilove_Img_Wm_Plugin.php:413
+#: admin/Ilove_Img_Wm_Plugin.php:417
+#: admin/Ilove_Img_Wm_Plugin.php:424
 #: admin/views/account.php:45
 msgid "We were unable to verify the status of your iloveAPI account. Please try again later."
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Plugin.php:512
+#. translators: %d: ID of File
+#: admin/Ilove_Img_Wm_Plugin.php:441
+#: admin/Ilove_Img_Wm_Plugin.php:474
+#, php-format
+msgid "Image %d was watermarked correctly"
+msgstr ""
+
+#: admin/Ilove_Img_Wm_Plugin.php:510
+msgctxt "Subtitle for individual page of the file"
+msgid "iLoveIMG Watermark"
+msgstr ""
+
+#: admin/Ilove_Img_Wm_Plugin.php:583
 msgid "Error processing your request. Invalid Nonce code"
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Plugin.php:516
+#: admin/Ilove_Img_Wm_Plugin.php:587
 msgid "Error processing your request. Invalid Image ID"
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Plugin.php:524
+#: admin/Ilove_Img_Wm_Plugin.php:595
 msgid "Sorry. There is no backup for this file"
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Plugin.php:542
+#: admin/Ilove_Img_Wm_Plugin.php:613
 msgid "It was restored correctly"
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Process.php:185
-#: admin/Ilove_Img_Wm_Process.php:192
+#: admin/Ilove_Img_Wm_Plugin.php:625
+msgctxt "button"
+msgid "Watermark Images"
+msgstr ""
+
+#. translators: %d: ID of File
+#: admin/Ilove_Img_Wm_Process.php:61
+#, php-format
+msgid "The file %d is not an image."
+msgstr ""
+
+#: admin/Ilove_Img_Wm_Process.php:197
+#: admin/Ilove_Img_Wm_Process.php:204
 msgid "There was a problem processing your image."
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Process.php:195
+#: admin/Ilove_Img_Wm_Process.php:207
 msgid "Check your credentials in the plugin settings page. If you recently deleted a project in your iloveapi account, try switching to another project to correctly save your API Keys."
 msgstr ""
 
 #: admin/Ilove_Img_Wm_Resources.php:36
+msgctxt "input checkbox"
 msgid "Original image"
 msgstr ""
 
@@ -128,52 +160,64 @@ msgid "Unable to connect to the filesystem"
 msgstr ""
 
 #: admin/Ilove_Img_Wm_Resources.php:326
-#: admin/views/account.php:65
+msgctxt "column name"
 msgid "Name"
 msgstr ""
 
 #: admin/Ilove_Img_Wm_Resources.php:327
-#: admin/Ilove_Img_Wm_Resources.php:385
+msgctxt "column name"
 msgid "Watermark"
 msgstr ""
 
 #: admin/Ilove_Img_Wm_Resources.php:338
+msgctxt "Watermark applied to an image"
 msgid "Applied"
 msgstr ""
 
 #: admin/Ilove_Img_Wm_Resources.php:340
 #: admin/Ilove_Img_Wm_Resources.php:343
+msgctxt "Watermark not applied to an image"
 msgid "Not applied"
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Resources.php:355
-msgid "sizes watermark applied"
+#. translators: %s: Number of watermarked image sizes
+#: admin/Ilove_Img_Wm_Resources.php:360
+#, php-format
+msgid "Watermark applied to %s sizes"
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Resources.php:396
+#: admin/Ilove_Img_Wm_Resources.php:395
+msgctxt "button"
+msgid "Watermark"
+msgstr ""
+
+#: admin/Ilove_Img_Wm_Resources.php:406
 msgid "You need to be registered"
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Resources.php:498
+#: admin/Ilove_Img_Wm_Resources.php:508
+msgctxt "button"
 msgid "Restore original file"
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Resources.php:502
-msgid "Loading"
+#: admin/Ilove_Img_Wm_Resources.php:514
+msgctxt "The file is being processed"
+msgid "Loading..."
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Resources.php:503
+#: admin/Ilove_Img_Wm_Resources.php:519
+msgctxt "File processing had an error"
 msgid "Error"
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Resources.php:504
+#: admin/Ilove_Img_Wm_Resources.php:524
+msgctxt "File processing was successful"
 msgid "Completed, please refresh the page."
 msgstr ""
 
 #: admin/Ilove_Img_Wm_Submenu.php:56
 #: admin/Ilove_Img_Wm_Submenu.php:57
-#: admin/views/compress.php:22
-#: admin/views/watermark.php:25
+msgctxt "submenu"
 msgid "Compress settings"
 msgstr ""
 
@@ -181,118 +225,138 @@ msgstr ""
 #: admin/Ilove_Img_Wm_Submenu.php:69
 #: admin/Ilove_Img_Wm_Submenu.php:82
 #: admin/Ilove_Img_Wm_Submenu.php:83
-#: admin/views/compress.php:28
-#: admin/views/watermark.php:31
+msgctxt "submenu"
 msgid "Watermark settings"
 msgstr ""
 
 #: admin/Ilove_Img_Wm_Submenu.php:96
-#: ilove-img-watermark.php:86
+msgctxt "submenu"
 msgid "Bulk Watermark"
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Submenu.php:114
-msgid "This is the page content"
-msgstr ""
-
 #: admin/views/account.php:60
-#: admin/views/account.php:110
+msgctxt "subtitle"
 msgid "Register as iLoveAPI developer"
 msgstr ""
 
+#: admin/views/account.php:65
+msgctxt "input text"
+msgid "Name"
+msgstr ""
+
 #: admin/views/account.php:68
-#: admin/views/account.php:99
+#: admin/views/account.php:95
+msgctxt "input email"
 msgid "Email"
 msgstr ""
 
 #: admin/views/account.php:71
-#: admin/views/account.php:102
+#: admin/views/account.php:98
+msgctxt "input password"
 msgid "Password"
 msgstr ""
 
 #: admin/views/account.php:77
-msgid "Confirm Password"
-msgstr ""
-
-#: admin/views/account.php:83
+msgctxt "button"
 msgid "Register"
 msgstr ""
 
-#: admin/views/account.php:86
-#: admin/views/account.php:96
+#: admin/views/account.php:81
+msgctxt "button"
 msgid "Login to your account"
 msgstr ""
 
-#: admin/views/account.php:104
+#: admin/views/account.php:92
+msgctxt "subtitle"
+msgid "Login to your account"
+msgstr ""
+
+#: admin/views/account.php:101
+msgctxt "button"
 msgid "Forget Password?"
 msgstr ""
 
-#: admin/views/account.php:107
+#: admin/views/account.php:105
+msgctxt "button"
 msgid "Login"
 msgstr ""
 
-#: admin/views/account.php:119
+#: admin/views/account.php:109
+msgctxt "button"
+msgid "Register as iLoveAPI developer"
+msgstr ""
+
+#: admin/views/account.php:120
+msgctxt "subtitle section: free credits"
 msgid "Free"
 msgstr ""
 
-#: admin/views/account.php:124
-msgid "credits used this month. Free Tier."
+#. translators: %1$d: credits used / %2$d: credits limit
+#: admin/views/account.php:132
+#, php-format
+msgid "%1$d / %2$d credits used this month. Free Tier."
 msgstr ""
 
-#: admin/views/account.php:126
+#: admin/views/account.php:140
+msgctxt "subtitle section"
 msgid "Subscription plan"
 msgstr ""
 
-#: admin/views/account.php:131
-#: admin/views/account.php:139
-msgid "credits used this month."
+#. translators: %1$d: credits used / %2$d: credits limit
+#: admin/views/account.php:152
+#, php-format
+msgid "%1$d / %2$d credits used this month. Subscription plan."
 msgstr ""
 
-#: admin/views/account.php:134
+#: admin/views/account.php:162
+msgctxt "subtitle section"
 msgid "Prepaid packages"
 msgstr ""
 
-#: admin/views/account.php:143
-msgid "Every month since your registry you will get"
+#. translators: %1$d: credits used / %2$d: credits limit
+#: admin/views/account.php:174
+#, php-format
+msgid "%1$d / %2$d credits used this month. Prepaid packages."
 msgstr ""
 
-#: admin/views/account.php:143
-msgid "free credits to use to compress or stamp your images."
+#. translators: %d: free credits
+#: admin/views/account.php:187
+#, php-format
+msgid "Every month since your registry you will get %d free credits to use to compress or stamp your images."
 msgstr ""
 
-#: admin/views/account.php:144
-msgid "To increase your credits amount you can either open one of our"
-msgstr ""
-
-#: admin/views/account.php:144
+#: admin/views/account.php:196
+msgctxt "1: subscription plan link"
 msgid "subscription plans"
 msgstr ""
 
-#: admin/views/account.php:144
-msgid "to get a fixed amount of additional credits per month or buy a"
-msgstr ""
-
-#: admin/views/account.php:144
+#: admin/views/account.php:201
+msgctxt "2: single package link"
 msgid "single package"
 msgstr ""
 
-#: admin/views/account.php:144
-msgid "of credits."
+#. translators: %1$s: subscription plan link, %2$s: single package link
+#: admin/views/account.php:207
+#, php-format
+msgid "To increase your credits amount you can either open one of our %1$s to get a fixed amount of additional credits per month or buy a %2$s of credits."
 msgstr ""
 
-#: admin/views/account.php:152
+#: admin/views/account.php:227
+msgctxt "subtitle: Connected user section"
 msgid "Account"
 msgstr ""
 
-#: admin/views/account.php:157
+#: admin/views/account.php:232
+msgctxt "button"
 msgid "Logout"
 msgstr ""
 
-#: admin/views/account.php:164
+#: admin/views/account.php:239
 msgid "Select your working proyect"
 msgstr ""
 
-#: admin/views/account.php:177
+#: admin/views/account.php:252
+msgctxt "Button: save changes"
 msgid "Save"
 msgstr ""
 
@@ -302,55 +366,60 @@ msgid "The power of iLoveIMG in your WordPress!"
 msgstr ""
 
 #: admin/views/compress.php:11
-msgid "Compress all your Media image files and Stamp other Images or text into your WordPress pictures. This is the Official iLoveIMG plugin for WordPress. You can optimize all your Images and stamp them automatically as you do in iloveimg.com."
+#: admin/views/watermark.php:14
+msgid "Compress all your Media image files and Stamp other Images or text into your WordPress pictures. This is the Official iLoveIMG plugin for WordPress. You can optimize all your Images and stamp them automatically as you do in iloveimg.com"
 msgstr ""
 
 #: admin/views/compress.php:12
 msgid "Register now to get 2500 free credits and start working with iLoveIMG plugin now!"
 msgstr ""
 
-#: admin/views/compress.php:34
+#: admin/views/compress.php:22
+#: admin/views/watermark.php:25
+msgid "Compress settings"
+msgstr ""
+
+#: admin/views/compress.php:28
+#: admin/views/watermark.php:31
+msgid "Watermark settings"
+msgstr ""
+
+#: admin/views/compress.php:35
 msgid "You can also compress images automatically just as easily as you do with all of our iLoveIMG plugins. Our Image Compressor & Optimizer - iLoveIMG plugin allows you to optimize your WordPress media images all at once or just the images you need."
 msgstr ""
 
-#: admin/views/compress.php:35
-msgid "Discover all the features of "
-msgstr ""
-
-#: admin/views/compress.php:35
-msgid "Image Compressor & Optimizer - iLoveIMG"
-msgstr ""
-
-#: admin/views/compress.php:35
-msgid "and install it now!"
+#. translators: %1$s and %2$s are HTML link tags
+#: admin/views/compress.php:42
+#, php-format
+msgid "Discover all the features of %1$s Image Compressor & Optimizer - iLoveIMG %2$s and install it now!"
 msgstr ""
 
 #: admin/views/media-bulk.php:15
+msgctxt "button"
 msgid "Watermark all"
 msgstr ""
 
 #: admin/views/overview.php:5
+msgctxt "title: admin settings overview"
 msgid "Overview"
 msgstr ""
 
-#: admin/views/overview.php:8
-msgid "Watermarked images"
+#. translators: %1$s and %2$s number images
+#: admin/views/overview.php:13
+#, php-format
+msgid "Watermarked images %1$s / Uploaded images %2$s"
 msgstr ""
 
-#: admin/views/overview.php:8
-msgid "Uploaded images"
+#. translators: %s porcentage of images protected
+#: admin/views/overview.php:30
+#, php-format
+msgid "%s Total images protected with iLoveIMG"
 msgstr ""
 
-#: admin/views/overview.php:14
-msgid "Total images protected with iLoveIMG"
-msgstr ""
-
-#: admin/views/overview.php:21
-msgid "From backup images"
-msgstr ""
-
-#: admin/views/watermark.php:14
-msgid "Compress all your Media image files and Stamp other Images or text into your WordPress pictures. This is the Official iLoveIMG plugin for WordPress. You can optimize all your Images and stamp them automatically as you do in iloveimg.com"
+#. translators: %s backup size
+#: admin/views/overview.php:44
+#, php-format
+msgid "%s From backup images"
 msgstr ""
 
 #: admin/views/watermark.php:15
@@ -358,12 +427,13 @@ msgid "Register now to get 2500 free credits uses and start working with iLoveIM
 msgstr ""
 
 #: admin/views/watermark.php:42
-#: admin/views/watermark.php:265
+#: admin/views/watermark.php:357
+msgctxt "button"
 msgid "Save Changes"
 msgstr ""
 
 #: admin/views/watermark.php:43
-#: admin/views/watermark.php:266
+#: admin/views/watermark.php:358
 msgid "Register and login with us to save settings changes"
 msgstr ""
 
@@ -371,139 +441,171 @@ msgstr ""
 msgid "Configure your Watermark Images settings"
 msgstr ""
 
-#: admin/views/watermark.php:54
+#: admin/views/watermark.php:55
+msgctxt "checkbox field label"
 msgid "Watermark Activated"
 msgstr ""
 
-#: admin/views/watermark.php:55
+#: admin/views/watermark.php:58
 msgid "Activate this plugin in your WordPress dashboard. Activation will work only once you have registered and login as an iLoveAPI developer."
 msgstr ""
 
-#: admin/views/watermark.php:63
+#: admin/views/watermark.php:68
+msgctxt "checkbox field label"
 msgid "Enable Auto Watermark"
 msgstr ""
 
-#: admin/views/watermark.php:64
+#: admin/views/watermark.php:70
 msgid "With Auto Watermark enabled, any image uploaded to your Media folder will be automatically stamped with your choosen watermark. Still, you will be able to watermark non stamped images from Media."
 msgstr ""
 
-#: admin/views/watermark.php:69
+#: admin/views/watermark.php:76
+msgctxt "checkbox field label"
 msgid "Images Sizes"
 msgstr ""
 
-#: admin/views/watermark.php:71
+#: admin/views/watermark.php:79
 msgid "When an image is uploaded to Media, WordPress generates alternative image size versions for responsive purposes. You can select which image versions you will watermark."
 msgstr ""
 
-#: admin/views/watermark.php:86
+#: admin/views/watermark.php:95
+msgctxt "subtitle: Section to show preview of watermark options"
 msgid "Preview Settings"
 msgstr ""
 
-#: admin/views/watermark.php:87
+#: admin/views/watermark.php:98
 msgid "You can choose to watermark by editable text or by uploading your own image stamp."
 msgstr ""
 
-#: admin/views/watermark.php:94
+#: admin/views/watermark.php:108
+msgctxt "radio button option"
 msgid "Watermark text"
 msgstr ""
 
-#: admin/views/watermark.php:95
+#: admin/views/watermark.php:112
+msgctxt "radio button option"
 msgid "Watermark image"
 msgstr ""
 
-#: admin/views/watermark.php:98
+#: admin/views/watermark.php:117
 msgid "This font do not allow bold/italic styles for watermark"
 msgstr ""
 
-#: admin/views/watermark.php:154
+#: admin/views/watermark.php:174
+msgctxt "placeholder: input text"
 msgid "Text"
 msgstr ""
 
-#: admin/views/watermark.php:160
+#: admin/views/watermark.php:181
+msgctxt "Image selector label"
 msgid "Image"
 msgstr ""
 
-#: admin/views/watermark.php:161
+#: admin/views/watermark.php:183
 msgid "Choose your image stamp from your Media or from an external URL. Then set the stamp position, scale, opacity and rotation."
 msgstr ""
 
-#: admin/views/watermark.php:163
+#: admin/views/watermark.php:185
+msgctxt "button"
 msgid "Add Image"
 msgstr ""
 
-#: admin/views/watermark.php:165
+#: admin/views/watermark.php:188
+msgctxt "Button divider: previous button: add image button, next option: input url."
 msgid "or URL"
 msgstr ""
 
-#: admin/views/watermark.php:166
+#: admin/views/watermark.php:190
+msgctxt "input url"
 msgid "Place image URL"
 msgstr ""
 
-#: admin/views/watermark.php:171
+#: admin/views/watermark.php:196
+msgctxt "radio button: Watermark position"
 msgid "Position"
 msgstr ""
 
-#: admin/views/watermark.php:190
+#: admin/views/watermark.php:217
+msgctxt "checkbox: activate mosaic option"
 msgid "Mosaic"
 msgstr ""
 
-#: admin/views/watermark.php:194
-#: admin/views/watermark.php:195
+#: admin/views/watermark.php:223
+#: admin/views/watermark.php:225
+msgctxt "input number: size in percentage"
 msgid "Scale"
 msgstr ""
 
-#: admin/views/watermark.php:196
-msgid "of the image to stamp width"
+#. translators: %s percentage size
+#: admin/views/watermark.php:230
+#, php-format
+msgid "%s of the image to stamp width"
 msgstr ""
 
-#: admin/views/watermark.php:199
+#: admin/views/watermark.php:238
+msgctxt "input select"
 msgid "Opacity"
 msgstr ""
 
-#: admin/views/watermark.php:208
+#: admin/views/watermark.php:249
+msgctxt "input select"
 msgid "Rotation"
 msgstr ""
 
-#: admin/views/watermark.php:242
+#: admin/views/watermark.php:285
+msgctxt "checkbox label"
 msgid "Backup original Images"
 msgstr ""
 
-#: admin/views/watermark.php:243
+#: admin/views/watermark.php:287
 msgid "Enable this option to make a backup of your images before being watermarked or compress. These backups will allow you to restore your original images at cost of taking server memory space."
 msgstr ""
 
-#: admin/views/watermark.php:244
-msgid "You can find the original files at:"
+#. translators: %s: backup folder path
+#: admin/views/watermark.php:293
+#, php-format
+msgid "Backup images will be stored at: %s"
 msgstr ""
 
-#: admin/views/watermark.php:250
+#: admin/views/watermark.php:305
+msgctxt "subtitle label"
 msgid "Restore Original Images"
 msgstr ""
 
-#: admin/views/watermark.php:251
-msgid "All backup images can be restored. This action will recover the original images as they were before being stamped with Watermark or Compress."
+#. translators: %1$s and %2$s: html tags
+#: admin/views/watermark.php:312
+#, php-format
+msgid "All backup images can be restored. This will restore the original images as they were before compression or watermarking. %1$s Warning: Any changes made AFTER Watermark/Compress would be also restored. %2$s"
 msgstr ""
 
-#: admin/views/watermark.php:251
-msgid "Warning: Any changes made AFTER Watermark/Compress would be also restored."
+#. translators: %1$s and %2$s: html tags
+#: admin/views/watermark.php:324
+#, php-format
+msgid "You can also clear all your backup images to free memory space. %1$s Warning: Clear backups will prevent you to restore original images. %2$s"
 msgstr ""
 
-#: admin/views/watermark.php:252
-msgid "You can also clear all your backup images to free memory space."
-msgstr ""
-
-#: admin/views/watermark.php:252
-msgid "Warning: Clear backups will prevent you to restore original images."
-msgstr ""
-
-#: admin/views/watermark.php:253
+#: admin/views/watermark.php:332
+msgctxt "button"
 msgid "Restore All"
 msgstr ""
 
-#: admin/views/watermark.php:255
+#: admin/views/watermark.php:336
+msgctxt "button"
 msgid "Clear backup"
 msgstr ""
 
+#. translators: %s: backup size
+#: admin/views/watermark.php:343
+#, php-format
+msgid "Backup size: %s"
+msgstr ""
+
 #: ilove-img-watermark.php:82
+msgctxt "button"
 msgid "Settings"
+msgstr ""
+
+#: ilove-img-watermark.php:86
+msgctxt "button"
+msgid "Bulk Watermark"
 msgstr ""

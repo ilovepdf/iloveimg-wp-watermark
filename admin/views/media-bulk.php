@@ -12,7 +12,7 @@ $ilove_img_wm_list_table->prepare_items();
         <?php if ( $ilove_img_wm_list_table->total_items ) : ?>
             <div class="iloveimg_settings__overview__watermarkAll">
                 <button type="button" id="iloveimg_watermarkall" class="iloveimg-watermark-all button button-small button-primary">
-                    <span><?php esc_html_e( 'Watermark all', 'iloveimg-watermark' ); ?></span>
+                    <span><?php echo esc_html_x( 'Watermark all', 'button', 'iloveimg-watermark' ); ?></span>
                     <div class="iloveimg-watermark-all__percent" style="width: 0%;"></div>
                 </button>
             </div>

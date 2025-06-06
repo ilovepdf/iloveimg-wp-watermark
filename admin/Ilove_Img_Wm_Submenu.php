@@ -53,8 +53,8 @@ class Ilove_Img_Wm_Submenu {
 
 			add_submenu_page(
 				'iloveimg-admin-page',
-				__( 'Compress settings', 'iloveimg-watermark' ),
-				__( 'Compress settings', 'iloveimg-watermark' ),
+				_x( 'Compress settings', 'submenu', 'iloveimg-watermark' ),
+				_x( 'Compress settings', 'submenu', 'iloveimg-watermark' ),
 				'manage_options',
 				'iloveimg-compress-admin-page',
 				array(
@@ -65,8 +65,8 @@ class Ilove_Img_Wm_Submenu {
 
 			add_submenu_page(
 				'iloveimg-admin-page',
-				__( 'Watermark settings', 'iloveimg-watermark' ),
-				__( 'Watermark settings', 'iloveimg-watermark' ),
+				_x( 'Watermark settings', 'submenu', 'iloveimg-watermark' ),
+				_x( 'Watermark settings', 'submenu', 'iloveimg-watermark' ),
 				'manage_options',
 				'iloveimg-watermark-admin-page',
 				array(
@@ -79,8 +79,8 @@ class Ilove_Img_Wm_Submenu {
 			remove_submenu_page( 'iloveimg-admin-page', 'iloveimg-watermark-admin-page' );
 			add_submenu_page(
 				'iloveimg-admin-page',
-				__( 'Watermark settings', 'iloveimg-watermark' ),
-				__( 'Watermark settings', 'iloveimg-watermark' ),
+				_x( 'Watermark settings', 'submenu', 'iloveimg-watermark' ),
+				_x( 'Watermark settings', 'submenu', 'iloveimg-watermark' ),
 				'manage_options',
 				'iloveimg-watermark-admin-page',
 				array(
@@ -93,7 +93,7 @@ class Ilove_Img_Wm_Submenu {
 
 		add_media_page(
 			'iLoveIMG Media',
-			__( 'Bulk Watermark', 'iloveimg-watermark' ),
+			_x( 'Bulk Watermark', 'submenu', 'iloveimg-watermark' ),
 			'manage_options',
 			'iloveimg-media-watermark-page',
 			array(
@@ -101,16 +101,5 @@ class Ilove_Img_Wm_Submenu {
 				'render_media_optimization',
 			)
 		);
-	}
-
-	/**
-	 * Render the settings page content for the WordPress plugin.
-	 *
-	 * This method is responsible for displaying the content of the settings page for the WordPress plugin. In a real plugin, you would use this method to render and display the configuration options and settings that users can modify.
-	 *
-	 * The provided example simply displays a text message, "This is the page content," which should be replaced with the actual settings and user interface elements for your plugin.
-	 */
-	public function settings_page() {
-		esc_html_e( 'This is the page content', 'iloveimg-watermark' );
 	}
 }
