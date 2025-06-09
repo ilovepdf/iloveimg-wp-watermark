@@ -18,7 +18,7 @@ class Ilove_Img_Wm_Plugin {
 	 * @access   public
 	 * @var      string    VERSION    The current version of the plugin.
 	 */
-    const VERSION = '2.2.10';
+    const VERSION = '2.2.11';
 
     /**
 	 * The unique identifier of this plugin.
@@ -230,7 +230,7 @@ class Ilove_Img_Wm_Plugin {
             return $columns;
         }
 
-        $columns['iloveimg_status_watermark'] = __( 'Status Watermark', 'iloveimg-watermark' );
+        $columns['iloveimg_status_watermark'] = _x( 'Status Watermark', 'column name', 'iloveimg-watermark' );
 
         return $columns;
     }
@@ -361,7 +361,7 @@ class Ilove_Img_Wm_Plugin {
         if ( ! Ilove_Img_Wm_Resources::is_loggued() && get_current_screen()->parent_base !== 'iloveimg-admin-page' ) {
 			?>
             <div class="notice notice-warning is-dismissible">
-                <p><strong>iLoveIMG</strong> - <?php esc_html_e( 'Please you need to be logged or registered.', 'iloveimg-watermark' ); ?> <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-watermark-admin-page' ) ); ?>"><?php esc_html_e( 'Go to settings', 'iloveimg-watermark' ); ?></a></p>
+                <p><strong>iLoveIMG</strong> - <?php esc_html_e( 'Please you need to be logged or registered.', 'iloveimg-watermark' ); ?> <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-watermark-admin-page' ) ); ?>"><?php echo esc_html_x( 'Go to settings', 'button', 'iloveimg-watermark' ); ?></a></p>
             </div>
             <?php
         }
@@ -407,7 +407,7 @@ class Ilove_Img_Wm_Plugin {
                         if ( $account['files_used'] >= $account['free_files_limit'] && $account['package_files_used'] >= $account['package_files_limit'] && (int) $account['subscription_files_used'] >= $account['subscription_files_limit'] ) {
                             ?>
                             <div class="notice notice-warning is-dismissible">
-                                <p><strong>iLoveIMG</strong> - <?php esc_html_e( 'Please you need more credits.', 'iloveimg-watermark' ); ?> <a href="https://iloveapi.com/pricing" target="_blank"><?php esc_html_e( 'Buy more credits', 'iloveimg-watermark' ); ?></a></p>
+                                <p><strong>iLoveIMG</strong> - <?php esc_html_e( 'Please you need more credits.', 'iloveimg-watermark' ); ?> <a href="https://iloveapi.com/pricing" target="_blank"><?php echo esc_html_x( 'Buy more credits', 'button', 'iloveimg-watermark' ); ?></a></p>
                             </div>
                             <?php
                         }
@@ -507,7 +507,7 @@ class Ilove_Img_Wm_Plugin {
 
             echo '<div class="misc-pub-section iloveimg-watermark-images">';
             echo '<h4>';
-            echo esc_html( 'iLoveIMG Watermark' );
+            echo esc_html_x( 'iLoveIMG Watermark', 'Subtitle for individual page of the file', 'iloveimg-watermark' );
             echo '</h4>';
             echo '<div class="iloveimg-container">';
             echo '<table><tr><td>';
@@ -622,7 +622,7 @@ class Ilove_Img_Wm_Plugin {
     public function add_bulk_watermark_action( $actions ) {
 
         if ( get_option( 'iloveimg_account' ) ) {
-            $actions['iloveimg_watermark'] = __( 'Watermark Images', 'iloveimg-watermark' );
+            $actions['iloveimg_watermark'] = _x( 'Watermark Images', 'button', 'iloveimg-watermark' );
         }
 
         return $actions;

@@ -39,7 +39,7 @@ use Ilove_Img_Wm\Ilove_Img_Wm_Resources;
                 <input type="hidden" name="action" value="update_watermark" />
                 <p class="submit">
                     <button <?php echo ( ! $ilove_img_wm_is_logged ) ? 'disabled' : ''; ?> type="submit" name="submit" id="submit" class="button button-secondary tooltip">
-                        <?php esc_html_e( 'Save Changes', 'iloveimg-watermark' ); ?>
+                        <?php echo esc_html_x( 'Save Changes', 'button', 'iloveimg-watermark' ); ?>
                         <span class="tooltiptext"><?php esc_html_e( 'Register and login with us to save settings changes', 'iloveimg-watermark' ); ?></span>
                     </button>
                 </p>
@@ -51,8 +51,12 @@ use Ilove_Img_Wm\Ilove_Img_Wm_Resources;
                         <input type="checkbox" name="iloveimg_field_watermark_activated" <?php echo isset( $options_value['iloveimg_field_watermark_activated'] ) ? 'checked' : ''; ?> />
                         <span class="slider"></span>
                     </div>
-                    <label><?php esc_html_e( 'Watermark Activated', 'iloveimg-watermark' ); ?></label>
-                    <p><?php esc_html_e( 'Activate this plugin in your WordPress dashboard. Activation will work only once you have registered and login as an iLoveAPI developer.', 'iloveimg-watermark' ); ?></p>
+                    <label>
+                        <?php echo esc_html_x( 'Watermark Activated', 'checkbox field label', 'iloveimg-watermark' ); ?>
+                    </label>
+                    <p>
+                        <?php esc_html_e( 'Activate this plugin in your WordPress dashboard. Activation will work only once you have registered and login as an iLoveAPI developer.', 'iloveimg-watermark' ); ?>
+                    </p>
                 </div>
 
                 <div class="iloveimg_settings__options__field">
@@ -60,13 +64,17 @@ use Ilove_Img_Wm\Ilove_Img_Wm_Resources;
                         <input type="checkbox" name="iloveimg_field_autowatermark" <?php echo isset( $options_value['iloveimg_field_autowatermark'] ) ? 'checked' : ''; ?> />
                         <span class="slider"></span>
                     </div>
-                    <label><?php esc_html_e( 'Enable Auto Watermark', 'iloveimg-watermark' ); ?></label>
+                    <label>
+                        <?php echo esc_html_x( 'Enable Auto Watermark', 'checkbox field label', 'iloveimg-watermark' ); ?>
+                    </label>
                     <p><?php esc_html_e( 'With Auto Watermark enabled, any image uploaded to your Media folder will be automatically stamped with your choosen watermark. Still, you will be able to watermark non stamped images from Media.', 'iloveimg-watermark' ); ?></p>
                 </div>
                 
                 <?php if ( extension_loaded( 'gd' ) ) : ?>
                     <div class="iloveimg_settings__options__field">
-                        <label><?php esc_html_e( 'Images Sizes', 'iloveimg-watermark' ); ?></label>
+                        <label>
+                            <?php echo esc_html_x( 'Images Sizes', 'checkbox field label', 'iloveimg-watermark' ); ?>
+                        </label>
                         <div class="iloveimg_settings__options__field__imagessizes">
                             <p><?php esc_html_e( 'When an image is uploaded to Media, WordPress generates alternative image size versions for responsive purposes. You can select which image versions you will watermark.', 'iloveimg-watermark' ); ?></p>
                             <ul>
@@ -83,19 +91,31 @@ use Ilove_Img_Wm\Ilove_Img_Wm_Resources;
 
                 <div class="iloveimg_settings__options__field iloveimg_settings__options__field-preview">
  
-                    <label><?php esc_html_e( 'Preview Settings', 'iloveimg-watermark' ); ?> </label>
-                    <p><?php esc_html_e( 'You can choose to watermark by editable text or by uploading your own image stamp.', 'iloveimg-watermark' ); ?></p>
+                    <label>
+                        <?php echo esc_html_x( 'Preview Settings', 'subtitle: Section to show preview of watermark options', 'iloveimg-watermark' ); ?>
+                    </label>
+                    <p>
+                        <?php esc_html_e( 'You can choose to watermark by editable text or by uploading your own image stamp.', 'iloveimg-watermark' ); ?>
+                    </p>
                     <!--<select style="display: block; margin: 20px 0;" name="iloveimg_field_type" id="iloveimg_field_type">
                         <option value="text" <?php echo ( 'text' === $options_value['iloveimg_field_type'] ) ? 'selected' : ''; // @phpstan-ignore-line ?>>Text</option>
                         <option value="image" <?php echo ( 'image' === $options_value['iloveimg_field_type'] ) ? 'selected' : ''; // @phpstan-ignore-line ?>>Image</option>
                     </select>-->
                     
                     <div id="iloveimg_field_type">
-                        <label for="iloveimg_field_type-text"><input type="radio" name="iloveimg_field_type" class="iloveimg_field_type" id="iloveimg_field_type-text" value="text" <?php echo ( 'text' === $options_value['iloveimg_field_type'] ) ? 'checked' : ''; // @phpstan-ignore-line ?>><span><?php esc_html_e( 'Watermark text', 'iloveimg-watermark' ); ?></span></label>
-                        <label for="iloveimg_field_type-image"><input type="radio" name="iloveimg_field_type" class="iloveimg_field_type" id="iloveimg_field_type-image" value="image" <?php echo ( 'image' === $options_value['iloveimg_field_type'] ) ? 'checked' : ''; // @phpstan-ignore-line ?>><span><?php esc_html_e( 'Watermark image', 'iloveimg-watermark' ); ?></span></label>
+                        <label for="iloveimg_field_type-text">
+                            <input type="radio" name="iloveimg_field_type" class="iloveimg_field_type" id="iloveimg_field_type-text" value="text" <?php echo ( 'text' === $options_value['iloveimg_field_type'] ) ? 'checked' : ''; // @phpstan-ignore-line ?>>
+                            <span><?php echo esc_html_x( 'Watermark text', 'radio button option', 'iloveimg-watermark' ); ?></span>
+                        </label>
+                        <label for="iloveimg_field_type-image">
+                            <input type="radio" name="iloveimg_field_type" class="iloveimg_field_type" id="iloveimg_field_type-image" value="image" <?php echo ( 'image' === $options_value['iloveimg_field_type'] ) ? 'checked' : ''; // @phpstan-ignore-line ?>>
+                            <span><?php echo esc_html_x( 'Watermark image', 'radio button option', 'iloveimg-watermark' ); ?></span>
+                        </label>
                     </div>
 
-                    <p class="iloveimg_font_none_style" style="color: #e21919; font-style: italic;"><?php esc_html_e( 'This font do not allow bold/italic styles for watermark', 'iloveimg-watermark' ); ?></p>
+                    <p class="iloveimg_font_none_style" style="color: #e21919; font-style: italic;">
+                        <?php esc_html_e( 'This font do not allow bold/italic styles for watermark', 'iloveimg-watermark' ); ?>
+                    </p>
 
                     <div class="iloveimg_settings__options__field__cols">
                         <div class="iloveimg_settings__options__field__cols__1">
@@ -151,24 +171,30 @@ use Ilove_Img_Wm\Ilove_Img_Wm_Resources;
                                         <a href="#" id="picker"></a>
                                     </div>
                                     <div class="iloveimg_settings__options__texts-container">
-                                        <input type="text" name="iloveimg_field_text" id="iloveimg_field_text" value="<?php echo isset( $options_value['iloveimg_field_text'] ) ? esc_html( $options_value['iloveimg_field_text'] ) : ''; ?>" placeholder="<?php esc_html_e( 'Text', 'iloveimg-watermark' ); ?>" value=""/>
+                                        <input type="text" name="iloveimg_field_text" id="iloveimg_field_text" value="<?php echo isset( $options_value['iloveimg_field_text'] ) ? esc_html( $options_value['iloveimg_field_text'] ) : ''; ?>" placeholder="<?php echo esc_html_x( 'Text', 'placeholder: input text', 'iloveimg-watermark' ); ?>" value=""/>
                                     </div>
                                 </div>   
                             </div>
 
                             <div class="iloveimg_settings__options__field__cols__2-image" style="display: none; margin-bottom: 20px;">
-                                <label><?php esc_html_e( 'Image', 'iloveimg-watermark' ); ?></label>
+                                <label>
+                                    <?php echo esc_html_x( 'Image', 'Image selector label', 'iloveimg-watermark' ); ?>
+                                </label>
                                 <p><?php esc_html_e( 'Choose your image stamp from your Media or from an external URL. Then set the stamp position, scale, opacity and rotation.', 'iloveimg-watermark' ); ?></p>
                                 <button class="button" id="media-open">
-                                    <span><?php esc_html_e( 'Add Image', 'iloveimg-watermark' ); ?></span>
+                                    <span><?php echo esc_html_x( 'Add Image', 'button', 'iloveimg-watermark' ); ?></span>
                                 </button>
-                                <span style="padding-right: 10px;"><?php esc_html_e( 'or URL', 'iloveimg-watermark' ); ?></span>
-                                <input type="url" id="iloveimg_field_image" name="iloveimg_field_image" value="<?php echo isset( $options_value['iloveimg_field_image'] ) ? esc_url( $options_value['iloveimg_field_image'] ) : ''; ?>" placeholder="<?php esc_html_e( 'Place image URL', 'iloveimg-watermark' ); ?>"/>
+                                <span style="padding-right: 10px;">
+                                    <?php echo esc_html_x( 'or URL', 'Button divider: previous button: add image button, next option: input url.', 'iloveimg-watermark' ); ?>
+                                </span>
+                                <input type="url" id="iloveimg_field_image" name="iloveimg_field_image" value="<?php echo isset( $options_value['iloveimg_field_image'] ) ? esc_url( $options_value['iloveimg_field_image'] ) : ''; ?>" placeholder="<?php echo esc_html_x( 'Place image URL', 'input url', 'iloveimg-watermark' ); ?>"/>
                             </div>
 
                             <div class="iloveimg_settings__options__field__cols__2-format-container">
                                 <div class="iloveimg_settings__options__field__cols__2-format-container-col__1">
-                                    <label><?php esc_html_e( 'Position', 'iloveimg-watermark' ); ?></label>
+                                    <label>
+                                        <?php echo esc_html_x( 'Position', 'radio button: Watermark position', 'iloveimg-watermark' ); ?>
+                                    </label>
                                     <table class="iloveimg_watermark_position" style="margin-top: 7px;">
                                         <tr>
                                             <td><input type="radio" name="iloveimg_field_position" value="1" <?php echo ( 1 === (int) $options_value['iloveimg_field_position'] ) ? 'checked' : ''; // @phpstan-ignore-line ?>></td>
@@ -187,16 +213,30 @@ use Ilove_Img_Wm\Ilove_Img_Wm_Resources;
                                         </tr>
                                     </table>
                                     <input type="checkbox" name="iloveimg_field_mosaic" id="iloveimg_field_mosaic" <?php echo ( isset( $options_value['iloveimg_field_mosaic'] ) ) ? 'checked' : ''; ?>>
-                                    <label for=""><?php esc_html_e( 'Mosaic', 'iloveimg-watermark' ); ?></label>
+                                    <label for="iloveimg_field_mosaic">
+                                        <?php echo esc_html_x( 'Mosaic', 'checkbox: activate mosaic option', 'iloveimg-watermark' ); ?>
+                                    </label>
                                 </div>
                                 <div class="iloveimg_settings__options__field__cols__2-format-container-col__2">
                                     <div>
-                                        <label for=""><?php esc_html_e( 'Scale', 'iloveimg-watermark' ); ?></label>
-                                        <input type="number" name="iloveimg_field_scale" id="iloveimg_field_scale" value="<?php echo isset( $options_value['iloveimg_field_scale'] ) ? (int) $options_value['iloveimg_field_scale'] : ''; ?>" placeholder="<?php esc_html_e( 'Scale', 'iloveimg-watermark' ); ?>" value=""/>
-                                        <span style="font-size: 10px;">% <?php esc_html_e( 'of the image to stamp width', 'iloveimg-watermark' ); ?></span>
+                                        <label for="iloveimg_field_scale">
+                                            <?php echo esc_html_x( 'Scale', 'input number: size in percentage', 'iloveimg-watermark' ); ?>
+                                        </label>
+                                        <input type="number" name="iloveimg_field_scale" id="iloveimg_field_scale" value="<?php echo isset( $options_value['iloveimg_field_scale'] ) ? (int) $options_value['iloveimg_field_scale'] : ''; ?>" placeholder="<?php echo esc_html_x( 'Scale', 'input number: size in percentage', 'iloveimg-watermark' ); ?>" value=""/>
+                                        <span style="font-size: 10px;">
+                                            <?php
+                                            printf(
+                                                /* translators: %s percentage size */
+                                                esc_html__( '%s of the image to stamp width', 'iloveimg-watermark' ),
+                                                '%'
+                                            );
+                                            ?>
+                                        </span>
                                     </div>
                                     <div style="float: left; margin-right: 20px;">
-                                        <label for=""><?php esc_html_e( 'Opacity', 'iloveimg-watermark' ); ?></label>
+                                        <label for="iloveimg_field_opacity">
+                                            <?php echo esc_html_x( 'Opacity', 'input select', 'iloveimg-watermark' ); ?>
+                                        </label>
                                         <select name="iloveimg_field_opacity" id="iloveimg_field_opacity">
                                             <option value="25" <?php echo ( 25 === (int) $options_value['iloveimg_field_opacity'] ) ? 'selected' : ''; // @phpstan-ignore-line ?>>25%</option>
                                             <option value="50" <?php echo ( 50 === (int) $options_value['iloveimg_field_opacity'] ) ? 'selected' : ''; // @phpstan-ignore-line ?>>50%</option>
@@ -205,7 +245,9 @@ use Ilove_Img_Wm\Ilove_Img_Wm_Resources;
                                         </select>
                                     </div>
                                     <div>
-                                        <label for=""><?php esc_html_e( 'Rotation', 'iloveimg-watermark' ); ?></label>
+                                        <label for="iloveimg_field_rotation">
+                                            <?php echo esc_html_x( 'Rotation', 'input select', 'iloveimg-watermark' ); ?>
+                                        </label>
                                         <select name="iloveimg_field_rotation" id="iloveimg_field_rotation">
                                             <option value="0" <?php echo ( 0 === (int) $options_value['iloveimg_field_rotation'] ) ? 'selected' : ''; // @phpstan-ignore-line ?>>0º</option>
                                             <option value="45" <?php echo ( 45 === (int) $options_value['iloveimg_field_rotation'] ) ? 'selected' : ''; // @phpstan-ignore-line ?>>45º</option>
@@ -239,21 +281,71 @@ use Ilove_Img_Wm\Ilove_Img_Wm_Resources;
                             <input type="checkbox" name="iloveimg_field_backup" <?php echo isset( $options_value['iloveimg_field_backup'] ) ? 'checked' : ''; ?> />
                             <span class="slider"></span>
                         </div>
-                        <label><?php esc_html_e( 'Backup original Images', 'iloveimg-watermark' ); ?></label>
+                        <label>
+                            <?php echo esc_html_x( 'Backup original Images', 'checkbox label', 'iloveimg-watermark' ); ?>
+                        </label>
                         <p><?php esc_html_e( 'Enable this option to make a backup of your images before being watermarked or compress. These backups will allow you to restore your original images at cost of taking server memory space.', 'iloveimg-watermark' ); ?></p>
-                        <p><?php esc_html_e( 'You can find the original files at:', 'iloveimg-watermark' ); ?> <code>wp-content/uploads/iloveimg-backup</code></p>
+                        <p>
+                            <?php
+                            printf(
+                                wp_kses_post(
+                                    /* translators: %s: backup folder path */
+                                    __( 'Backup images will be stored at: %s', 'iloveimg-watermark' )
+                                ),
+                                '<code>wp-content/uploads/iloveimg-backup</code>'
+                            );
+                            ?>
+                        </p>
                         
                     </div>
                     
                     <div class="iloveimg_settings__options__field">
                         
-                        <label><?php esc_html_e( 'Restore Original Images', 'iloveimg-watermark' ); ?></label>
-                        <p><?php esc_html_e( 'All backup images can be restored. This action will recover the original images as they were before being stamped with Watermark or Compress.', 'iloveimg-watermark' ); ?> <span style="color: red;"><?php esc_html_e( 'Warning: Any changes made AFTER Watermark/Compress would be also restored.', 'iloveimg-watermark' ); ?></span></p>
-                        <p><?php esc_html_e( 'You can also clear all your backup images to free memory space.', 'iloveimg-watermark' ); ?> <span style="color: red;"><?php esc_html_e( 'Warning: Clear backups will prevent you to restore original images.', 'iloveimg-watermark' ); ?></span></p>
-                            <button type="button" class="button button-style-iloveimg" id="iloveimg_restore_all" <?php echo ( isset( $options_value['iloveimg_field_backup'] ) && Ilove_Img_Wm_Resources::get_size_backup() ) ? '' : 'disabled'; ?>><?php esc_html_e( 'Restore All', 'iloveimg-watermark' ); ?></button>
-                        
-                            <button type="button" class="button button-remove button-style-iloveimg" id="iloveimg_clear_backup" <?php echo ( isset( $options_value['iloveimg_field_backup'] ) && Ilove_Img_Wm_Resources::get_size_backup() ) ? '' : 'disabled'; ?>><?php esc_html_e( 'Clear backup', 'iloveimg-watermark' ); ?></button>
-                            <span><?php echo (float) round( Ilove_Img_Wm_Resources::get_size_backup(), 2 ); ?> MB</span>
+                        <label>
+                            <?php echo esc_html_x( 'Restore Original Images', 'subtitle label', 'iloveimg-watermark' ); ?>
+                        </label>
+                        <p>
+                            <?php
+                            printf(
+                                wp_kses_post(
+                                    /* translators: %1$s and %2$s: html tags */
+                                    __( 'All backup images can be restored. This will restore the original images as they were before compression or watermarking. %1$s Warning: Any changes made AFTER Watermark/Compress would be also restored. %2$s', 'iloveimg-watermark' )
+                                ),
+                                '<span style="color: red;">',
+                                '</span>'
+                            );
+                            ?>
+                        </p>
+                        <p>
+                            <?php
+                            printf(
+                                wp_kses_post(
+                                    /* translators: %1$s and %2$s: html tags */
+                                    __( 'You can also clear all your backup images to free memory space. %1$s Warning: Clear backups will prevent you to restore original images. %2$s', 'iloveimg-watermark' )
+                                ),
+                                '<span style="color: red;">',
+                                '</span>'
+                            );
+                            ?>
+                        </p>
+                        <button type="button" class="button button-style-iloveimg" id="iloveimg_restore_all" <?php echo ( isset( $options_value['iloveimg_field_backup'] ) && Ilove_Img_Wm_Resources::get_size_backup() ) ? '' : 'disabled'; ?>>
+                            <?php echo esc_html_x( 'Restore All', 'button', 'iloveimg-watermark' ); ?>
+                        </button>
+                    
+                        <button type="button" class="button button-remove button-style-iloveimg" id="iloveimg_clear_backup" <?php echo ( isset( $options_value['iloveimg_field_backup'] ) && Ilove_Img_Wm_Resources::get_size_backup() ) ? '' : 'disabled'; ?>>
+                            <?php echo esc_html_x( 'Clear backup', 'button', 'iloveimg-watermark' ); ?>
+                        </button>
+                        <span>
+                            <?php
+                            printf(
+                                wp_kses_post(
+                                    /* translators: %s: backup size */
+                                    __( 'Backup size: %s', 'iloveimg-watermark' )
+                                ),
+                                (float) round( Ilove_Img_Wm_Resources::get_size_backup(), 2 ) . ' MB'
+                            );
+                            ?>
+                        </span>
                     </div>
                 </div>
 
@@ -262,7 +354,7 @@ use Ilove_Img_Wm\Ilove_Img_Wm_Resources;
                 ?>
                 <p class="submit">
                     <button <?php echo ( ! $ilove_img_wm_is_logged ) ? 'disabled' : ''; ?> type="submit" name="submit" id="submit" class="button button-secondary tooltip">
-                        <?php esc_html_e( 'Save Changes', 'iloveimg-watermark' ); ?>
+                        <?php echo esc_html_x( 'Save Changes', 'button', 'iloveimg-watermark' ); ?>
                         <span class="tooltiptext"><?php esc_html_e( 'Register and login with us to save settings changes', 'iloveimg-watermark' ); ?></span>
                     </button>
                 </p>
