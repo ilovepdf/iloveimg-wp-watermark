@@ -33,7 +33,7 @@ class Ilove_Img_Wm_Resources {
         $sizes[] = array(
             'field_id' => 'full',
             'type'     => 'checkbox',
-            'label'    => __( 'Original image', 'iloveimg-watermark' ),
+            'label'    => _x( 'Original image', 'input checkbox', 'iloveimg-watermark' ),
             'default'  => true,
         );
 
@@ -323,8 +323,8 @@ class Ilove_Img_Wm_Resources {
         <div id="iloveimg_detaills_watermark_<?php echo (int) $image_id; ?>" style="display:none;">
             <table class="table__details__sizes">
                 <tr>
-                    <th><?php esc_html_e( 'Name', 'iloveimg-watermark' ); ?></th>
-                    <th><?php esc_html_e( 'Watermark', 'iloveimg-watermark' ); ?></th>
+                    <th><?php echo esc_html_x( 'Name', 'column name', 'iloveimg-watermark' ); ?></th>
+                    <th><?php echo esc_html_x( 'Watermark', 'column name', 'iloveimg-watermark' ); ?></th>
                     <?php
                     if ( $_sizes ) {
                         foreach ( $_sizes as $key => $size ) {
@@ -335,12 +335,12 @@ class Ilove_Img_Wm_Resources {
                                 <?php
                                 if ( isset( $size['watermarked'] ) ) {
                                     if ( $size['watermarked'] ) {
-                                        esc_html_e( 'Applied', 'iloveimg-watermark' );
+                                        echo esc_html_x( 'Applied', 'Watermark applied to an image', 'iloveimg-watermark' );
                                     } else {
-                                        esc_html_e( 'Not applied', 'iloveimg-watermark' );
+                                        echo esc_html_x( 'Not applied', 'Watermark not applied to an image', 'iloveimg-watermark' );
                                     }
                                 } else {
-                                    esc_html_e( 'Not applied', 'iloveimg-watermark' );
+                                    echo esc_html_x( 'Not applied', 'Watermark not applied to an image', 'iloveimg-watermark' );
                                 }
                                 ?>
                                     </td>
@@ -352,7 +352,17 @@ class Ilove_Img_Wm_Resources {
                 </tr>
             </table>
         </div>
-        <p><a href="#TB_inline?&width=550&height=440&inlineId=iloveimg_detaills_watermark_<?php echo (int) $image_id; ?>" class="thickbox iloveimg_sizes_watermarked" title="<?php echo esc_html( get_the_title( $image_id ) ); ?>"><?php echo (int) $images_watermarked; ?> <?php esc_html_e( 'sizes watermark applied', 'iloveimg-watermark' ); ?></a></p>
+        <p>
+            <a href="#TB_inline?&width=550&height=440&inlineId=iloveimg_detaills_watermark_<?php echo (int) $image_id; ?>" class="thickbox iloveimg_sizes_watermarked" title="<?php echo esc_html( get_the_title( $image_id ) ); ?>">
+                <?php
+                printf(
+                    /* translators: %s: Number of watermarked image sizes */
+                    esc_html__( 'Watermark applied to %s sizes', 'iloveimg-watermark' ),
+                    (int) $images_watermarked
+                );
+                ?>
+            </a>
+        </p>
         <?php
     }
 
@@ -382,19 +392,19 @@ class Ilove_Img_Wm_Resources {
                          
                     <?php if ( self::is_loggued() ) : ?>
 						<?php if ( self::get_sizes_enabled() ) : ?>
-                            <button type="button" class="iloveimg-watermark button button-small button-primary" data-imgnonce="<?php echo sanitize_key( wp_unslash( $img_nonce ) ); ?>" data-id="<?php echo (int) $column_id; ?>" <?php echo ( 1 === $status_watermark || 3 === $status_watermark ) ? 'disabled="disabled"' : ''; ?>><?php esc_html_e( 'Watermark', 'iloveimg-watermark' ); ?></button>
+                            <button type="button" class="iloveimg-watermark button button-small button-primary" data-imgnonce="<?php echo sanitize_key( wp_unslash( $img_nonce ) ); ?>" data-id="<?php echo (int) $column_id; ?>" <?php echo ( 1 === $status_watermark || 3 === $status_watermark ) ? 'disabled="disabled"' : ''; ?>><?php echo esc_html_x( 'Watermark', 'button', 'iloveimg-watermark' ); ?></button>
                             <img src="<?php echo esc_url( plugins_url( '/assets/images/spinner.gif', __DIR__ ) ); ?>" width="20" height="20" style="<?php echo ( 1 === $status_watermark || 3 === $status_watermark ) ? '' : 'display: none;'; ?>; margin-top: 7px" />
                             <?php if ( 3 === $status_watermark ) : ?>
                                 <!-- <p>In queue...</p> -->
                             <?php endif; ?>
                         <?php else : ?>
-                            <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-watermark-admin-page' ) ); ?>" class="iloveimg_link"><?php esc_html_e( 'Go to settings', 'iloveimg-watermark' ); ?></button>
+                            <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-watermark-admin-page' ) ); ?>" class="iloveimg_link"><?php echo esc_html_x( 'Go to settings', 'button', 'iloveimg-watermark' ); ?></a>
 							<?php
                         endif;
                     else :
 						?>
                         <p><?php esc_html_e( 'You need to be registered', 'iloveimg-watermark' ); ?></p>
-                        <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-watermark-admin-page' ) ); ?>" class="iloveimg_link"><?php esc_html_e( 'Go to settings', 'iloveimg-watermark' ); ?></button>
+                        <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-watermark-admin-page' ) ); ?>" class="iloveimg_link"><?php echo esc_html_x( 'Go to settings', 'button', 'iloveimg-watermark' ); ?></a>
 						<?php
                     endif;
                     if ( 1 === $status_watermark || 3 === $status_watermark ) :
@@ -495,13 +505,25 @@ class Ilove_Img_Wm_Resources {
             <?php if ( $backup_activated && in_array( $image_id, $images_restore, true ) ) : ?>
                 <div class="iloveimg-watermark iloveimg_restore_button_wrapper">
                     <button class="iloveimg_restore_button button button-secondary" data-id="<?php echo intval( $image_id ); ?>" data-action="ilove_img_wm_restore">
-                        <?php esc_html_e( 'Restore original file', 'iloveimg-watermark' ); ?>
+                        <?php echo esc_html_x( 'Restore original file', 'button', 'iloveimg-watermark' ); ?>
                     </button>
                     <br/>
                     <input type="hidden" id="_wpnonce" name="_wpnonce_iloveimg_wm_restore" value="<?php echo esc_html( $img_nonce ); ?>">
-                    <p class="loading iloveimg-status" style="display: none; margin-top: 5px;"><span><?php esc_html_e( 'Loading', 'iloveimg-watermark' ); ?>...</span></p>
-                    <p class="error iloveimg-status" style="margin-top: 5px;"><span><?php esc_html_e( 'Error', 'iloveimg-watermark' ); ?></span></p>
-                    <p class="success iloveimg-status" style="margin-top: 5px;"><span><?php esc_html_e( 'Completed, please refresh the page.', 'iloveimg-watermark' ); ?></span></p>
+                    <p class="loading iloveimg-status" style="display: none; margin-top: 5px;">
+                        <span>
+                            <?php echo esc_html_x( 'Loading...', 'The file is being processed', 'iloveimg-watermark' ); ?>
+                        </span>
+                    </p>
+                    <p class="error iloveimg-status" style="margin-top: 5px;">
+                        <span>
+                            <?php echo esc_html_x( 'Error', 'File processing had an error', 'iloveimg-watermark' ); ?>
+                        </span>
+                    </p>
+                    <p class="success iloveimg-status" style="margin-top: 5px;">
+                        <span>
+                            <?php echo esc_html_x( 'Completed, please refresh the page.', 'File processing was successful', 'iloveimg-watermark' ); ?>
+                        </span>
+                    </p>
                 </div>
             <?php endif; ?>
         <?php
