@@ -101,14 +101,8 @@ Moreover, all processed files are automatically deleted from our servers after b
 == Changelog ==
 
 Improved
-* Updated development dependencies:
-  - @babel/core updated to version 7.28
-  - @babel/preset-env updated to version 7.28
-  - phpstan/phpstan updated to version 2.1.22
-  - szepeviktor/phpstan-wordpress updated to version 2.0.2
-  - phpstan/extension-installer updated to version 1.4.3
-  - wp-coding-standards/wpcs  3.2.0
-* Enhanced build process compatibility and performance
+* Updated development dependencies
+
 
 
 
