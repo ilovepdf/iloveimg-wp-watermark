@@ -100,11 +100,9 @@ Moreover, all processed files are automatically deleted from our servers after b
 
 == Changelog ==
 
+= 2.2.12 =
 Improved
-* Updated development dependencies
-
-
-
+* Update Libraries.
 
 = 2.2.11 =
 Improved
