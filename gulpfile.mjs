@@ -59,4 +59,8 @@ gulp.task('watch', function () {
 });
 
 // Default task
-gulp.task('default', gulp.series('build-css', 'build-js', 'watch'));
+if (process.env.NODE_ENV === 'production') {
+    gulp.task('default', gulp.series('build-css', 'build-js'));
+} else {
+    gulp.task('default', gulp.series('build-css', 'build-js', 'watch'));
+}
