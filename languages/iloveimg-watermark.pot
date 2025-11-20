@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2025-02-13T12:38:31+00:00\n"
-"PO-Revision-Date: 2025-06-06T14:15:21+00:00\n"
+"PO-Revision-Date: 2025-11-20T11:38:54+00:00\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: iloveimg-watermark\n"
 
@@ -19,9 +19,24 @@ msgstr ""
 msgid "Best Watermark - Protect images on your site with iLoveIMG"
 msgstr ""
 
+#. Plugin URI of the plugin
+#: ilove-img-watermark.php
+msgid "https://iloveapi.com/"
+msgstr ""
+
 #. Description of the plugin
 #: ilove-img-watermark.php
 msgid "Protect your site from image theft with our reliable and easy-to-use watermark plugin. Effective protection for your images."
+msgstr ""
+
+#. Author of the plugin
+#: ilove-img-watermark.php
+msgid "iLoveIMG"
+msgstr ""
+
+#. Author URI of the plugin
+#: ilove-img-watermark.php
+msgid "https://iloveimg.com/"
 msgstr ""
 
 #: admin/Ilove_Img_Wm_Media_List_Table.php:102
@@ -361,12 +376,12 @@ msgid "Save"
 msgstr ""
 
 #: admin/views/compress.php:10
-#: admin/views/watermark.php:13
+#: admin/views/watermark.php:16
 msgid "The power of iLoveIMG in your WordPress!"
 msgstr ""
 
 #: admin/views/compress.php:11
-#: admin/views/watermark.php:14
+#: admin/views/watermark.php:17
 msgid "Compress all your Media image files and Stamp other Images or text into your WordPress pictures. This is the Official iLoveIMG plugin for WordPress. You can optimize all your Images and stamp them automatically as you do in iloveimg.com"
 msgstr ""
 
@@ -375,12 +390,12 @@ msgid "Register now to get 2500 free credits and start working with iLoveIMG plu
 msgstr ""
 
 #: admin/views/compress.php:22
-#: admin/views/watermark.php:25
+#: admin/views/watermark.php:41
 msgid "Compress settings"
 msgstr ""
 
 #: admin/views/compress.php:28
-#: admin/views/watermark.php:31
+#: admin/views/watermark.php:58
 msgid "Watermark settings"
 msgstr ""
 
@@ -422,180 +437,179 @@ msgstr ""
 msgid "%s From backup images"
 msgstr ""
 
-#: admin/views/watermark.php:15
+#: admin/views/watermark.php:18
 msgid "Register now to get 2500 free credits uses and start working with iLoveIMG plugin now!"
 msgstr ""
 
-#: admin/views/watermark.php:42
-#: admin/views/watermark.php:357
+#: admin/views/watermark.php:69
+#: admin/views/watermark.php:527
 msgctxt "button"
 msgid "Save Changes"
 msgstr ""
 
-#: admin/views/watermark.php:43
-#: admin/views/watermark.php:358
+#: admin/views/watermark.php:70
+#: admin/views/watermark.php:528
 msgid "Register and login with us to save settings changes"
 msgstr ""
 
-#: admin/views/watermark.php:46
+#: admin/views/watermark.php:73
 msgid "Configure your Watermark Images settings"
 msgstr ""
 
-#: admin/views/watermark.php:55
+#: admin/views/watermark.php:82
 msgctxt "checkbox field label"
 msgid "Watermark Activated"
 msgstr ""
 
-#: admin/views/watermark.php:58
+#: admin/views/watermark.php:85
 msgid "Activate this plugin in your WordPress dashboard. Activation will work only once you have registered and login as an iLoveAPI developer."
 msgstr ""
 
-#: admin/views/watermark.php:68
+#: admin/views/watermark.php:95
 msgctxt "checkbox field label"
 msgid "Enable Auto Watermark"
 msgstr ""
 
-#: admin/views/watermark.php:70
+#: admin/views/watermark.php:97
 msgid "With Auto Watermark enabled, any image uploaded to your Media folder will be automatically stamped with your choosen watermark. Still, you will be able to watermark non stamped images from Media."
 msgstr ""
 
-#: admin/views/watermark.php:76
+#: admin/views/watermark.php:103
 msgctxt "checkbox field label"
 msgid "Images Sizes"
 msgstr ""
 
-#: admin/views/watermark.php:79
+#: admin/views/watermark.php:106
 msgid "When an image is uploaded to Media, WordPress generates alternative image size versions for responsive purposes. You can select which image versions you will watermark."
 msgstr ""
 
-#: admin/views/watermark.php:95
+#: admin/views/watermark.php:126
 msgctxt "subtitle: Section to show preview of watermark options"
 msgid "Preview Settings"
 msgstr ""
 
-#: admin/views/watermark.php:98
+#: admin/views/watermark.php:129
 msgid "You can choose to watermark by editable text or by uploading your own image stamp."
 msgstr ""
 
-#: admin/views/watermark.php:108
+#: admin/views/watermark.php:151
 msgctxt "radio button option"
 msgid "Watermark text"
 msgstr ""
 
-#: admin/views/watermark.php:112
+#: admin/views/watermark.php:159
 msgctxt "radio button option"
 msgid "Watermark image"
 msgstr ""
 
-#: admin/views/watermark.php:117
+#: admin/views/watermark.php:164
 msgid "This font do not allow bold/italic styles for watermark"
 msgstr ""
 
-#: admin/views/watermark.php:174
+#: admin/views/watermark.php:257
 msgctxt "placeholder: input text"
 msgid "Text"
 msgstr ""
 
-#: admin/views/watermark.php:181
+#: admin/views/watermark.php:264
 msgctxt "Image selector label"
 msgid "Image"
 msgstr ""
 
-#: admin/views/watermark.php:183
+#: admin/views/watermark.php:266
 msgid "Choose your image stamp from your Media or from an external URL. Then set the stamp position, scale, opacity and rotation."
 msgstr ""
 
-#: admin/views/watermark.php:185
+#: admin/views/watermark.php:268
 msgctxt "button"
 msgid "Add Image"
 msgstr ""
 
-#: admin/views/watermark.php:188
+#: admin/views/watermark.php:271
 msgctxt "Button divider: previous button: add image button, next option: input url."
 msgid "or URL"
 msgstr ""
 
-#: admin/views/watermark.php:190
+#: admin/views/watermark.php:273
 msgctxt "input url"
 msgid "Place image URL"
 msgstr ""
 
-#: admin/views/watermark.php:196
+#: admin/views/watermark.php:279
 msgctxt "radio button: Watermark position"
 msgid "Position"
 msgstr ""
 
-#: admin/views/watermark.php:217
+#: admin/views/watermark.php:336
 msgctxt "checkbox: activate mosaic option"
 msgid "Mosaic"
 msgstr ""
 
-#: admin/views/watermark.php:223
-#: admin/views/watermark.php:225
+#: admin/views/watermark.php:342
+#: admin/views/watermark.php:345
 msgctxt "input number: size in percentage"
 msgid "Scale"
 msgstr ""
 
 #. translators: %s percentage size
-#: admin/views/watermark.php:230
-#, php-format
-msgid "%s of the image to stamp width"
+#: admin/views/watermark.php:352
+msgid "of image width"
 msgstr ""
 
-#: admin/views/watermark.php:238
+#: admin/views/watermark.php:360
 msgctxt "input select"
 msgid "Opacity"
 msgstr ""
 
-#: admin/views/watermark.php:249
+#: admin/views/watermark.php:387
 msgctxt "input select"
 msgid "Rotation"
 msgstr ""
 
-#: admin/views/watermark.php:285
+#: admin/views/watermark.php:455
 msgctxt "checkbox label"
 msgid "Backup original Images"
 msgstr ""
 
-#: admin/views/watermark.php:287
+#: admin/views/watermark.php:457
 msgid "Enable this option to make a backup of your images before being watermarked or compress. These backups will allow you to restore your original images at cost of taking server memory space."
 msgstr ""
 
 #. translators: %s: backup folder path
-#: admin/views/watermark.php:293
+#: admin/views/watermark.php:463
 #, php-format
 msgid "Backup images will be stored at: %s"
 msgstr ""
 
-#: admin/views/watermark.php:305
+#: admin/views/watermark.php:475
 msgctxt "subtitle label"
 msgid "Restore Original Images"
 msgstr ""
 
 #. translators: %1$s and %2$s: html tags
-#: admin/views/watermark.php:312
+#: admin/views/watermark.php:482
 #, php-format
 msgid "All backup images can be restored. This will restore the original images as they were before compression or watermarking. %1$s Warning: Any changes made AFTER Watermark/Compress would be also restored. %2$s"
 msgstr ""
 
 #. translators: %1$s and %2$s: html tags
-#: admin/views/watermark.php:324
+#: admin/views/watermark.php:494
 #, php-format
 msgid "You can also clear all your backup images to free memory space. %1$s Warning: Clear backups will prevent you to restore original images. %2$s"
 msgstr ""
 
-#: admin/views/watermark.php:332
+#: admin/views/watermark.php:502
 msgctxt "button"
 msgid "Restore All"
 msgstr ""
 
-#: admin/views/watermark.php:336
+#: admin/views/watermark.php:506
 msgctxt "button"
 msgid "Clear backup"
 msgstr ""
 
 #. translators: %s: backup size
-#: admin/views/watermark.php:343
+#: admin/views/watermark.php:513
 #, php-format
 msgid "Backup size: %s"
 msgstr ""
