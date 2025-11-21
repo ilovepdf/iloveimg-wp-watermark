@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2025-02-13T12:38:31+00:00\n"
-"PO-Revision-Date: 2025-11-20T11:38:54+00:00\n"
+"PO-Revision-Date: 2025-11-21T12:03:07+00:00\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: iloveimg-watermark\n"
 
@@ -419,22 +419,25 @@ msgctxt "title: admin settings overview"
 msgid "Overview"
 msgstr ""
 
-#. translators: %1$s and %2$s number images
-#: admin/views/overview.php:13
-#, php-format
-msgid "Watermarked images %1$s / Uploaded images %2$s"
-msgstr ""
-
 #. translators: %s porcentage of images protected
-#: admin/views/overview.php:30
+#: admin/views/overview.php:19
 #, php-format
 msgid "%s Total images protected with iLoveIMG"
 msgstr ""
 
 #. translators: %s backup size
-#: admin/views/overview.php:44
+#: admin/views/overview.php:32
 #, php-format
 msgid "%s From backup images"
+msgstr ""
+
+#: admin/views/overview.php:42
+#, php-format
+msgctxt "Overview: watermark summary"
+msgid ""
+"Your images, summary:\n"
+"Watermarked images %1$s\n"
+"Uploaded images %2$s"
 msgstr ""
 
 #: admin/views/watermark.php:18
