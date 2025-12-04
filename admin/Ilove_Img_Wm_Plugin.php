@@ -371,7 +371,7 @@ class Ilove_Img_Wm_Plugin {
             if ( 'login' === $iloveimg_account_error['action'] ) :
                 ?>
                 <div class="notice notice-error is-dismissible">
-                    <p><?php esc_html_e( 'Your email or password is wrong.', 'iloveimg-watermark' ); ?></p>
+                    <p><?php esc_html_e( 'Incorrect email or password.', 'iloveimg-watermark' ); ?></p>
                 </div>
             <?php endif; ?>
             <?php if ( 'register' === $iloveimg_account_error['action'] ) : ?>
