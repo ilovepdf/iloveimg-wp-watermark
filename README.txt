@@ -1,5 +1,5 @@
-=== Best Watermark - Protect images on your site with iLoveIMG ===
-Plugin Name: Best Watermark - Protect images on your site with iLoveIMG
+=== iLoveIMG Watermark ===
+Plugin Name: iLoveIMG Watermark
 Version: 2.2.12
 Author: iLovePDF
 Author URI: https://www.iloveimg.com/
@@ -12,7 +12,7 @@ Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Protect your site from image theft with our reliable and easy-to-use watermark plugin. Effective protection for your images.
+Protect your images with automatic, easy-to-use watermarking.
 
 == Description ==
 
@@ -20,7 +20,7 @@ Protect your images from theft. Now you can get a powerful, easy to use, and rel
 
 Create custom watermarks combining image and text and protect your images from being shared or featured without owner consent.
 
-Trust reliable developers. **Best Watermark - Protect images on your site with iLoveIMG** is brought to you by the same developers of iLoveIMG.com, popular image editor trusted by millions. 
+Trust reliable developers. **iLoveIMG Watermark** is brought to you by the same developers of iLoveIMG.com, popular image editor trusted by millions. 
 
 **If you are looking for the best watermarking tool, iLoveIMG plugin comes packed with plenty of features.**
 

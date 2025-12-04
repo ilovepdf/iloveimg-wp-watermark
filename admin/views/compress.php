@@ -32,14 +32,14 @@
         </div>
         <div class="iloveimg_settings__options-container">
             <p>
-                <?php esc_html_e( 'You can also compress images automatically just as easily as you do with all of our iLoveIMG plugins. Our Image Compressor & Optimizer - iLoveIMG plugin allows you to optimize your WordPress media images all at once or just the images you need.', 'iloveimg-watermark' ); ?>
+                <?php esc_html_e( 'You can also compress images automatically just as easily as you do with all of our iLoveIMG plugins. Our iLoveIMG plugin allows you to optimize your WordPress media images all at once or just the images you need.', 'iloveimg-watermark' ); ?>
             </p>
             <p>
                 <?php
                 printf(
                     wp_kses_post(
                         /* translators: %1$s and %2$s are HTML link tags  */
-                        __( 'Discover all the features of %1$s Image Compressor & Optimizer - iLoveIMG %2$s and install it now!', 'iloveimg-watermark' )
+                        __( 'Discover all the features of %1$s iLoveIMG %2$s and install it now!', 'iloveimg-watermark' )
                     ),
                     '<a href="/wp-admin/plugin-install.php?tab=plugin-information&plugin=iloveimg" target="_blank">',
                     '</a>'
