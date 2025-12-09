@@ -58,7 +58,7 @@ class Ilove_Img_Wm_Process {
                     'error'     => true,
                     'error_msg' => sprintf(
                         /* translators: %d: ID of File */
-                        __( 'The file %d is not an image.', 'iloveimg-watermark' ),
+                        __( 'File %d is not a valid image.', 'iloveimg-watermark' ),
                         $images_id
                     ),
                 );
@@ -194,17 +194,17 @@ class Ilove_Img_Wm_Process {
 
                 return array(
                     'error'     => true,
-                    'error_msg' => __( 'There was a problem processing your image.', 'iloveimg-watermark' ),
+                    'error_msg' => __( 'Could not process the request.', 'iloveimg-watermark' ),
                 );
             }
 		} catch ( \Exception $e ) {
             update_post_meta( $images_id, 'iloveimg_status_watermark', 0 );
             error_log('Exception on watermark Method: ' . print_r($e, true)); // phpcs:ignore
 
-            $error_msg = __( 'There was a problem processing your image.', 'iloveimg-watermark' );
+            $error_msg = __( 'Could not process the request.', 'iloveimg-watermark' );
 
             if ( 401 === $e->getCode() ) {
-                $error_msg = __( 'Check your credentials in the plugin settings page. If you recently deleted a project in your iloveapi account, try switching to another project to correctly save your API Keys.', 'iloveimg-watermark' );
+                $error_msg = __( 'Check your plugin credentials. If you deleted a project in your iLoveAPI account, try switching projects to correctly store your API keys.', 'iloveimg-watermark' );
             }
 
             return array(
