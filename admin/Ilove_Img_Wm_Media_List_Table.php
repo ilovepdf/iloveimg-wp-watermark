@@ -102,7 +102,7 @@ class Ilove_Img_Wm_Media_List_Table extends WP_List_Table {
             'file'        => _x( 'File', 'column name', 'iloveimg-watermark' ),
             'post_author' => _x( 'Author', 'column name', 'iloveimg-watermark' ),
             'post_date'   => _x( 'Date', 'column name', 'iloveimg-watermark' ),
-            'status'      => _x( 'Status', 'column name', 'iloveimg-watermark' ),
+            'status'      => _x( 'Action', 'column name', 'iloveimg-watermark' ),
         );
 
         return $columns;
