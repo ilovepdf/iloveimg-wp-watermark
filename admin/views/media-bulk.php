@@ -21,6 +21,7 @@ $ilove_img_wm_list_table->prepare_items();
 
     <div class="wrap">
         <form id="images-filter" method="get">
+            <input type="hidden" name="page" value="iloveimg-media-page" />
             <?php $ilove_img_wm_list_table->display(); ?>
         </form>
     </div>
