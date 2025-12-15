@@ -193,24 +193,18 @@ if ( get_option( 'iloveimg_account' ) ) {
                     <?php
                     $ilove_img_wm_subscription_link = sprintf(
                         '<a href="https://iloveapi.com/pricing" target="_blank" rel="noopener noreferrer">%s</a>',
-                        _x( 'Upgrade your plan', '1: subscription plan link', 'iloveimg-watermark' )
-                    );
-
-                    $ilove_img_wm_single_package_link = sprintf(
-                        '<a href="https://iloveapi.com/pricing" target="_blank" rel="noopener noreferrer">%s</a>',
-                        _x( 'buy a credit package', '2: single package link', 'iloveimg-watermark' )
+                        _x( 'Upgrade your plan or buy a credit package', '1: subscription plan link', 'iloveimg-watermark' )
                     );
 
                     printf(
                         wp_kses_post(
                             /* translators: %1$s: subscription plan link, %2$s: single package link */
                             __(
-                                'Need more credits? %1$s or %2$s',
+                                'Need more credits? %1$s.',
                                 'iloveimg-watermark'
                             )
                         ),
                         wp_kses_post( $ilove_img_wm_subscription_link ),
-                        wp_kses_post( $ilove_img_wm_single_package_link )
                     );
                     ?>
                 </p>

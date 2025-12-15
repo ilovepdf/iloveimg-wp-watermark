@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2025-02-13T12:38:31+00:00\n"
-"PO-Revision-Date: 2025-12-09T11:29:32+00:00\n"
+"PO-Revision-Date: 2025-12-15T12:20:45+00:00\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: iloveimg-watermark\n"
 
@@ -65,7 +65,7 @@ msgid "Delete"
 msgstr ""
 
 #: admin/Ilove_Img_Wm_Media_List_Table.php:154
-msgid "Items deleted (or they would be if we had items to delete)!"
+msgid "Items deleted."
 msgstr ""
 
 #: admin/Ilove_Img_Wm_Plugin.php:213
@@ -330,40 +330,35 @@ msgstr ""
 
 #: admin/views/account.php:196
 msgctxt "1: subscription plan link"
-msgid "Upgrade your plan"
-msgstr ""
-
-#: admin/views/account.php:201
-msgctxt "2: single package link"
-msgid "buy a credit package"
+msgid "Upgrade your plan or buy a credit package"
 msgstr ""
 
 #. translators: %1$s: subscription plan link, %2$s: single package link
-#: admin/views/account.php:207
+#: admin/views/account.php:202
 #, php-format
-msgid "Need more credits? %1$s or %2$s"
+msgid "Need more credits? %1$s."
 msgstr ""
 
-#: admin/views/account.php:218
+#: admin/views/account.php:212
 msgctxt "button"
 msgid "Buy credits"
 msgstr ""
 
-#: admin/views/account.php:227
+#: admin/views/account.php:221
 msgctxt "subtitle: Connected user section"
 msgid "Account"
 msgstr ""
 
-#: admin/views/account.php:232
+#: admin/views/account.php:226
 msgctxt "button"
 msgid "Log out"
 msgstr ""
 
-#: admin/views/account.php:239
+#: admin/views/account.php:233
 msgid "Select project"
 msgstr ""
 
-#: admin/views/account.php:252
+#: admin/views/account.php:246
 msgctxt "Button: save changes"
 msgid "Change project"
 msgstr ""
@@ -411,6 +406,11 @@ msgstr ""
 #: admin/views/overview.php:5
 msgctxt "title: admin settings overview"
 msgid "Summary"
+msgstr ""
+
+#: admin/views/overview.php:9
+msgctxt "Overview: tool title"
+msgid "Watermark image"
 msgstr ""
 
 #. translators: %s porcentage of images protected
