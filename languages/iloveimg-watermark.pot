@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2025-02-13T12:38:31+00:00\n"
-"PO-Revision-Date: 2025-12-15T11:55:21+00:00\n"
+"PO-Revision-Date: 2025-12-15T12:20:45+00:00\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: iloveimg-watermark\n"
 
@@ -65,7 +65,7 @@ msgid "Delete"
 msgstr ""
 
 #: admin/Ilove_Img_Wm_Media_List_Table.php:154
-msgid "Items deleted (or they would be if we had items to delete)!"
+msgid "Items deleted."
 msgstr ""
 
 #: admin/Ilove_Img_Wm_Plugin.php:213
@@ -406,6 +406,11 @@ msgstr ""
 #: admin/views/overview.php:5
 msgctxt "title: admin settings overview"
 msgid "Summary"
+msgstr ""
+
+#: admin/views/overview.php:9
+msgctxt "Overview: tool title"
+msgid "Watermark image"
 msgstr ""
 
 #. translators: %s porcentage of images protected
