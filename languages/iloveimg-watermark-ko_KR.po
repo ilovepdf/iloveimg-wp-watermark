@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: f77715d6d2ed986a477e9b7ddb58a66c\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/watermark-protect-images\n"
 "Last-Translator: ilovepdf <info@ilovepdf.com>\n"
-"Language-Team: Spanish\n"
+"Language-Team: Korean\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,18 +13,18 @@ msgstr ""
 "PO-Revision-Date: 2026-01-13 13:58\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: iloveimg-watermark\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Crowdin-Project: f77715d6d2ed986a477e9b7ddb58a66c\n"
 "X-Crowdin-Project-ID: 5\n"
-"X-Crowdin-Language: es\n"
+"X-Crowdin-Language: ko\n"
 "X-Crowdin-File: /Wordpress/iloveimg-watermark.pot\n"
 "X-Crowdin-File-ID: 1576\n"
-"Language: es_ES\n"
+"Language: ko_KR\n"
 
 #. Plugin Name of the plugin
 #: ilove-img-watermark.php
 msgid "iLoveIMG Watermark"
-msgstr "Marca de agua de iLoveIMG"
+msgstr "iLoveIMG 워터마크"
 
 #. Plugin URI of the plugin
 #: ilove-img-watermark.php
@@ -34,7 +34,7 @@ msgstr "https://iloveapi.com/"
 #. Description of the plugin
 #: ilove-img-watermark.php
 msgid "Protect your images with automatic, easy-to-use watermarking."
-msgstr "Protege tus imágenes con una marca de agua automática y fácil de usar."
+msgstr "자동으로 작동하고 사용하기 편한 워터마크 기능으로 이미지를 보호하세요."
 
 #. Author of the plugin
 #: ilove-img-watermark.php
@@ -49,197 +49,197 @@ msgstr "https://iloveimg.com/"
 #: admin/Ilove_Img_Wm_Media_List_Table.php:102
 msgctxt "column name"
 msgid "File"
-msgstr "Archivo"
+msgstr "파일"
 
 #: admin/Ilove_Img_Wm_Media_List_Table.php:103
 msgctxt "column name"
 msgid "Author"
-msgstr "Autor"
+msgstr "작성자"
 
 #: admin/Ilove_Img_Wm_Media_List_Table.php:104
 msgctxt "column name"
 msgid "Date"
-msgstr "Fecha"
+msgstr "날짜"
 
 #: admin/Ilove_Img_Wm_Media_List_Table.php:105
 msgctxt "column name"
 msgid "Action"
-msgstr "Acción"
+msgstr "액션"
 
 #: admin/Ilove_Img_Wm_Media_List_Table.php:137
 msgctxt "button"
 msgid "Delete"
-msgstr "Eliminar"
+msgstr "삭제"
 
 #: admin/Ilove_Img_Wm_Media_List_Table.php:154
 msgid "Items deleted."
-msgstr "Elementos eliminados."
+msgstr "항목 삭제됨."
 
 #: admin/Ilove_Img_Wm_Plugin.php:213
 msgid "Try again or buy more credits"
-msgstr "Inténtalo de nuevo o compra más créditos"
+msgstr "다시 시도하거나 크레딧을 더 구매하세요"
 
 #: admin/Ilove_Img_Wm_Plugin.php:233
 msgctxt "column name"
 msgid "Watermark status"
-msgstr "Estado de la marca de agua"
+msgstr "워터마크 상태"
 
 #: admin/Ilove_Img_Wm_Plugin.php:364
 msgid "Please log in or sign up to continue."
-msgstr "Por favor, inicia sesión o regístrate para continuar."
+msgstr "계속하려면 로그인하거나 가입하세요."
 
 #: admin/Ilove_Img_Wm_Plugin.php:364
 #: admin/Ilove_Img_Wm_Resources.php:401
 #: admin/Ilove_Img_Wm_Resources.php:407
 msgctxt "button"
 msgid "Go to settings"
-msgstr "Ir a Ajustes"
+msgstr "설정으로 이동"
 
 #: admin/Ilove_Img_Wm_Plugin.php:374
 msgid "Incorrect email or password."
-msgstr "Mail o contraseña incorrecta."
+msgstr "잘못된 이메일 또는 비밀번호."
 
 #: admin/Ilove_Img_Wm_Plugin.php:379
 msgid "This email is already in use."
-msgstr "Este correo electrónico ya está en uso."
+msgstr "이 이메일은 이미 사용 중입니다."
 
 #: admin/Ilove_Img_Wm_Plugin.php:384
 msgid "This plugin is already linked to another user. Please sign in with an existing account."
-msgstr "Este plugin ya está vinculado a otro usuario. Por favor, inicia sesión con una cuenta existente."
+msgstr "이 플러그인은 이미 다른 사용자에게 연결되어 있습니다. 기존 사용자 계정으로 로그인하세요."
 
 #: admin/Ilove_Img_Wm_Plugin.php:410
 msgid "You're out of credits!"
-msgstr "¡Te has quedado sin créditos!"
+msgstr "크레딧이 부족합니다!"
 
 #: admin/Ilove_Img_Wm_Plugin.php:410
 msgctxt "button"
 msgid "Buy more credits"
-msgstr "Comprar más créditos"
+msgstr "크레딧 더 구매하기"
 
 #: admin/Ilove_Img_Wm_Plugin.php:417
 msgid "We couldn’t verify your iLoveAPI account. Please try again later."
-msgstr "No hemos podido verificar tu cuenta de iLoveAPI. Por favor, inténtalo de nuevo más tarde."
+msgstr "iLoveAPI 계정을 인증하지 못했습니다. 나중에 다시 시도하세요."
 
 #: admin/Ilove_Img_Wm_Plugin.php:424
 #: admin/views/account.php:45
 msgid "We couldn’t verify the status of your iLoveAPI account. Please try again later."
-msgstr "No hemos podido verificar el estado de tu cuenta de iLoveAPI. Por favor, inténtalo de nuevo más tarde."
+msgstr "iLoveAPI 계정 상태를 인증하지 못했습니다. 나중에 다시 시도하세요."
 
 #. translators: %d: ID of File
 #: admin/Ilove_Img_Wm_Plugin.php:441
 #: admin/Ilove_Img_Wm_Plugin.php:474
 #, php-format
 msgid "Image watermarked successfully: %d"
-msgstr "Marca de agua aplicada a la imagen correctamente: %d"
+msgstr "이미지가 성공적으로 워터마크되었습니다: %d"
 
 #: admin/Ilove_Img_Wm_Plugin.php:510
 msgctxt "Subtitle for individual page of the file"
 msgid "iLoveIMG Watermark"
-msgstr "Marca de agua de iLoveIMG"
+msgstr "iLoveIMG 워터마크"
 
 #: admin/Ilove_Img_Wm_Plugin.php:583
 msgid "Couldn’t complete the request. Please refresh and try again."
-msgstr "No se ha podido completar la solicitud. Actualiza la página e inténtalo de nuevo."
+msgstr "요청을 완료하지 못했습니다. 페이지를 새로 고침하고 다시 시도하세요."
 
 #: admin/Ilove_Img_Wm_Plugin.php:587
 msgid "Error processing your request. Invalid Image ID"
-msgstr "Error al procesar tu solicitud. Identificador de imagen no válido"
+msgstr "요청 처리 중 오류가 발생했습니다. 유효하지 않은 이미지 ID"
 
 #: admin/Ilove_Img_Wm_Plugin.php:595
 msgid "No backup found."
-msgstr "No se encontró copia de seguridad."
+msgstr "백업 파일을 찾지 못했습니다."
 
 #: admin/Ilove_Img_Wm_Plugin.php:613
 msgid "File restored successfully."
-msgstr "Archivo restaurado correctamente."
+msgstr "파일을 성공적으로 복원했습니다."
 
 #: admin/Ilove_Img_Wm_Plugin.php:625
 #: admin/Ilove_Img_Wm_Resources.php:395
 msgctxt "button"
 msgid "Watermark"
-msgstr "Marca de agua"
+msgstr "워터마크"
 
 #. translators: %d: ID of File
 #: admin/Ilove_Img_Wm_Process.php:61
 #, php-format
 msgid "File %d is not a valid image."
-msgstr "El archivo %d no es una imagen válida."
+msgstr "%d 파일은 유효한 이미지가 아닙니다."
 
 #: admin/Ilove_Img_Wm_Process.php:197
 #: admin/Ilove_Img_Wm_Process.php:204
 msgid "Could not process the request."
-msgstr "No se ha podido procesar la solicitud."
+msgstr "요청을 수행하지 못했습니다."
 
 #: admin/Ilove_Img_Wm_Process.php:207
 msgid "Check your plugin credentials. If you deleted a project in your iLoveAPI account, try switching projects to correctly store your API keys."
-msgstr "Comprueba las credenciales de tu plugin. Si has eliminado un proyecto en tu cuenta iLoveAPI, intenta cambiar de proyecto para almacenar correctamente tus claves API."
+msgstr "플러그인의 자격 증명을 확인하세요. iLoveAPI 계정에서 프로젝트를 삭제했다면 다른 프로젝트로 전환해 API 키를 정상적으로 저장할 수 있습니다."
 
 #: admin/Ilove_Img_Wm_Resources.php:36
 msgctxt "input checkbox"
 msgid "Original"
-msgstr "Original"
+msgstr "독창적"
 
 #: admin/Ilove_Img_Wm_Resources.php:73
 #: admin/Ilove_Img_Wm_Resources.php:108
 msgid "Filesystem connection failed."
-msgstr "Falló la conexión del sistema de archivos."
+msgstr "파일 시스템 접속 실패."
 
 #: admin/Ilove_Img_Wm_Resources.php:326
 msgctxt "column name"
 msgid "File Name"
-msgstr "Nombre del archivo"
+msgstr "파일 이름"
 
 #: admin/Ilove_Img_Wm_Resources.php:327
 msgctxt "column name"
 msgid "Watermark"
-msgstr "Marca de agua"
+msgstr "워터마크"
 
 #: admin/Ilove_Img_Wm_Resources.php:338
 msgctxt "Watermark applied to an image"
 msgid "Applied"
-msgstr "Aplicada"
+msgstr "적용됨"
 
 #: admin/Ilove_Img_Wm_Resources.php:340
 #: admin/Ilove_Img_Wm_Resources.php:343
 msgctxt "Watermark not applied to an image"
 msgid "Not applied"
-msgstr "No aplicada"
+msgstr "적용되지 않음"
 
 #. translators: %s: Number of watermarked image sizes
 #: admin/Ilove_Img_Wm_Resources.php:360
 #, php-format
 msgid "Watermark applied to %s sizes"
-msgstr "Marca de agua aplicada a %s tamaños"
+msgstr "%s 만큼의 이미지에 워터마크 적용됨"
 
 #: admin/Ilove_Img_Wm_Resources.php:406
 msgid "Sign up required"
-msgstr "Es necesario registrarse"
+msgstr "가입 필요"
 
 #: admin/Ilove_Img_Wm_Resources.php:508
 msgctxt "button"
 msgid "Restore original"
-msgstr "Restaurar original"
+msgstr "원본 복구"
 
 #: admin/Ilove_Img_Wm_Resources.php:514
 msgctxt "The file is being processed"
 msgid "Processing…"
-msgstr "Procesando…"
+msgstr "처리 중..."
 
 #: admin/Ilove_Img_Wm_Resources.php:519
 msgctxt "File processing had an error"
 msgid "Error processing. Please refresh and try again."
-msgstr "Error al procesar. Por favor, actualiza e inténtalo de nuevo."
+msgstr "처리 중 오류 발생. 페이지를 새로 고침하고 다시 시도하세요."
 
 #: admin/Ilove_Img_Wm_Resources.php:524
 msgctxt "File processing was successful"
 msgid "Done. Please refresh the page."
-msgstr "Completado. Por favor, actualiza la página."
+msgstr "완료됐습니다. 페이지를 새로 고침하세요."
 
 #: admin/Ilove_Img_Wm_Submenu.php:56
 #: admin/Ilove_Img_Wm_Submenu.php:57
 msgctxt "submenu"
 msgid "Compress settings"
-msgstr "Ajustes de compresión"
+msgstr "압축 설정"
 
 #: admin/Ilove_Img_Wm_Submenu.php:68
 #: admin/Ilove_Img_Wm_Submenu.php:69
@@ -247,69 +247,69 @@ msgstr "Ajustes de compresión"
 #: admin/Ilove_Img_Wm_Submenu.php:83
 msgctxt "submenu"
 msgid "Watermark settings"
-msgstr "Ajustes de marca de agua"
+msgstr "워터마크 설정"
 
 #: admin/Ilove_Img_Wm_Submenu.php:96
 msgctxt "submenu"
 msgid "Bulk Watermark"
-msgstr "Marca de agua por lotes"
+msgstr "일괄 워터마크"
 
 #: admin/views/account.php:60
 msgctxt "subtitle"
 msgid "Create an iLoveAPI account"
-msgstr "Crear una cuenta de iLoveAPI"
+msgstr "iLoveAPI 계정 생성"
 
 #: admin/views/account.php:65
 msgctxt "input text"
 msgid "Name"
-msgstr "Nombre"
+msgstr "이름"
 
 #: admin/views/account.php:68
 #: admin/views/account.php:95
 msgctxt "input email"
 msgid "Email"
-msgstr "Email"
+msgstr "이메일"
 
 #: admin/views/account.php:71
 #: admin/views/account.php:98
 msgctxt "input password"
 msgid "Password"
-msgstr "Contraseña"
+msgstr "비밀번호"
 
 #: admin/views/account.php:77
 msgctxt "button"
 msgid "Create account"
-msgstr "Crear una cuenta"
+msgstr "계정 생성"
 
 #: admin/views/account.php:81
 msgctxt "button"
 msgid "Log in to your account"
-msgstr "Acceder a mi cuenta"
+msgstr "계정에 로그인"
 
 #: admin/views/account.php:92
 msgctxt "subtitle"
 msgid "Log in to your account"
-msgstr "Acceder a mi cuenta"
+msgstr "계정에 로그인"
 
 #: admin/views/account.php:101
 msgctxt "button"
 msgid "Forgot your password?"
-msgstr "¿Contraseña olvidada?"
+msgstr "비밀번호가 기억나지 않습니까?"
 
 #: admin/views/account.php:105
 msgctxt "button"
 msgid "Log in"
-msgstr "Iniciar sesión"
+msgstr "로그인"
 
 #: admin/views/account.php:109
 msgctxt "button"
 msgid "Create an iLoveAPI account"
-msgstr "Crear una cuenta de iLoveAPI"
+msgstr "iLoveAPI 계정 생성"
 
 #: admin/views/account.php:120
 msgctxt "subtitle section: free credits"
 msgid "Free"
-msgstr "Gratis"
+msgstr "무료"
 
 #. translators: %1$d: credits used / %2$d: credits limit
 #: admin/views/account.php:132
@@ -317,120 +317,120 @@ msgstr "Gratis"
 #: admin/views/account.php:174
 #, php-format
 msgid "%1$d / %2$d credits used this month."
-msgstr "%1$d / %2$d créditos usados este mes."
+msgstr "이번 달에 %1$d / %2$d크레딧을 사용했습니다."
 
 #: admin/views/account.php:140
 msgctxt "subtitle section"
 msgid "[Monthly/Yearly] plan"
-msgstr "Plan [Mensual/Anual]"
+msgstr "[월간/연간] 플랜"
 
 #: admin/views/account.php:162
 msgctxt "subtitle section"
 msgid "Packages"
-msgstr "Packs"
+msgstr "패키지"
 
 #. translators: %d: free credits
 #: admin/views/account.php:187
 #, php-format
 msgid "You get %1$d free credits each month to process your files."
-msgstr "Cada mes, obtienes %1$d créditos gratis para procesar tus archivos."
+msgstr "매달 파일 처리에 사용할 수 있는 무료 크레딧이 %1$d 제공됩니다."
 
 #: admin/views/account.php:196
 msgctxt "1: subscription plan link"
 msgid "Upgrade your plan or buy a credit package"
-msgstr "Cambia al plan superior o compra un paquete de créditos"
+msgstr "플랜을 업그레이드하거나 크레딧 패키지를 구입하세요"
 
 #. translators: %1$s: subscription plan link, %2$s: single package link
 #: admin/views/account.php:202
 #, php-format
 msgid "Need more credits? %1$s."
-msgstr "¿Necesitas más créditos? %1$s."
+msgstr "크레딧이 더 필요한가요? %1$s."
 
 #: admin/views/account.php:212
 msgctxt "button"
 msgid "Buy credits"
-msgstr "Comprar créditos"
+msgstr "크레딧 구입"
 
 #: admin/views/account.php:221
 msgctxt "subtitle: Connected user section"
 msgid "Account"
-msgstr "Cuenta"
+msgstr "계정"
 
 #: admin/views/account.php:226
 msgctxt "button"
 msgid "Log out"
-msgstr "Cerrar sesión"
+msgstr "로그아웃"
 
 #: admin/views/account.php:233
 msgid "Select project"
-msgstr "Seleccionar proyecto"
+msgstr "프로젝트 선택"
 
 #: admin/views/account.php:246
 msgctxt "Button: save changes"
 msgid "Change project"
-msgstr "Cambiar proyecto"
+msgstr "프로젝트 변경"
 
 #: admin/views/compress.php:10
 #: admin/views/watermark.php:16
 msgid "The power of iLoveIMG, built right into WordPress"
-msgstr "El poder de iLoveIMG, integrado directamente en WordPress"
+msgstr "iLoveIMG의 강력한 기능을 워드프레스 플러그인으로"
 
 #: admin/views/compress.php:11
 #: admin/views/watermark.php:17
 msgid "Watermark your images directly in WordPress. Protect your content without leaving your site."
-msgstr "Añade una marca de agua a tus imágenes directamente en Wordpress. Protege tu contenido sin abandonar tu sitio web."
+msgstr "이미지를 워드프레스에서 곧바로 워터마크하세요. 사이트를 떠날 필요 없이 콘텐츠를 보호할 수 있습니다."
 
 #: admin/views/compress.php:12
 #: admin/views/watermark.php:18
 msgid "Sign up and get 2,500 free credits to start optimizing with iLoveIMG."
-msgstr "Regístrate y consigue 2.500 créditos gratis para empezar a optimizar con iLoveIMG."
+msgstr "가입해서 무료 크레딧 2,500을 받고 iLoveIMG로 사이트를 최적화해 보세요."
 
 #: admin/views/compress.php:22
 #: admin/views/watermark.php:41
 msgid "Compress settings"
-msgstr "Ajustes de compresión"
+msgstr "압축 설정"
 
 #: admin/views/compress.php:28
 #: admin/views/watermark.php:58
 msgid "Watermark settings"
-msgstr "Ajustes de marca de agua"
+msgstr "워터마크 설정"
 
 #: admin/views/compress.php:35
 msgid "Make images load fast without losing visual quality."
-msgstr "Haz que las imágenes se carguen rápidamente sin perder calidad visual."
+msgstr "시각적 품질을 유지한 채로 이미지 로딩 속도를 높여 보세요."
 
 #. translators: %1$s and %2$s are HTML link tags
 #: admin/views/compress.php:42
 #, php-format
 msgid "Install %1$s iLoveIMG Compress %2$s to reduce file size across your Media Library, choose the compression level that fits your needs, and keep sharp results. Auto-compress on upload to boost page speed and save storage automatically."
-msgstr "Instala %1$s el compresor de iLoveIMG %2$s para reducir el tamaño de los archivos de tu biblioteca de Medios, escoge el nivel de compresión que más se ajuste a tus necesidades y consigue resultados nítidos. Activa la opción de compresión automática en la subida para aumentar la velocidad de la página y ahorrar espacio de almacenamiento automáticamente."
+msgstr "%1$s iLoveIMG 압축 %2$s을 설치해 미디어 라이브러리에서 파일 크기를 줄이고, 필요에 따라 압축 레벨을 조정하고, 파일을 선명하게 유지하세요. 업로드 파일 자동 압축 기능을 사용하면 자동으로 페이지 속도를 높이고 저장 공간을 절약할 수 있습니다."
 
 #: admin/views/media-bulk.php:15
 msgctxt "button"
 msgid "Watermark all uploaded files"
-msgstr "Añadir marca de agua a todos los archivos subidos"
+msgstr "업로드된 파일 전부 워터마크"
 
 #: admin/views/overview.php:5
 msgctxt "title: admin settings overview"
 msgid "Summary"
-msgstr "Resumen"
+msgstr "요약"
 
 #: admin/views/overview.php:9
 msgctxt "Overview: tool title"
 msgid "Watermark image"
-msgstr "Imagen de la marca de agua"
+msgstr "워터마크 이미지"
 
 #. translators: %s porcentage of images protected
 #: admin/views/overview.php:23
 #, php-format
 msgid "%s Images watermarked"
-msgstr "%s de imágenes con marca de agua aplicada"
+msgstr "%s 이미지 워터마크됨"
 
 #. translators: %s backup size
 #: admin/views/overview.php:36
 #, php-format
 msgid "%s Backup storage used"
-msgstr "%s del almacenamiento de la copia de seguridad usado"
+msgstr "%s 백업 공간 사용됨"
 
 #: admin/views/overview.php:46
 #, php-format
@@ -438,193 +438,193 @@ msgctxt "Overview: watermark summary"
 msgid "Your images, summary:\n"
 "Total images: %2$s\n"
 "Watermarked images: %1$s"
-msgstr "Un resumen de tus imágenes:\n"
-"Imágenes totales: %2$s\n"
-"Imágenes con marca de agua aplicada: %1$s"
+msgstr "이미지, 요약:\n"
+"총 이미지: %2$s\n"
+"워터마크된 이미지: %1$s"
 
 #: admin/views/watermark.php:69
 #: admin/views/watermark.php:527
 msgctxt "button"
 msgid "Save Changes"
-msgstr "Guardar cambios"
+msgstr "변경 사항 저장"
 
 #: admin/views/watermark.php:70
 msgid "Register and login with us to save settings changes"
-msgstr "Regístrate e inicia sesión con nosotros para guardar los cambios de configuración"
+msgstr "설정의 변경 사항을 저장하려면 등록 및 로그인하세요"
 
 #: admin/views/watermark.php:73
 msgid "Watermark Settings"
-msgstr "Ajustes de marca de agua"
+msgstr "워터마크 설정"
 
 #: admin/views/watermark.php:82
 msgctxt "checkbox field label"
 msgid "Watermark enabled"
-msgstr "Marca de agua activada"
+msgstr "워터마크 활성화"
 
 #: admin/views/watermark.php:85
 msgid "Add a watermark to protect images from unauthorized use."
-msgstr "Añade una marca de agua para proteger las imágenes de un uso no autorizado."
+msgstr "워터마크를 추가해 이미지 무단 사용을 방지하세요."
 
 #: admin/views/watermark.php:95
 msgctxt "checkbox field label"
 msgid "Automatically apply to uploaded files"
-msgstr "Aplicar automáticamente a los archivos subidos"
+msgstr "업로드된 파일에 자동으로 적용"
 
 #: admin/views/watermark.php:97
 msgid "Automatically stamp new Media uploads with your selected watermark. You can still apply it manually to other files."
-msgstr "Añade tu marca de agua seleccionada automáticamente a los archivos que subas a Medios. Puedes aplicarla manualmente a otros archivos."
+msgstr "미디어 폴더에 새로 업로드되는 파일에 선택한 워터마크를 자동으로 적용합니다. 이 기능을 활성화해도 다른 파일에 워터마크를 수동으로 적용할 수 있습니다."
 
 #: admin/views/watermark.php:103
 msgctxt "checkbox field label"
 msgid "Image Sizes"
-msgstr "Tamaños de la imagen"
+msgstr "이미지 크기"
 
 #: admin/views/watermark.php:106
 msgid "Choose which image versions to watermark. WordPress creates multiple sizes for each upload."
-msgstr "Elige a qué versiones de imagen quieres añadir la marca de agua. WordPress crea múltiples tamaños para cada subida."
+msgstr "어떤 버전의 이미지를 워터마크할지 선택하세요. 워드프레스는 이미지를 업로드하면 여러 크기의 파일을 생성합니다."
 
 #: admin/views/watermark.php:126
 msgctxt "subtitle: Section to show preview of watermark options"
 msgid "Watermark preview"
-msgstr "Vista previa de la marca de agua"
+msgstr "워터마크 미리보기"
 
 #: admin/views/watermark.php:129
 msgid "Use text or upload an image as your watermark."
-msgstr "Usa texto o sube una imagen como marca de agua."
+msgstr "워터마크로 사용할 텍스트를 입력하거나 이미지를 업로드하세요."
 
 #: admin/views/watermark.php:151
 msgctxt "radio button option"
 msgid "Use text"
-msgstr "Usar texto"
+msgstr "텍스트 사용"
 
 #: admin/views/watermark.php:159
 msgctxt "radio button option"
 msgid "Use image"
-msgstr "Usar imagen"
+msgstr "이미지 사용"
 
 #: admin/views/watermark.php:164
 msgid "This font does not support bold or italic styles"
-msgstr "Esta fuente no admite negrita ni cursiva"
+msgstr "이 폰트는 굵게/기울임꼴 스타일을 지원하지 않습니다"
 
 #: admin/views/watermark.php:257
 msgctxt "placeholder: input text"
 msgid "Enter text for Watermark"
-msgstr "Introduce el texto de la marca de agua"
+msgstr "워터마크할 텍스트 입력"
 
 #: admin/views/watermark.php:264
 msgctxt "Image selector label"
 msgid "Watermark image"
-msgstr "Imagen de la marca de agua"
+msgstr "워터마크 이미지"
 
 #: admin/views/watermark.php:266
 msgid "Select an image stamp from Media or a URL. Then adjust its position, size, opacity, and rotation."
-msgstr "Selecciona una imagen desde Medios o una URL. Después, ajusta la posición, tamaño, opacidad y rotación."
+msgstr "미디어 폴더나 URL로 이미지 스탬프를 선택하세요. 그런 다음 위치와 크기, 불투명도, 회전 값을 조정하세요."
 
 #: admin/views/watermark.php:268
 msgctxt "button"
 msgid "Add Image"
-msgstr "Añadir imagen"
+msgstr "이미지 추가"
 
 #: admin/views/watermark.php:271
 msgctxt "Button divider: previous button: add image button, next option: input url."
 msgid "or enter an URL"
-msgstr "o introducir una URL"
+msgstr "또는 URL 입력"
 
 #: admin/views/watermark.php:273
 msgctxt "input url"
 msgid "Enter image URL"
-msgstr "Introduce la URL de la imagen"
+msgstr "이미지 URL을 입력하세요"
 
 #: admin/views/watermark.php:279
 msgctxt "radio button: Watermark position"
 msgid "Position"
-msgstr "Posición"
+msgstr "위치"
 
 #: admin/views/watermark.php:336
 msgctxt "checkbox: activate mosaic option"
 msgid "Mosaic"
-msgstr "Mosaico"
+msgstr "모자이크"
 
 #: admin/views/watermark.php:342
 #: admin/views/watermark.php:345
 msgctxt "input number: size in percentage"
 msgid "Scale"
-msgstr "Escala"
+msgstr "크기"
 
 #. translators: %s percentage size
 #: admin/views/watermark.php:352
 msgid "of image width"
-msgstr "de ancho de la imagen"
+msgstr "이미지 너비 기준"
 
 #: admin/views/watermark.php:360
 msgctxt "input select"
 msgid "Transparency"
-msgstr "Transparencia"
+msgstr "투명도"
 
 #: admin/views/watermark.php:387
 msgctxt "input select"
 msgid "Rotation"
-msgstr "Rotación"
+msgstr "회전"
 
 #: admin/views/watermark.php:455
 msgctxt "checkbox label"
 msgid "Back up original images"
-msgstr "Crear una copia de seguridad de las imágenes originales"
+msgstr "원본 이미지 백업"
 
 #: admin/views/watermark.php:457
 msgid "Save a backup before processing so you can restore the original later. Uses server space."
-msgstr "Guarda una copia de seguridad antes de procesarla para que puedas restaurar el original más tarde. Utiliza el espacio del servidor."
+msgstr "이미지를 처리하기 전에 나중에 원본을 복원할 수 있도록 백업을 저장합니다. 서버 공간을 사용합니다."
 
 #. translators: %s: backup folder path
 #: admin/views/watermark.php:463
 #, php-format
 msgid "Backup images are stored at: %s"
-msgstr "Las copias de seguridad de las imágenes se guardan en: %s"
+msgstr "백업된 이미지는 다음 위치에 저장됩니다: %s"
 
 #: admin/views/watermark.php:475
 msgctxt "subtitle label"
 msgid "Restore Original Files"
-msgstr "Restaurar los archivos originales"
+msgstr "원본 파일 복원"
 
 #. translators: %1$s and %2$s: html tags
 #: admin/views/watermark.php:482
 #, php-format
 msgid "You can restore original files from backup. Restoring will return files to their state before any changes were made. %1$s Warning: This will remove all modifications applied using the tools. %2$s"
-msgstr "Puedes restaurar los archivos originales a partir de una copia de seguridad. La restauración hará que los archivos vuelvan al estado en el que estaban antes de los cambios. %1$s Aviso: Esta acción eliminará todos los cambios que se hayan hecho con las herramientas.%2$s"
+msgstr "백업으로 원본 파일을 복원할 수 있습니다. 복원하면 파일이 수정하기 전의 최초 상태로 되돌아갑니다. %1$s 경고: 이 작업은 도구를 사용해 적용한 변경 사항을 모두 제거합니다. %2$s"
 
 #. translators: %1$s and %2$s: html tags
 #: admin/views/watermark.php:494
 #, php-format
 msgid "You can delete all backup files to free up space. %1$s Warning: This will remove your ability to restore files. %2$s"
-msgstr "Puedes eliminar todos los archivos de la copia de seguridad para liberar espacio. %1$s Aviso: Esto eliminará tu capacidad de restaurar archivos. %2$s"
+msgstr "백업 파일을 모두 삭제해 공간을 확보할 수 있습니다. %1$s 경고: 이 작업을 실행하면 파일을 복원할 수 없게 됩니다. %2$s"
 
 #: admin/views/watermark.php:502
 msgctxt "button"
 msgid "Restore All"
-msgstr "Restaurar todo"
+msgstr "전부 복구"
 
 #: admin/views/watermark.php:506
 msgctxt "button"
 msgid "Clear backup"
-msgstr "Borrar copia de seguridad"
+msgstr "백업 삭제"
 
 #. translators: %s: backup size
 #: admin/views/watermark.php:513
 #, php-format
 msgid "Backup size: %s"
-msgstr "Tamaño de la copia de seguridad: %s"
+msgstr "백업 크기: %s"
 
 #: admin/views/watermark.php:528
 msgid "Log in to save your settings"
-msgstr "Inicia sesión para guardar tus ajustes"
+msgstr "설정을 저장하려면 로그인하세요"
 
 #: ilove-img-watermark.php:82
 msgctxt "button"
 msgid "Settings"
-msgstr "Configuración"
+msgstr "설정"
 
 #: ilove-img-watermark.php:86
 msgctxt "button"
 msgid "Bulk Watermark"
-msgstr "Marca de agua por lotes"
+msgstr "일괄 워터마크"
 

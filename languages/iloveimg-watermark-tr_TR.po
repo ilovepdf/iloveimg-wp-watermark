@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: f77715d6d2ed986a477e9b7ddb58a66c\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/watermark-protect-images\n"
 "Last-Translator: ilovepdf <info@ilovepdf.com>\n"
-"Language-Team: Spanish\n"
+"Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -16,15 +16,15 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-Project: f77715d6d2ed986a477e9b7ddb58a66c\n"
 "X-Crowdin-Project-ID: 5\n"
-"X-Crowdin-Language: es\n"
+"X-Crowdin-Language: tr\n"
 "X-Crowdin-File: /Wordpress/iloveimg-watermark.pot\n"
 "X-Crowdin-File-ID: 1576\n"
-"Language: es_ES\n"
+"Language: tr_TR\n"
 
 #. Plugin Name of the plugin
 #: ilove-img-watermark.php
 msgid "iLoveIMG Watermark"
-msgstr "Marca de agua de iLoveIMG"
+msgstr "iLoveIMG Filigran"
 
 #. Plugin URI of the plugin
 #: ilove-img-watermark.php
@@ -34,7 +34,7 @@ msgstr "https://iloveapi.com/"
 #. Description of the plugin
 #: ilove-img-watermark.php
 msgid "Protect your images with automatic, easy-to-use watermarking."
-msgstr "Protege tus imágenes con una marca de agua automática y fácil de usar."
+msgstr "Görüntülerini, otomatik ve kullanımı kolay filigran ekleme özelliğiyle koru."
 
 #. Author of the plugin
 #: ilove-img-watermark.php
@@ -49,197 +49,197 @@ msgstr "https://iloveimg.com/"
 #: admin/Ilove_Img_Wm_Media_List_Table.php:102
 msgctxt "column name"
 msgid "File"
-msgstr "Archivo"
+msgstr "Dosya"
 
 #: admin/Ilove_Img_Wm_Media_List_Table.php:103
 msgctxt "column name"
 msgid "Author"
-msgstr "Autor"
+msgstr "Yazar"
 
 #: admin/Ilove_Img_Wm_Media_List_Table.php:104
 msgctxt "column name"
 msgid "Date"
-msgstr "Fecha"
+msgstr "Tarih"
 
 #: admin/Ilove_Img_Wm_Media_List_Table.php:105
 msgctxt "column name"
 msgid "Action"
-msgstr "Acción"
+msgstr "Eylem"
 
 #: admin/Ilove_Img_Wm_Media_List_Table.php:137
 msgctxt "button"
 msgid "Delete"
-msgstr "Eliminar"
+msgstr "Sil"
 
 #: admin/Ilove_Img_Wm_Media_List_Table.php:154
 msgid "Items deleted."
-msgstr "Elementos eliminados."
+msgstr "Öğeler silindi."
 
 #: admin/Ilove_Img_Wm_Plugin.php:213
 msgid "Try again or buy more credits"
-msgstr "Inténtalo de nuevo o compra más créditos"
+msgstr "Tekrar dene veya daha fazla kredi satın al"
 
 #: admin/Ilove_Img_Wm_Plugin.php:233
 msgctxt "column name"
 msgid "Watermark status"
-msgstr "Estado de la marca de agua"
+msgstr "Filigran durumu"
 
 #: admin/Ilove_Img_Wm_Plugin.php:364
 msgid "Please log in or sign up to continue."
-msgstr "Por favor, inicia sesión o regístrate para continuar."
+msgstr "Devam etmek için lütfen giriş yap veya kaydol."
 
 #: admin/Ilove_Img_Wm_Plugin.php:364
 #: admin/Ilove_Img_Wm_Resources.php:401
 #: admin/Ilove_Img_Wm_Resources.php:407
 msgctxt "button"
 msgid "Go to settings"
-msgstr "Ir a Ajustes"
+msgstr "Ayarlara git"
 
 #: admin/Ilove_Img_Wm_Plugin.php:374
 msgid "Incorrect email or password."
-msgstr "Mail o contraseña incorrecta."
+msgstr "Hatalı e-posta veya şifre."
 
 #: admin/Ilove_Img_Wm_Plugin.php:379
 msgid "This email is already in use."
-msgstr "Este correo electrónico ya está en uso."
+msgstr "Bu e-posta zaten kullanılıyor."
 
 #: admin/Ilove_Img_Wm_Plugin.php:384
 msgid "This plugin is already linked to another user. Please sign in with an existing account."
-msgstr "Este plugin ya está vinculado a otro usuario. Por favor, inicia sesión con una cuenta existente."
+msgstr "Bu eklenti zaten başka bir kullanıcıya bağlı. Lütfen mevcut bir hesapla giriş yap."
 
 #: admin/Ilove_Img_Wm_Plugin.php:410
 msgid "You're out of credits!"
-msgstr "¡Te has quedado sin créditos!"
+msgstr "Kredin kalmadı!"
 
 #: admin/Ilove_Img_Wm_Plugin.php:410
 msgctxt "button"
 msgid "Buy more credits"
-msgstr "Comprar más créditos"
+msgstr "Daha fazla kredi satın al"
 
 #: admin/Ilove_Img_Wm_Plugin.php:417
 msgid "We couldn’t verify your iLoveAPI account. Please try again later."
-msgstr "No hemos podido verificar tu cuenta de iLoveAPI. Por favor, inténtalo de nuevo más tarde."
+msgstr "iLoveAPI hesabını doğrulayamadık. Lütfen daha sonra tekrar dene."
 
 #: admin/Ilove_Img_Wm_Plugin.php:424
 #: admin/views/account.php:45
 msgid "We couldn’t verify the status of your iLoveAPI account. Please try again later."
-msgstr "No hemos podido verificar el estado de tu cuenta de iLoveAPI. Por favor, inténtalo de nuevo más tarde."
+msgstr "iLoveAPI hesabının durumunu doğrulayamadık. Lütfen daha sonra tekrar dene."
 
 #. translators: %d: ID of File
 #: admin/Ilove_Img_Wm_Plugin.php:441
 #: admin/Ilove_Img_Wm_Plugin.php:474
 #, php-format
 msgid "Image watermarked successfully: %d"
-msgstr "Marca de agua aplicada a la imagen correctamente: %d"
+msgstr "Görüntüye başarıyla filigran eklendi: %d"
 
 #: admin/Ilove_Img_Wm_Plugin.php:510
 msgctxt "Subtitle for individual page of the file"
 msgid "iLoveIMG Watermark"
-msgstr "Marca de agua de iLoveIMG"
+msgstr "iLoveIMG Filigran"
 
 #: admin/Ilove_Img_Wm_Plugin.php:583
 msgid "Couldn’t complete the request. Please refresh and try again."
-msgstr "No se ha podido completar la solicitud. Actualiza la página e inténtalo de nuevo."
+msgstr "Talep tamamlanamadı. Lütfen yenileyip tekrar dene."
 
 #: admin/Ilove_Img_Wm_Plugin.php:587
 msgid "Error processing your request. Invalid Image ID"
-msgstr "Error al procesar tu solicitud. Identificador de imagen no válido"
+msgstr "İsteğin işlenirken hata oluştu. Geçersiz Görüntü Kimliği"
 
 #: admin/Ilove_Img_Wm_Plugin.php:595
 msgid "No backup found."
-msgstr "No se encontró copia de seguridad."
+msgstr "Yedek bulunamadı."
 
 #: admin/Ilove_Img_Wm_Plugin.php:613
 msgid "File restored successfully."
-msgstr "Archivo restaurado correctamente."
+msgstr "Dosya başarıyla geri yüklendi."
 
 #: admin/Ilove_Img_Wm_Plugin.php:625
 #: admin/Ilove_Img_Wm_Resources.php:395
 msgctxt "button"
 msgid "Watermark"
-msgstr "Marca de agua"
+msgstr "Filigran"
 
 #. translators: %d: ID of File
 #: admin/Ilove_Img_Wm_Process.php:61
 #, php-format
 msgid "File %d is not a valid image."
-msgstr "El archivo %d no es una imagen válida."
+msgstr "%d dosyası geçerli bir görüntü değil."
 
 #: admin/Ilove_Img_Wm_Process.php:197
 #: admin/Ilove_Img_Wm_Process.php:204
 msgid "Could not process the request."
-msgstr "No se ha podido procesar la solicitud."
+msgstr "Talep işlenemedi."
 
 #: admin/Ilove_Img_Wm_Process.php:207
 msgid "Check your plugin credentials. If you deleted a project in your iLoveAPI account, try switching projects to correctly store your API keys."
-msgstr "Comprueba las credenciales de tu plugin. Si has eliminado un proyecto en tu cuenta iLoveAPI, intenta cambiar de proyecto para almacenar correctamente tus claves API."
+msgstr "Eklenti giriş bilgilerini kontrol et. iLoveAPI hesabında bir projeyi sildiysen API anahtarlarını doğru şekilde depolamak için projeler arasında geçiş yapmayı dene."
 
 #: admin/Ilove_Img_Wm_Resources.php:36
 msgctxt "input checkbox"
 msgid "Original"
-msgstr "Original"
+msgstr "Orijinal"
 
 #: admin/Ilove_Img_Wm_Resources.php:73
 #: admin/Ilove_Img_Wm_Resources.php:108
 msgid "Filesystem connection failed."
-msgstr "Falló la conexión del sistema de archivos."
+msgstr "Dosya sistemi bağlantısı başarısız oldu."
 
 #: admin/Ilove_Img_Wm_Resources.php:326
 msgctxt "column name"
 msgid "File Name"
-msgstr "Nombre del archivo"
+msgstr "Dosya Adı"
 
 #: admin/Ilove_Img_Wm_Resources.php:327
 msgctxt "column name"
 msgid "Watermark"
-msgstr "Marca de agua"
+msgstr "Filigran"
 
 #: admin/Ilove_Img_Wm_Resources.php:338
 msgctxt "Watermark applied to an image"
 msgid "Applied"
-msgstr "Aplicada"
+msgstr "Uygulandı"
 
 #: admin/Ilove_Img_Wm_Resources.php:340
 #: admin/Ilove_Img_Wm_Resources.php:343
 msgctxt "Watermark not applied to an image"
 msgid "Not applied"
-msgstr "No aplicada"
+msgstr "Uygulanmadı"
 
 #. translators: %s: Number of watermarked image sizes
 #: admin/Ilove_Img_Wm_Resources.php:360
 #, php-format
 msgid "Watermark applied to %s sizes"
-msgstr "Marca de agua aplicada a %s tamaños"
+msgstr "%s boyutuna filigran uygulandı"
 
 #: admin/Ilove_Img_Wm_Resources.php:406
 msgid "Sign up required"
-msgstr "Es necesario registrarse"
+msgstr "Kayıt gerekli"
 
 #: admin/Ilove_Img_Wm_Resources.php:508
 msgctxt "button"
 msgid "Restore original"
-msgstr "Restaurar original"
+msgstr "Orijinali geri yükle"
 
 #: admin/Ilove_Img_Wm_Resources.php:514
 msgctxt "The file is being processed"
 msgid "Processing…"
-msgstr "Procesando…"
+msgstr "İşleniyor…"
 
 #: admin/Ilove_Img_Wm_Resources.php:519
 msgctxt "File processing had an error"
 msgid "Error processing. Please refresh and try again."
-msgstr "Error al procesar. Por favor, actualiza e inténtalo de nuevo."
+msgstr "İşleme sırasında hata oluştu. Lütfen yenileyip tekrar dene."
 
 #: admin/Ilove_Img_Wm_Resources.php:524
 msgctxt "File processing was successful"
 msgid "Done. Please refresh the page."
-msgstr "Completado. Por favor, actualiza la página."
+msgstr "Tamamlandı. Lütfen sayfayı yenile."
 
 #: admin/Ilove_Img_Wm_Submenu.php:56
 #: admin/Ilove_Img_Wm_Submenu.php:57
 msgctxt "submenu"
 msgid "Compress settings"
-msgstr "Ajustes de compresión"
+msgstr "Sıkıştırma ayarları"
 
 #: admin/Ilove_Img_Wm_Submenu.php:68
 #: admin/Ilove_Img_Wm_Submenu.php:69
@@ -247,69 +247,69 @@ msgstr "Ajustes de compresión"
 #: admin/Ilove_Img_Wm_Submenu.php:83
 msgctxt "submenu"
 msgid "Watermark settings"
-msgstr "Ajustes de marca de agua"
+msgstr "Filigran ayarları"
 
 #: admin/Ilove_Img_Wm_Submenu.php:96
 msgctxt "submenu"
 msgid "Bulk Watermark"
-msgstr "Marca de agua por lotes"
+msgstr "Toplu Filigran"
 
 #: admin/views/account.php:60
 msgctxt "subtitle"
 msgid "Create an iLoveAPI account"
-msgstr "Crear una cuenta de iLoveAPI"
+msgstr "iLoveAPI hesabı oluştur"
 
 #: admin/views/account.php:65
 msgctxt "input text"
 msgid "Name"
-msgstr "Nombre"
+msgstr "Ad"
 
 #: admin/views/account.php:68
 #: admin/views/account.php:95
 msgctxt "input email"
 msgid "Email"
-msgstr "Email"
+msgstr "E-posta"
 
 #: admin/views/account.php:71
 #: admin/views/account.php:98
 msgctxt "input password"
 msgid "Password"
-msgstr "Contraseña"
+msgstr "Şifre"
 
 #: admin/views/account.php:77
 msgctxt "button"
 msgid "Create account"
-msgstr "Crear una cuenta"
+msgstr "Hesap oluştur"
 
 #: admin/views/account.php:81
 msgctxt "button"
 msgid "Log in to your account"
-msgstr "Acceder a mi cuenta"
+msgstr "Hesabına giriş yap"
 
 #: admin/views/account.php:92
 msgctxt "subtitle"
 msgid "Log in to your account"
-msgstr "Acceder a mi cuenta"
+msgstr "Hesabına giriş yap"
 
 #: admin/views/account.php:101
 msgctxt "button"
 msgid "Forgot your password?"
-msgstr "¿Contraseña olvidada?"
+msgstr "Şifreni mi unuttun?"
 
 #: admin/views/account.php:105
 msgctxt "button"
 msgid "Log in"
-msgstr "Iniciar sesión"
+msgstr "Giriş yap"
 
 #: admin/views/account.php:109
 msgctxt "button"
 msgid "Create an iLoveAPI account"
-msgstr "Crear una cuenta de iLoveAPI"
+msgstr "iLoveAPI hesabı oluştur"
 
 #: admin/views/account.php:120
 msgctxt "subtitle section: free credits"
 msgid "Free"
-msgstr "Gratis"
+msgstr "Ücretsiz"
 
 #. translators: %1$d: credits used / %2$d: credits limit
 #: admin/views/account.php:132
@@ -317,120 +317,120 @@ msgstr "Gratis"
 #: admin/views/account.php:174
 #, php-format
 msgid "%1$d / %2$d credits used this month."
-msgstr "%1$d / %2$d créditos usados este mes."
+msgstr "Bu ay %1$d/%2$d kredi kullanıldı."
 
 #: admin/views/account.php:140
 msgctxt "subtitle section"
 msgid "[Monthly/Yearly] plan"
-msgstr "Plan [Mensual/Anual]"
+msgstr "[Aylık/Yıllık] plan"
 
 #: admin/views/account.php:162
 msgctxt "subtitle section"
 msgid "Packages"
-msgstr "Packs"
+msgstr "Paketler"
 
 #. translators: %d: free credits
 #: admin/views/account.php:187
 #, php-format
 msgid "You get %1$d free credits each month to process your files."
-msgstr "Cada mes, obtienes %1$d créditos gratis para procesar tus archivos."
+msgstr "Her ay dosyalarını işlemek için %1$d ücretsiz kredi alırsın."
 
 #: admin/views/account.php:196
 msgctxt "1: subscription plan link"
 msgid "Upgrade your plan or buy a credit package"
-msgstr "Cambia al plan superior o compra un paquete de créditos"
+msgstr "Planını yükselt veya bir kredi paketi satın al"
 
 #. translators: %1$s: subscription plan link, %2$s: single package link
 #: admin/views/account.php:202
 #, php-format
 msgid "Need more credits? %1$s."
-msgstr "¿Necesitas más créditos? %1$s."
+msgstr "Daha fazla krediye mi ihtiyacın var? %1$s."
 
 #: admin/views/account.php:212
 msgctxt "button"
 msgid "Buy credits"
-msgstr "Comprar créditos"
+msgstr "Kredi al"
 
 #: admin/views/account.php:221
 msgctxt "subtitle: Connected user section"
 msgid "Account"
-msgstr "Cuenta"
+msgstr "Hesap"
 
 #: admin/views/account.php:226
 msgctxt "button"
 msgid "Log out"
-msgstr "Cerrar sesión"
+msgstr "Çıkış yap"
 
 #: admin/views/account.php:233
 msgid "Select project"
-msgstr "Seleccionar proyecto"
+msgstr "Proje seç"
 
 #: admin/views/account.php:246
 msgctxt "Button: save changes"
 msgid "Change project"
-msgstr "Cambiar proyecto"
+msgstr "Projeyi değiştir"
 
 #: admin/views/compress.php:10
 #: admin/views/watermark.php:16
 msgid "The power of iLoveIMG, built right into WordPress"
-msgstr "El poder de iLoveIMG, integrado directamente en WordPress"
+msgstr "iLoveIMG'nin gücü WordPress'e entegre edildi"
 
 #: admin/views/compress.php:11
 #: admin/views/watermark.php:17
 msgid "Watermark your images directly in WordPress. Protect your content without leaving your site."
-msgstr "Añade una marca de agua a tus imágenes directamente en Wordpress. Protege tu contenido sin abandonar tu sitio web."
+msgstr "Görüntülerine doğrudan WordPress'te filigran ekle. Sitenden ayrılmadan içeriklerini koru."
 
 #: admin/views/compress.php:12
 #: admin/views/watermark.php:18
 msgid "Sign up and get 2,500 free credits to start optimizing with iLoveIMG."
-msgstr "Regístrate y consigue 2.500 créditos gratis para empezar a optimizar con iLoveIMG."
+msgstr "iLoveIMG ile optimizasyona başlamak için kaydol ve 2.500 ücretsiz kredi al."
 
 #: admin/views/compress.php:22
 #: admin/views/watermark.php:41
 msgid "Compress settings"
-msgstr "Ajustes de compresión"
+msgstr "Sıkıştırma ayarları"
 
 #: admin/views/compress.php:28
 #: admin/views/watermark.php:58
 msgid "Watermark settings"
-msgstr "Ajustes de marca de agua"
+msgstr "Filigran ayarları"
 
 #: admin/views/compress.php:35
 msgid "Make images load fast without losing visual quality."
-msgstr "Haz que las imágenes se carguen rápidamente sin perder calidad visual."
+msgstr "Görsel kaliteden taviz vermeden görüntüleri hızla yükle."
 
 #. translators: %1$s and %2$s are HTML link tags
 #: admin/views/compress.php:42
 #, php-format
 msgid "Install %1$s iLoveIMG Compress %2$s to reduce file size across your Media Library, choose the compression level that fits your needs, and keep sharp results. Auto-compress on upload to boost page speed and save storage automatically."
-msgstr "Instala %1$s el compresor de iLoveIMG %2$s para reducir el tamaño de los archivos de tu biblioteca de Medios, escoge el nivel de compresión que más se ajuste a tus necesidades y consigue resultados nítidos. Activa la opción de compresión automática en la subida para aumentar la velocidad de la página y ahorrar espacio de almacenamiento automáticamente."
+msgstr "Medya Kitaplığında dosya boyutunu küçültmek için %1$s iLoveIMG Sıkıştırma %2$s aracını yükle, ihtiyaçlarına uygun sıkıştırma düzeyini seç ve net sonuçlar elde etmeye devam et. Yükleme sırasında otomatik sıkıştırma ile sayfa hızını artır ve depolama alanından otomatik olarak tasarruf et."
 
 #: admin/views/media-bulk.php:15
 msgctxt "button"
 msgid "Watermark all uploaded files"
-msgstr "Añadir marca de agua a todos los archivos subidos"
+msgstr "Yüklenen tüm dosyalara filigran ekle"
 
 #: admin/views/overview.php:5
 msgctxt "title: admin settings overview"
 msgid "Summary"
-msgstr "Resumen"
+msgstr "Özet"
 
 #: admin/views/overview.php:9
 msgctxt "Overview: tool title"
 msgid "Watermark image"
-msgstr "Imagen de la marca de agua"
+msgstr "Filigran görüntüsü"
 
 #. translators: %s porcentage of images protected
 #: admin/views/overview.php:23
 #, php-format
 msgid "%s Images watermarked"
-msgstr "%s de imágenes con marca de agua aplicada"
+msgstr "%s Filigran eklenen görüntüler"
 
 #. translators: %s backup size
 #: admin/views/overview.php:36
 #, php-format
 msgid "%s Backup storage used"
-msgstr "%s del almacenamiento de la copia de seguridad usado"
+msgstr "%s Kullanılan yedek depolama alanı"
 
 #: admin/views/overview.php:46
 #, php-format
@@ -438,193 +438,193 @@ msgctxt "Overview: watermark summary"
 msgid "Your images, summary:\n"
 "Total images: %2$s\n"
 "Watermarked images: %1$s"
-msgstr "Un resumen de tus imágenes:\n"
-"Imágenes totales: %2$s\n"
-"Imágenes con marca de agua aplicada: %1$s"
+msgstr "Görüntülerin, özet:\n"
+"Toplam görüntü sayısı: %2$s\n"
+"Filigran eklenen görüntü sayısı: %1$s"
 
 #: admin/views/watermark.php:69
 #: admin/views/watermark.php:527
 msgctxt "button"
 msgid "Save Changes"
-msgstr "Guardar cambios"
+msgstr "Değişiklikleri Kaydet"
 
 #: admin/views/watermark.php:70
 msgid "Register and login with us to save settings changes"
-msgstr "Regístrate e inicia sesión con nosotros para guardar los cambios de configuración"
+msgstr "Ayar değişikliklerini kaydetmek için kaydol ve giriş yap"
 
 #: admin/views/watermark.php:73
 msgid "Watermark Settings"
-msgstr "Ajustes de marca de agua"
+msgstr "Filigran Ayarları"
 
 #: admin/views/watermark.php:82
 msgctxt "checkbox field label"
 msgid "Watermark enabled"
-msgstr "Marca de agua activada"
+msgstr "Filigran ekleme etkinleştirildi"
 
 #: admin/views/watermark.php:85
 msgid "Add a watermark to protect images from unauthorized use."
-msgstr "Añade una marca de agua para proteger las imágenes de un uso no autorizado."
+msgstr "Görüntüleri yetkisiz kullanıma karşı korumak için filigran ekle."
 
 #: admin/views/watermark.php:95
 msgctxt "checkbox field label"
 msgid "Automatically apply to uploaded files"
-msgstr "Aplicar automáticamente a los archivos subidos"
+msgstr "Yüklenen dosyalara otomatik olarak uygula"
 
 #: admin/views/watermark.php:97
 msgid "Automatically stamp new Media uploads with your selected watermark. You can still apply it manually to other files."
-msgstr "Añade tu marca de agua seleccionada automáticamente a los archivos que subas a Medios. Puedes aplicarla manualmente a otros archivos."
+msgstr "Yeni yüklenen Medya dosyalarına seçtiğin filigranı otomatik olarak ekle. Filigranı diğer dosyalara manuel olarak eklemeye devam edebilirsin."
 
 #: admin/views/watermark.php:103
 msgctxt "checkbox field label"
 msgid "Image Sizes"
-msgstr "Tamaños de la imagen"
+msgstr "Görüntü Boyutları"
 
 #: admin/views/watermark.php:106
 msgid "Choose which image versions to watermark. WordPress creates multiple sizes for each upload."
-msgstr "Elige a qué versiones de imagen quieres añadir la marca de agua. WordPress crea múltiples tamaños para cada subida."
+msgstr "Hangi görüntü versiyonlarına filigran ekleneceğini seç. WordPress her yükleme için birden fazla boyut oluşturur."
 
 #: admin/views/watermark.php:126
 msgctxt "subtitle: Section to show preview of watermark options"
 msgid "Watermark preview"
-msgstr "Vista previa de la marca de agua"
+msgstr "Filigran önizlemesi"
 
 #: admin/views/watermark.php:129
 msgid "Use text or upload an image as your watermark."
-msgstr "Usa texto o sube una imagen como marca de agua."
+msgstr "Filigran olarak metin kullan veya bir görüntü yükle."
 
 #: admin/views/watermark.php:151
 msgctxt "radio button option"
 msgid "Use text"
-msgstr "Usar texto"
+msgstr "Metin kullan"
 
 #: admin/views/watermark.php:159
 msgctxt "radio button option"
 msgid "Use image"
-msgstr "Usar imagen"
+msgstr "Görüntü kullan"
 
 #: admin/views/watermark.php:164
 msgid "This font does not support bold or italic styles"
-msgstr "Esta fuente no admite negrita ni cursiva"
+msgstr "Bu yazı tipi kalın veya italik stilleri desteklemiyor"
 
 #: admin/views/watermark.php:257
 msgctxt "placeholder: input text"
 msgid "Enter text for Watermark"
-msgstr "Introduce el texto de la marca de agua"
+msgstr "Filigran için metin gir"
 
 #: admin/views/watermark.php:264
 msgctxt "Image selector label"
 msgid "Watermark image"
-msgstr "Imagen de la marca de agua"
+msgstr "Filigran görüntüsü"
 
 #: admin/views/watermark.php:266
 msgid "Select an image stamp from Media or a URL. Then adjust its position, size, opacity, and rotation."
-msgstr "Selecciona una imagen desde Medios o una URL. Después, ajusta la posición, tamaño, opacidad y rotación."
+msgstr "Medya klasöründen bir görüntü seç veya bir URL gir. Ardından görüntünün konumunu, boyutunu, opaklığını ve yönünü ayarla."
 
 #: admin/views/watermark.php:268
 msgctxt "button"
 msgid "Add Image"
-msgstr "Añadir imagen"
+msgstr "Görüntü"
 
 #: admin/views/watermark.php:271
 msgctxt "Button divider: previous button: add image button, next option: input url."
 msgid "or enter an URL"
-msgstr "o introducir una URL"
+msgstr "veya bir URL gir"
 
 #: admin/views/watermark.php:273
 msgctxt "input url"
 msgid "Enter image URL"
-msgstr "Introduce la URL de la imagen"
+msgstr "Görüntü URL'si gir"
 
 #: admin/views/watermark.php:279
 msgctxt "radio button: Watermark position"
 msgid "Position"
-msgstr "Posición"
+msgstr "Konum"
 
 #: admin/views/watermark.php:336
 msgctxt "checkbox: activate mosaic option"
 msgid "Mosaic"
-msgstr "Mosaico"
+msgstr "Mozaik"
 
 #: admin/views/watermark.php:342
 #: admin/views/watermark.php:345
 msgctxt "input number: size in percentage"
 msgid "Scale"
-msgstr "Escala"
+msgstr "Ölçek"
 
 #. translators: %s percentage size
 #: admin/views/watermark.php:352
 msgid "of image width"
-msgstr "de ancho de la imagen"
+msgstr "görüntü genişliğinin"
 
 #: admin/views/watermark.php:360
 msgctxt "input select"
 msgid "Transparency"
-msgstr "Transparencia"
+msgstr "Şeffaflık"
 
 #: admin/views/watermark.php:387
 msgctxt "input select"
 msgid "Rotation"
-msgstr "Rotación"
+msgstr "Rotasyon"
 
 #: admin/views/watermark.php:455
 msgctxt "checkbox label"
 msgid "Back up original images"
-msgstr "Crear una copia de seguridad de las imágenes originales"
+msgstr "Orijinal görüntüleri yedekle"
 
 #: admin/views/watermark.php:457
 msgid "Save a backup before processing so you can restore the original later. Uses server space."
-msgstr "Guarda una copia de seguridad antes de procesarla para que puedas restaurar el original más tarde. Utiliza el espacio del servidor."
+msgstr "Dosyanın orijinalini daha sonra geri yükleyebilmek için işleme öncesinde yedeğini kaydet. Bu özellik, sunucu alanı kullanır."
 
 #. translators: %s: backup folder path
 #: admin/views/watermark.php:463
 #, php-format
 msgid "Backup images are stored at: %s"
-msgstr "Las copias de seguridad de las imágenes se guardan en: %s"
+msgstr "Yedek görüntüler şurada depolanır: %s"
 
 #: admin/views/watermark.php:475
 msgctxt "subtitle label"
 msgid "Restore Original Files"
-msgstr "Restaurar los archivos originales"
+msgstr "Orijinal Dosyaları Geri Yükle"
 
 #. translators: %1$s and %2$s: html tags
 #: admin/views/watermark.php:482
 #, php-format
 msgid "You can restore original files from backup. Restoring will return files to their state before any changes were made. %1$s Warning: This will remove all modifications applied using the tools. %2$s"
-msgstr "Puedes restaurar los archivos originales a partir de una copia de seguridad. La restauración hará que los archivos vuelvan al estado en el que estaban antes de los cambios. %1$s Aviso: Esta acción eliminará todos los cambios que se hayan hecho con las herramientas.%2$s"
+msgstr "Orijinal dosyaları yedekten geri yükleyebilirsin. Geri yükleme, dosyaları değişiklik yapılmadan önceki haline döndürür. %1$s Uyarı: Bu işlem, araçlar kullanılarak uygulanan tüm değişiklikleri kaldırır. %2$s"
 
 #. translators: %1$s and %2$s: html tags
 #: admin/views/watermark.php:494
 #, php-format
 msgid "You can delete all backup files to free up space. %1$s Warning: This will remove your ability to restore files. %2$s"
-msgstr "Puedes eliminar todos los archivos de la copia de seguridad para liberar espacio. %1$s Aviso: Esto eliminará tu capacidad de restaurar archivos. %2$s"
+msgstr "Yer açmak için tüm yedek dosyalarını silebilirsin. %1$s Uyarı: Bu işlemi yaparsan dosyaları geri yükleyemezsin. %2$s"
 
 #: admin/views/watermark.php:502
 msgctxt "button"
 msgid "Restore All"
-msgstr "Restaurar todo"
+msgstr "Tümünü Geri Yükle"
 
 #: admin/views/watermark.php:506
 msgctxt "button"
 msgid "Clear backup"
-msgstr "Borrar copia de seguridad"
+msgstr "Yedeği temizle"
 
 #. translators: %s: backup size
 #: admin/views/watermark.php:513
 #, php-format
 msgid "Backup size: %s"
-msgstr "Tamaño de la copia de seguridad: %s"
+msgstr "Yedek boyutu: %s"
 
 #: admin/views/watermark.php:528
 msgid "Log in to save your settings"
-msgstr "Inicia sesión para guardar tus ajustes"
+msgstr "Ayarlarını kaydetmek için giriş yap"
 
 #: ilove-img-watermark.php:82
 msgctxt "button"
 msgid "Settings"
-msgstr "Configuración"
+msgstr "Ayarlar"
 
 #: ilove-img-watermark.php:86
 msgctxt "button"
 msgid "Bulk Watermark"
-msgstr "Marca de agua por lotes"
+msgstr "Toplu Filigran"
 

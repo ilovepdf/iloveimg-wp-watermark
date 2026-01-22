@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: f77715d6d2ed986a477e9b7ddb58a66c\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/watermark-protect-images\n"
 "Last-Translator: ilovepdf <info@ilovepdf.com>\n"
-"Language-Team: Spanish\n"
+"Language-Team: Italian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -16,25 +16,25 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-Project: f77715d6d2ed986a477e9b7ddb58a66c\n"
 "X-Crowdin-Project-ID: 5\n"
-"X-Crowdin-Language: es\n"
+"X-Crowdin-Language: it\n"
 "X-Crowdin-File: /Wordpress/iloveimg-watermark.pot\n"
 "X-Crowdin-File-ID: 1576\n"
-"Language: es_ES\n"
+"Language: it_IT\n"
 
 #. Plugin Name of the plugin
 #: ilove-img-watermark.php
 msgid "iLoveIMG Watermark"
-msgstr "Marca de agua de iLoveIMG"
+msgstr "Filigrana iLoveIMG"
 
 #. Plugin URI of the plugin
 #: ilove-img-watermark.php
 msgid "https://iloveapi.com/"
-msgstr "https://iloveapi.com/"
+msgstr "https://iloveapi.com/it"
 
 #. Description of the plugin
 #: ilove-img-watermark.php
 msgid "Protect your images with automatic, easy-to-use watermarking."
-msgstr "Protege tus imágenes con una marca de agua automática y fácil de usar."
+msgstr "Proteggi le tue immagini con filigrane automatiche e facili da usare."
 
 #. Author of the plugin
 #: ilove-img-watermark.php
@@ -44,202 +44,202 @@ msgstr "iLoveIMG"
 #. Author URI of the plugin
 #: ilove-img-watermark.php
 msgid "https://iloveimg.com/"
-msgstr "https://iloveimg.com/"
+msgstr "https://iloveimg.com/it"
 
 #: admin/Ilove_Img_Wm_Media_List_Table.php:102
 msgctxt "column name"
 msgid "File"
-msgstr "Archivo"
+msgstr "File"
 
 #: admin/Ilove_Img_Wm_Media_List_Table.php:103
 msgctxt "column name"
 msgid "Author"
-msgstr "Autor"
+msgstr "Autore"
 
 #: admin/Ilove_Img_Wm_Media_List_Table.php:104
 msgctxt "column name"
 msgid "Date"
-msgstr "Fecha"
+msgstr "Data"
 
 #: admin/Ilove_Img_Wm_Media_List_Table.php:105
 msgctxt "column name"
 msgid "Action"
-msgstr "Acción"
+msgstr "Azione"
 
 #: admin/Ilove_Img_Wm_Media_List_Table.php:137
 msgctxt "button"
 msgid "Delete"
-msgstr "Eliminar"
+msgstr "Elimina"
 
 #: admin/Ilove_Img_Wm_Media_List_Table.php:154
 msgid "Items deleted."
-msgstr "Elementos eliminados."
+msgstr "Elementi eliminati."
 
 #: admin/Ilove_Img_Wm_Plugin.php:213
 msgid "Try again or buy more credits"
-msgstr "Inténtalo de nuevo o compra más créditos"
+msgstr "Riprova o acquista altri crediti"
 
 #: admin/Ilove_Img_Wm_Plugin.php:233
 msgctxt "column name"
 msgid "Watermark status"
-msgstr "Estado de la marca de agua"
+msgstr "Stato filigrana"
 
 #: admin/Ilove_Img_Wm_Plugin.php:364
 msgid "Please log in or sign up to continue."
-msgstr "Por favor, inicia sesión o regístrate para continuar."
+msgstr "Effettua il login o registrati per continuare."
 
 #: admin/Ilove_Img_Wm_Plugin.php:364
 #: admin/Ilove_Img_Wm_Resources.php:401
 #: admin/Ilove_Img_Wm_Resources.php:407
 msgctxt "button"
 msgid "Go to settings"
-msgstr "Ir a Ajustes"
+msgstr "Vai alle impostazioni"
 
 #: admin/Ilove_Img_Wm_Plugin.php:374
 msgid "Incorrect email or password."
-msgstr "Mail o contraseña incorrecta."
+msgstr "Email o password errata."
 
 #: admin/Ilove_Img_Wm_Plugin.php:379
 msgid "This email is already in use."
-msgstr "Este correo electrónico ya está en uso."
+msgstr "Questa email è già in uso."
 
 #: admin/Ilove_Img_Wm_Plugin.php:384
 msgid "This plugin is already linked to another user. Please sign in with an existing account."
-msgstr "Este plugin ya está vinculado a otro usuario. Por favor, inicia sesión con una cuenta existente."
+msgstr "Questo plugin è già collegato ad un altro utente. Effettua l'accesso con un account esistente."
 
 #: admin/Ilove_Img_Wm_Plugin.php:410
 msgid "You're out of credits!"
-msgstr "¡Te has quedado sin créditos!"
+msgstr "Hai terminato i crediti!"
 
 #: admin/Ilove_Img_Wm_Plugin.php:410
 msgctxt "button"
 msgid "Buy more credits"
-msgstr "Comprar más créditos"
+msgstr "Acquista più crediti"
 
 #: admin/Ilove_Img_Wm_Plugin.php:417
 msgid "We couldn’t verify your iLoveAPI account. Please try again later."
-msgstr "No hemos podido verificar tu cuenta de iLoveAPI. Por favor, inténtalo de nuevo más tarde."
+msgstr "Non è stato possibile verificare il tuo account iLoveAPI. Riprovare più tardi."
 
 #: admin/Ilove_Img_Wm_Plugin.php:424
 #: admin/views/account.php:45
 msgid "We couldn’t verify the status of your iLoveAPI account. Please try again later."
-msgstr "No hemos podido verificar el estado de tu cuenta de iLoveAPI. Por favor, inténtalo de nuevo más tarde."
+msgstr "Non è stato possibile verificare lo stato del tuo account iLoveAPI. Riprovare più tardi."
 
 #. translators: %d: ID of File
 #: admin/Ilove_Img_Wm_Plugin.php:441
 #: admin/Ilove_Img_Wm_Plugin.php:474
 #, php-format
 msgid "Image watermarked successfully: %d"
-msgstr "Marca de agua aplicada a la imagen correctamente: %d"
+msgstr "Filigrana aggiunta all'immagine correttamente: %d"
 
 #: admin/Ilove_Img_Wm_Plugin.php:510
 msgctxt "Subtitle for individual page of the file"
 msgid "iLoveIMG Watermark"
-msgstr "Marca de agua de iLoveIMG"
+msgstr "Filigrana iLoveIMG"
 
 #: admin/Ilove_Img_Wm_Plugin.php:583
 msgid "Couldn’t complete the request. Please refresh and try again."
-msgstr "No se ha podido completar la solicitud. Actualiza la página e inténtalo de nuevo."
+msgstr "Impossibile completare la richiesta. Aggiornare e riprovare."
 
 #: admin/Ilove_Img_Wm_Plugin.php:587
 msgid "Error processing your request. Invalid Image ID"
-msgstr "Error al procesar tu solicitud. Identificador de imagen no válido"
+msgstr "Errore nell'elaborazione della richiesta. ID immagine non valido"
 
 #: admin/Ilove_Img_Wm_Plugin.php:595
 msgid "No backup found."
-msgstr "No se encontró copia de seguridad."
+msgstr "Nessun backup trovato."
 
 #: admin/Ilove_Img_Wm_Plugin.php:613
 msgid "File restored successfully."
-msgstr "Archivo restaurado correctamente."
+msgstr "File ripristinato correttamente."
 
 #: admin/Ilove_Img_Wm_Plugin.php:625
 #: admin/Ilove_Img_Wm_Resources.php:395
 msgctxt "button"
 msgid "Watermark"
-msgstr "Marca de agua"
+msgstr "Filigrana"
 
 #. translators: %d: ID of File
 #: admin/Ilove_Img_Wm_Process.php:61
 #, php-format
 msgid "File %d is not a valid image."
-msgstr "El archivo %d no es una imagen válida."
+msgstr "Il file %d non è un'immagine valida."
 
 #: admin/Ilove_Img_Wm_Process.php:197
 #: admin/Ilove_Img_Wm_Process.php:204
 msgid "Could not process the request."
-msgstr "No se ha podido procesar la solicitud."
+msgstr "Impossibile elaborare la richiesta."
 
 #: admin/Ilove_Img_Wm_Process.php:207
 msgid "Check your plugin credentials. If you deleted a project in your iLoveAPI account, try switching projects to correctly store your API keys."
-msgstr "Comprueba las credenciales de tu plugin. Si has eliminado un proyecto en tu cuenta iLoveAPI, intenta cambiar de proyecto para almacenar correctamente tus claves API."
+msgstr "Controlla le credenziali del tuo plugin. Se hai eliminato un progetto dal tuo account iLoveAPI, prova a cambiare progetto per memorizzare correttamente le tue chiavi API."
 
 #: admin/Ilove_Img_Wm_Resources.php:36
 msgctxt "input checkbox"
 msgid "Original"
-msgstr "Original"
+msgstr "Originale"
 
 #: admin/Ilove_Img_Wm_Resources.php:73
 #: admin/Ilove_Img_Wm_Resources.php:108
 msgid "Filesystem connection failed."
-msgstr "Falló la conexión del sistema de archivos."
+msgstr "Impossibile collegarsi al filesystem."
 
 #: admin/Ilove_Img_Wm_Resources.php:326
 msgctxt "column name"
 msgid "File Name"
-msgstr "Nombre del archivo"
+msgstr "Nome file"
 
 #: admin/Ilove_Img_Wm_Resources.php:327
 msgctxt "column name"
 msgid "Watermark"
-msgstr "Marca de agua"
+msgstr "Filigrana"
 
 #: admin/Ilove_Img_Wm_Resources.php:338
 msgctxt "Watermark applied to an image"
 msgid "Applied"
-msgstr "Aplicada"
+msgstr "Applicata"
 
 #: admin/Ilove_Img_Wm_Resources.php:340
 #: admin/Ilove_Img_Wm_Resources.php:343
 msgctxt "Watermark not applied to an image"
 msgid "Not applied"
-msgstr "No aplicada"
+msgstr "Non applicata"
 
 #. translators: %s: Number of watermarked image sizes
 #: admin/Ilove_Img_Wm_Resources.php:360
 #, php-format
 msgid "Watermark applied to %s sizes"
-msgstr "Marca de agua aplicada a %s tamaños"
+msgstr "Filigrana applicata alle dimensioni %s"
 
 #: admin/Ilove_Img_Wm_Resources.php:406
 msgid "Sign up required"
-msgstr "Es necesario registrarse"
+msgstr "È obbligatorio registrarsi"
 
 #: admin/Ilove_Img_Wm_Resources.php:508
 msgctxt "button"
 msgid "Restore original"
-msgstr "Restaurar original"
+msgstr "Ripristina originale"
 
 #: admin/Ilove_Img_Wm_Resources.php:514
 msgctxt "The file is being processed"
 msgid "Processing…"
-msgstr "Procesando…"
+msgstr "In elaborazione…"
 
 #: admin/Ilove_Img_Wm_Resources.php:519
 msgctxt "File processing had an error"
 msgid "Error processing. Please refresh and try again."
-msgstr "Error al procesar. Por favor, actualiza e inténtalo de nuevo."
+msgstr "Errore nell'elaborazione. Aggiornare e riprovare."
 
 #: admin/Ilove_Img_Wm_Resources.php:524
 msgctxt "File processing was successful"
 msgid "Done. Please refresh the page."
-msgstr "Completado. Por favor, actualiza la página."
+msgstr "Completato. Aggiornare la pagina."
 
 #: admin/Ilove_Img_Wm_Submenu.php:56
 #: admin/Ilove_Img_Wm_Submenu.php:57
 msgctxt "submenu"
 msgid "Compress settings"
-msgstr "Ajustes de compresión"
+msgstr "Impostazioni di compressione"
 
 #: admin/Ilove_Img_Wm_Submenu.php:68
 #: admin/Ilove_Img_Wm_Submenu.php:69
@@ -247,22 +247,22 @@ msgstr "Ajustes de compresión"
 #: admin/Ilove_Img_Wm_Submenu.php:83
 msgctxt "submenu"
 msgid "Watermark settings"
-msgstr "Ajustes de marca de agua"
+msgstr "Impostazioni filigrana"
 
 #: admin/Ilove_Img_Wm_Submenu.php:96
 msgctxt "submenu"
 msgid "Bulk Watermark"
-msgstr "Marca de agua por lotes"
+msgstr "Filigrana di massa"
 
 #: admin/views/account.php:60
 msgctxt "subtitle"
 msgid "Create an iLoveAPI account"
-msgstr "Crear una cuenta de iLoveAPI"
+msgstr "Crea un account iLoveAPI"
 
 #: admin/views/account.php:65
 msgctxt "input text"
 msgid "Name"
-msgstr "Nombre"
+msgstr "Nome"
 
 #: admin/views/account.php:68
 #: admin/views/account.php:95
@@ -274,42 +274,42 @@ msgstr "Email"
 #: admin/views/account.php:98
 msgctxt "input password"
 msgid "Password"
-msgstr "Contraseña"
+msgstr "Password"
 
 #: admin/views/account.php:77
 msgctxt "button"
 msgid "Create account"
-msgstr "Crear una cuenta"
+msgstr "Crea account"
 
 #: admin/views/account.php:81
 msgctxt "button"
 msgid "Log in to your account"
-msgstr "Acceder a mi cuenta"
+msgstr "Accedi al tuo account"
 
 #: admin/views/account.php:92
 msgctxt "subtitle"
 msgid "Log in to your account"
-msgstr "Acceder a mi cuenta"
+msgstr "Accedi al tuo account"
 
 #: admin/views/account.php:101
 msgctxt "button"
 msgid "Forgot your password?"
-msgstr "¿Contraseña olvidada?"
+msgstr "Hai dimenticato la password?"
 
 #: admin/views/account.php:105
 msgctxt "button"
 msgid "Log in"
-msgstr "Iniciar sesión"
+msgstr "Accedi"
 
 #: admin/views/account.php:109
 msgctxt "button"
 msgid "Create an iLoveAPI account"
-msgstr "Crear una cuenta de iLoveAPI"
+msgstr "Crea un account iLoveAPI"
 
 #: admin/views/account.php:120
 msgctxt "subtitle section: free credits"
 msgid "Free"
-msgstr "Gratis"
+msgstr "Gratuito"
 
 #. translators: %1$d: credits used / %2$d: credits limit
 #: admin/views/account.php:132
@@ -317,120 +317,120 @@ msgstr "Gratis"
 #: admin/views/account.php:174
 #, php-format
 msgid "%1$d / %2$d credits used this month."
-msgstr "%1$d / %2$d créditos usados este mes."
+msgstr "%1$d / %2$d crediti utilizzati per questo mese."
 
 #: admin/views/account.php:140
 msgctxt "subtitle section"
 msgid "[Monthly/Yearly] plan"
-msgstr "Plan [Mensual/Anual]"
+msgstr "Piano [mensile/annuale]"
 
 #: admin/views/account.php:162
 msgctxt "subtitle section"
 msgid "Packages"
-msgstr "Packs"
+msgstr "Pacchetti"
 
 #. translators: %d: free credits
 #: admin/views/account.php:187
 #, php-format
 msgid "You get %1$d free credits each month to process your files."
-msgstr "Cada mes, obtienes %1$d créditos gratis para procesar tus archivos."
+msgstr "Ottieni crediti %1$d gratuiti ogni mese per l'elaborazione dei tuoi file."
 
 #: admin/views/account.php:196
 msgctxt "1: subscription plan link"
 msgid "Upgrade your plan or buy a credit package"
-msgstr "Cambia al plan superior o compra un paquete de créditos"
+msgstr "Effettua l'aggiornamento del tuo piano oppure acquista un pacchetto di crediti"
 
 #. translators: %1$s: subscription plan link, %2$s: single package link
 #: admin/views/account.php:202
 #, php-format
 msgid "Need more credits? %1$s."
-msgstr "¿Necesitas más créditos? %1$s."
+msgstr "Hai bisogno di più crediti? %1$s."
 
 #: admin/views/account.php:212
 msgctxt "button"
 msgid "Buy credits"
-msgstr "Comprar créditos"
+msgstr "Acquista crediti"
 
 #: admin/views/account.php:221
 msgctxt "subtitle: Connected user section"
 msgid "Account"
-msgstr "Cuenta"
+msgstr "Account"
 
 #: admin/views/account.php:226
 msgctxt "button"
 msgid "Log out"
-msgstr "Cerrar sesión"
+msgstr "Disconnessione"
 
 #: admin/views/account.php:233
 msgid "Select project"
-msgstr "Seleccionar proyecto"
+msgstr "Seleziona progetto"
 
 #: admin/views/account.php:246
 msgctxt "Button: save changes"
 msgid "Change project"
-msgstr "Cambiar proyecto"
+msgstr "Cambia progetto"
 
 #: admin/views/compress.php:10
 #: admin/views/watermark.php:16
 msgid "The power of iLoveIMG, built right into WordPress"
-msgstr "El poder de iLoveIMG, integrado directamente en WordPress"
+msgstr "La potenza di iLoveIMG, integrata direttamente in WordPress"
 
 #: admin/views/compress.php:11
 #: admin/views/watermark.php:17
 msgid "Watermark your images directly in WordPress. Protect your content without leaving your site."
-msgstr "Añade una marca de agua a tus imágenes directamente en Wordpress. Protege tu contenido sin abandonar tu sitio web."
+msgstr "Aggiungi filigrane alle tue immagini direttamente in WordPress. Proteggi i tuoi contenuti senza uscire dal sito."
 
 #: admin/views/compress.php:12
 #: admin/views/watermark.php:18
 msgid "Sign up and get 2,500 free credits to start optimizing with iLoveIMG."
-msgstr "Regístrate y consigue 2.500 créditos gratis para empezar a optimizar con iLoveIMG."
+msgstr "Iscriviti e ottieni 2.500 crediti gratuiti per iniziare ad ottimizzare con iLoveIMG."
 
 #: admin/views/compress.php:22
 #: admin/views/watermark.php:41
 msgid "Compress settings"
-msgstr "Ajustes de compresión"
+msgstr "Impostazioni di compressione"
 
 #: admin/views/compress.php:28
 #: admin/views/watermark.php:58
 msgid "Watermark settings"
-msgstr "Ajustes de marca de agua"
+msgstr "Impostazioni filigrana"
 
 #: admin/views/compress.php:35
 msgid "Make images load fast without losing visual quality."
-msgstr "Haz que las imágenes se carguen rápidamente sin perder calidad visual."
+msgstr "Rendi più veloce il caricamento delle immagini senza perdere la qualità visiva."
 
 #. translators: %1$s and %2$s are HTML link tags
 #: admin/views/compress.php:42
 #, php-format
 msgid "Install %1$s iLoveIMG Compress %2$s to reduce file size across your Media Library, choose the compression level that fits your needs, and keep sharp results. Auto-compress on upload to boost page speed and save storage automatically."
-msgstr "Instala %1$s el compresor de iLoveIMG %2$s para reducir el tamaño de los archivos de tu biblioteca de Medios, escoge el nivel de compresión que más se ajuste a tus necesidades y consigue resultados nítidos. Activa la opción de compresión automática en la subida para aumentar la velocidad de la página y ahorrar espacio de almacenamiento automáticamente."
+msgstr "Installa %1$s Comprimi iLoveIMG %2$s per ridurre le dimensioni dei file nella tua Libreria multimediale; scegli il livello di compressione più adatto alle tue esigenze e ottieni risultati nitidi. Comprimi automaticamente al caricamento velocizzare le pagine e per risparmiare spazio di archiviazione automaticamente."
 
 #: admin/views/media-bulk.php:15
 msgctxt "button"
 msgid "Watermark all uploaded files"
-msgstr "Añadir marca de agua a todos los archivos subidos"
+msgstr "Aggiungi filigrana a tutti i file caricati"
 
 #: admin/views/overview.php:5
 msgctxt "title: admin settings overview"
 msgid "Summary"
-msgstr "Resumen"
+msgstr "Riepilogo"
 
 #: admin/views/overview.php:9
 msgctxt "Overview: tool title"
 msgid "Watermark image"
-msgstr "Imagen de la marca de agua"
+msgstr "Applica filigrana alle immagini"
 
 #. translators: %s porcentage of images protected
 #: admin/views/overview.php:23
 #, php-format
 msgid "%s Images watermarked"
-msgstr "%s de imágenes con marca de agua aplicada"
+msgstr "Filigrana aggiunta alle immagini %s"
 
 #. translators: %s backup size
 #: admin/views/overview.php:36
 #, php-format
 msgid "%s Backup storage used"
-msgstr "%s del almacenamiento de la copia de seguridad usado"
+msgstr "Spazio di archiviazione %s utilizzato"
 
 #: admin/views/overview.php:46
 #, php-format
@@ -438,107 +438,107 @@ msgctxt "Overview: watermark summary"
 msgid "Your images, summary:\n"
 "Total images: %2$s\n"
 "Watermarked images: %1$s"
-msgstr "Un resumen de tus imágenes:\n"
-"Imágenes totales: %2$s\n"
-"Imágenes con marca de agua aplicada: %1$s"
+msgstr "Le tue immagini, riepilogo:\n"
+"Immagini totali: %2$s\n"
+"Immagini con filigrana aggiunta: %1$s"
 
 #: admin/views/watermark.php:69
 #: admin/views/watermark.php:527
 msgctxt "button"
 msgid "Save Changes"
-msgstr "Guardar cambios"
+msgstr "Salva modifiche"
 
 #: admin/views/watermark.php:70
 msgid "Register and login with us to save settings changes"
-msgstr "Regístrate e inicia sesión con nosotros para guardar los cambios de configuración"
+msgstr "Registrati e accedi per salvare le modifiche alle impostazioni"
 
 #: admin/views/watermark.php:73
 msgid "Watermark Settings"
-msgstr "Ajustes de marca de agua"
+msgstr "Impostazioni filigrana"
 
 #: admin/views/watermark.php:82
 msgctxt "checkbox field label"
 msgid "Watermark enabled"
-msgstr "Marca de agua activada"
+msgstr "Filigrana abilitata"
 
 #: admin/views/watermark.php:85
 msgid "Add a watermark to protect images from unauthorized use."
-msgstr "Añade una marca de agua para proteger las imágenes de un uso no autorizado."
+msgstr "Aggiungi una filigrana per proteggere le immagini dall'uso non autorizzato."
 
 #: admin/views/watermark.php:95
 msgctxt "checkbox field label"
 msgid "Automatically apply to uploaded files"
-msgstr "Aplicar automáticamente a los archivos subidos"
+msgstr "Applica automaticamente ai file caricati"
 
 #: admin/views/watermark.php:97
 msgid "Automatically stamp new Media uploads with your selected watermark. You can still apply it manually to other files."
-msgstr "Añade tu marca de agua seleccionada automáticamente a los archivos que subas a Medios. Puedes aplicarla manualmente a otros archivos."
+msgstr "Timbra automaticamente i nuovi caricamenti multimediali con la filigrana selezionata. È comunque possibile applicarla manualmente ad altri file."
 
 #: admin/views/watermark.php:103
 msgctxt "checkbox field label"
 msgid "Image Sizes"
-msgstr "Tamaños de la imagen"
+msgstr "Dimensioni immagini"
 
 #: admin/views/watermark.php:106
 msgid "Choose which image versions to watermark. WordPress creates multiple sizes for each upload."
-msgstr "Elige a qué versiones de imagen quieres añadir la marca de agua. WordPress crea múltiples tamaños para cada subida."
+msgstr "Scegli a quali versioni dell'immagine applicare la filigrana. WordPress crea più dimensioni per ogni file caricato."
 
 #: admin/views/watermark.php:126
 msgctxt "subtitle: Section to show preview of watermark options"
 msgid "Watermark preview"
-msgstr "Vista previa de la marca de agua"
+msgstr "Anteprima filigrana"
 
 #: admin/views/watermark.php:129
 msgid "Use text or upload an image as your watermark."
-msgstr "Usa texto o sube una imagen como marca de agua."
+msgstr "Usa testo o carica un'immagine come filigrana."
 
 #: admin/views/watermark.php:151
 msgctxt "radio button option"
 msgid "Use text"
-msgstr "Usar texto"
+msgstr "Usa testo"
 
 #: admin/views/watermark.php:159
 msgctxt "radio button option"
 msgid "Use image"
-msgstr "Usar imagen"
+msgstr "Usa immagine"
 
 #: admin/views/watermark.php:164
 msgid "This font does not support bold or italic styles"
-msgstr "Esta fuente no admite negrita ni cursiva"
+msgstr "Questo carattere non supporta il grassetto o il corsivo"
 
 #: admin/views/watermark.php:257
 msgctxt "placeholder: input text"
 msgid "Enter text for Watermark"
-msgstr "Introduce el texto de la marca de agua"
+msgstr "Inserisci il testo per la filigrana"
 
 #: admin/views/watermark.php:264
 msgctxt "Image selector label"
 msgid "Watermark image"
-msgstr "Imagen de la marca de agua"
+msgstr "Applica filigrana alle immagini"
 
 #: admin/views/watermark.php:266
 msgid "Select an image stamp from Media or a URL. Then adjust its position, size, opacity, and rotation."
-msgstr "Selecciona una imagen desde Medios o una URL. Después, ajusta la posición, tamaño, opacidad y rotación."
+msgstr "Seleziona un timbro immagine da Media o da un URL. Quindi regola la posizione, le dimensioni, l'opacità e la rotazione."
 
 #: admin/views/watermark.php:268
 msgctxt "button"
 msgid "Add Image"
-msgstr "Añadir imagen"
+msgstr "Aggiungi immagine"
 
 #: admin/views/watermark.php:271
 msgctxt "Button divider: previous button: add image button, next option: input url."
 msgid "or enter an URL"
-msgstr "o introducir una URL"
+msgstr "oppure inserisci un URL"
 
 #: admin/views/watermark.php:273
 msgctxt "input url"
 msgid "Enter image URL"
-msgstr "Introduce la URL de la imagen"
+msgstr "Inserisci URL immagine"
 
 #: admin/views/watermark.php:279
 msgctxt "radio button: Watermark position"
 msgid "Position"
-msgstr "Posición"
+msgstr "Posiziona"
 
 #: admin/views/watermark.php:336
 msgctxt "checkbox: activate mosaic option"
@@ -549,82 +549,82 @@ msgstr "Mosaico"
 #: admin/views/watermark.php:345
 msgctxt "input number: size in percentage"
 msgid "Scale"
-msgstr "Escala"
+msgstr "Ridimensionamento"
 
 #. translators: %s percentage size
 #: admin/views/watermark.php:352
 msgid "of image width"
-msgstr "de ancho de la imagen"
+msgstr "oppure la larghezza dell'immagine"
 
 #: admin/views/watermark.php:360
 msgctxt "input select"
 msgid "Transparency"
-msgstr "Transparencia"
+msgstr "Trasparenza"
 
 #: admin/views/watermark.php:387
 msgctxt "input select"
 msgid "Rotation"
-msgstr "Rotación"
+msgstr "Rotazione"
 
 #: admin/views/watermark.php:455
 msgctxt "checkbox label"
 msgid "Back up original images"
-msgstr "Crear una copia de seguridad de las imágenes originales"
+msgstr "Backup delle immagini originali"
 
 #: admin/views/watermark.php:457
 msgid "Save a backup before processing so you can restore the original later. Uses server space."
-msgstr "Guarda una copia de seguridad antes de procesarla para que puedas restaurar el original más tarde. Utiliza el espacio del servidor."
+msgstr "Salva un backup prima dell'elaborazione in modo tale da poter ripristinare l'originale in un secondo momento. Utilizza lo spazio sul server."
 
 #. translators: %s: backup folder path
 #: admin/views/watermark.php:463
 #, php-format
 msgid "Backup images are stored at: %s"
-msgstr "Las copias de seguridad de las imágenes se guardan en: %s"
+msgstr "Le immagini di backup sono archiviate in: %s"
 
 #: admin/views/watermark.php:475
 msgctxt "subtitle label"
 msgid "Restore Original Files"
-msgstr "Restaurar los archivos originales"
+msgstr "Ripristina file originali"
 
 #. translators: %1$s and %2$s: html tags
 #: admin/views/watermark.php:482
 #, php-format
 msgid "You can restore original files from backup. Restoring will return files to their state before any changes were made. %1$s Warning: This will remove all modifications applied using the tools. %2$s"
-msgstr "Puedes restaurar los archivos originales a partir de una copia de seguridad. La restauración hará que los archivos vuelvan al estado en el que estaban antes de los cambios. %1$s Aviso: Esta acción eliminará todos los cambios que se hayan hecho con las herramientas.%2$s"
+msgstr "È possibile ripristinare i file originali dal backup. Il ripristino restituirà i file al loro stato prima di qualsiasi modifica apportata. %1$s Attenzione: questa operazione rimuoverà tutte le modifiche applicate utilizzando gli strumenti. %2$s"
 
 #. translators: %1$s and %2$s: html tags
 #: admin/views/watermark.php:494
 #, php-format
 msgid "You can delete all backup files to free up space. %1$s Warning: This will remove your ability to restore files. %2$s"
-msgstr "Puedes eliminar todos los archivos de la copia de seguridad para liberar espacio. %1$s Aviso: Esto eliminará tu capacidad de restaurar archivos. %2$s"
+msgstr "È possibile eliminare tutti i file di backup per liberare spazio. %1$s Avvertenza: questa operazione impedirà il ripristino dei file. %2$s"
 
 #: admin/views/watermark.php:502
 msgctxt "button"
 msgid "Restore All"
-msgstr "Restaurar todo"
+msgstr "Ripristina tutto"
 
 #: admin/views/watermark.php:506
 msgctxt "button"
 msgid "Clear backup"
-msgstr "Borrar copia de seguridad"
+msgstr "Cancella backup"
 
 #. translators: %s: backup size
 #: admin/views/watermark.php:513
 #, php-format
 msgid "Backup size: %s"
-msgstr "Tamaño de la copia de seguridad: %s"
+msgstr "Dimensione di backup: %s"
 
 #: admin/views/watermark.php:528
 msgid "Log in to save your settings"
-msgstr "Inicia sesión para guardar tus ajustes"
+msgstr "Accedi per salvare le impostazioni"
 
 #: ilove-img-watermark.php:82
 msgctxt "button"
 msgid "Settings"
-msgstr "Configuración"
+msgstr "Impostazioni"
 
 #: ilove-img-watermark.php:86
 msgctxt "button"
 msgid "Bulk Watermark"
-msgstr "Marca de agua por lotes"
+msgstr "Filigrana di massa"
 
