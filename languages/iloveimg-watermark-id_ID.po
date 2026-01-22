@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: f77715d6d2ed986a477e9b7ddb58a66c\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/watermark-protect-images\n"
 "Last-Translator: ilovepdf <info@ilovepdf.com>\n"
-"Language-Team: Spanish\n"
+"Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,18 +13,18 @@ msgstr ""
 "PO-Revision-Date: 2026-01-13 13:58\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: iloveimg-watermark\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Crowdin-Project: f77715d6d2ed986a477e9b7ddb58a66c\n"
 "X-Crowdin-Project-ID: 5\n"
-"X-Crowdin-Language: es\n"
+"X-Crowdin-Language: id\n"
 "X-Crowdin-File: /Wordpress/iloveimg-watermark.pot\n"
 "X-Crowdin-File-ID: 1576\n"
-"Language: es_ES\n"
+"Language: id_ID\n"
 
 #. Plugin Name of the plugin
 #: ilove-img-watermark.php
 msgid "iLoveIMG Watermark"
-msgstr "Marca de agua de iLoveIMG"
+msgstr "Tanda Air iLoveIMG"
 
 #. Plugin URI of the plugin
 #: ilove-img-watermark.php
@@ -34,7 +34,7 @@ msgstr "https://iloveapi.com/"
 #. Description of the plugin
 #: ilove-img-watermark.php
 msgid "Protect your images with automatic, easy-to-use watermarking."
-msgstr "Protege tus imágenes con una marca de agua automática y fácil de usar."
+msgstr "Lindungi gambar Anda dengan tanda air otomatis yang praktis."
 
 #. Author of the plugin
 #: ilove-img-watermark.php
@@ -49,197 +49,197 @@ msgstr "https://iloveimg.com/"
 #: admin/Ilove_Img_Wm_Media_List_Table.php:102
 msgctxt "column name"
 msgid "File"
-msgstr "Archivo"
+msgstr "File"
 
 #: admin/Ilove_Img_Wm_Media_List_Table.php:103
 msgctxt "column name"
 msgid "Author"
-msgstr "Autor"
+msgstr "Penulis"
 
 #: admin/Ilove_Img_Wm_Media_List_Table.php:104
 msgctxt "column name"
 msgid "Date"
-msgstr "Fecha"
+msgstr "Tanggal"
 
 #: admin/Ilove_Img_Wm_Media_List_Table.php:105
 msgctxt "column name"
 msgid "Action"
-msgstr "Acción"
+msgstr "Tindakan"
 
 #: admin/Ilove_Img_Wm_Media_List_Table.php:137
 msgctxt "button"
 msgid "Delete"
-msgstr "Eliminar"
+msgstr "Hapus"
 
 #: admin/Ilove_Img_Wm_Media_List_Table.php:154
 msgid "Items deleted."
-msgstr "Elementos eliminados."
+msgstr "Item dihapus."
 
 #: admin/Ilove_Img_Wm_Plugin.php:213
 msgid "Try again or buy more credits"
-msgstr "Inténtalo de nuevo o compra más créditos"
+msgstr "Coba lagi atau beli kredit tambahan"
 
 #: admin/Ilove_Img_Wm_Plugin.php:233
 msgctxt "column name"
 msgid "Watermark status"
-msgstr "Estado de la marca de agua"
+msgstr "Status tanda air"
 
 #: admin/Ilove_Img_Wm_Plugin.php:364
 msgid "Please log in or sign up to continue."
-msgstr "Por favor, inicia sesión o regístrate para continuar."
+msgstr "Harap masuk atau daftar untuk melanjutkan."
 
 #: admin/Ilove_Img_Wm_Plugin.php:364
 #: admin/Ilove_Img_Wm_Resources.php:401
 #: admin/Ilove_Img_Wm_Resources.php:407
 msgctxt "button"
 msgid "Go to settings"
-msgstr "Ir a Ajustes"
+msgstr "Buka pengaturan"
 
 #: admin/Ilove_Img_Wm_Plugin.php:374
 msgid "Incorrect email or password."
-msgstr "Mail o contraseña incorrecta."
+msgstr "Email atau kata sandi salah."
 
 #: admin/Ilove_Img_Wm_Plugin.php:379
 msgid "This email is already in use."
-msgstr "Este correo electrónico ya está en uso."
+msgstr "Email ini sudah digunakan."
 
 #: admin/Ilove_Img_Wm_Plugin.php:384
 msgid "This plugin is already linked to another user. Please sign in with an existing account."
-msgstr "Este plugin ya está vinculado a otro usuario. Por favor, inicia sesión con una cuenta existente."
+msgstr "Plugin ini sudah tertaut dengan pengguna lain. Harap masuk menggunakan akun yang ada."
 
 #: admin/Ilove_Img_Wm_Plugin.php:410
 msgid "You're out of credits!"
-msgstr "¡Te has quedado sin créditos!"
+msgstr "Kredit habis!"
 
 #: admin/Ilove_Img_Wm_Plugin.php:410
 msgctxt "button"
 msgid "Buy more credits"
-msgstr "Comprar más créditos"
+msgstr "Beli kredit tambahan"
 
 #: admin/Ilove_Img_Wm_Plugin.php:417
 msgid "We couldn’t verify your iLoveAPI account. Please try again later."
-msgstr "No hemos podido verificar tu cuenta de iLoveAPI. Por favor, inténtalo de nuevo más tarde."
+msgstr "Kami tidak dapat memverifikasi akun iLoveAPI Anda. Coba lagi nanti."
 
 #: admin/Ilove_Img_Wm_Plugin.php:424
 #: admin/views/account.php:45
 msgid "We couldn’t verify the status of your iLoveAPI account. Please try again later."
-msgstr "No hemos podido verificar el estado de tu cuenta de iLoveAPI. Por favor, inténtalo de nuevo más tarde."
+msgstr "Kami tidak dapat memverifikasi status akun iLoveAPI Anda. Coba lagi nanti."
 
 #. translators: %d: ID of File
 #: admin/Ilove_Img_Wm_Plugin.php:441
 #: admin/Ilove_Img_Wm_Plugin.php:474
 #, php-format
 msgid "Image watermarked successfully: %d"
-msgstr "Marca de agua aplicada a la imagen correctamente: %d"
+msgstr "Gambar berhasil diberi tanda air: %d"
 
 #: admin/Ilove_Img_Wm_Plugin.php:510
 msgctxt "Subtitle for individual page of the file"
 msgid "iLoveIMG Watermark"
-msgstr "Marca de agua de iLoveIMG"
+msgstr "Tanda Air iLoveIMG"
 
 #: admin/Ilove_Img_Wm_Plugin.php:583
 msgid "Couldn’t complete the request. Please refresh and try again."
-msgstr "No se ha podido completar la solicitud. Actualiza la página e inténtalo de nuevo."
+msgstr "Tidak dapat menyelesaikan permintaan. Harap refresh dan coba lagi."
 
 #: admin/Ilove_Img_Wm_Plugin.php:587
 msgid "Error processing your request. Invalid Image ID"
-msgstr "Error al procesar tu solicitud. Identificador de imagen no válido"
+msgstr "Tidak dapat memproses permintaan Anda. ID Gambar tidak valid"
 
 #: admin/Ilove_Img_Wm_Plugin.php:595
 msgid "No backup found."
-msgstr "No se encontró copia de seguridad."
+msgstr "Cadangan tidak ditemukan."
 
 #: admin/Ilove_Img_Wm_Plugin.php:613
 msgid "File restored successfully."
-msgstr "Archivo restaurado correctamente."
+msgstr "File berhasil dipulihkan."
 
 #: admin/Ilove_Img_Wm_Plugin.php:625
 #: admin/Ilove_Img_Wm_Resources.php:395
 msgctxt "button"
 msgid "Watermark"
-msgstr "Marca de agua"
+msgstr "Tanda air"
 
 #. translators: %d: ID of File
 #: admin/Ilove_Img_Wm_Process.php:61
 #, php-format
 msgid "File %d is not a valid image."
-msgstr "El archivo %d no es una imagen válida."
+msgstr "File gambar %d tidak valid."
 
 #: admin/Ilove_Img_Wm_Process.php:197
 #: admin/Ilove_Img_Wm_Process.php:204
 msgid "Could not process the request."
-msgstr "No se ha podido procesar la solicitud."
+msgstr "Tidak dapat memproses permintaan."
 
 #: admin/Ilove_Img_Wm_Process.php:207
 msgid "Check your plugin credentials. If you deleted a project in your iLoveAPI account, try switching projects to correctly store your API keys."
-msgstr "Comprueba las credenciales de tu plugin. Si has eliminado un proyecto en tu cuenta iLoveAPI, intenta cambiar de proyecto para almacenar correctamente tus claves API."
+msgstr "Periksa kredensial plugin. Jika Anda menghapus proyek di akun iLoveAPI, coba ganti ke proyek lain agar kunci API dapat tersimpan dengan benar."
 
 #: admin/Ilove_Img_Wm_Resources.php:36
 msgctxt "input checkbox"
 msgid "Original"
-msgstr "Original"
+msgstr "Asli"
 
 #: admin/Ilove_Img_Wm_Resources.php:73
 #: admin/Ilove_Img_Wm_Resources.php:108
 msgid "Filesystem connection failed."
-msgstr "Falló la conexión del sistema de archivos."
+msgstr "Sambungan ke filesystem gagal."
 
 #: admin/Ilove_Img_Wm_Resources.php:326
 msgctxt "column name"
 msgid "File Name"
-msgstr "Nombre del archivo"
+msgstr "Nama File"
 
 #: admin/Ilove_Img_Wm_Resources.php:327
 msgctxt "column name"
 msgid "Watermark"
-msgstr "Marca de agua"
+msgstr "Tanda air"
 
 #: admin/Ilove_Img_Wm_Resources.php:338
 msgctxt "Watermark applied to an image"
 msgid "Applied"
-msgstr "Aplicada"
+msgstr "Diterapkan"
 
 #: admin/Ilove_Img_Wm_Resources.php:340
 #: admin/Ilove_Img_Wm_Resources.php:343
 msgctxt "Watermark not applied to an image"
 msgid "Not applied"
-msgstr "No aplicada"
+msgstr "Tidak diterapkan"
 
 #. translators: %s: Number of watermarked image sizes
 #: admin/Ilove_Img_Wm_Resources.php:360
 #, php-format
 msgid "Watermark applied to %s sizes"
-msgstr "Marca de agua aplicada a %s tamaños"
+msgstr "Tanda air diterapkan pada gambar dengan total ukuran %s"
 
 #: admin/Ilove_Img_Wm_Resources.php:406
 msgid "Sign up required"
-msgstr "Es necesario registrarse"
+msgstr "Perlu mendaftar"
 
 #: admin/Ilove_Img_Wm_Resources.php:508
 msgctxt "button"
 msgid "Restore original"
-msgstr "Restaurar original"
+msgstr "Pulihkan yang asli"
 
 #: admin/Ilove_Img_Wm_Resources.php:514
 msgctxt "The file is being processed"
 msgid "Processing…"
-msgstr "Procesando…"
+msgstr "Memproses…"
 
 #: admin/Ilove_Img_Wm_Resources.php:519
 msgctxt "File processing had an error"
 msgid "Error processing. Please refresh and try again."
-msgstr "Error al procesar. Por favor, actualiza e inténtalo de nuevo."
+msgstr "Kesalahan memproses. Harap refresh dan coba lagi."
 
 #: admin/Ilove_Img_Wm_Resources.php:524
 msgctxt "File processing was successful"
 msgid "Done. Please refresh the page."
-msgstr "Completado. Por favor, actualiza la página."
+msgstr "Selesai. Harap refresh halaman."
 
 #: admin/Ilove_Img_Wm_Submenu.php:56
 #: admin/Ilove_Img_Wm_Submenu.php:57
 msgctxt "submenu"
 msgid "Compress settings"
-msgstr "Ajustes de compresión"
+msgstr "Pengaturan kompresi"
 
 #: admin/Ilove_Img_Wm_Submenu.php:68
 #: admin/Ilove_Img_Wm_Submenu.php:69
@@ -247,22 +247,22 @@ msgstr "Ajustes de compresión"
 #: admin/Ilove_Img_Wm_Submenu.php:83
 msgctxt "submenu"
 msgid "Watermark settings"
-msgstr "Ajustes de marca de agua"
+msgstr "Pengaturan tanda air"
 
 #: admin/Ilove_Img_Wm_Submenu.php:96
 msgctxt "submenu"
 msgid "Bulk Watermark"
-msgstr "Marca de agua por lotes"
+msgstr "Tanda Air Massal"
 
 #: admin/views/account.php:60
 msgctxt "subtitle"
 msgid "Create an iLoveAPI account"
-msgstr "Crear una cuenta de iLoveAPI"
+msgstr "Buat akun iLoveAPI"
 
 #: admin/views/account.php:65
 msgctxt "input text"
 msgid "Name"
-msgstr "Nombre"
+msgstr "Nama"
 
 #: admin/views/account.php:68
 #: admin/views/account.php:95
@@ -274,37 +274,37 @@ msgstr "Email"
 #: admin/views/account.php:98
 msgctxt "input password"
 msgid "Password"
-msgstr "Contraseña"
+msgstr "Kata Sandi"
 
 #: admin/views/account.php:77
 msgctxt "button"
 msgid "Create account"
-msgstr "Crear una cuenta"
+msgstr "Buat akun"
 
 #: admin/views/account.php:81
 msgctxt "button"
 msgid "Log in to your account"
-msgstr "Acceder a mi cuenta"
+msgstr "Masuk ke akun Anda"
 
 #: admin/views/account.php:92
 msgctxt "subtitle"
 msgid "Log in to your account"
-msgstr "Acceder a mi cuenta"
+msgstr "Masuk ke akun Anda"
 
 #: admin/views/account.php:101
 msgctxt "button"
 msgid "Forgot your password?"
-msgstr "¿Contraseña olvidada?"
+msgstr "Lupa kata sandi Anda?"
 
 #: admin/views/account.php:105
 msgctxt "button"
 msgid "Log in"
-msgstr "Iniciar sesión"
+msgstr "Masuk"
 
 #: admin/views/account.php:109
 msgctxt "button"
 msgid "Create an iLoveAPI account"
-msgstr "Crear una cuenta de iLoveAPI"
+msgstr "Buat akun iLoveAPI"
 
 #: admin/views/account.php:120
 msgctxt "subtitle section: free credits"
@@ -317,120 +317,120 @@ msgstr "Gratis"
 #: admin/views/account.php:174
 #, php-format
 msgid "%1$d / %2$d credits used this month."
-msgstr "%1$d / %2$d créditos usados este mes."
+msgstr "%1$d/%2$d kredit digunakan bulan ini."
 
 #: admin/views/account.php:140
 msgctxt "subtitle section"
 msgid "[Monthly/Yearly] plan"
-msgstr "Plan [Mensual/Anual]"
+msgstr "Paket [Bulanan/Tahunan]"
 
 #: admin/views/account.php:162
 msgctxt "subtitle section"
 msgid "Packages"
-msgstr "Packs"
+msgstr "Paket"
 
 #. translators: %d: free credits
 #: admin/views/account.php:187
 #, php-format
 msgid "You get %1$d free credits each month to process your files."
-msgstr "Cada mes, obtienes %1$d créditos gratis para procesar tus archivos."
+msgstr "Anda mendapatkan %1$d kredit gratis setiap bulan untuk memproses file."
 
 #: admin/views/account.php:196
 msgctxt "1: subscription plan link"
 msgid "Upgrade your plan or buy a credit package"
-msgstr "Cambia al plan superior o compra un paquete de créditos"
+msgstr "Tingkatkan paket Anda atau beli paket kredit"
 
 #. translators: %1$s: subscription plan link, %2$s: single package link
 #: admin/views/account.php:202
 #, php-format
 msgid "Need more credits? %1$s."
-msgstr "¿Necesitas más créditos? %1$s."
+msgstr "Perlu kredit tambahan? %1$s."
 
 #: admin/views/account.php:212
 msgctxt "button"
 msgid "Buy credits"
-msgstr "Comprar créditos"
+msgstr "Beli kredit"
 
 #: admin/views/account.php:221
 msgctxt "subtitle: Connected user section"
 msgid "Account"
-msgstr "Cuenta"
+msgstr "Akun"
 
 #: admin/views/account.php:226
 msgctxt "button"
 msgid "Log out"
-msgstr "Cerrar sesión"
+msgstr "Keluar"
 
 #: admin/views/account.php:233
 msgid "Select project"
-msgstr "Seleccionar proyecto"
+msgstr "Pilih proyek"
 
 #: admin/views/account.php:246
 msgctxt "Button: save changes"
 msgid "Change project"
-msgstr "Cambiar proyecto"
+msgstr "Ubah proyek"
 
 #: admin/views/compress.php:10
 #: admin/views/watermark.php:16
 msgid "The power of iLoveIMG, built right into WordPress"
-msgstr "El poder de iLoveIMG, integrado directamente en WordPress"
+msgstr "Fitur iLoveIMG yang andal, langsung di WordPress"
 
 #: admin/views/compress.php:11
 #: admin/views/watermark.php:17
 msgid "Watermark your images directly in WordPress. Protect your content without leaving your site."
-msgstr "Añade una marca de agua a tus imágenes directamente en Wordpress. Protege tu contenido sin abandonar tu sitio web."
+msgstr "Beri tanda air pada gambar Anda langsung di WordPress. Lindungi konten Anda tanpa perlu keluar dari situs."
 
 #: admin/views/compress.php:12
 #: admin/views/watermark.php:18
 msgid "Sign up and get 2,500 free credits to start optimizing with iLoveIMG."
-msgstr "Regístrate y consigue 2.500 créditos gratis para empezar a optimizar con iLoveIMG."
+msgstr "Daftar dan dapatkan 2.500 kredit gratis untuk mulai mengoptimalkan dengan iLoveIMG."
 
 #: admin/views/compress.php:22
 #: admin/views/watermark.php:41
 msgid "Compress settings"
-msgstr "Ajustes de compresión"
+msgstr "Pengaturan kompresi"
 
 #: admin/views/compress.php:28
 #: admin/views/watermark.php:58
 msgid "Watermark settings"
-msgstr "Ajustes de marca de agua"
+msgstr "Pengaturan tanda air"
 
 #: admin/views/compress.php:35
 msgid "Make images load fast without losing visual quality."
-msgstr "Haz que las imágenes se carguen rápidamente sin perder calidad visual."
+msgstr "Muat gambar lebih cepat tanpa kehilangan kualitas visual."
 
 #. translators: %1$s and %2$s are HTML link tags
 #: admin/views/compress.php:42
 #, php-format
 msgid "Install %1$s iLoveIMG Compress %2$s to reduce file size across your Media Library, choose the compression level that fits your needs, and keep sharp results. Auto-compress on upload to boost page speed and save storage automatically."
-msgstr "Instala %1$s el compresor de iLoveIMG %2$s para reducir el tamaño de los archivos de tu biblioteca de Medios, escoge el nivel de compresión que más se ajuste a tus necesidades y consigue resultados nítidos. Activa la opción de compresión automática en la subida para aumentar la velocidad de la página y ahorrar espacio de almacenamiento automáticamente."
+msgstr "Instal %1$s Kompresi iLoveIMG %2$s untuk mengurangi ukuran file di seluruh Pustaka Media Anda, pilih tingkat kompresi sesuai kebutuhan, dan tetap dapatkan hasil yang tajam. Aktifkan kompresi otomatis saat mengunggah untuk meningkatkan kecepatan halaman dan menghemat penyimpanan secara otomatis."
 
 #: admin/views/media-bulk.php:15
 msgctxt "button"
 msgid "Watermark all uploaded files"
-msgstr "Añadir marca de agua a todos los archivos subidos"
+msgstr "Beri tanda air di semua file yang diunggah"
 
 #: admin/views/overview.php:5
 msgctxt "title: admin settings overview"
 msgid "Summary"
-msgstr "Resumen"
+msgstr "Ringkasan"
 
 #: admin/views/overview.php:9
 msgctxt "Overview: tool title"
 msgid "Watermark image"
-msgstr "Imagen de la marca de agua"
+msgstr "Gambar tanda air"
 
 #. translators: %s porcentage of images protected
 #: admin/views/overview.php:23
 #, php-format
 msgid "%s Images watermarked"
-msgstr "%s de imágenes con marca de agua aplicada"
+msgstr "%s Gambar diberi tanda air"
 
 #. translators: %s backup size
 #: admin/views/overview.php:36
 #, php-format
 msgid "%s Backup storage used"
-msgstr "%s del almacenamiento de la copia de seguridad usado"
+msgstr "%s Ruang penyimpanan cadangan digunakan"
 
 #: admin/views/overview.php:46
 #, php-format
@@ -438,193 +438,193 @@ msgctxt "Overview: watermark summary"
 msgid "Your images, summary:\n"
 "Total images: %2$s\n"
 "Watermarked images: %1$s"
-msgstr "Un resumen de tus imágenes:\n"
-"Imágenes totales: %2$s\n"
-"Imágenes con marca de agua aplicada: %1$s"
+msgstr "Rangkuman gambar:\n"
+"Total gambar: %2$s\n"
+"Gambar yang diberi tanda air: %1$s"
 
 #: admin/views/watermark.php:69
 #: admin/views/watermark.php:527
 msgctxt "button"
 msgid "Save Changes"
-msgstr "Guardar cambios"
+msgstr "Simpan Perubahan"
 
 #: admin/views/watermark.php:70
 msgid "Register and login with us to save settings changes"
-msgstr "Regístrate e inicia sesión con nosotros para guardar los cambios de configuración"
+msgstr "Daftar dan masuk untuk menyimpan perubahan pengaturan"
 
 #: admin/views/watermark.php:73
 msgid "Watermark Settings"
-msgstr "Ajustes de marca de agua"
+msgstr "Pengaturan Tanda Air"
 
 #: admin/views/watermark.php:82
 msgctxt "checkbox field label"
 msgid "Watermark enabled"
-msgstr "Marca de agua activada"
+msgstr "Tanda air diaktifkan"
 
 #: admin/views/watermark.php:85
 msgid "Add a watermark to protect images from unauthorized use."
-msgstr "Añade una marca de agua para proteger las imágenes de un uso no autorizado."
+msgstr "Tambahkan tanda air untuk melindungi gambar dari penggunaan tidak sah."
 
 #: admin/views/watermark.php:95
 msgctxt "checkbox field label"
 msgid "Automatically apply to uploaded files"
-msgstr "Aplicar automáticamente a los archivos subidos"
+msgstr "Otomatis terapkan di file yang diunggah"
 
 #: admin/views/watermark.php:97
 msgid "Automatically stamp new Media uploads with your selected watermark. You can still apply it manually to other files."
-msgstr "Añade tu marca de agua seleccionada automáticamente a los archivos que subas a Medios. Puedes aplicarla manualmente a otros archivos."
+msgstr "Otomatis beri stempel pada setiap unggahan Media baru dengan tanda air yang dipilih. Anda tetap bisa menerapkannya secara manual pada file lain."
 
 #: admin/views/watermark.php:103
 msgctxt "checkbox field label"
 msgid "Image Sizes"
-msgstr "Tamaños de la imagen"
+msgstr "Ukuran Gambar"
 
 #: admin/views/watermark.php:106
 msgid "Choose which image versions to watermark. WordPress creates multiple sizes for each upload."
-msgstr "Elige a qué versiones de imagen quieres añadir la marca de agua. WordPress crea múltiples tamaños para cada subida."
+msgstr "Pilih versi gambar yang akan diberi tanda air. WordPress membuat beberapa ukuran untuk setiap unggahan."
 
 #: admin/views/watermark.php:126
 msgctxt "subtitle: Section to show preview of watermark options"
 msgid "Watermark preview"
-msgstr "Vista previa de la marca de agua"
+msgstr "Pratinjau tanda air"
 
 #: admin/views/watermark.php:129
 msgid "Use text or upload an image as your watermark."
-msgstr "Usa texto o sube una imagen como marca de agua."
+msgstr "Gunakan teks atau unggah sebuah gambar sebagai tanda air Anda."
 
 #: admin/views/watermark.php:151
 msgctxt "radio button option"
 msgid "Use text"
-msgstr "Usar texto"
+msgstr "Gunakan teks"
 
 #: admin/views/watermark.php:159
 msgctxt "radio button option"
 msgid "Use image"
-msgstr "Usar imagen"
+msgstr "Gunakan gambar"
 
 #: admin/views/watermark.php:164
 msgid "This font does not support bold or italic styles"
-msgstr "Esta fuente no admite negrita ni cursiva"
+msgstr "Font ini tidak mendukung gaya teks tebal atau miring"
 
 #: admin/views/watermark.php:257
 msgctxt "placeholder: input text"
 msgid "Enter text for Watermark"
-msgstr "Introduce el texto de la marca de agua"
+msgstr "Masukkan teks untuk Tanda Air"
 
 #: admin/views/watermark.php:264
 msgctxt "Image selector label"
 msgid "Watermark image"
-msgstr "Imagen de la marca de agua"
+msgstr "Gambar tanda air"
 
 #: admin/views/watermark.php:266
 msgid "Select an image stamp from Media or a URL. Then adjust its position, size, opacity, and rotation."
-msgstr "Selecciona una imagen desde Medios o una URL. Después, ajusta la posición, tamaño, opacidad y rotación."
+msgstr "Pilih stempel gambar dari Media atau URL. Kemudian sesuaikan posisi, ukuran, keburaman, dan rotasinya."
 
 #: admin/views/watermark.php:268
 msgctxt "button"
 msgid "Add Image"
-msgstr "Añadir imagen"
+msgstr "Tambahkan Gambar"
 
 #: admin/views/watermark.php:271
 msgctxt "Button divider: previous button: add image button, next option: input url."
 msgid "or enter an URL"
-msgstr "o introducir una URL"
+msgstr "atau masukkan URL"
 
 #: admin/views/watermark.php:273
 msgctxt "input url"
 msgid "Enter image URL"
-msgstr "Introduce la URL de la imagen"
+msgstr "Masukkan URL gambar"
 
 #: admin/views/watermark.php:279
 msgctxt "radio button: Watermark position"
 msgid "Position"
-msgstr "Posición"
+msgstr "Posisi"
 
 #: admin/views/watermark.php:336
 msgctxt "checkbox: activate mosaic option"
 msgid "Mosaic"
-msgstr "Mosaico"
+msgstr "Mozaik"
 
 #: admin/views/watermark.php:342
 #: admin/views/watermark.php:345
 msgctxt "input number: size in percentage"
 msgid "Scale"
-msgstr "Escala"
+msgstr "Skala"
 
 #. translators: %s percentage size
 #: admin/views/watermark.php:352
 msgid "of image width"
-msgstr "de ancho de la imagen"
+msgstr "dari lebar gambar"
 
 #: admin/views/watermark.php:360
 msgctxt "input select"
 msgid "Transparency"
-msgstr "Transparencia"
+msgstr "Transparansi"
 
 #: admin/views/watermark.php:387
 msgctxt "input select"
 msgid "Rotation"
-msgstr "Rotación"
+msgstr "Rotasi"
 
 #: admin/views/watermark.php:455
 msgctxt "checkbox label"
 msgid "Back up original images"
-msgstr "Crear una copia de seguridad de las imágenes originales"
+msgstr "Cadangkan gambar asli"
 
 #: admin/views/watermark.php:457
 msgid "Save a backup before processing so you can restore the original later. Uses server space."
-msgstr "Guarda una copia de seguridad antes de procesarla para que puedas restaurar el original más tarde. Utiliza el espacio del servidor."
+msgstr "Simpan cadangan sebelum memproses agar file asli dapat dipulihkan. Cadangan akan disimpan di ruang server."
 
 #. translators: %s: backup folder path
 #: admin/views/watermark.php:463
 #, php-format
 msgid "Backup images are stored at: %s"
-msgstr "Las copias de seguridad de las imágenes se guardan en: %s"
+msgstr "Gambar cadangan disimpan di: %s"
 
 #: admin/views/watermark.php:475
 msgctxt "subtitle label"
 msgid "Restore Original Files"
-msgstr "Restaurar los archivos originales"
+msgstr "Pulihkan File Asli"
 
 #. translators: %1$s and %2$s: html tags
 #: admin/views/watermark.php:482
 #, php-format
 msgid "You can restore original files from backup. Restoring will return files to their state before any changes were made. %1$s Warning: This will remove all modifications applied using the tools. %2$s"
-msgstr "Puedes restaurar los archivos originales a partir de una copia de seguridad. La restauración hará que los archivos vuelvan al estado en el que estaban antes de los cambios. %1$s Aviso: Esta acción eliminará todos los cambios que se hayan hecho con las herramientas.%2$s"
+msgstr "Anda dapat memulihkan file asli dari cadangan. Memulihkan file akan mengembalikan file ke kondisi awal sebelum perubahan dibuat. %1$s Perhatian: Ini akan menghapus semua perubahan yang diterapkan dengan alat. %2$s"
 
 #. translators: %1$s and %2$s: html tags
 #: admin/views/watermark.php:494
 #, php-format
 msgid "You can delete all backup files to free up space. %1$s Warning: This will remove your ability to restore files. %2$s"
-msgstr "Puedes eliminar todos los archivos de la copia de seguridad para liberar espacio. %1$s Aviso: Esto eliminará tu capacidad de restaurar archivos. %2$s"
+msgstr "Anda dapat menghapus semua file cadangan untuk mengosongkan ruang. %1$s Perhatian: Jika melakukan ini, Anda tidak akan dapat memulihkan file. %2$s"
 
 #: admin/views/watermark.php:502
 msgctxt "button"
 msgid "Restore All"
-msgstr "Restaurar todo"
+msgstr "Pulihkan Semua"
 
 #: admin/views/watermark.php:506
 msgctxt "button"
 msgid "Clear backup"
-msgstr "Borrar copia de seguridad"
+msgstr "Bersihkan cadangan"
 
 #. translators: %s: backup size
 #: admin/views/watermark.php:513
 #, php-format
 msgid "Backup size: %s"
-msgstr "Tamaño de la copia de seguridad: %s"
+msgstr "Ukuran cadangan: %s"
 
 #: admin/views/watermark.php:528
 msgid "Log in to save your settings"
-msgstr "Inicia sesión para guardar tus ajustes"
+msgstr "Masuk untuk menyimpan pengaturan Anda"
 
 #: ilove-img-watermark.php:82
 msgctxt "button"
 msgid "Settings"
-msgstr "Configuración"
+msgstr "Pengaturan"
 
 #: ilove-img-watermark.php:86
 msgctxt "button"
 msgid "Bulk Watermark"
-msgstr "Marca de agua por lotes"
+msgstr "Tanda Air Massal"
 
