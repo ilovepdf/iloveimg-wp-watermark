@@ -258,29 +258,45 @@ body {
 						}
 
 						li {
-							margin: 0 0 10px 0;
+							margin-bottom: 8px;
+							padding: 0;
+							border-radius: $radius;
+							transition: background-color 0.2s ease;
 
 							a {
 								color: $secondary_color;
 								text-decoration: none;
-								display: block;
-								line-height: 32px;
-								height: 32px;
-								padding: 0 8px;
+								min-height: 24px;
 								white-space: nowrap;
 								display: flex;
 								align-items: center;
-								border-radius: 2px;
+								gap: 10px;
+								padding: 5px 15px;
 
 								svg {
-									margin-right: 10px;
+									// margin-right: 10px;
+									flex-shrink: 0;
 									min-width: max-content;
 								}
 
 								span {
-									line-height: normal;
-									text-wrap: wrap;
+									flex: 1;
+									max-width: 100%;
+									word-wrap: break-word;
+									overflow-wrap: break-word;
+									white-space: normal;
+									line-height: 1.4;
 								}
+
+								&:hover {
+									color: $dark;
+									background-color: $light_color;
+								}
+							}
+
+							&:hover {
+								background-color: $light_color;
+								width: auto;
 							}
 
 							&.iloveimg_settings__options-nav__selected,
