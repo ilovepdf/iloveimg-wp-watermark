@@ -267,16 +267,17 @@ body {
 								color: $secondary_color;
 								text-decoration: none;
 								min-height: 24px;
-								white-space: nowrap;
 								display: flex;
 								align-items: center;
 								gap: 10px;
-								padding: 5px 15px;
+								padding: 6px 8px;
 
 								svg {
-									// margin-right: 10px;
 									flex-shrink: 0;
-									min-width: max-content;
+									min-width: 20px;
+									width: 20px;
+									height: 20px;
+									padding: 0;
 								}
 
 								span {
@@ -286,23 +287,25 @@ body {
 									overflow-wrap: break-word;
 									white-space: normal;
 									line-height: 1.4;
+									min-width: 0;
 								}
 
 								&:hover {
 									color: $dark;
-									background-color: $light_color;
 								}
 							}
 
 							&:hover {
-								background-color: $light_color;
-								width: auto;
+								a {
+									background-color: $light_color;
+									border-radius: $radius;
+								}
 							}
 
-							&.iloveimg_settings__options-nav__selected,
-							&:hover {
+							&.iloveimg_settings__options-nav__selected {
 								a {
 									background-color: $white;
+									border-radius: $radius;
 								}
 							}
 						}
