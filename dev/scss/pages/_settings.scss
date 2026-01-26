@@ -293,6 +293,16 @@ body {
 								&:hover {
 									color: $dark;
 								}
+
+								&:hover {
+									color: $dark;
+									background-color: $light_color;
+								}
+							}
+
+							&:hover {
+								background-color: $light_color;
+								width: auto;
 							}
 
 							&:hover {
