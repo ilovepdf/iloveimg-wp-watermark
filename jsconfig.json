@@ -1,7 +1,28 @@
 {
-    "typeAcquisition": {
-        "include": [
-            "jquery"
-        ]
-    }
+    "compilerOptions": {
+        "target": "ES2020",
+        "module": "ESNext",
+        "moduleResolution": "bundler", // O "node" si no usas un bundler moderno
+        "lib": [
+            "ES2020",
+            "DOM"
+        ],
+        "baseUrl": ".",
+        "paths": {
+            "@wordpress/*": [
+                "./node_modules/@wordpress/*"
+            ]
+        },
+        "allowJs": true,
+        "checkJs": false,
+        "skipLibCheck": true, // Esto es vital para ignorar errores en archivos .d.ts
+        "noEmit": true
+    },
+    "include": [
+        "dev/**/*.js"
+    ],
+    "exclude": [
+        "node_modules",
+        "vendor"
+    ]
 }
