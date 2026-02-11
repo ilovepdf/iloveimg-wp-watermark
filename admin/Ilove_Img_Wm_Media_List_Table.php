@@ -101,8 +101,8 @@ class Ilove_Img_Wm_Media_List_Table extends WP_List_Table {
             'cb'          => '<input type="checkbox" />', // Render a checkbox instead of text
             'file'        => _x( 'File', 'column name', 'iloveimg-watermark' ),
             'post_author' => _x( 'Author', 'column name', 'iloveimg-watermark' ),
-            'post_date'   => _x( 'Date', 'column name', 'iloveimg-watermark' ),
-            'status'      => _x( 'Action', 'column name', 'iloveimg-watermark' ),
+            'post_date'   => _x( 'Upload Date', 'column name', 'iloveimg-watermark' ),
+            'status'      => _x( 'Actions', 'column name', 'iloveimg-watermark' ),
         );
 
         return $columns;
@@ -134,7 +134,8 @@ class Ilove_Img_Wm_Media_List_Table extends WP_List_Table {
      */
     protected function get_bulk_actions() {
         $actions = array(
-            'delete' => _x( 'Delete', 'button', 'iloveimg-watermark' ),
+            'iloveimg_watermark' => _x( 'Watermark', 'button', 'iloveimg-watermark' ),
+            'delete'             => _x( 'Delete', 'button', 'iloveimg-watermark' ),
         );
 
         return $actions;
@@ -143,13 +144,9 @@ class Ilove_Img_Wm_Media_List_Table extends WP_List_Table {
     /**
      * Process bulk actions in the Image_List_Table class.
      *
-     * Detects and handles bulk actions triggered by the user.
-     *
      * @since 1.0.0
      */
     public function process_bulk_action() {
-
-        // Detect when a bulk action is being triggered...
         if ( 'delete' === $this->current_action() ) {
             wp_die( esc_html__( 'Items deleted.', 'iloveimg-watermark' ) );
         }

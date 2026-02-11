@@ -111,17 +111,31 @@ class Ilove_Img_Wm_Plugin {
             wp_enqueue_script(
                 self::NAME . '_spectrum_admin',
                 plugins_url( '/assets/js/spectrum.min.js', __DIR__ ),
-                array(),
+                array( 'jquery' ),
                 '1.8.0',
                 true
             );
             wp_enqueue_script(
                 self::NAME . '_admin',
                 plugins_url( '/assets/js/main.min.js', __DIR__ ),
-                array( self::NAME . '_spectrum_admin' ),
+                array( self::NAME . '_spectrum_admin', 'jquery', 'wp-i18n' ),
                 self::VERSION,
                 true
             );
+
+            // Set translations for the script.
+            wp_set_script_translations( self::NAME . '_admin', 'iloveimg-watermark', plugin_dir_path( __DIR__ ) . 'languages' );
+
+            // Localize script with necessary data.
+            wp_localize_script(
+                self::NAME . '_admin',
+                'iloveimgWatermark',
+                array(
+                    'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+                    'nonce'   => wp_create_nonce( 'iloveimg_watermark_nonce' ),
+                )
+            );
+
             wp_enqueue_style(
                 self::NAME . '_admin',
                 plugins_url( '/assets/css/app.min.css', __DIR__ ),
