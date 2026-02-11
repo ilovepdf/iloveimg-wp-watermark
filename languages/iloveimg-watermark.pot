@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2025-02-13T12:38:31+00:00\n"
-"PO-Revision-Date: 2025-12-15T14:15:53+00:00\n"
+"PO-Revision-Date: 2026-02-10T15:25:04+00:00\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: iloveimg-watermark\n"
 
@@ -51,105 +51,106 @@ msgstr ""
 
 #: admin/Ilove_Img_Wm_Media_List_Table.php:104
 msgctxt "column name"
-msgid "Date"
+msgid "Upload Date"
 msgstr ""
 
 #: admin/Ilove_Img_Wm_Media_List_Table.php:105
 msgctxt "column name"
-msgid "Action"
+msgid "Actions"
 msgstr ""
 
 #: admin/Ilove_Img_Wm_Media_List_Table.php:137
+#: admin/Ilove_Img_Wm_Plugin.php:639
+#: admin/Ilove_Img_Wm_Resources.php:395
+msgctxt "button"
+msgid "Watermark"
+msgstr ""
+
+#: admin/Ilove_Img_Wm_Media_List_Table.php:138
 msgctxt "button"
 msgid "Delete"
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Media_List_Table.php:154
+#: admin/Ilove_Img_Wm_Media_List_Table.php:152
 msgid "Items deleted."
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Plugin.php:213
+#: admin/Ilove_Img_Wm_Plugin.php:227
 msgid "Try again or buy more credits"
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Plugin.php:233
+#: admin/Ilove_Img_Wm_Plugin.php:247
 msgctxt "column name"
 msgid "Watermark status"
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Plugin.php:364
+#: admin/Ilove_Img_Wm_Plugin.php:378
 msgid "Please log in or sign up to continue."
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Plugin.php:364
+#: admin/Ilove_Img_Wm_Plugin.php:378
 #: admin/Ilove_Img_Wm_Resources.php:401
 #: admin/Ilove_Img_Wm_Resources.php:407
 msgctxt "button"
 msgid "Go to settings"
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Plugin.php:374
+#: admin/Ilove_Img_Wm_Plugin.php:388
 msgid "Incorrect email or password."
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Plugin.php:379
+#: admin/Ilove_Img_Wm_Plugin.php:393
 msgid "This email is already in use."
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Plugin.php:384
+#: admin/Ilove_Img_Wm_Plugin.php:398
 msgid "This plugin is already linked to another user. Please sign in with an existing account."
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Plugin.php:410
+#: admin/Ilove_Img_Wm_Plugin.php:424
 msgid "You're out of credits!"
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Plugin.php:410
+#: admin/Ilove_Img_Wm_Plugin.php:424
 msgctxt "button"
 msgid "Buy more credits"
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Plugin.php:417
+#: admin/Ilove_Img_Wm_Plugin.php:431
 msgid "We couldn’t verify your iLoveAPI account. Please try again later."
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Plugin.php:424
+#: admin/Ilove_Img_Wm_Plugin.php:438
 #: admin/views/account.php:45
 msgid "We couldn’t verify the status of your iLoveAPI account. Please try again later."
 msgstr ""
 
 #. translators: %d: ID of File
-#: admin/Ilove_Img_Wm_Plugin.php:441
-#: admin/Ilove_Img_Wm_Plugin.php:474
+#: admin/Ilove_Img_Wm_Plugin.php:455
+#: admin/Ilove_Img_Wm_Plugin.php:488
 #, php-format
 msgid "Image watermarked successfully: %d"
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Plugin.php:510
+#: admin/Ilove_Img_Wm_Plugin.php:524
 msgctxt "Subtitle for individual page of the file"
 msgid "iLoveIMG Watermark"
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Plugin.php:583
+#: admin/Ilove_Img_Wm_Plugin.php:597
 msgid "Couldn’t complete the request. Please refresh and try again."
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Plugin.php:587
+#: admin/Ilove_Img_Wm_Plugin.php:601
 msgid "Error processing your request. Invalid Image ID"
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Plugin.php:595
+#: admin/Ilove_Img_Wm_Plugin.php:609
 msgid "No backup found."
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Plugin.php:613
+#: admin/Ilove_Img_Wm_Plugin.php:627
 msgid "File restored successfully."
-msgstr ""
-
-#: admin/Ilove_Img_Wm_Plugin.php:625
-#: admin/Ilove_Img_Wm_Resources.php:395
-msgctxt "button"
-msgid "Watermark"
 msgstr ""
 
 #. translators: %d: ID of File
@@ -228,21 +229,21 @@ msgctxt "File processing was successful"
 msgid "Done. Please refresh the page."
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Submenu.php:56
 #: admin/Ilove_Img_Wm_Submenu.php:57
+#: admin/Ilove_Img_Wm_Submenu.php:58
 msgctxt "submenu"
 msgid "Compress settings"
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Submenu.php:68
 #: admin/Ilove_Img_Wm_Submenu.php:69
-#: admin/Ilove_Img_Wm_Submenu.php:82
+#: admin/Ilove_Img_Wm_Submenu.php:70
 #: admin/Ilove_Img_Wm_Submenu.php:83
+#: admin/Ilove_Img_Wm_Submenu.php:84
 msgctxt "submenu"
 msgid "Watermark settings"
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Submenu.php:96
+#: admin/Ilove_Img_Wm_Submenu.php:97
 msgctxt "submenu"
 msgid "Bulk Watermark"
 msgstr ""
@@ -402,6 +403,29 @@ msgstr ""
 msgctxt "button"
 msgid "Watermark all uploaded files"
 msgstr ""
+
+#. translators: %s: number of images watermarked
+#: admin/views/media-bulk.php:39
+#, php-format
+msgid "%s image watermarked successfully."
+msgid_plural "%s images watermarked successfully."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %1$s: number of watermarked, %2$s: number of failed
+#: admin/views/media-bulk.php:51
+#, php-format
+msgctxt "bulk action result"
+msgid "%1$s images watermarked, %2$s images failed."
+msgstr ""
+
+#. translators: %s: number of images that failed
+#: admin/views/media-bulk.php:64
+#, php-format
+msgid "%s image failed to watermark."
+msgid_plural "%s images failed to watermark."
+msgstr[0] ""
+msgstr[1] ""
 
 #: admin/views/overview.php:5
 msgctxt "title: admin settings overview"
@@ -618,4 +642,29 @@ msgstr ""
 #: ilove-img-watermark.php:86
 msgctxt "button"
 msgid "Bulk Watermark"
+msgstr ""
+
+#: assets/js/main.min.js:1
+msgctxt "button dialog box"
+msgid "Cancel"
+msgstr ""
+
+#: assets/js/main.min.js:1
+msgctxt "dialog content"
+msgid "All tool changes will be lost. Do you want to continue?"
+msgstr ""
+
+#: assets/js/main.min.js:1
+msgctxt "dialog title"
+msgid "Warning!"
+msgstr ""
+
+#: assets/js/main.min.js:1
+msgctxt "button dialog box"
+msgid "Continue"
+msgstr ""
+
+#: assets/js/main.min.js:1
+msgctxt "dialog content"
+msgid "All files in the iloveimg-backup folder will be deleted. Continue?"
 msgstr ""
