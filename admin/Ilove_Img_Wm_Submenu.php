@@ -95,7 +95,7 @@ class Ilove_Img_Wm_Submenu {
 		add_media_page(
 			'iLoveIMG Media',
 			_x( 'Bulk Watermark', 'submenu', 'iloveimg-watermark' ),
-			'manage_options',
+			'upload_files',
 			'iloveimg-media-watermark-page',
 			array(
 				$this->submenu_page,
