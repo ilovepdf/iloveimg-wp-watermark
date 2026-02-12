@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2025-02-13T12:38:31+00:00\n"
-"PO-Revision-Date: 2026-02-10T15:25:04+00:00\n"
+"PO-Revision-Date: 2026-02-12T12:36:49+00:00\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: iloveimg-watermark\n"
 
@@ -71,7 +71,7 @@ msgctxt "button"
 msgid "Delete"
 msgstr ""
 
-#: admin/Ilove_Img_Wm_Media_List_Table.php:152
+#: admin/Ilove_Img_Wm_Media_List_Table.php:151
 msgid "Items deleted."
 msgstr ""
 
