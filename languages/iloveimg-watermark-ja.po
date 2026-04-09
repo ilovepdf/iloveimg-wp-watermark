@@ -2,7 +2,7 @@
 # This file is distributed under the GPL-2.0+.
 msgid ""
 msgstr ""
-"Project-Id-Version: f77715d6d2ed986a477e9b7ddb58a66c\n"
+"Project-Id-Version: dd0be64bcfa1aeedc0243ed319b425c9\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/watermark-protect-images\n"
 "Last-Translator: ilovepdf <info@ilovepdf.com>\n"
 "Language-Team: Japanese\n"
@@ -10,15 +10,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2025-02-13T12:38:31+00:00\n"
-"PO-Revision-Date: 2026-01-13 13:58\n"
+"PO-Revision-Date: 2026-03-23 16:27\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: iloveimg-watermark\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Crowdin-Project: f77715d6d2ed986a477e9b7ddb58a66c\n"
-"X-Crowdin-Project-ID: 5\n"
+"X-Crowdin-Project: dd0be64bcfa1aeedc0243ed319b425c9\n"
+"X-Crowdin-Project-ID: 26\n"
 "X-Crowdin-Language: ja\n"
-"X-Crowdin-File: /Wordpress/iloveimg-watermark.pot\n"
-"X-Crowdin-File-ID: 1576\n"
+"X-Crowdin-File: iloveimg-watermark.pot\n"
+"X-Crowdin-File-ID: 2422\n"
 "Language: ja_JP\n"
 
 #. Plugin Name of the plugin
@@ -58,106 +58,107 @@ msgstr "作成者"
 
 #: admin/Ilove_Img_Wm_Media_List_Table.php:104
 msgctxt "column name"
-msgid "Date"
-msgstr "日付"
+msgid "Upload Date"
+msgstr "アップロード日"
 
 #: admin/Ilove_Img_Wm_Media_List_Table.php:105
 msgctxt "column name"
-msgid "Action"
+msgid "Actions"
 msgstr "アクション"
 
 #: admin/Ilove_Img_Wm_Media_List_Table.php:137
+#: admin/Ilove_Img_Wm_Plugin.php:639
+#: admin/Ilove_Img_Wm_Resources.php:395
+msgctxt "button"
+msgid "Watermark"
+msgstr "透かし"
+
+#: admin/Ilove_Img_Wm_Media_List_Table.php:138
 msgctxt "button"
 msgid "Delete"
 msgstr "削除"
 
-#: admin/Ilove_Img_Wm_Media_List_Table.php:154
+#: admin/Ilove_Img_Wm_Media_List_Table.php:151
 msgid "Items deleted."
 msgstr "アイテムを削除しました。"
 
-#: admin/Ilove_Img_Wm_Plugin.php:213
+#: admin/Ilove_Img_Wm_Plugin.php:227
 msgid "Try again or buy more credits"
 msgstr "再度お試しいただくか、さらにクレジットをご購入ください"
 
-#: admin/Ilove_Img_Wm_Plugin.php:233
+#: admin/Ilove_Img_Wm_Plugin.php:247
 msgctxt "column name"
 msgid "Watermark status"
 msgstr "透かしの状態"
 
-#: admin/Ilove_Img_Wm_Plugin.php:364
+#: admin/Ilove_Img_Wm_Plugin.php:378
 msgid "Please log in or sign up to continue."
 msgstr "続行するには、ログインまたはサインアップしてください。"
 
-#: admin/Ilove_Img_Wm_Plugin.php:364
+#: admin/Ilove_Img_Wm_Plugin.php:378
 #: admin/Ilove_Img_Wm_Resources.php:401
 #: admin/Ilove_Img_Wm_Resources.php:407
 msgctxt "button"
 msgid "Go to settings"
 msgstr "設定へ移動"
 
-#: admin/Ilove_Img_Wm_Plugin.php:374
+#: admin/Ilove_Img_Wm_Plugin.php:388
 msgid "Incorrect email or password."
 msgstr "メールアドレスまたはパスワードが間違っています。"
 
-#: admin/Ilove_Img_Wm_Plugin.php:379
+#: admin/Ilove_Img_Wm_Plugin.php:393
 msgid "This email is already in use."
 msgstr "このメールアドレスは既に使用されています。"
 
-#: admin/Ilove_Img_Wm_Plugin.php:384
+#: admin/Ilove_Img_Wm_Plugin.php:398
 msgid "This plugin is already linked to another user. Please sign in with an existing account."
 msgstr "プラグインは他のアカウントとリンク済みです。リンク済みのアカウントでログインしてください。"
 
-#: admin/Ilove_Img_Wm_Plugin.php:410
+#: admin/Ilove_Img_Wm_Plugin.php:424
 msgid "You're out of credits!"
 msgstr "クレジット切れです。"
 
-#: admin/Ilove_Img_Wm_Plugin.php:410
+#: admin/Ilove_Img_Wm_Plugin.php:424
 msgctxt "button"
 msgid "Buy more credits"
 msgstr "さらにクレジットを購入"
 
-#: admin/Ilove_Img_Wm_Plugin.php:417
+#: admin/Ilove_Img_Wm_Plugin.php:431
 msgid "We couldn’t verify your iLoveAPI account. Please try again later."
 msgstr "iLoveAPIアカウントを確認できませんでした。後ほどもう一度お試しください。"
 
-#: admin/Ilove_Img_Wm_Plugin.php:424
+#: admin/Ilove_Img_Wm_Plugin.php:438
 #: admin/views/account.php:45
 msgid "We couldn’t verify the status of your iLoveAPI account. Please try again later."
 msgstr "ご利用のiLoveAPIアカウントのステータスを確認できませんでした。後ほどもう一度お試しください。"
 
 #. translators: %d: ID of File
-#: admin/Ilove_Img_Wm_Plugin.php:441
-#: admin/Ilove_Img_Wm_Plugin.php:474
+#: admin/Ilove_Img_Wm_Plugin.php:455
+#: admin/Ilove_Img_Wm_Plugin.php:488
 #, php-format
 msgid "Image watermarked successfully: %d"
 msgstr "画像にウォーターマークを入れました：%d"
 
-#: admin/Ilove_Img_Wm_Plugin.php:510
+#: admin/Ilove_Img_Wm_Plugin.php:524
 msgctxt "Subtitle for individual page of the file"
 msgid "iLoveIMG Watermark"
 msgstr "iLoveIMGによるウォーターマーク"
 
-#: admin/Ilove_Img_Wm_Plugin.php:583
+#: admin/Ilove_Img_Wm_Plugin.php:597
 msgid "Couldn’t complete the request. Please refresh and try again."
 msgstr "リクエストを完了できませんでした。再読み込みしてもう一度お試しください。"
 
-#: admin/Ilove_Img_Wm_Plugin.php:587
+#: admin/Ilove_Img_Wm_Plugin.php:601
 msgid "Error processing your request. Invalid Image ID"
 msgstr "リクエストの処理中にエラーが発生しました。画像IDが無効です"
 
-#: admin/Ilove_Img_Wm_Plugin.php:595
+#: admin/Ilove_Img_Wm_Plugin.php:609
 msgid "No backup found."
 msgstr "バックアップが見つかりません。"
 
-#: admin/Ilove_Img_Wm_Plugin.php:613
+#: admin/Ilove_Img_Wm_Plugin.php:627
 msgid "File restored successfully."
 msgstr "ファイルが復元されました。"
-
-#: admin/Ilove_Img_Wm_Plugin.php:625
-#: admin/Ilove_Img_Wm_Resources.php:395
-msgctxt "button"
-msgid "Watermark"
-msgstr "ウォーターマーク"
 
 #. translators: %d: ID of File
 #: admin/Ilove_Img_Wm_Process.php:61
@@ -192,7 +193,7 @@ msgstr "ファイル名"
 #: admin/Ilove_Img_Wm_Resources.php:327
 msgctxt "column name"
 msgid "Watermark"
-msgstr "ウォーターマーク"
+msgstr "透かし"
 
 #: admin/Ilove_Img_Wm_Resources.php:338
 msgctxt "Watermark applied to an image"
@@ -235,21 +236,21 @@ msgctxt "File processing was successful"
 msgid "Done. Please refresh the page."
 msgstr "完了しました。ページを再読み込みしてください。"
 
-#: admin/Ilove_Img_Wm_Submenu.php:56
 #: admin/Ilove_Img_Wm_Submenu.php:57
+#: admin/Ilove_Img_Wm_Submenu.php:58
 msgctxt "submenu"
 msgid "Compress settings"
 msgstr "圧縮の設定"
 
-#: admin/Ilove_Img_Wm_Submenu.php:68
 #: admin/Ilove_Img_Wm_Submenu.php:69
-#: admin/Ilove_Img_Wm_Submenu.php:82
+#: admin/Ilove_Img_Wm_Submenu.php:70
 #: admin/Ilove_Img_Wm_Submenu.php:83
+#: admin/Ilove_Img_Wm_Submenu.php:84
 msgctxt "submenu"
 msgid "Watermark settings"
 msgstr "ウォーターマークの設定"
 
-#: admin/Ilove_Img_Wm_Submenu.php:96
+#: admin/Ilove_Img_Wm_Submenu.php:97
 msgctxt "submenu"
 msgid "Bulk Watermark"
 msgstr "ウォーターマークを一括適用"
@@ -410,6 +411,27 @@ msgctxt "button"
 msgid "Watermark all uploaded files"
 msgstr "アップロードした全ファイルに透かしを入れる"
 
+#. translators: %s: number of images watermarked
+#: admin/views/media-bulk.php:39
+#, php-format
+msgid "%s image watermarked successfully."
+msgid_plural "%s images watermarked successfully."
+msgstr[0] "%s枚の画像に正常に透かしを入れました。"
+
+#. translators: %1$s: number of watermarked, %2$s: number of failed
+#: admin/views/media-bulk.php:51
+#, php-format
+msgctxt "bulk action result"
+msgid "%1$s images watermarked, %2$s images failed."
+msgstr "%1$s枚の画像に透かしを入れ、%2$s枚の画像に透かしを入れられませんでした。"
+
+#. translators: %s: number of images that failed
+#: admin/views/media-bulk.php:64
+#, php-format
+msgid "%s image failed to watermark."
+msgid_plural "%s images failed to watermark."
+msgstr[0] "%s枚の画像に透かしを入れられませんでした。"
+
 #: admin/views/overview.php:5
 msgctxt "title: admin settings overview"
 msgid "Summary"
@@ -450,7 +472,7 @@ msgstr "変更を保存"
 
 #: admin/views/watermark.php:70
 msgid "Register and login with us to save settings changes"
-msgstr "設定の変更を保存するには、登録してログインします"
+msgstr "設定の変更を保存するには、登録してログインしてください"
 
 #: admin/views/watermark.php:73
 msgid "Watermark Settings"
@@ -627,4 +649,29 @@ msgstr "設定"
 msgctxt "button"
 msgid "Bulk Watermark"
 msgstr "ウォーターマークを一括適用"
+
+#: assets/js/main.min.js:1
+msgctxt "button dialog box"
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: assets/js/main.min.js:1
+msgctxt "dialog content"
+msgid "All tool changes will be lost. Do you want to continue?"
+msgstr "ツールの変更がすべて失われます。続行しますか？"
+
+#: assets/js/main.min.js:1
+msgctxt "dialog title"
+msgid "Warning!"
+msgstr "警告！"
+
+#: assets/js/main.min.js:1
+msgctxt "button dialog box"
+msgid "Continue"
+msgstr "続ける"
+
+#: assets/js/main.min.js:1
+msgctxt "dialog content"
+msgid "All files in the iloveimg-backup folder will be deleted. Continue?"
+msgstr "iLoveIMGバックアップフォルダー内のファイルがすべて削除されます。続行しますか？"
 
