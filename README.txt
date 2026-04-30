@@ -1,18 +1,18 @@
-=== Best Watermark - Protect images on your site with iLoveIMG ===
-Plugin Name: Best Watermark - Protect images on your site with iLoveIMG
-Version: 2.2.12
+=== iLoveIMG Watermark ===
+Plugin Name: iLoveIMG Watermark
+Version: 2.3.0
 Author: iLovePDF
 Author URI: https://www.iloveimg.com/
 Contributors: iLovePDF
 Tags: watermark, image protection, photography, picture, e-commerce
-Requires at least: 5.3
-Tested up to: 6.8
-Stable tag: 2.2.12
-Requires PHP: 7.4
+Requires at least: 6.1
+Tested up to: 6.9
+Stable tag: 2.3.0
+Requires PHP: 8.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Protect your site from image theft with our reliable and easy-to-use watermark plugin. Effective protection for your images.
+Protect your images with automatic, easy-to-use watermarking.
 
 == Description ==
 
@@ -20,7 +20,7 @@ Protect your images from theft. Now you can get a powerful, easy to use, and rel
 
 Create custom watermarks combining image and text and protect your images from being shared or featured without owner consent.
 
-Trust reliable developers. **Best Watermark - Protect images on your site with iLoveIMG** is brought to you by the same developers of iLoveIMG.com, popular image editor trusted by millions. 
+Trust reliable developers. **iLoveIMG Watermark** is brought to you by the same developers of iLoveIMG.com, popular image editor trusted by millions. 
 
 **If you are looking for the best watermarking tool, iLoveIMG plugin comes packed with plenty of features.**
 
@@ -99,6 +99,15 @@ Moreover, all processed files are automatically deleted from our servers after b
 4. Image listing page.
 
 == Changelog ==
+= 2.3.0 =
+Improved
+
+Improvements to all existing features.
+Update of translation template file.
+New available languages have been added (ar, bg, ca, de, el, es, fr, hi, id, it, ja, ko, ms, nl, pl, pt, ru, sv, sw, th, tr, uk, vi, zh_CN, zh_TW).
+Update of libraries.
+Update of PHP to ^8.2
+Compatibility with Wordpress 6.9.
 
 = 2.2.12 =
 Improved

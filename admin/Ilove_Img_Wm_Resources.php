@@ -33,7 +33,7 @@ class Ilove_Img_Wm_Resources {
         $sizes[] = array(
             'field_id' => 'full',
             'type'     => 'checkbox',
-            'label'    => _x( 'Original image', 'input checkbox', 'iloveimg-watermark' ),
+            'label'    => _x( 'Original', 'input checkbox', 'iloveimg-watermark' ),
             'default'  => true,
         );
 
@@ -70,7 +70,7 @@ class Ilove_Img_Wm_Resources {
         if ( ! WP_Filesystem() ) {
 			return new \WP_Error(
 				'Unable Filesystem',
-				esc_html__( 'Unable to connect to the filesystem', 'iloveimg-watermark' )
+				esc_html__( 'Filesystem connection failed.', 'iloveimg-watermark' )
 			);
 		}
 
@@ -105,7 +105,7 @@ class Ilove_Img_Wm_Resources {
         if ( ! WP_Filesystem() ) {
 			return new \WP_Error(
 				'Unable Filesystem',
-				esc_html__( 'Unable to connect to the filesystem', 'iloveimg-watermark' )
+				esc_html__( 'Filesystem connection failed.', 'iloveimg-watermark' )
 			);
 		}
 
@@ -323,7 +323,7 @@ class Ilove_Img_Wm_Resources {
         <div id="iloveimg_detaills_watermark_<?php echo (int) $image_id; ?>" style="display:none;">
             <table class="table__details__sizes">
                 <tr>
-                    <th><?php echo esc_html_x( 'Name', 'column name', 'iloveimg-watermark' ); ?></th>
+                    <th><?php echo esc_html_x( 'File Name', 'column name', 'iloveimg-watermark' ); ?></th>
                     <th><?php echo esc_html_x( 'Watermark', 'column name', 'iloveimg-watermark' ); ?></th>
                     <?php
                     if ( $_sizes ) {
@@ -403,7 +403,7 @@ class Ilove_Img_Wm_Resources {
                         endif;
                     else :
 						?>
-                        <p><?php esc_html_e( 'You need to be registered', 'iloveimg-watermark' ); ?></p>
+                        <p><?php esc_html_e( 'Sign up required', 'iloveimg-watermark' ); ?></p>
                         <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-watermark-admin-page' ) ); ?>" class="iloveimg_link"><?php echo esc_html_x( 'Go to settings', 'button', 'iloveimg-watermark' ); ?></a>
 						<?php
                     endif;
@@ -505,23 +505,23 @@ class Ilove_Img_Wm_Resources {
             <?php if ( $backup_activated && in_array( $image_id, $images_restore, true ) ) : ?>
                 <div class="iloveimg-watermark iloveimg_restore_button_wrapper">
                     <button class="iloveimg_restore_button button button-secondary" data-id="<?php echo intval( $image_id ); ?>" data-action="ilove_img_wm_restore">
-                        <?php echo esc_html_x( 'Restore original file', 'button', 'iloveimg-watermark' ); ?>
+                        <?php echo esc_html_x( 'Restore original', 'button', 'iloveimg-watermark' ); ?>
                     </button>
                     <br/>
                     <input type="hidden" id="_wpnonce" name="_wpnonce_iloveimg_wm_restore" value="<?php echo esc_html( $img_nonce ); ?>">
                     <p class="loading iloveimg-status" style="display: none; margin-top: 5px;">
                         <span>
-                            <?php echo esc_html_x( 'Loading...', 'The file is being processed', 'iloveimg-watermark' ); ?>
+                            <?php echo esc_html_x( 'Processing…', 'The file is being processed', 'iloveimg-watermark' ); ?>
                         </span>
                     </p>
                     <p class="error iloveimg-status" style="margin-top: 5px;">
                         <span>
-                            <?php echo esc_html_x( 'Error', 'File processing had an error', 'iloveimg-watermark' ); ?>
+                            <?php echo esc_html_x( 'Error processing. Please refresh and try again.', 'File processing had an error', 'iloveimg-watermark' ); ?>
                         </span>
                     </p>
                     <p class="success iloveimg-status" style="margin-top: 5px;">
                         <span>
-                            <?php echo esc_html_x( 'Completed, please refresh the page.', 'File processing was successful', 'iloveimg-watermark' ); ?>
+                            <?php echo esc_html_x( 'Done. Please refresh the page.', 'File processing was successful', 'iloveimg-watermark' ); ?>
                         </span>
                     </p>
                 </div>

@@ -1,18 +1,18 @@
 <?php
 /**
- * Best Watermark - Protect images on your site with iLoveIMG
+ * ILoveIMG Watermark
  *
  * @link              https://iloveimg.com/
  * @since             1.0.1
  * @package           iloveimgwatermark
  *
  * @wordpress-plugin
- * Plugin Name:       Best Watermark - Protect images on your site with iLoveIMG
+ * Plugin Name:       iLoveIMG Watermark
  * Plugin URI:        https://iloveapi.com/
- * Description:       Protect your site from image theft with our reliable and easy-to-use watermark plugin. Effective protection for your images.
- * Version:           2.2.12
- * Requires at least: 5.3
- * Requires PHP:      7.4
+ * Description:       Protect your images with automatic, easy-to-use watermarking.
+ * Version:           2.3.0
+ * Requires at least: 6.1
+ * Requires PHP:      8.2
  * Author:            iLoveIMG
  * Author URI:        https://iloveimg.com/
  * License:           GPL-2.0+
