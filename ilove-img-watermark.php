@@ -10,9 +10,9 @@
  * Plugin Name:       iLoveIMG Watermark
  * Plugin URI:        https://iloveapi.com/
  * Description:       Protect your images with automatic, easy-to-use watermarking.
- * Version:           2.2.12
- * Requires at least: 5.3
- * Requires PHP:      7.4
+ * Version:           2.3.0
+ * Requires at least: 6.1
+ * Requires PHP:      8.2
  * Author:            iLoveIMG
  * Author URI:        https://iloveimg.com/
  * License:           GPL-2.0+

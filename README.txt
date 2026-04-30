@@ -1,14 +1,14 @@
 === iLoveIMG Watermark ===
 Plugin Name: iLoveIMG Watermark
-Version: 2.2.12
+Version: 2.3.0
 Author: iLovePDF
 Author URI: https://www.iloveimg.com/
 Contributors: iLovePDF
 Tags: watermark, image protection, photography, picture, e-commerce
-Requires at least: 5.3
-Tested up to: 6.8
-Stable tag: 2.2.12
-Requires PHP: 7.4
+Requires at least: 6.1
+Tested up to: 6.9
+Stable tag: 2.3.0
+Requires PHP: 8.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -99,6 +99,15 @@ Moreover, all processed files are automatically deleted from our servers after b
 4. Image listing page.
 
 == Changelog ==
+= 2.3.0 =
+Improved
+
+Improvements to all existing features.
+Update of translation template file.
+New available languages have been added (ar, bg, ca, de, el, es, fr, hi, id, it, ja, ko, ms, nl, pl, pt, ru, sv, sw, th, tr, uk, vi, zh_CN, zh_TW).
+Update of libraries.
+Update of PHP to ^8.2
+Compatibility with Wordpress 6.9.
 
 = 2.2.12 =
 Improved
