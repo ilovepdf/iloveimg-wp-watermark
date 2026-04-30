@@ -18,7 +18,7 @@ class Ilove_Img_Wm_Plugin {
 	 * @access   public
 	 * @var      string    VERSION    The current version of the plugin.
 	 */
-    const VERSION = '2.2.12';
+    const VERSION = '2.3.0';
 
     /**
 	 * The unique identifier of this plugin.
@@ -111,17 +111,31 @@ class Ilove_Img_Wm_Plugin {
             wp_enqueue_script(
                 self::NAME . '_spectrum_admin',
                 plugins_url( '/assets/js/spectrum.min.js', __DIR__ ),
-                array(),
+                array( 'jquery' ),
                 '1.8.0',
                 true
             );
             wp_enqueue_script(
                 self::NAME . '_admin',
                 plugins_url( '/assets/js/main.min.js', __DIR__ ),
-                array( self::NAME . '_spectrum_admin' ),
+                array( self::NAME . '_spectrum_admin', 'jquery', 'wp-i18n' ),
                 self::VERSION,
                 true
             );
+
+            // Set translations for the script.
+            wp_set_script_translations( self::NAME . '_admin', 'iloveimg-watermark', plugin_dir_path( __DIR__ ) . 'languages' );
+
+            // Localize script with necessary data.
+            wp_localize_script(
+                self::NAME . '_admin',
+                'iloveimgWatermark',
+                array(
+                    'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+                    'nonce'   => wp_create_nonce( 'iloveimg_watermark_nonce' ),
+                )
+            );
+
             wp_enqueue_style(
                 self::NAME . '_admin',
                 plugins_url( '/assets/css/app.min.css', __DIR__ ),
@@ -230,7 +244,7 @@ class Ilove_Img_Wm_Plugin {
             return $columns;
         }
 
-        $columns['iloveimg_status_watermark'] = _x( 'Status Watermark', 'column name', 'iloveimg-watermark' );
+        $columns['iloveimg_status_watermark'] = _x( 'Watermark status', 'column name', 'iloveimg-watermark' );
 
         return $columns;
     }
@@ -361,7 +375,7 @@ class Ilove_Img_Wm_Plugin {
         if ( ! Ilove_Img_Wm_Resources::is_loggued() && get_current_screen()->parent_base !== 'iloveimg-admin-page' ) {
 			?>
             <div class="notice notice-warning is-dismissible">
-                <p><strong>iLoveIMG</strong> - <?php esc_html_e( 'Please you need to be logged or registered.', 'iloveimg-watermark' ); ?> <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-watermark-admin-page' ) ); ?>"><?php echo esc_html_x( 'Go to settings', 'button', 'iloveimg-watermark' ); ?></a></p>
+                <p><strong>iLoveIMG</strong> - <?php esc_html_e( 'Please log in or sign up to continue.', 'iloveimg-watermark' ); ?> <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-watermark-admin-page' ) ); ?>"><?php echo esc_html_x( 'Go to settings', 'button', 'iloveimg-watermark' ); ?></a></p>
             </div>
             <?php
         }
@@ -371,17 +385,17 @@ class Ilove_Img_Wm_Plugin {
             if ( 'login' === $iloveimg_account_error['action'] ) :
                 ?>
                 <div class="notice notice-error is-dismissible">
-                    <p><?php esc_html_e( 'Your email or password is wrong.', 'iloveimg-watermark' ); ?></p>
+                    <p><?php esc_html_e( 'Incorrect email or password.', 'iloveimg-watermark' ); ?></p>
                 </div>
             <?php endif; ?>
             <?php if ( 'register' === $iloveimg_account_error['action'] ) : ?>
                 <div class="notice notice-error is-dismissible">
-                    <p><?php esc_html_e( 'This email address has already been taken.', 'iloveimg-watermark' ); ?></p>
+                    <p><?php esc_html_e( 'This email is already in use.', 'iloveimg-watermark' ); ?></p>
                 </div>
             <?php endif; ?>
             <?php if ( 'register_limit' === $iloveimg_account_error['action'] ) : ?>
                 <div class="notice notice-error is-dismissible">
-                    <p><?php esc_html_e( 'You have reached limit of different users to use this WordPress plugin. Please relogin with one of your existing users.', 'iloveimg-watermark' ); ?></p>
+                    <p><?php esc_html_e( 'This plugin is already linked to another user. Please sign in with an existing account.', 'iloveimg-watermark' ); ?></p>
                 </div>
             <?php endif; ?>
             <?php
@@ -407,21 +421,21 @@ class Ilove_Img_Wm_Plugin {
                         if ( $account['files_used'] >= $account['free_files_limit'] && $account['package_files_used'] >= $account['package_files_limit'] && (int) $account['subscription_files_used'] >= $account['subscription_files_limit'] ) {
                             ?>
                             <div class="notice notice-warning is-dismissible">
-                                <p><strong>iLoveIMG</strong> - <?php esc_html_e( 'Please you need more credits.', 'iloveimg-watermark' ); ?> <a href="https://iloveapi.com/pricing" target="_blank"><?php echo esc_html_x( 'Buy more credits', 'button', 'iloveimg-watermark' ); ?></a></p>
+                                <p><strong>iLoveIMG</strong> - <?php esc_html_e( 'You\'re out of credits!', 'iloveimg-watermark' ); ?> <a href="https://iloveapi.com/pricing" target="_blank"><?php echo esc_html_x( 'Buy more credits', 'button', 'iloveimg-watermark' ); ?></a></p>
                             </div>
                             <?php
                         }
                     } else {
                         ?>
                         <div class="notice notice-error is-dismissible">
-                            <p><strong>iLoveIMG</strong> - <?php esc_html_e( 'We were unable to verify the status of your iloveAPI account. Please try again later.', 'iloveimg-watermark' ); ?></p>
+                            <p><strong>iLoveIMG</strong> - <?php esc_html_e( 'We couldn’t verify your iLoveAPI account. Please try again later.', 'iloveimg-watermark' ); ?></p>
                         </div>
                         <?php
                     }
                 } else {
                     ?>
                     <div class="notice notice-error is-dismissible">
-                        <p><strong>iLoveIMG</strong> - <?php esc_html_e( 'We were unable to verify the status of your iloveAPI account. Please try again later.', 'iloveimg-watermark' ); ?></p>
+                        <p><strong>iLoveIMG</strong> - <?php esc_html_e( 'We couldn’t verify the status of your iLoveAPI account. Please try again later.', 'iloveimg-watermark' ); ?></p>
                     </div>
                     <?php
                 }
@@ -438,7 +452,7 @@ class Ilove_Img_Wm_Plugin {
                     <?php
                     printf(
                         /* translators: %d: ID of File */
-                        esc_html__( 'Image %d was watermarked correctly', 'iloveimg-watermark' ),
+                        esc_html__( 'Image watermarked successfully: %d', 'iloveimg-watermark' ),
                         esc_html( $file )
                     );
 					?>
@@ -471,7 +485,7 @@ class Ilove_Img_Wm_Plugin {
                     <?php
                     printf(
                         /* translators: %d: ID of File */
-                        esc_html__( 'Image %d was watermarked correctly', 'iloveimg-watermark' ),
+                        esc_html__( 'Image watermarked successfully: %d', 'iloveimg-watermark' ),
                         esc_html( $file )
                     );
 					?>
@@ -580,7 +594,7 @@ class Ilove_Img_Wm_Plugin {
     public function ilove_img_restore() {
 
         if ( ! isset( $_POST['_wpnonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_wpnonce'] ) ) ) ) {
-            wp_send_json_error( __( 'Error processing your request. Invalid Nonce code', 'iloveimg-watermark' ), 401 );
+            wp_send_json_error( __( 'Couldn’t complete the request. Please refresh and try again.', 'iloveimg-watermark' ), 401 );
         }
 
         if ( ! isset( $_POST['id'] ) ) {
@@ -592,7 +606,7 @@ class Ilove_Img_Wm_Plugin {
         $key_founded    = array_search( $attachment_id, $images_restore, true );
 
         if ( ! in_array( $attachment_id, $images_restore, true ) ) {
-            wp_send_json_error( __( 'Sorry. There is no backup for this file', 'iloveimg-watermark' ), 404 );
+            wp_send_json_error( __( 'No backup found.', 'iloveimg-watermark' ), 404 );
         }
 
         Ilove_Img_Wm_Resources::rcopy( ILOVE_IMG_WM_BACKUP_FOLDER . basename( get_attached_file( $attachment_id ) ), get_attached_file( $attachment_id ) );
@@ -610,7 +624,7 @@ class Ilove_Img_Wm_Plugin {
             Ilove_Img_Wm_Resources::update_option( 'iloveimg_images_to_restore', wp_json_encode( $images_restore ) );
         }
 
-        wp_send_json_success( __( 'It was restored correctly', 'iloveimg-watermark' ), 200 );
+        wp_send_json_success( __( 'File restored successfully.', 'iloveimg-watermark' ), 200 );
     }
 
     /**
@@ -622,7 +636,7 @@ class Ilove_Img_Wm_Plugin {
     public function add_bulk_watermark_action( $actions ) {
 
         if ( get_option( 'iloveimg_account' ) ) {
-            $actions['iloveimg_watermark'] = _x( 'Watermark Images', 'button', 'iloveimg-watermark' );
+            $actions['iloveimg_watermark'] = _x( 'Watermark', 'button', 'iloveimg-watermark' );
         }
 
         return $actions;

@@ -1,10 +1,10 @@
-# Best Watermark - Protect Images on Your Site with iLoveIMG
+# iLoveIMG Watermark
 
-Protect your site from image theft with our reliable and easy-to-use watermark plugin. Effective protection for your images.
+Protect your images with automatic, easy-to-use watermarking.
 
 ## Description
 
-**Best Watermark - Protect Images on Your Site with iLoveIMG** is a powerful, easy-to-use watermarking plugin designed to safeguard your images from unauthorized use. In just a few seconds, you can create highly customizable watermarks, combining image and text to prevent your images from being shared or displayed without your consent.
+**iLoveIMG Watermark** is a powerful, easy-to-use watermarking plugin designed to safeguard your images from unauthorized use. In just a few seconds, you can create highly customizable watermarks, combining image and text to prevent your images from being shared or displayed without your consent.
 
 **Key Features:**
 

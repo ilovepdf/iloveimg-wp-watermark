@@ -42,7 +42,7 @@ if ( get_option( 'iloveimg_account' ) ) {
     } else {
         ?>
         <div class="notice notice-error is-dismissible">
-            <p><strong>iLoveIMG</strong> - <?php esc_html_e( 'We were unable to verify the status of your iloveAPI account. Please try again later.', 'iloveimg-watermark' ); ?></p>
+            <p><strong>iLoveIMG</strong> - <?php esc_html_e( 'We couldn’t verify the status of your iLoveAPI account. Please try again later.', 'iloveimg-watermark' ); ?></p>
         </div>
         <?php
     }
@@ -57,7 +57,7 @@ if ( get_option( 'iloveimg_account' ) ) {
             <div class="iloveimg_settings__overview__account__picture"></div>
             <form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>" autocomplete="off">
                 <input type="hidden" name="action" value="update_watermark" />
-                <h3><?php echo esc_html_x( 'Register as iLoveAPI developer', 'subtitle', 'iloveimg-watermark' ); ?></h3>
+                <h3><?php echo esc_html_x( 'Create an iLoveAPI account', 'subtitle', 'iloveimg-watermark' ); ?></h3>
                 <input type="hidden" name="iloveimg_action" value="iloveimg_action_register" />
                 <div>
                     <div style="width: 100%;">
@@ -74,11 +74,11 @@ if ( get_option( 'iloveimg_account' ) ) {
                 </div>
                 <?php
                 wp_nonce_field();
-                submit_button( _x( 'Register', 'button', 'iloveimg-watermark' ) );
+                submit_button( _x( 'Create account', 'button', 'iloveimg-watermark' ) );
                 ?>
                 <div>
                     <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-watermark-admin-page' ) ); ?>">
-                        <?php echo esc_html_x( 'Login to your account', 'button', 'iloveimg-watermark' ); ?>
+                        <?php echo esc_html_x( 'Log in to your account', 'button', 'iloveimg-watermark' ); ?>
                     </a>
                 </div>
             </form>
@@ -89,7 +89,7 @@ if ( get_option( 'iloveimg_account' ) ) {
             <div class="iloveimg_settings__overview__account__picture"></div>
             <form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>" autocomplete="off">
                 <input type="hidden" name="action" value="update_watermark" />
-                <h3><?php echo esc_html_x( 'Login to your account', 'subtitle', 'iloveimg-watermark' ); ?></h3>
+                <h3><?php echo esc_html_x( 'Log in to your account', 'subtitle', 'iloveimg-watermark' ); ?></h3>
                 <input type="hidden" name="iloveimg_action" value="iloveimg_action_login" />
                 <div>
                     <input type="email" class="iloveimg_field_email" name="iloveimg_field_email" placeholder="<?php echo esc_html_x( 'Email', 'input email', 'iloveimg-watermark' ); ?>" required value="<?php echo isset( $ilove_img_wm_account_error['email'] ) ? esc_attr( $ilove_img_wm_account_error['email'] ) : ''; ?>" />
@@ -98,15 +98,15 @@ if ( get_option( 'iloveimg_account' ) ) {
                     <input type="password" class="iloveimg_field_password" name="iloveimg_field_password" placeholder="<?php echo esc_html_x( 'Password', 'input password', 'iloveimg-watermark' ); ?>" required/>
                 </div>
                 <a class="forget" href="https://iloveapi.com/login/reset" target="_blank">
-                    <?php echo esc_html_x( 'Forget Password?', 'button', 'iloveimg-watermark' ); ?>
+                    <?php echo esc_html_x( 'Forgot your password?', 'button', 'iloveimg-watermark' ); ?>
                 </a>
                 <?php
                 wp_nonce_field();
-                submit_button( _x( 'Login', 'button', 'iloveimg-watermark' ) );
+                submit_button( _x( 'Log in', 'button', 'iloveimg-watermark' ) );
                 ?>
                 <div>
                     <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-watermark-admin-page&section=register' ) ); ?>">
-                        <?php echo esc_html_x( 'Register as iLoveAPI developer', 'button', 'iloveimg-watermark' ); ?>
+                        <?php echo esc_html_x( 'Create an iLoveAPI account', 'button', 'iloveimg-watermark' ); ?>
                     </a>
                 </div>
             </form>
@@ -129,7 +129,7 @@ if ( get_option( 'iloveimg_account' ) ) {
                     <?php
                         printf(
                             /* translators: %1$d: credits used / %2$d: credits limit */
-                            esc_html__( '%1$d / %2$d credits used this month. Free Tier.', 'iloveimg-watermark' ),
+                            esc_html__( '%1$d / %2$d credits used this month.', 'iloveimg-watermark' ),
                             (int) $ilove_img_wm_account['files_used'],
                             (int) $ilove_img_wm_account['free_files_limit']
                         );
@@ -137,7 +137,7 @@ if ( get_option( 'iloveimg_account' ) ) {
                 </p>
                 <?php if ( $ilove_img_wm_account['subscription_files_limit'] ) : ?>
                     <h4>
-                        <?php echo esc_html_x( 'Subscription plan', 'subtitle section', 'iloveimg-watermark' ); ?>
+                        <?php echo esc_html_x( '[Monthly/Yearly] plan', 'subtitle section', 'iloveimg-watermark' ); ?>
                     </h4>
                     <?php
                     $ilove_img_wm_percent = ( ( $ilove_img_wm_account['subscription_files_used'] * 100 ) / $ilove_img_wm_account['subscription_files_limit'] );
@@ -149,7 +149,7 @@ if ( get_option( 'iloveimg_account' ) ) {
                         <?php
                         printf(
                             /* translators: %1$d: credits used / %2$d: credits limit */
-                            esc_html__( '%1$d / %2$d credits used this month. Subscription plan.', 'iloveimg-watermark' ),
+                            esc_html__( '%1$d / %2$d credits used this month.', 'iloveimg-watermark' ),
                             (int) $ilove_img_wm_account['subscription_files_used'],
                             (int) $ilove_img_wm_account['subscription_files_limit']
                         );
@@ -159,7 +159,7 @@ if ( get_option( 'iloveimg_account' ) ) {
 
                 <?php if ( $ilove_img_wm_account['package_files_limit'] ) : ?>
                     <h4>
-                        <?php echo esc_html_x( 'Prepaid packages', 'subtitle section', 'iloveimg-watermark' ); ?>
+                        <?php echo esc_html_x( 'Packages', 'subtitle section', 'iloveimg-watermark' ); ?>
                     </h4>
                     <?php
                     $ilove_img_wm_percent = ( ( $ilove_img_wm_account['package_files_used'] * 100 ) / $ilove_img_wm_account['package_files_limit'] );
@@ -171,7 +171,7 @@ if ( get_option( 'iloveimg_account' ) ) {
                         <?php
                         printf(
                             /* translators: %1$d: credits used / %2$d: credits limit */
-                            esc_html__( '%1$d / %2$d credits used this month. Prepaid packages.', 'iloveimg-watermark' ),
+                            esc_html__( '%1$d / %2$d credits used this month.', 'iloveimg-watermark' ),
                             (int) $ilove_img_wm_account['package_files_used'],
                             (int) $ilove_img_wm_account['package_files_limit']
                         );
@@ -184,7 +184,7 @@ if ( get_option( 'iloveimg_account' ) ) {
                     <?php
                     printf(
                         /* translators: %d: free credits*/
-                        esc_html__( 'Every month since your registry you will get %d free credits to use to compress or stamp your images.', 'iloveimg-watermark' ),
+                        esc_html__( 'You get %1$d free credits each month to process your files.', 'iloveimg-watermark' ),
                         (int) $ilove_img_wm_account['free_files_limit']
                     );
                     ?>
@@ -193,29 +193,23 @@ if ( get_option( 'iloveimg_account' ) ) {
                     <?php
                     $ilove_img_wm_subscription_link = sprintf(
                         '<a href="https://iloveapi.com/pricing" target="_blank" rel="noopener noreferrer">%s</a>',
-                        _x( 'subscription plans', '1: subscription plan link', 'iloveimg-watermark' )
-                    );
-
-                    $ilove_img_wm_single_package_link = sprintf(
-                        '<a href="https://iloveapi.com/pricing" target="_blank" rel="noopener noreferrer">%s</a>',
-                        _x( 'single package', '2: single package link', 'iloveimg-watermark' )
+                        _x( 'Upgrade your plan or buy a credit package', '1: subscription plan link', 'iloveimg-watermark' )
                     );
 
                     printf(
                         wp_kses_post(
                             /* translators: %1$s: subscription plan link, %2$s: single package link */
                             __(
-                                'To increase your credits amount you can either open one of our %1$s to get a fixed amount of additional credits per month or buy a %2$s of credits.',
+                                'Need more credits? %1$s.',
                                 'iloveimg-watermark'
                             )
                         ),
                         wp_kses_post( $ilove_img_wm_subscription_link ),
-                        wp_kses_post( $ilove_img_wm_single_package_link )
                     );
                     ?>
                 </p>
                 <a class="button button-secondary" href="https://iloveapi.com/pricing" target="_blank">
-                    <?php echo esc_html_x( 'Buy more credits', 'button', 'iloveimg-watermark' ); ?>
+                    <?php echo esc_html_x( 'Buy credits', 'button', 'iloveimg-watermark' ); ?>
                 </a>
             </div>
         </div>
@@ -229,14 +223,14 @@ if ( get_option( 'iloveimg_account' ) ) {
                 <p style="margin-top: 0; color: #4D90FE;"><?php echo esc_attr( $ilove_img_wm_account['email'] ); ?></p>
                 
                 <?php wp_nonce_field(); ?>
-                <?php submit_button( _x( 'Logout', 'button', 'iloveimg-watermark' ) ); ?>
+                <?php submit_button( _x( 'Log out', 'button', 'iloveimg-watermark' ) ); ?>
             </form>
 
             <form class="iloveimg_settings__overview__account-logged__column_right-proyects" method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>">
                 <input type="hidden" name="action" value="update_watermark" />
                 <input type="hidden" name="iloveimg_action" value="iloveimg_action_proyect" />
                 <p><label>
-                    <?php esc_html_e( 'Select your working proyect', 'iloveimg-watermark' ); ?>
+                    <?php esc_html_e( 'Select project', 'iloveimg-watermark' ); ?>
                 </label>
                     <select name="iloveimg_field_proyect">
                         <?php foreach ( $ilove_img_wm_account['projects'] as $ilove_img_wm_key => $ilove_img_wm_project ) : ?>
@@ -249,7 +243,7 @@ if ( get_option( 'iloveimg_account' ) ) {
                             ><?php echo esc_html( $ilove_img_wm_project['name'] ); ?></option>
                         <?php endforeach; ?>
                     </select>
-                    <button type="submit" class="button button-secondary"><?php echo esc_html_x( 'Save', 'Button: save changes', 'iloveimg-watermark' ); ?></button>
+                    <button type="submit" class="button button-secondary"><?php echo esc_html_x( 'Change project', 'Button: save changes', 'iloveimg-watermark' ); ?></button>
                 </p>
                 <?php wp_nonce_field(); ?>
                 
