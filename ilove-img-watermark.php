@@ -12,7 +12,7 @@
  * Description:       Protect your images with automatic, easy-to-use watermarking.
  * Version:           2.3.0
  * Requires at least: 6.1
- * Requires PHP:      8.2
+ * Requires PHP:      8.3
  * Author:            iLoveIMG
  * Author URI:        https://iloveimg.com/
  * License:           GPL-2.0+
