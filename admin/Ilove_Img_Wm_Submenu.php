@@ -173,12 +173,13 @@ class Ilove_Img_Wm_Submenu {
 			$status = 'error';
 		}
 
-		// Redirect back to the page with status parameter
+		// Redirect back to the page with the shared status query var so show_notices() fires.
+		// Key must match the registered query var 'iloveimg-bulk-watermark' in Ilove_Img_Wm_Plugin.
 		wp_safe_redirect(
 			add_query_arg(
 				array(
-					'iloveimgwm-bulk-watermark' => $status,
-					'updated_count'             => count( $success_ids ),
+					'iloveimg-bulk-watermark' => $status,
+					'updated_count'           => count( $success_ids ),
 				),
 				admin_url( 'upload.php?page=iloveimg-media-watermark-page' )
 			)

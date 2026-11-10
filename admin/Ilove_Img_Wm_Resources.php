@@ -353,6 +353,9 @@ class Ilove_Img_Wm_Resources {
             </table>
         </div>
         <p>
+            <?php // CONTRACT: `iloveimg_sizes_watermarked` is the shared completion class between this anchor
+            // and the isDoneFragment() check in dev/js/watermark/index.js. Never rename on one side only —
+            // the JS completion detection and client-side notice injection depend on this exact class name. ?>
             <a href="#TB_inline?&width=550&height=440&inlineId=iloveimg_detaills_watermark_<?php echo (int) $image_id; ?>" class="thickbox iloveimg_sizes_watermarked" title="<?php echo esc_html( get_the_title( $image_id ) ); ?>">
                 <?php
                 printf(
@@ -364,6 +367,49 @@ class Ilove_Img_Wm_Resources {
             </a>
         </p>
         <?php
+    }
+
+    /**
+     * Return the effective watermark status for an attachment, resetting stale in-flight rows.
+     *
+     * Stuck-status pitfall: if a worker crashes (exception, timeout, server restart) after
+     * setting status=1 but before the cleanup in Ilove_Img_Wm_Process, the row stays at
+     * status=1 or status=3 forever — the button remains disabled and the spinner never stops.
+     * This helper detects that condition and resets the row to status=0 so it renders an
+     * enabled, clickable button again.
+     *
+     * Logic:
+     *  - Statuses 0 and 2 are terminal (idle/failed and done); returned as-is, never reset.
+     *  - Statuses 1 and 3 (processing / queued) are only "stuck" if the timestamp is missing
+     *    or older than ILOVE_IMG_WM_PROCESS_TIMEOUT. A job started within the timeout window
+     *    is left untouched to avoid racing a genuinely in-flight worker.
+     *  - A missing iloveimg_watermark_started timestamp on a 1/3 row is treated as stale:
+     *    the worker writes the timestamp at Process.php:132 *before* any API work, so a
+     *    missing timestamp can only mean no active worker is running.
+     *
+     * @param int $column_id Post/attachment ID.
+     * @return int Effective status (possibly reset to 0).
+     */
+    public static function reset_if_stale( int $column_id ): int {
+        $status = (int) get_post_meta( $column_id, 'iloveimg_status_watermark', true );
+
+        // Only processing (1) and queued (3) rows can be stuck; 0 and 2 are terminal.
+        if ( 1 !== $status && 3 !== $status ) {
+            return $status;
+        }
+
+        $started = (int) get_post_meta( $column_id, 'iloveimg_watermark_started', true );
+
+        // Fresh, genuinely in-flight job: leave it alone to avoid racing the worker.
+        // Threshold mirrors Ilove_Img_Wm_Process::release_stalled_processes() for consistency.
+        if ( $started && ( time() - $started ) < ILOVE_IMG_WM_PROCESS_TIMEOUT ) {
+            return $status;
+        }
+
+        // Stale (timed out) or legacy row with no timestamp: treat as failed → idle.
+        update_post_meta( $column_id, 'iloveimg_status_watermark', 0 );
+        delete_post_meta( $column_id, 'iloveimg_watermark_started' );
+        return 0;
     }
 
     /**
@@ -380,8 +426,10 @@ class Ilove_Img_Wm_Resources {
 
         if ( strpos( $post->post_mime_type, 'image/jpg' ) !== false || strpos( $post->post_mime_type, 'image/jpeg' ) !== false || strpos( $post->post_mime_type, 'image/png' ) !== false || strpos( $post->post_mime_type, 'image/gif' ) !== false ) :
 
+            // reset_if_stale() resets timed-out 1/3 rows to 0 so the button renders as enabled
+            // and no .iloveimg_watermarking poll div is emitted for a stale stuck row.
             $_sizes             = get_post_meta( $column_id, 'iloveimg_watermark', true );
-            $status_watermark   = (int) get_post_meta( $column_id, 'iloveimg_status_watermark', true );
+            $status_watermark   = self::reset_if_stale( $column_id );
             $images_watermarked = self::get_sizes_watermarked( $column_id );
 
             if ( $_sizes && $images_watermarked ) :
@@ -393,7 +441,7 @@ class Ilove_Img_Wm_Resources {
                     <?php if ( self::is_loggued() ) : ?>
 						<?php if ( self::get_sizes_enabled() ) : ?>
                             <button type="button" class="iloveimg-watermark button button-small button-primary" data-imgnonce="<?php echo sanitize_key( wp_unslash( $img_nonce ) ); ?>" data-id="<?php echo (int) $column_id; ?>" <?php echo ( 1 === $status_watermark || 3 === $status_watermark ) ? 'disabled="disabled"' : ''; ?>><?php echo esc_html_x( 'Watermark', 'button', 'iloveimg-watermark' ); ?></button>
-                            <img src="<?php echo esc_url( plugins_url( '/assets/images/spinner.gif', __DIR__ ) ); ?>" width="20" height="20" style="<?php echo ( 1 === $status_watermark || 3 === $status_watermark ) ? '' : 'display: none;'; ?>; margin-top: 7px" />
+                            <img class="iloveimg-spinner" src="<?php echo esc_url( plugins_url( '/assets/images/spinner.gif', __DIR__ ) ); ?>" width="20" height="20" style="<?php echo ( 1 === $status_watermark || 3 === $status_watermark ) ? '' : 'display: none;'; ?>; margin-top: 7px" />
                             <?php if ( 3 === $status_watermark ) : ?>
                                 <!-- <p>In queue...</p> -->
                             <?php endif; ?>
@@ -409,7 +457,8 @@ class Ilove_Img_Wm_Resources {
                     endif;
                     if ( 1 === $status_watermark || 3 === $status_watermark ) :
 						?>
-                        <div class="iloveimg_watermarking" style="display: none;" data-id="<?php echo (int) $column_id; ?>"></div>
+                        <?php // data-imgnonce is required: statusWatermark() includes it in the AJAX POST body so the handler's wp_verify_nonce() check passes. ?>
+                        <div class="iloveimg_watermarking" style="display: none;" data-id="<?php echo (int) $column_id; ?>" data-imgnonce="<?php echo sanitize_key( wp_unslash( $img_nonce ) ); ?>"></div>
 						<?php
                     endif;
             endif;
@@ -587,5 +636,94 @@ class Ilove_Img_Wm_Resources {
         switch_to_blog( $blog_id );
         update_option( $option, $value, $autoload );
         restore_current_blog();
+    }
+
+    /**
+     * Read a numeric value from the account data returned by the iLoveAPI.
+     *
+     * @param mixed  $account       The decoded account data, which is null when the stored option is unreadable.
+     * @param string $key           The key to read.
+     * @param int    $default_value Returned when the key is missing or not numeric.
+     *
+     * @return int The value for the key.
+     *
+     * @since 3.0.0
+     */
+    public static function get_account_value( $account, $key, $default_value = 0 ) {
+
+        if ( ! is_array( $account ) || ! isset( $account[ $key ] ) || ! is_numeric( $account[ $key ] ) ) {
+            return $default_value;
+        }
+
+        return (int) $account[ $key ];
+    }
+
+    /**
+     * Get the percentage of credits used, guarded against a missing or zero limit.
+     *
+     * @param int $used  The number of credits used.
+     * @param int $limit The total number of credits available.
+     *
+     * @return float The percentage used, capped at 100.
+     *
+     * @since 3.0.0
+     */
+    public static function get_account_percent( $used, $limit ) {
+
+        $limit = (int) $limit;
+
+        if ( $limit <= 0 ) {
+            return 0;
+        }
+
+        $percent = ( (int) $used * 100 ) / $limit;
+
+        return ( $percent > 100 ) ? 100 : $percent;
+    }
+
+    /**
+     * Check whether any credit tier still has credits available.
+     *
+     * A tier the user does not have reports 0/0, which must not count as exhausted:
+     * otherwise a spent free tier reads as "out of credits" while a package still has
+     * millions of files left.
+     *
+     * @param mixed $account The decoded account data, which is null when the stored option is unreadable.
+     *
+     * @return bool True when at least one funded tier has credits remaining.
+     *
+     * @since 3.0.0
+     */
+    public static function has_credits( $account ) {
+
+        return self::get_remaining_credits( $account ) > 0;
+    }
+
+    /**
+     * Count the credits still available across every funded tier.
+     *
+     * The free tier resets monthly and is usually the first to run out, so reporting it
+     * alone makes a working account look exhausted. This is the number that decides
+     * whether files can still be processed.
+     *
+     * @param mixed $account The decoded account data, which is null when the stored option is unreadable.
+     *
+     * @return int The credits remaining.
+     *
+     * @since 3.0.0
+     */
+    public static function get_remaining_credits( $account ) {
+
+        $remaining = 0;
+
+        foreach ( array( 'free', 'package', 'subscription' ) as $tier ) {
+            $limit = self::get_account_value( $account, $tier . '_files_limit' );
+
+            if ( $limit > 0 ) {
+                $remaining += max( 0, $limit - self::get_account_value( $account, $tier . '_files_used' ) );
+            }
+        }
+
+        return $remaining;
     }
 }

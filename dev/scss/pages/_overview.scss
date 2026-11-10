@@ -1,3 +1,4 @@
+@use "sass:color";
 @use "variables" as *;
 @use "components" as *;
 
@@ -109,6 +110,9 @@ body {
 						width: auto;
 						min-width: 149px;
 						padding: 0 24px;
+						// position:relative is required for the absolutely-positioned percent bar.
+						// WP core .button may override this via its own cascade, so we re-assert it here.
+						position: relative;
 
 						span {
 							color: $white;
@@ -129,6 +133,22 @@ body {
 							bottom: 0px;
 							z-index: 0;
 							transition: width 1s;
+						}
+
+						// is-processing: subtle opacity change to signal activity.
+						&.is-processing {
+							opacity: 0.85;
+							cursor: default;
+						}
+
+						// is-finished: full bar visible with a success tint; shown briefly before reload.
+						&.is-finished {
+							opacity: 1;
+
+							.iloveimg-watermark-all__percent {
+								width: 100% !important;
+								background: color.adjust($success_color, $lightness: -8%);
+							}
 						}
 					}
 				}
