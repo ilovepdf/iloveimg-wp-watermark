@@ -250,11 +250,11 @@ use Ilove_Img_Wm\Ilove_Img_Wm_Resources;
                                         <input type="checkbox" name="iloveimg_field_text_bold" id="iloveimg_field_text_bold" <?php echo isset( $options_value['iloveimg_field_text_bold'] ) ? 'checked' : ''; ?> />
                                         <input type="checkbox" name="iloveimg_field_text_italic" id="iloveimg_field_text_italic" <?php echo isset( $options_value['iloveimg_field_text_italic'] ) ? 'checked' : ''; ?> />
                                         <!-- <input type="checkbox" name="iloveimg_field_text_underline" id="iloveimg_field_text_underline" <?php echo isset( $options_value['iloveimg_field_text_underline'] ) ? 'checked' : ''; ?> /> -->
-                                        <input type='hidden' name="iloveimg_field_text_color" id="iloveimg_field_text_color" value="<?php echo isset( $options_value['iloveimg_field_text_color'] ) ? esc_html( $options_value['iloveimg_field_text_color'] ) : ''; ?>" />
+                                        <input type='hidden' name="iloveimg_field_text_color" id="iloveimg_field_text_color" value="<?php echo ! empty( $options_value['iloveimg_field_text_color'] ) ? esc_attr( $options_value['iloveimg_field_text_color'] ) : '#000000'; ?>" />
                                         <a href="#" id="picker"></a>
                                     </div>
                                     <div class="iloveimg_settings__options__texts-container">
-                                        <input type="text" name="iloveimg_field_text" id="iloveimg_field_text" value="<?php echo isset( $options_value['iloveimg_field_text'] ) ? esc_html( $options_value['iloveimg_field_text'] ) : ''; ?>" placeholder="<?php echo esc_html_x( 'Enter text for Watermark', 'placeholder: input text', 'iloveimg-watermark' ); ?>" value="" />
+                                        <input type="text" name="iloveimg_field_text" id="iloveimg_field_text" value="<?php echo isset( $options_value['iloveimg_field_text'] ) ? esc_html( $options_value['iloveimg_field_text'] ) : ''; ?>" placeholder="<?php echo esc_html_x( 'Enter text for Watermark', 'placeholder: input text', 'iloveimg-watermark' ); ?>" />
                                     </div>
                                 </div>
                             </div>

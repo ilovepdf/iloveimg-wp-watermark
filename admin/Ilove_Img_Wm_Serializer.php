@@ -49,8 +49,15 @@ class Ilove_Img_Wm_Serializer {
                 $posts_value = array();
                 foreach ( $_POST as $key => $post_value ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
                     if ( strpos( $key, 'iloveimg_field_' ) === 0 ) {
-                        $posts_value[ $key ] = wp_unslash( $post_value );
+                        $posts_value[ $key ] = is_array( $post_value )
+                            ? array_map( 'sanitize_text_field', wp_unslash( $post_value ) )
+                            : sanitize_text_field( wp_unslash( $post_value ) );
                     }
+                }
+
+                // The form can submit an empty colour, which the API rejects: keep a usable value.
+                if ( empty( $posts_value['iloveimg_field_text_color'] ) ) {
+                    $posts_value['iloveimg_field_text_color'] = '#000000';
                 }
 
                 Ilove_Img_Wm_Resources::update_option( 'iloveimg_options_watermark', wp_json_encode( $posts_value ) );

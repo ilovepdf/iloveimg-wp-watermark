@@ -120,7 +120,9 @@ if ( get_option( 'iloveimg_account' ) ) {
                     <?php echo esc_html_x( 'Free', 'subtitle section: free credits', 'iloveimg-watermark' ); ?>
                 </h4>
                 <?php
-                $ilove_img_wm_percent = ( ( ( $ilove_img_wm_account['files_used'] * 100 ) / $ilove_img_wm_account['free_files_limit'] ) );
+                $ilove_img_wm_free_used  = Ilove_Img_Wm_Resources::get_account_value( $ilove_img_wm_account, 'free_files_used' );
+                $ilove_img_wm_free_limit = Ilove_Img_Wm_Resources::get_account_value( $ilove_img_wm_account, 'free_files_limit' );
+                $ilove_img_wm_percent    = Ilove_Img_Wm_Resources::get_account_percent( $ilove_img_wm_free_used, $ilove_img_wm_free_limit );
                 ?>
                 <div class="iloveimg_percent <?php echo ( $ilove_img_wm_percent >= 100 ) ? 'iloveimg_percent-exceeded' : ''; ?> <?php echo ( $ilove_img_wm_percent >= 90 && $ilove_img_wm_percent < 100 ) ? 'iloveimg_percent-warning' : ''; ?>">
                     <div class="iloveimg_percent-total" style="width: <?php echo (float) $ilove_img_wm_percent; ?>%;"></div>
@@ -130,17 +132,21 @@ if ( get_option( 'iloveimg_account' ) ) {
                         printf(
                             /* translators: %1$d: credits used / %2$d: credits limit */
                             esc_html__( '%1$d / %2$d credits used this month.', 'iloveimg-watermark' ),
-                            (int) $ilove_img_wm_account['files_used'],
-                            (int) $ilove_img_wm_account['free_files_limit']
+                            (int) $ilove_img_wm_free_used,
+                            (int) $ilove_img_wm_free_limit
                         );
                     ?>
                 </p>
-                <?php if ( $ilove_img_wm_account['subscription_files_limit'] ) : ?>
+                <?php
+                $ilove_img_wm_sub_used  = Ilove_Img_Wm_Resources::get_account_value( $ilove_img_wm_account, 'subscription_files_used' );
+                $ilove_img_wm_sub_limit = Ilove_Img_Wm_Resources::get_account_value( $ilove_img_wm_account, 'subscription_files_limit' );
+                ?>
+                <?php if ( $ilove_img_wm_sub_limit > 0 ) : ?>
                     <h4>
                         <?php echo esc_html_x( '[Monthly/Yearly] plan', 'subtitle section', 'iloveimg-watermark' ); ?>
                     </h4>
                     <?php
-                    $ilove_img_wm_percent = ( ( $ilove_img_wm_account['subscription_files_used'] * 100 ) / $ilove_img_wm_account['subscription_files_limit'] );
+                    $ilove_img_wm_percent = Ilove_Img_Wm_Resources::get_account_percent( $ilove_img_wm_sub_used, $ilove_img_wm_sub_limit );
                     ?>
                     <div class="iloveimg_percent <?php echo ( $ilove_img_wm_percent >= 100 ) ? 'iloveimg_percent-exceeded' : ''; ?> <?php echo ( $ilove_img_wm_percent >= 90 && $ilove_img_wm_percent < 100 ) ? 'iloveimg_percent-warning' : ''; ?>">
                         <div class="iloveimg_percent-total" style="width: <?php echo (float) $ilove_img_wm_percent; ?>%;"></div>
@@ -150,19 +156,23 @@ if ( get_option( 'iloveimg_account' ) ) {
                         printf(
                             /* translators: %1$d: credits used / %2$d: credits limit */
                             esc_html__( '%1$d / %2$d credits used this month.', 'iloveimg-watermark' ),
-                            (int) $ilove_img_wm_account['subscription_files_used'],
-                            (int) $ilove_img_wm_account['subscription_files_limit']
+                            (int) $ilove_img_wm_sub_used,
+                            (int) $ilove_img_wm_sub_limit
                         );
                         ?>
                     </p>
                 <?php endif; ?>
 
-                <?php if ( $ilove_img_wm_account['package_files_limit'] ) : ?>
+                <?php
+                $ilove_img_wm_pkg_used  = Ilove_Img_Wm_Resources::get_account_value( $ilove_img_wm_account, 'package_files_used' );
+                $ilove_img_wm_pkg_limit = Ilove_Img_Wm_Resources::get_account_value( $ilove_img_wm_account, 'package_files_limit' );
+                ?>
+                <?php if ( $ilove_img_wm_pkg_limit > 0 ) : ?>
                     <h4>
                         <?php echo esc_html_x( 'Packages', 'subtitle section', 'iloveimg-watermark' ); ?>
                     </h4>
                     <?php
-                    $ilove_img_wm_percent = ( ( $ilove_img_wm_account['package_files_used'] * 100 ) / $ilove_img_wm_account['package_files_limit'] );
+                    $ilove_img_wm_percent = Ilove_Img_Wm_Resources::get_account_percent( $ilove_img_wm_pkg_used, $ilove_img_wm_pkg_limit );
                     ?>
                     <div class="iloveimg_percent <?php echo ( $ilove_img_wm_percent >= 100 ) ? 'iloveimg_percent-exceeded' : ''; ?> <?php echo ( $ilove_img_wm_percent >= 90 && $ilove_img_wm_percent < 100 ) ? 'iloveimg_percent-warning' : ''; ?>">
                         <div class="iloveimg_percent-total" style="width: <?php echo (float) $ilove_img_wm_percent; ?>%;"></div>
@@ -172,8 +182,8 @@ if ( get_option( 'iloveimg_account' ) ) {
                         printf(
                             /* translators: %1$d: credits used / %2$d: credits limit */
                             esc_html__( '%1$d / %2$d credits used this month.', 'iloveimg-watermark' ),
-                            (int) $ilove_img_wm_account['package_files_used'],
-                            (int) $ilove_img_wm_account['package_files_limit']
+                            (int) $ilove_img_wm_pkg_used,
+                            (int) $ilove_img_wm_pkg_limit
                         );
                         ?>
                     </p>
@@ -185,7 +195,7 @@ if ( get_option( 'iloveimg_account' ) ) {
                     printf(
                         /* translators: %d: free credits*/
                         esc_html__( 'You get %1$d free credits each month to process your files.', 'iloveimg-watermark' ),
-                        (int) $ilove_img_wm_account['free_files_limit']
+                        (int) $ilove_img_wm_free_limit
                     );
                     ?>
                 </p>

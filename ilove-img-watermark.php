@@ -37,10 +37,12 @@ define( 'ILOVE_IMG_WM_REGISTER_URL', 'https://api.ilovepdf.com/v1/user' );
 define( 'ILOVE_IMG_WM_LOGIN_URL', 'https://api.ilovepdf.com/v1/user/login' );
 define( 'ILOVE_IMG_WM_USER_URL', 'https://api.ilovepdf.com/v1/user' );
 define( 'ILOVE_IMG_WM_NUM_MAX_FILES', 2 );
+define( 'ILOVE_IMG_WM_PROCESS_TIMEOUT', 300 );
 define( 'ILOVE_IMG_WM_COMPRESS_DB_VERSION', '1.0' );
 define( 'ILOVE_IMG_WM_UPLOAD_FOLDER', $ilove_img_wm_upload_path['basedir'] );
 define( 'ILOVE_IMG_WM_BACKUP_FOLDER', $ilove_img_wm_upload_path['basedir'] . '/iloveimg-backup/' );
 define( 'ILOVE_IMG_WM_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'ILOVE_IMG_WM_FONTS_DIR', plugin_dir_path( __FILE__ ) . 'admin/fonts/' );
 
 use Ilove_Img_Wm\Ilove_Img_Wm_Plugin;
 use Ilove_Img_Wm\Ilove_Img_Wm_Resources;
@@ -117,6 +119,7 @@ function ilove_img_wm_activate() {
                 array(
 					'iloveimg_field_type'        => 'text',
 					'iloveimg_field_text_family' => 'Arial',
+					'iloveimg_field_text_color'  => '#000000',
 					'iloveimg_field_text'        => 'Sample',
 					'iloveimg_field_scale'       => 33,
 					'iloveimg_field_opacity'     => 1,
@@ -137,8 +140,20 @@ function ilove_img_wm_activate() {
         } else {
             $iloveimg_options_watermark = json_decode( $old_data, true );
 
+            $iloveimg_options_updated = false;
+
             if ( ! array_key_exists( 'iloveimg_field_text_family', $iloveimg_options_watermark ) ) {
                 $iloveimg_options_watermark['iloveimg_field_text_family'] = 'Arial';
+                $iloveimg_options_updated                                 = true;
+            }
+
+            // Back-fill the colour: it was never seeded, so the settings form could save it empty.
+            if ( empty( $iloveimg_options_watermark['iloveimg_field_text_color'] ) ) {
+                $iloveimg_options_watermark['iloveimg_field_text_color'] = '#000000';
+                $iloveimg_options_updated                                = true;
+            }
+
+            if ( $iloveimg_options_updated ) {
                 Ilove_Img_Wm_Resources::update_option( 'iloveimg_options_watermark', wp_json_encode( $iloveimg_options_watermark ), true );
             }
         }
