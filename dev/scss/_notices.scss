@@ -1,0 +1,48 @@
+@use 'variables' as *;
+
+// Styles for the .ipdf-notice admin notice injected by showAdminNotice() in components.js.
+// The notice HTML uses ilovepdf-base__layout-* classes that are not available in this plugin,
+// so flex layout is set directly here rather than relying on those utility classes.
+.ipdf-notice {
+	display: flex;
+	align-items: center;
+	border-radius: $radius;
+	margin-left: 0;
+	gap: 15px;
+
+	.ipdf-logo {
+		margin: 0;
+		display: flex;
+		align-items: center;
+		flex-shrink: 0;
+
+		img {
+			width: 28px;
+			height: auto;
+		}
+	}
+
+	p {
+		font-family: $font_family;
+		font-size: $body_font_size;
+		letter-spacing: $letter_spacing;
+		color: $text_color;
+		margin: 0;
+	}
+
+	&.notice-error {
+		border-left-color: $danger_color;
+	}
+
+	&.notice-warning {
+		border-left-color: #dba617;
+	}
+
+	&.notice-info {
+		border-left-color: $primary_color;
+	}
+
+	&.notice-success {
+		border-left-color: $success_color;
+	}
+}

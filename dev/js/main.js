@@ -1,4 +1,4 @@
-import { watermarkImage, statusWatermark, watermarkAll, handleBulkAction } from './watermark';
+import { watermarkImage, statusWatermark, watermarkAll } from './watermark';
 import { initClearBackup, initRestoreAllFiles, initRestoreFile } from './common/backup';
 import { initWatermarkPreview, initMediaLibrary } from './watermark/preview';
 
@@ -20,9 +20,6 @@ import { initWatermarkPreview, initMediaLibrary } from './watermark/preview';
                     statusWatermark(element, index, timesIntervals);
                 }, 1000);
             });
-
-            // Handle bulk action form submit
-            $(document).on('submit', 'form#images-filter, form#posts-filter', handleBulkAction);
             break;
 
         case 'media_page_iloveimg-media-watermark-page':
@@ -36,9 +33,6 @@ import { initWatermarkPreview, initMediaLibrary } from './watermark/preview';
                     statusWatermark(element, index, timesIntervals);
                 }, 1000);
             });
-
-            // Handle bulk action form submit
-            $(document).on('submit', 'form#images-filter, form#posts-filter', handleBulkAction);
             break;
     }
 

@@ -1,4 +1,4 @@
-import { _x, sprintf } from '@wordpress/i18n';
+import { _x } from '@wordpress/i18n';
 
 /**
  * Create the component for the dialog box.
@@ -32,23 +32,48 @@ export const createDialogComponent = (content, title, buttonActionText) => {
  * @returns {string} HTML component of the admin notice.
  */
 export const showAdminNotice = (message, type = 'success') => {
-    const notice = sprintf(
-        '<div class="ipdf-notice ilovepdf-base__layout-flex notice notice-%s is-dismissible"><figure class="ipdf-logo ilovepdf-base__layout-flex ilovepdf-base__layout-items--center"><img src="%s" alt="logo ilovepdf" /></figure><p>%s</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button></div>',
-        type,
-        IlovePdfData.logoUrl,
-        message
-    );
+    // Validate type against allowlist to prevent class-name injection.
+    const ALLOWED_TYPES = [ 'success', 'error', 'warning', 'info' ];
+    if ( ! ALLOWED_TYPES.includes( type ) ) {
+        type = 'success';
+    }
+
+    // Build notice via DOM so message is never injected as raw HTML.
+    const div = document.createElement( 'div' );
+    div.className = `ipdf-notice ilovepdf-base__layout-flex notice notice-${ type } is-dismissible`;
+
+    const figure = document.createElement( 'figure' );
+    figure.className = 'ipdf-logo ilovepdf-base__layout-flex ilovepdf-base__layout-items--center';
+    const img = document.createElement( 'img' );
+    img.src = ( window.iloveimgWatermark && iloveimgWatermark.logoUrl ) || '';
+    img.alt = 'logo iloveimg';
+    figure.appendChild( img );
+
+    const p = document.createElement( 'p' );
+    p.textContent = message;
+
+    const button = document.createElement( 'button' );
+    button.type = 'button';
+    button.className = 'notice-dismiss';
+    const span = document.createElement( 'span' );
+    span.className = 'screen-reader-text';
+    span.textContent = 'Dismiss this notice.';
+    button.appendChild( span );
+
+    div.appendChild( figure );
+    div.appendChild( p );
+    div.appendChild( button );
 
     const container = document.querySelector(
         '#wpwrap #wpcontent #wpbody #wpbody-content > h1, #wpwrap #wpcontent #wpbody #wpbody-content > h2, #wpwrap #wpcontent #wpbody #wpbody-content'
     );
-    container?.insertAdjacentHTML('beforebegin', notice);
-
-    setTimeout(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 500);
+    container?.insertAdjacentElement( 'beforebegin', div );
 
     if (container) {
+        setTimeout(() => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 500);
+
         const btnsCloseNotice = document.querySelectorAll('.is-dismissible .notice-dismiss');
 
         if (btnsCloseNotice) {

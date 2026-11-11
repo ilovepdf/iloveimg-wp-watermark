@@ -134,6 +134,7 @@ class Ilove_Img_Wm_Plugin {
                 array(
                     'ajaxUrl' => admin_url( 'admin-ajax.php' ),
                     'nonce'   => wp_create_nonce( 'iloveimg_watermark_nonce' ),
+                    'logoUrl' => esc_url( ILOVE_IMG_WM_PLUGIN_URL . 'assets/images/logo.svg' ),
                 )
             );
 
@@ -159,30 +160,20 @@ class Ilove_Img_Wm_Plugin {
 
             if ( ! $images['error'] ) {
                 Ilove_Img_Wm_Resources::render_watermark_details( $attachment_id );
-                // Append to the shared bulk-success transient so show_notices() fires after
-                // the JS-triggered reload with ?iloveimg-bulk-watermark=success. AJAX can't
-                // server-redirect, so the client builds the URL and reloads with the status.
-                $s = get_transient( 'iloveimgwm_bulk_success' );
-                if ( ! is_array( $s ) ) {
-                    $s = array();
-                }
-                $s[] = (int) $attachment_id;
-                set_transient( 'iloveimgwm_bulk_success', $s, 600 );
             } else {
-                // Append to the shared bulk-errors transient (same schema that branches 4b/4c
-                // in show_notices() expect: array entries with 'id' and 'message' keys).
-                $e = get_transient( 'iloveimgwm_bulk_errors' );
-                if ( ! is_array( $e ) ) {
-                    $e = array();
+                $current_status = (int) get_post_meta( $attachment_id, 'iloveimg_status_watermark', true );
+                if ( 1 === $current_status || 3 === $current_status ) {
+                    // Job is queued/in-flight: emit the .iloveimg_watermarking div so the
+                    // JS poller re-attaches and resolves to the terminal result.
+                    // page_render=false: this is the trigger response, NOT a cold render, so
+                    // the queued status MUST be kept (reset_if_stale would otherwise wipe a
+                    // fresh status=3 to 0 and suppress the poller — the WR/FR-W1 conflation bug).
+                    Ilove_Img_Wm_Resources::get_status_of_column( $attachment_id, false );
+                } else {
+                    ?>
+                    <p><?php echo esc_html( $images['error_msg'] ); ?></p>
+                    <?php
                 }
-                $e[] = array(
-                    'id'      => (int) $attachment_id,
-                    'message' => sanitize_text_field( $images['error_msg'] ),
-                );
-                set_transient( 'iloveimgwm_bulk_errors', $e, 600 );
-                ?>
-                <p><?php echo esc_html( $images['error_msg'] ); ?></p>
-                <?php
             }
         }
 
@@ -257,29 +248,11 @@ class Ilove_Img_Wm_Plugin {
                 // Genuinely in-flight: signal JS to keep polling; return empty body.
                 http_response_code( 500 );
             } elseif ( 2 === $status_watermark ) {
-                // Completed: return the detail fragment so JS can replace the cell.
-                // Also append to the shared bulk-success transient so show_notices() fires
-                // after the JS-triggered reload with ?iloveimg-bulk-watermark=success.
-                $s = get_transient( 'iloveimgwm_bulk_success' );
-                if ( ! is_array( $s ) ) {
-                    $s = array();
-                }
-                $s[] = (int) $attachment_id;
-                set_transient( 'iloveimgwm_bulk_success', $s, 600 );
+                // Completed: return the detail fragment so JS can replace the cell in place.
                 Ilove_Img_Wm_Resources::render_watermark_details( $attachment_id );
             } else {
                 // Status 0 — either never processed, failed, or just reset from a stale 1/3.
-                // Append to the shared bulk-errors transient (same schema show_notices() 4b/4c
-                // expects) so the notice fires after the JS-triggered reload with ?iloveimg-bulk-watermark=error.
-                $e = get_transient( 'iloveimgwm_bulk_errors' );
-                if ( ! is_array( $e ) ) {
-                    $e = array();
-                }
-                $e[] = array(
-                    'id'      => (int) $attachment_id,
-                    'message' => sanitize_text_field( __( 'Watermarking didn\'t complete. Please try again.', 'iloveimg-watermark' ) ),
-                );
-                set_transient( 'iloveimgwm_bulk_errors', $e, 600 );
+                // Return a non-empty fragment so JS can update the cell and show a notice.
                 esc_html_e( 'Watermarking didn\'t complete. Please try again.', 'iloveimg-watermark' );
                 Ilove_Img_Wm_Resources::get_status_of_column( $attachment_id );
             }

@@ -22,7 +22,7 @@ use Ilove_Img_Wm\Ilove_Img_Wm_Resources;
 						/* translators: %s porcentage of images protected */
 						__( '%s Images watermarked', 'iloveimg-watermark' )
 					),
-					'<p class="iloveimg_saving__number">' . (float) $ilove_img_wm_porcentage_protected . '%</p>'
+					'<p class="iloveimg_saving__number" data-iloveimg-wm-percent>' . (float) $ilove_img_wm_porcentage_protected . '%</p>'
 				);
 				?>
 			</div>
@@ -55,8 +55,8 @@ use Ilove_Img_Wm\Ilove_Img_Wm_Resources;
 			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Already escaped via wp_kses above
 			$ilove_img_wm_output_html,
 			/* translators: %s number of watermarked files and total images */
-			'<strong>' . (int) Ilove_Img_Wm_Resources::get_watermarked_files() . '</strong>',
-			'<strong>' . (int) Ilove_Img_Wm_Resources::get_total_images() . '</strong>'
+			'<strong data-iloveimg-wm-count>' . (int) Ilove_Img_Wm_Resources::get_watermarked_files() . '</strong>',
+			'<strong data-iloveimg-total-count>' . (int) Ilove_Img_Wm_Resources::get_total_images() . '</strong>'
 		);
 		?>
 	</h4>

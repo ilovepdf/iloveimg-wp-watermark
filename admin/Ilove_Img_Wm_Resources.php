@@ -353,9 +353,11 @@ class Ilove_Img_Wm_Resources {
             </table>
         </div>
         <p>
-            <?php // CONTRACT: `iloveimg_sizes_watermarked` is the shared completion class between this anchor
+            <?php
+            // CONTRACT: `iloveimg_sizes_watermarked` is the shared completion class between this anchor
             // and the isDoneFragment() check in dev/js/watermark/index.js. Never rename on one side only —
-            // the JS completion detection and client-side notice injection depend on this exact class name. ?>
+            // the JS completion detection and client-side notice injection depend on this exact class name.
+            ?>
             <a href="#TB_inline?&width=550&height=440&inlineId=iloveimg_detaills_watermark_<?php echo (int) $image_id; ?>" class="thickbox iloveimg_sizes_watermarked" title="<?php echo esc_html( get_the_title( $image_id ) ); ?>">
                 <?php
                 printf(
@@ -387,15 +389,30 @@ class Ilove_Img_Wm_Resources {
      *    the worker writes the timestamp at Process.php:132 *before* any API work, so a
      *    missing timestamp can only mean no active worker is running.
      *
-     * @param int $column_id Post/attachment ID.
+     * @param int  $column_id   Post/attachment ID.
+     * @param bool $page_render True when called during a cold page render (e.g. get_status_of_column()).
+     *                          A queued (status=3) row is unconditionally reset to idle on cold renders
+     *                          because there is no queue-drain worker; the queued state is only valid
+     *                          while the originating request is still alive.  Default false preserves
+     *                          existing behaviour for poll-endpoint and bulk-action callers.
      * @return int Effective status (possibly reset to 0).
      */
-    public static function reset_if_stale( int $column_id ): int {
+    public static function reset_if_stale( int $column_id, bool $page_render = false ): int {
         $status = (int) get_post_meta( $column_id, 'iloveimg_status_watermark', true );
 
         // Only processing (1) and queued (3) rows can be stuck; 0 and 2 are terminal.
         if ( 1 !== $status && 3 !== $status ) {
             return $status;
+        }
+
+        // On a cold page render an orphaned status=3 (queued) row must be cleared: there is
+        // no persistent queue-drain worker, so a queued state left over from a previous request
+        // will never be processed.  Status=1 is intentionally NOT cleared here — a genuinely
+        // in-flight job still writes a fresh timestamp and must stay visible as "processing".
+        if ( $page_render && 3 === $status ) {
+            update_post_meta( $column_id, 'iloveimg_status_watermark', 0 );
+            delete_post_meta( $column_id, 'iloveimg_watermark_started' );
+            return 0;
         }
 
         $started = (int) get_post_meta( $column_id, 'iloveimg_watermark_started', true );
@@ -417,19 +434,20 @@ class Ilove_Img_Wm_Resources {
      *
      * This method retrieves the status and actions related to watermarking for a specific post or column, including the ability to add watermarks, view details, and manage settings.
      *
-     * @param int $column_id The ID of the post or column for which watermarking status and actions should be determined.
+     * @param int  $column_id  The ID of the post or column for which watermarking status and actions should be determined.
+     * @param bool $page_render True on cold page renders (resets orphaned status=3→0); false on trigger responses (keeps in-flight/queued status so a real poller is emitted).
      */
-    public static function get_status_of_column( $column_id ) {
+    public static function get_status_of_column( $column_id, bool $page_render = true ) {
         $post = get_post( $column_id );
 
         $img_nonce = Ilove_Img_Wm_Plugin::get_img_nonce();
 
         if ( strpos( $post->post_mime_type, 'image/jpg' ) !== false || strpos( $post->post_mime_type, 'image/jpeg' ) !== false || strpos( $post->post_mime_type, 'image/png' ) !== false || strpos( $post->post_mime_type, 'image/gif' ) !== false ) :
 
-            // reset_if_stale() resets timed-out 1/3 rows to 0 so the button renders as enabled
-            // and no .iloveimg_watermarking poll div is emitted for a stale stuck row.
+            // reset_if_stale( …, true ) resets timed-out 1/3 rows AND orphaned status=3 rows to 0
+            // so the button renders as enabled and no .iloveimg_watermarking poll div is emitted.
             $_sizes             = get_post_meta( $column_id, 'iloveimg_watermark', true );
-            $status_watermark   = self::reset_if_stale( $column_id );
+            $status_watermark   = self::reset_if_stale( $column_id, $page_render );
             $images_watermarked = self::get_sizes_watermarked( $column_id );
 
             if ( $_sizes && $images_watermarked ) :

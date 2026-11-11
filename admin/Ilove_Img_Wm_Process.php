@@ -113,7 +113,15 @@ class Ilove_Img_Wm_Process {
 
             // REQ-D1: Acquire the atomic queue lock before entering the critical section.
             if ( ! $this->acquire_queue_lock() ) {
-                update_post_meta( $images_id, 'iloveimg_status_watermark', 3 );
+                // WF-1: Do not clobber an in-flight status=1; only write status=3 when the row
+                // is not already being actively processed. Always stamp the timestamp so that
+                // reset_if_stale() treats this queued row as fresh and keeps it at 3,
+                // which causes get_status_of_column() to emit the .iloveimg_watermarking div.
+                $current_status = (int) get_post_meta( $images_id, 'iloveimg_status_watermark', true );
+                if ( 1 !== $current_status ) {
+                    update_post_meta( $images_id, 'iloveimg_status_watermark', 3 );
+                    update_post_meta( $images_id, 'iloveimg_watermark_started', time() );
+                }
                 return array(
                     'error'     => true,
                     'error_msg' => __( 'Another image is still being processed. Please try again in a moment.', 'iloveimg-watermark' ),
@@ -206,7 +214,15 @@ class Ilove_Img_Wm_Process {
                 // Gate not passed: release the lock before deferring to status=3.
                 $this->release_queue_lock();
 
-                update_post_meta( $images_id, 'iloveimg_status_watermark', 3 ); // status queue
+                // WF-2: Do not clobber an in-flight status=1; only write status=3 when the row
+                // is not already being actively processed. Always stamp the timestamp so that
+                // reset_if_stale() treats this queued row as fresh and keeps it at 3,
+                // which causes get_status_of_column() to emit the .iloveimg_watermarking div.
+                $current_status = (int) get_post_meta( $images_id, 'iloveimg_status_watermark', true );
+                if ( 1 !== $current_status ) {
+                    update_post_meta( $images_id, 'iloveimg_status_watermark', 3 ); // status queue
+                    update_post_meta( $images_id, 'iloveimg_watermark_started', time() );
+                }
 
                 return array(
                     'error'     => true,

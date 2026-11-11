@@ -1,6 +1,10 @@
+import { __ } from '@wordpress/i18n';
+import { sprintf } from '@wordpress/i18n';
+import { showAdminNotice } from '../components';
+
 var batchInProgress = false;
-// Module-level counters for bulk-batch status tracking (J2).
-// Reset to 0 at the start of each batch in watermarkAll() / handleBulkAction().
+// Module-level counters for bulk-batch status tracking.
+// Reset to 0 at the start of each batch in watermarkAll().
 var batchSuccesses = 0;
 var batchErrors = 0;
 
@@ -9,7 +13,7 @@ var batchErrors = 0;
  *
  * Keys off the `.iloveimg_sizes_watermarked` anchor class that
  * Ilove_Img_Wm_Resources::render_watermark_details() always emits (Resources.php ~line 356).
- * This is the render→JS coupling point (Risk R4): if that class is ever renamed, detection
+ * This is the render→JS coupling point: if that class is ever renamed, detection
  * silently stops — update both sides together.
  * CONTRACT: `iloveimg_sizes_watermarked` is the shared completion class between this JS check
  * and the `class="thickbox iloveimg_sizes_watermarked"` anchor in render_watermark_details().
@@ -23,17 +27,41 @@ function isDoneFragment( html ) {
 }
 
 /**
- * Reload the current page carrying the watermark status query var so the
- * existing show_notices() branches fire after any completion (single click,
- * poll, or "Watermark all"). AJAX can't server-redirect, so the client builds
- * the URL — this keeps one notice mechanism for all paths.
+ * Increment the overview panel watermarked count and update the bar/percent text.
  *
- * @param {'success'|'error'|'partial'} status
+ * Uses data-attribute hooks added to overview.php so the selector is robust even
+ * if the strong/p ordering ever changes.  No-ops silently when the overview is
+ * absent (e.g. on upload.php without the bulk-actions submenu).
  */
-function reloadWithStatus( status ) {
-    var url = new URL( window.location.href );
-    url.searchParams.set( 'iloveimg-bulk-watermark', status );
-    window.location.href = url.toString();
+function updateOverviewCount() {
+    var $wmCount = jQuery( '[data-iloveimg-wm-count]' );
+    if ( ! $wmCount.length ) {
+        return;
+    }
+    var $totalCount = jQuery( '[data-iloveimg-total-count]' );
+    var watermarked = parseInt( $wmCount.text(), 10 ) + 1;
+    var total = parseInt( $totalCount.text(), 10 );
+    $wmCount.text( watermarked );
+    var percent = total > 0 ? Math.round( ( watermarked / total ) * 100 ) : 0;
+    jQuery( '.iloveimg_percent-total' ).width( percent + '%' );
+    jQuery( '[data-iloveimg-wm-percent]' ).text( percent + '%' );
+}
+
+/**
+ * Attach a setInterval poller to a newly-injected .iloveimg_watermarking element.
+ *
+ * Called after any container.html(data) swap that re-injects a polling element
+ * (queued/status=3 or still-processing/status=1) so the row resolves without a
+ * manual page reload (W5 — re-bind fix for status=3 hang).
+ *
+ * @param {HTMLElement} element  The .iloveimg_watermarking DOM node.
+ */
+function attachPollerToElement( element ) {
+    var newTimesIntervals = {};
+    var newIndex = 'swap_' + Date.now() + '_' + Math.floor( Math.random() * 10000 );
+    newTimesIntervals[ 'ref_' + newIndex ] = setInterval( function () {
+        statusWatermark( element, newIndex, newTimesIntervals );
+    }, 1000 );
 }
 
 /**
@@ -43,12 +71,12 @@ function reloadWithStatus( status ) {
 export function watermarkImage( event ) {
     var element = jQuery( event.target );
     var container = element.closest( 'td' );
-    /* translators: Shown inline in the media column when watermarking fails or returns empty. */
-    var failedMsg = wp.i18n.__( 'Watermarking failed. Please try again.', 'iloveimg-watermark' );
+    /* translators: Shown in admin notice when watermarking fails. */
+    var failedMsg = __( 'Watermarking failed. Please try again.', 'iloveimg-watermark' );
 
     element.attr( 'disabled', 'disabled' );
     // Spinner class coupling: the <img> in get_status_of_column() carries class="iloveimg-spinner"
-    // so this selector matches it; using .next() scopes to siblings of the clicked button (F1/H1).
+    // so this selector matches it; using .next() scopes to siblings of the clicked button.
     element.next( '.iloveimg-spinner' ).show();
 
     var requestData = {
@@ -63,67 +91,72 @@ export function watermarkImage( event ) {
         data: requestData,
         success: function ( data ) {
             if ( typeof data === 'string' && data.trim() !== '' ) {
-                // Non-empty body: the PHP handler ran and appended to the shared transient.
-                // Show the in-place fragment first, then reload so show_notices() fires.
+                // Non-empty body: update the row in place.
                 container.html( data );
-                if ( ! batchInProgress ) {
-                    // Single click: reload with query var to surface the server-set notice.
-                    reloadWithStatus( isDoneFragment( data ) ? 'success' : 'error' );
-                } else {
-                    // Bulk: do NOT reload per-row. Track outcome so the interval can compute
-                    // the overall status when the last button disappears.
+                // Re-bind poller if the swap re-injected a polling element (queued/status=3 fix).
+                var $newPolling = container.find( '.iloveimg_watermarking' );
+                if ( $newPolling.length ) {
+                    attachPollerToElement( $newPolling[ 0 ] );
+                } else if ( ! batchInProgress ) {
+                    // Single-file: show a dismissible notice — no page reload.
                     if ( isDoneFragment( data ) ) {
+                        updateOverviewCount();
+                        showAdminNotice( __( 'Image watermarked successfully.', 'iloveimg-watermark' ), 'success' );
+                    } else {
+                        showAdminNotice( __( 'Watermarking failed. Please try again.', 'iloveimg-watermark' ), 'error' );
+                    }
+                } else {
+                    // Batch: track outcome for the barrier in watermarkAll().
+                    if ( isDoneFragment( data ) ) {
+                        updateOverviewCount();
                         batchSuccesses++;
                     } else {
                         batchErrors++;
                     }
                 }
             } else {
-                // Empty body = JS-only failure (e.g. nonce mismatch); no server transient was set.
-                // Decision (b): show inline message, no reload.
+                // Empty body = JS-only failure (e.g. nonce mismatch); re-enable button for retry.
+                element.removeAttr( 'disabled' );
+                element.next( '.iloveimg-spinner' ).hide();
                 if ( batchInProgress ) {
-                    // Bulk: replace cell content so button is gone and the counter can reach 0.
                     batchErrors++;
-                    container.html( jQuery( '<p>' ).addClass( 'iloveimg-inline-message' ).text( failedMsg ) );
                 } else {
-                    // Single: re-enable button for retry, show inline message.
-                    element.removeAttr( 'disabled' );
-                    element.next( '.iloveimg-spinner' ).hide();
-                    container.find( '.iloveimg-inline-message' ).remove();
-                    // Build as DOM node so translated text cannot inject HTML/JS (F7/L3/Sec).
-                    container.append( jQuery( '<p>' ).addClass( 'iloveimg-inline-message' ).text( failedMsg ) );
+                    showAdminNotice( failedMsg, 'error' );
                 }
             }
         },
         error: function () {
-            // Transport / HTTP error: decision (b) — inline message, no reload.
+            // Transport / HTTP error: re-enable button, show notice for single; count for batch.
+            element.removeAttr( 'disabled' );
+            element.next( '.iloveimg-spinner' ).hide();
             if ( batchInProgress ) {
-                // Bulk: replace cell so button is removed and the counter can reach 0.
+                // Transport-ERROR increments batchErrors so the counted barrier can fire (W6).
                 batchErrors++;
-                container.html( jQuery( '<p>' ).addClass( 'iloveimg-inline-message' ).text( failedMsg ) );
             } else {
-                // Single: re-enable button and surface a message; never blank the cell.
-                element.removeAttr( 'disabled' );
-                element.next( '.iloveimg-spinner' ).hide();
-                container.find( '.iloveimg-inline-message' ).remove();
-                // Build as DOM node so translated text cannot inject HTML/JS (F7/L3/Sec).
-                container.append( jQuery( '<p>' ).addClass( 'iloveimg-inline-message' ).text( failedMsg ) );
+                showAdminNotice( failedMsg, 'error' );
             }
         },
     } );
 }
 
 /**
- * Check watermark status
+ * Check watermark status (poller callback)
  * @param {HTMLElement} element
- * @param {number} index
+ * @param {number|string} index
  * @param {Object} timesIntervals
  */
 export function statusWatermark( element, index, timesIntervals ) {
     var $element = jQuery( element );
+    // Stop orphaned pollers: if this poller's row was already swapped out by a
+    // container.html() update, the node is detached — its closest('td') is empty so updates
+    // no-op, but a success/failure notice would still fire globally. Clear and bail.
+    if ( ! document.body.contains( element ) ) {
+        clearInterval( timesIntervals[ 'ref_' + index ] );
+        return;
+    }
     var container = $element.closest( 'td' );
-    /* translators: Shown inline in the media column when polling fails repeatedly due to network errors. */
-    var failedMsg = wp.i18n.__( 'Watermarking failed. Please try again.', 'iloveimg-watermark' );
+    /* translators: Shown in admin notice when watermarking polling fails repeatedly. */
+    var failedMsg = __( 'Watermarking failed. Please try again.', 'iloveimg-watermark' );
 
     // Maximum consecutive non-500 transport failures before we give up polling for this row.
     // Scoped per row via jQuery .data() so one row's network issues don't affect other rows.
@@ -143,17 +176,26 @@ export function statusWatermark( element, index, timesIntervals ) {
             if ( typeof data === 'string' && data.trim() !== '' ) {
                 clearInterval( timesIntervals[ 'ref_' + index ] );
                 container.html( data );
-                // Non-empty body: server appended to the shared transient.
-                // Reload so show_notices() surfaces the right top notice.
-                if ( ! batchInProgress ) {
-                    // 1200ms delay gives the done/error fragment a moment to render before reload.
-                    reloadWithStatus( isDoneFragment( data ) ? 'success' : 'error' );
+                // Re-bind poller if the swap re-injected a polling element (queued/status=3 fix).
+                var $newPolling = container.find( '.iloveimg_watermarking' );
+                if ( $newPolling.length ) {
+                    attachPollerToElement( $newPolling[ 0 ] );
                 } else {
-                    // Bulk: track outcome so the interval can compute overall status.
-                    if ( isDoneFragment( data ) ) {
-                        batchSuccesses++;
+                    // Poll resolved to completion (done or error fragment).
+                    if ( ! batchInProgress ) {
+                        if ( isDoneFragment( data ) ) {
+                            updateOverviewCount();
+                            showAdminNotice( __( 'Image watermarked successfully.', 'iloveimg-watermark' ), 'success' );
+                        } else {
+                            showAdminNotice( __( 'Watermarking failed. Please try again.', 'iloveimg-watermark' ), 'error' );
+                        }
                     } else {
-                        batchErrors++;
+                        if ( isDoneFragment( data ) ) {
+                            updateOverviewCount();
+                            batchSuccesses++;
+                        } else {
+                            batchErrors++;
+                        }
                     }
                 }
             }
@@ -168,7 +210,7 @@ export function statusWatermark( element, index, timesIntervals ) {
 
             // Count consecutive non-500 failures per row (stored on the element via jQuery .data()
             // so separate rows do not share a counter). After POLL_FAIL_THRESHOLD failures we stop
-            // the interval and surface an error so the spinner never spins indefinitely (F2/H2).
+            // the interval and surface an error so the spinner never spins indefinitely.
             var failCount = ( $element.data( 'iloveimg-fail-count' ) || 0 ) + 1;
             $element.data( 'iloveimg-fail-count', failCount );
 
@@ -177,17 +219,14 @@ export function statusWatermark( element, index, timesIntervals ) {
                 $element.data( 'iloveimg-fail-count', 0 );
 
                 if ( batchInProgress ) {
-                    // Bulk: replace cell so button is gone and counter can reach 0.
+                    // Batch: increment counter so the barrier in watermarkAll() can fire.
                     batchErrors++;
-                    container.html( jQuery( '<p>' ).addClass( 'iloveimg-inline-message' ).text( failedMsg ) );
                 } else {
                     // Single: re-enable button so the user can retry manually.
                     container.find( 'button.iloveimg-watermark' ).removeAttr( 'disabled' );
                     // Hide spinner (class coupling mirrors the img class set in get_status_of_column()).
                     container.find( '.iloveimg-spinner' ).hide();
-                    // Surface failure message in the cell; build as DOM node (F7/L3/Sec).
-                    container.find( '.iloveimg-inline-message' ).remove();
-                    container.append( jQuery( '<p>' ).addClass( 'iloveimg-inline-message' ).text( failedMsg ) );
+                    showAdminNotice( failedMsg, 'error' );
                 }
             }
         },
@@ -195,13 +234,11 @@ export function statusWatermark( element, index, timesIntervals ) {
 }
 
 /**
- * Handle watermark all button
+ * Handle watermark all button.
  *
- * Bug A fix: create exactly ONE interval AFTER all per-row clicks are triggered in the .each()
- * loop — multiple intervals (one per row) would race each other and clear independently, making
- * the reload fire too early or multiple times.
- * Bug D fix: add is-processing class on start, update percent bar in the interval, add is-finished
- * and delay reload by 1200ms so the user sees the bar reach 100% before the page reloads.
+ * Uses a counted barrier — (batchSuccesses + batchErrors) >= total — instead of a DOM-count
+ * or reload barrier. Transport errors increment batchErrors so the barrier is never stuck.
+ * A max-tick cap provides a backstop against missing callbacks.
  *
  * @param {Event} event
  */
@@ -224,71 +261,38 @@ export function watermarkAll( event ) {
         jQuery( element ).trigger( 'click' );
     } );
 
-    // Single interval monitors overall completion (Bug A: was inside .each(), creating N intervals).
+    // Dynamic cap: gives each image ~200 ticks of 300 ms (parity with compress plugin).
+    var MAX_TICKS = totalImagesToWatermark * 200 + 100;
+    var ticks = 0;
+
+    // Single interval monitors overall completion via counted barrier.
     var timeReload = setInterval( function () {
-        var _percent = 100 - ( jQuery( 'button.iloveimg-watermark' ).length * 100 ) / totalImagesToWatermark;
+        ticks++;
+        var completed = batchSuccesses + batchErrors;
+        var _percent = ( completed / totalImagesToWatermark ) * 100;
         jQuery( 'button#iloveimg_watermarkall .iloveimg-watermark-all__percent' ).width( _percent + '%' );
 
-        if ( jQuery( 'button.iloveimg-watermark' ).length === 0 ) {
+        if ( completed >= totalImagesToWatermark || ticks >= MAX_TICKS ) {
             clearInterval( timeReload );
-            // Set bar to 100% and show finished state before reload.
-            // 1200ms > the 1s CSS width transition so the user sees full completion.
+            // Set bar to 100% and show finished state.
             jQuery( 'button#iloveimg_watermarkall .iloveimg-watermark-all__percent' ).width( '100%' );
             jQuery( 'button#iloveimg_watermarkall' ).addClass( 'is-finished' );
-            // Compute overall status from per-row counters and reload with the query var so
-            // show_notices() can render per-file success/error notices after the full-page load.
+            batchInProgress = false;
+
+            // Fire exactly ONE summary notice — no page reload.
             var status = batchErrors === 0 ? 'success' : ( batchSuccesses > 0 ? 'partial' : 'error' );
-            setTimeout( function () {
-                reloadWithStatus( status );
-            }, 1200 );
+            var noticeMsg;
+            if ( 'success' === status ) {
+                /* translators: %d: number of images watermarked successfully */
+                noticeMsg = sprintf( __( '%d image(s) watermarked successfully.', 'iloveimg-watermark' ), batchSuccesses );
+            } else if ( 'partial' === status ) {
+                /* translators: %1$d: number of successes, %2$d: number of failures */
+                noticeMsg = sprintf( __( '%1$d image(s) watermarked, %2$d failed.', 'iloveimg-watermark' ), batchSuccesses, batchErrors );
+            } else {
+                /* translators: %d: number of images that failed to watermark */
+                noticeMsg = sprintf( __( '%d image(s) failed to watermark.', 'iloveimg-watermark' ), batchErrors );
+            }
+            showAdminNotice( noticeMsg, 'error' === status ? 'error' : ( 'partial' === status ? 'warning' : 'success' ) );
         }
     }, 300 );
-}
-
-/**
- * Handle bulk action submit
- *
- * Bug A fix: create exactly ONE interval AFTER triggering all per-row clicks, not inside the
- * .each() loop — otherwise N intervals would race each other.
- *
- * @param {Event} event
- */
-export function handleBulkAction( event ) {
-    // Check both action selectors (top and bottom dropdowns)
-    var selectedAction = jQuery( document ).find( 'select[name=action] option:checked' ).val() || jQuery( document ).find( 'select[name=action2] option:checked' ).val();
-
-    if ( selectedAction === 'iloveimg_watermark' ) {
-        event.preventDefault();
-        batchInProgress = true;
-        // Reset per-batch counters so a fresh run starts clean.
-        batchSuccesses = 0;
-        batchErrors = 0;
-        var totalToProcess = jQuery( 'table.wp-list-table.images tbody tr, table.wp-list-table.media tbody tr' ).find( "th.check-column input[type='checkbox']:checked" ).length;
-
-        // Trigger all per-row clicks first.
-        jQuery( 'table.wp-list-table.images tbody tr, table.wp-list-table.media tbody tr' ).each( function (
-            index,
-            element
-        ) {
-            if ( jQuery( element ).find( "th.check-column input[type='checkbox']" ).is( ':checked' ) ) {
-                jQuery( element ).find( 'button.iloveimg-watermark' ).trigger( 'click' );
-            }
-        } );
-
-        // Single interval created AFTER the .each() loop (Bug A fix).
-        // Checks for remaining buttons; a stuck or empty row that never had a button also
-        // won't block this because we count only rows with the button (Bug B robustness).
-        if ( totalToProcess > 0 ) {
-            var timeReload = setInterval( function () {
-                var remaining = jQuery( 'table.wp-list-table.images tbody tr, table.wp-list-table.media tbody tr' ).find( 'button.iloveimg-watermark' ).length;
-                if ( remaining === 0 ) {
-                    clearInterval( timeReload );
-                    // Compute overall status from per-row counters and reload with the query var
-                    // so show_notices() can render per-file success/error notices after the reload.
-                    var status = batchErrors === 0 ? 'success' : ( batchSuccesses > 0 ? 'partial' : 'error' );
-                    reloadWithStatus( status );
-                }
-            }, 500 );
-        }
-    }
 }
