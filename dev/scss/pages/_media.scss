@@ -64,11 +64,13 @@ body {
 						}
 					}
 	
+					th,
 					td {
 						&.column-file {
 							>a {
 								display: flex;
-	
+								align-items: center;
+
 								&:hover {
 									color: $primary_color;
 								}
