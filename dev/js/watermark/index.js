@@ -7,6 +7,10 @@ var batchInProgress = false;
 // Reset to 0 at the start of each batch in watermarkAll().
 var batchSuccesses = 0;
 var batchErrors = 0;
+// Per page-load set of attachment ids that have already received a success notice.
+// Prevents stacking duplicate "Image watermarked successfully" notices when the
+// same id resolves to a done fragment more than once (e.g. trigger + poller both fire).
+const notifiedIds = new Set();
 
 /**
  * Detect whether an HTML fragment represents a completed watermark result.
@@ -27,21 +31,38 @@ function isDoneFragment( html ) {
 }
 
 /**
- * Increment the overview panel watermarked count and update the bar/percent text.
+ * Set the overview panel watermarked/total counts from authoritative server values
+ * carried in the AJAX done-response HTML, then recompute the bar/percent text.
  *
- * Uses data-attribute hooks added to overview.php so the selector is robust even
- * if the strong/p ordering ever changes.  No-ops silently when the overview is
- * absent (e.g. on upload.php without the bulk-actions submenu).
+ * The server embeds a hidden <span class="iloveimg-wm-counts"
+ *   data-iloveimg-wm-count="N" data-iloveimg-total-count="M"> inside the done
+ * fragment (emitted by Ilove_Img_Wm_Resources::render_overview_counts()).
+ * We SET (never increment) the overview attributes so the call is idempotent:
+ * calling it N times for the same completed image yields the correct value once.
+ *
+ * No-ops silently when the overview panel or the counts element is absent
+ * (e.g. upload.php without the bulk-actions submenu, or legacy responses without
+ * the hidden element).
+ *
+ * @param {string} html  The raw HTML response from an AJAX done-fragment.
  */
-function updateOverviewCount() {
+function applyOverviewCounts( html ) {
     var $wmCount = jQuery( '[data-iloveimg-wm-count]' );
     if ( ! $wmCount.length ) {
         return;
     }
+    var $counts = jQuery( '<div>' ).html( html ).find( '.iloveimg-wm-counts' );
+    if ( ! $counts.length ) {
+        return;
+    }
+    var watermarked = parseInt( $counts.attr( 'data-iloveimg-wm-count' ), 10 );
+    var total = parseInt( $counts.attr( 'data-iloveimg-total-count' ), 10 );
+    if ( isNaN( watermarked ) || isNaN( total ) ) {
+        return;
+    }
     var $totalCount = jQuery( '[data-iloveimg-total-count]' );
-    var watermarked = parseInt( $wmCount.text(), 10 ) + 1;
-    var total = parseInt( $totalCount.text(), 10 );
     $wmCount.text( watermarked );
+    $totalCount.text( total );
     var percent = total > 0 ? Math.round( ( watermarked / total ) * 100 ) : 0;
     jQuery( '.iloveimg_percent-total' ).width( percent + '%' );
     jQuery( '[data-iloveimg-wm-percent]' ).text( percent + '%' );
@@ -100,15 +121,19 @@ export function watermarkImage( event ) {
                 } else if ( ! batchInProgress ) {
                     // Single-file: show a dismissible notice — no page reload.
                     if ( isDoneFragment( data ) ) {
-                        updateOverviewCount();
-                        showAdminNotice( __( 'Image watermarked successfully.', 'iloveimg-watermark' ), 'success' );
+                        applyOverviewCounts( data );
+                        var id = element.data( 'id' ) || element.attr( 'data-id' );
+                        if ( ! notifiedIds.has( id ) ) {
+                            notifiedIds.add( id );
+                            showAdminNotice( __( 'Image watermarked successfully.', 'iloveimg-watermark' ), 'success' );
+                        }
                     } else {
                         showAdminNotice( __( 'Watermarking failed. Please try again.', 'iloveimg-watermark' ), 'error' );
                     }
                 } else {
                     // Batch: track outcome for the barrier in watermarkAll().
                     if ( isDoneFragment( data ) ) {
-                        updateOverviewCount();
+                        applyOverviewCounts( data );
                         batchSuccesses++;
                     } else {
                         batchErrors++;
@@ -184,14 +209,18 @@ export function statusWatermark( element, index, timesIntervals ) {
                     // Poll resolved to completion (done or error fragment).
                     if ( ! batchInProgress ) {
                         if ( isDoneFragment( data ) ) {
-                            updateOverviewCount();
-                            showAdminNotice( __( 'Image watermarked successfully.', 'iloveimg-watermark' ), 'success' );
+                            applyOverviewCounts( data );
+                            var pollId = $element.data( 'id' ) || $element.attr( 'data-id' );
+                            if ( ! notifiedIds.has( pollId ) ) {
+                                notifiedIds.add( pollId );
+                                showAdminNotice( __( 'Image watermarked successfully.', 'iloveimg-watermark' ), 'success' );
+                            }
                         } else {
                             showAdminNotice( __( 'Watermarking failed. Please try again.', 'iloveimg-watermark' ), 'error' );
                         }
                     } else {
                         if ( isDoneFragment( data ) ) {
-                            updateOverviewCount();
+                            applyOverviewCounts( data );
                             batchSuccesses++;
                         } else {
                             batchErrors++;

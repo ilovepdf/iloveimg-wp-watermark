@@ -521,6 +521,23 @@ class Ilove_Img_Wm_Resources {
     }
 
     /**
+     * Render a hidden element carrying authoritative overview counts.
+     *
+     * Emits a single <span> with the real watermarked-file count and total-image
+     * count so the JS done-handler can SET the overview counter from server truth
+     * instead of using an optimistic +1.  Called only from the two AJAX done-branches
+     * in Ilove_Img_Wm_Plugin — NOT from render_watermark_details(), which is also
+     * used by the media-library column renderer and must stay count-free.
+     *
+     * @return void
+     */
+    public static function render_overview_counts(): void {
+        $wm_count    = (int) self::get_watermarked_files();
+        $total_count = (int) self::get_total_images();
+        echo '<span class="iloveimg-wm-counts" data-iloveimg-wm-count="' . esc_attr( (string) $wm_count ) . '" data-iloveimg-total-count="' . esc_attr( (string) $total_count ) . '"></span>';
+    }
+
+    /**
      * Get the statistics for file sizes of watermarked images.
      *
      * This method retrieves statistics for file sizes of watermarked images, including the total initial file sizes and the total processed (watermarked) file sizes.

@@ -160,6 +160,7 @@ class Ilove_Img_Wm_Plugin {
 
             if ( ! $images['error'] ) {
                 Ilove_Img_Wm_Resources::render_watermark_details( $attachment_id );
+                Ilove_Img_Wm_Resources::render_overview_counts();
             } else {
                 $current_status = (int) get_post_meta( $attachment_id, 'iloveimg_status_watermark', true );
                 if ( 1 === $current_status || 3 === $current_status ) {
@@ -250,6 +251,7 @@ class Ilove_Img_Wm_Plugin {
             } elseif ( 2 === $status_watermark ) {
                 // Completed: return the detail fragment so JS can replace the cell in place.
                 Ilove_Img_Wm_Resources::render_watermark_details( $attachment_id );
+                Ilove_Img_Wm_Resources::render_overview_counts();
             } else {
                 // Status 0 — either never processed, failed, or just reset from a stale 1/3.
                 // Return a non-empty fragment so JS can update the cell and show a notice.
