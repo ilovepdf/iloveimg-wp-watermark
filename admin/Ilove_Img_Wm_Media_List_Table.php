@@ -57,11 +57,13 @@ class Ilove_Img_Wm_Media_List_Table extends WP_List_Table {
     protected function column_default( $item, $column_name ) {
         switch ( $column_name ) {
             case 'file':
-                return "<a href='" . admin_url( 'post.php?post=' . $item['ID'] . '&action=edit' ) . "'>" . wp_get_attachment_image( $item['ID'] ) . $item['post_title'] . '</a>';
+                return "<a href='" . esc_url( admin_url( 'post.php?post=' . absint( $item['ID'] ) . '&action=edit' ) ) . "'>"
+                    . wp_get_attachment_image( $item['ID'] )
+                    . "<span class='iloveimg__filename'>" . esc_html( $item['post_title'] ) . '</span></a>';
             case 'post_author':
-                return get_the_author_meta( 'nickname', $item[ $column_name ] );
+                return esc_html( get_the_author_meta( 'nickname', $item[ $column_name ] ) );
             case 'post_date':
-                return $item[ $column_name ];
+                return esc_html( $item[ $column_name ] );
             case 'status':
                 return Ilove_Img_Wm_Resources::get_status_of_column( $item['ID'] );
             default:
@@ -202,13 +204,21 @@ class Ilove_Img_Wm_Media_List_Table extends WP_List_Table {
          * be able to use your precisely-queried data immediately.
          */
 
-        $order = 'ORDER BY post_date DESC';
+        // Allowlist: maps the sortable-column key (from $_GET['orderby']) to the real DB column.
+        // 'file' sorts by post_title; the others map 1-to-1 with wp_posts columns.
+        $allowed_orderby_map = array(
+            'file'        => 'post_title',
+            'post_author' => 'post_author',
+            'post_date'   => 'post_date',
+        );
 
-        if ( isset( $_GET['orderby'] ) && isset( $_GET['order'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-            $order = 'ORDER BY ' . sanitize_text_field( wp_unslash( $_GET['orderby'] ) ) . ' ' . sanitize_text_field( wp_unslash( $_GET['order'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-            if ( 'file' === $_GET['orderby'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-                $order = 'ORDER BY post_title ' . sanitize_text_field( wp_unslash( $_GET['order'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-            }
+        $orderby_req = isset( $_GET['orderby'] ) ? sanitize_text_field( wp_unslash( $_GET['orderby'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+        $order_dir   = ( isset( $_GET['order'] ) && 'ASC' === strtoupper( sanitize_text_field( wp_unslash( $_GET['order'] ) ) ) ) ? 'ASC' : 'DESC'; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+
+        if ( isset( $allowed_orderby_map[ $orderby_req ] ) ) {
+            $order = 'ORDER BY ' . $allowed_orderby_map[ $orderby_req ] . ' ' . $order_dir;
+        } else {
+            $order = 'ORDER BY post_date DESC';
         }
 
         $data = $wpdb->get_results(// phpcs:ignore
