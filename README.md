@@ -63,3 +63,10 @@ Yes! This plugin is powered by our API, and you can integrate it into your own s
 
 ### How do you ensure the privacy of my images?
 We comply with the GDPR and use end-to-end encryption. Files are automatically deleted from our servers within a time range of 1 to 24 hours, depending on your user status. Read more in our [Privacy Policy](https://www.iloveimg.com/help/privacy) and [Terms and Conditions](https://www.iloveimg.com/help/terms).
+
+## Development setup
+
+This plugin commits `vendor/` in production mode (no dev dependencies in the autoloader).
+
+- **Local development**: run `composer install` to install all dependencies (including dev), then `composer run autoload-dev` to regenerate the autoloader with dev packages included.
+- **Before committing `vendor/`**: run `composer run autoload-prod` (alias for `composer dump-autoload --no-dev`) to strip dev references from the autoloader. The CI guard in `.github/workflows/phpstan.yml` will fail the build if `vendor/` is committed with dev-only entries (e.g. phpstan) still present.
