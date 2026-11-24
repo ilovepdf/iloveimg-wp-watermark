@@ -105,85 +105,59 @@ class Ilove_Img_Wm_Submenu {
 	}
 
 	/**
-	 * Handle bulk watermark action on custom media page.
+	 * No-JS safety net for the bulk watermark form submission.
 	 *
-	 * Processes bulk watermark requests before the page renders (at load hook).
-	 * This approach is necessary because the custom media page doesn't use the
-	 * standard WordPress handle_bulk_actions-upload filter.
+	 * When JavaScript is present the form submit is preventDefault()-ed by the
+	 * bulk queue in bulk/index.js, so this handler never runs in the happy path.
+	 * It exists solely as a graceful fallback: if a no-JS GET of action
+	 * `iloveimg_watermark` reaches the server, verify the nonce and register a
+	 * single "JavaScript required" admin notice instead of silently reloading.
+	 *
+	 * Capability enforcement: this load hook is only registered for
+	 * `media_page_iloveimg-media-watermark-page`, whose add_media_page() cap is
+	 * already `upload_files`.
 	 *
 	 * @since 1.0.0
 	 */
 	public function handle_bulk_watermark_action() {
-		// Verify nonce for security
-		$nonce = isset( $_REQUEST['iloveimgwm_bulk_nonce'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['iloveimgwm_bulk_nonce'] ) ) : '';
-		if ( ! wp_verify_nonce( $nonce, 'iloveimgwm_bulk_watermark_action' ) ) {
+		// Verify nonce using the field name and action that the template actually sends.
+		$nonce = isset( $_REQUEST['iloveimg_wm_bulk_nonce'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['iloveimg_wm_bulk_nonce'] ) ) : '';
+		if ( ! wp_verify_nonce( $nonce, 'iloveimg_wm_bulk_watermark_action' ) ) {
 			return;
 		}
 
-		// Check if this is a form submission with a bulk action
+		// Defense-in-depth: re-verify capability after nonce check (parity with compress handler).
+		if ( ! current_user_can( 'upload_files' ) ) {
+			return;
+		}
+
+		// Check if this is a form submission with the watermark bulk action.
 		$action = isset( $_REQUEST['action'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['action'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce verified above
-		if ( empty( $action ) ) {
+		if ( empty( $action ) || '-1' === $action ) {
 			$action = isset( $_REQUEST['action2'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['action2'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce verified above
 		}
 
-		// Only proceed if watermark action is selected
-		if ( 'watermark' !== $action ) {
+		// Only handle our specific bulk action.
+		if ( 'iloveimg_watermark' !== $action ) {
 			return;
 		}
 
-		// Verify we're on the correct page
-		$page = isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce verified above
-		if ( 'iloveimg-media-watermark-page' !== $page ) {
-			return;
-		}
+		// A no-JS GET reached the server: register a "JavaScript required" info notice.
+		// JS-enabled browsers never reach this point (the submit is intercepted client-side).
+		add_action( 'admin_notices', array( $this, 'render_js_required_notice' ) );
+	}
 
-		// Get selected image IDs
-		$image_ids = isset( $_REQUEST['image'] ) ? array_map( 'intval', wp_unslash( $_REQUEST['image'] ) ) : array(); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce verified above
-		if ( empty( $image_ids ) ) {
-			return;
-		}
-
-		// Process watermarking for each selected image
-		$iloveimg_process = new Ilove_Img_Wm_Process();
-		$success_ids      = array();
-		$error_items      = array();
-
-		foreach ( $image_ids as $id ) {
-			$image = $iloveimg_process->watermark( $id );
-
-			if ( ! empty( $image['error'] ) ) {
-				$error_items[] = array(
-					'id'      => $id,
-					'message' => $image['error_msg'],
-				);
-			} else {
-				$success_ids[] = $id;
-			}
-		}
-
-		// Store results in transients for display in the page
-		set_transient( 'iloveimgwm_bulk_success', $success_ids, 600 );
-		set_transient( 'iloveimgwm_bulk_errors', $error_items, 600 );
-
-		// Determine status based on results
-		$status = 'success';
-		if ( ! empty( $error_items ) && ! empty( $success_ids ) ) {
-			$status = 'partial';
-		} elseif ( ! empty( $error_items ) ) {
-			$status = 'error';
-		}
-
-		// Redirect back to the page with the shared status query var so show_notices() fires.
-		// Key must match the registered query var 'iloveimg-bulk-watermark' in Ilove_Img_Wm_Plugin.
-		wp_safe_redirect(
-			add_query_arg(
-				array(
-					'iloveimg-bulk-watermark' => $status,
-					'updated_count'           => count( $success_ids ),
-				),
-				admin_url( 'upload.php?page=iloveimg-media-watermark-page' )
-			)
-		);
-		exit();
+	/**
+	 * Render an admin notice informing the user that JavaScript is required.
+	 *
+	 * Hooked onto `admin_notices` only when a no-JS bulk-watermark form GET is detected
+	 * by handle_bulk_watermark_action().
+	 *
+	 * @since 1.0.0
+	 */
+	public function render_js_required_notice() {
+		echo '<div class="notice notice-info"><p>' .
+			esc_html__( 'JavaScript is required for bulk watermarking. Please enable JavaScript and try again.', 'iloveimg-watermark' ) .
+			'</p></div>';
 	}
 }
