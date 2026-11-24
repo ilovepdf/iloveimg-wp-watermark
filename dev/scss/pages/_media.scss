@@ -2,74 +2,76 @@
 @use "components" as *;
 
 body {
+
 	&.media_page_iloveimg-media-page,
 	&.media_page_iloveimg-media-watermark-page {
+
 		input#doaction,
 		input#doaction2 {
 			background-color: $secondary_color;
 		}
-	
+
 		.tablenav {
 			height: auto;
-	
+
 			&.top {
 				margin-bottom: 14px;
 			}
-	
+
 			&.bottom {
 				margin-top: 14px;
 			}
 		}
-	
+
 		table.wp-list-table {
 			border: 0;
 			box-shadow: $box_shadow;
 			border-radius: 4px;
-	
+
 			thead {
 				>tr {
 					height: 50px;
-	
+
 					th,
 					td {
 						border: 0;
 						padding-top: 0px;
 						padding-bottom: 0px;
-	
+
 						&.check-column {
 							width: 3em;
 						}
 					}
 				}
 			}
-	
+
 			tbody {
 				tr {
 					&:nth-child(odd) {
 						background-color: $light_300_color;
 					}
-	
+
 					th,
 					td {
 						vertical-align: middle;
-	
+
 						&:first-child {
 							vertical-align: top;
 						}
-	
+
 						.attachment-thumbnail {
 							width: 60px;
 							height: 60px;
 							margin-right: 5px;
 						}
 					}
-	
+
 					th,
 					td {
 						&.column-file {
 							max-width: 280px;
 
-							> a {
+							>a {
 								display: flex;
 								align-items: center;
 								max-width: 100%;
@@ -89,16 +91,16 @@ body {
 					}
 				}
 			}
-	
+
 			tr {
-	
+
 				th {
 					color: $primary_color;
 					font-weight: bold;
-	
+
 					a {
 						color: $primary_color;
-	
+
 						span {
 							color: $primary_color;
 						}
@@ -117,8 +119,13 @@ body {
 		font-size: 10px !important;
 	}
 
+	p.iloveimg-status-failed {
+		color: #3c434a;
+	}
+
 	button {
 		&.button {
+
 			&.iloveimg-watermark,
 			&.iloveimg-watermark-all,
 			&.button-style-iloveimg {
@@ -135,17 +142,17 @@ body {
 		width: 100%;
 		margin: 10px auto;
 		border-spacing: 0;
-	
+
 		tbody {
 			tr {
-	
+
 				td,
 				th {
 					line-height: 34px;
 					padding: 5px 15px;
 					border: 0;
 				}
-	
+
 				&:nth-child(even) {
 					background-color: $light_300_color;
 				}

@@ -440,7 +440,7 @@ class Ilove_Img_Wm_Resources {
     public static function get_status_of_column( $column_id, bool $page_render = true ) {
         $post = get_post( $column_id );
 
-        $img_nonce = Ilove_Img_Wm_Plugin::get_img_nonce();
+        $img_nonce = wp_create_nonce( 'iloveimg_watermark_nonce' );
 
         if ( strpos( $post->post_mime_type, 'image/jpg' ) !== false || strpos( $post->post_mime_type, 'image/jpeg' ) !== false || strpos( $post->post_mime_type, 'image/png' ) !== false || strpos( $post->post_mime_type, 'image/gif' ) !== false ) :
 
