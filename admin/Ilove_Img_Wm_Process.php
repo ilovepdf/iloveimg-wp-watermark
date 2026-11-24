@@ -135,7 +135,7 @@ class Ilove_Img_Wm_Process {
 
             $image_compress_processing = $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->postmeta WHERE meta_key = 'iloveimg_status_compress' AND meta_value = 1 AND post_id =  " . $images_id ); // phpcs:ignore
 
-            if ( $files_processing < ILOVE_IMG_WM_NUM_MAX_FILES && 0 === (int) $image_compress_processing ) {
+            if ( $files_processing < (int) apply_filters( 'ilove_img_wm_num_max_files', ILOVE_IMG_WM_NUM_MAX_FILES ) && 0 === (int) $image_compress_processing ) {
                 update_post_meta( $images_id, 'iloveimg_status_watermark', 1 ); // status watermark
                 update_post_meta( $images_id, 'iloveimg_watermark_started', time() );
 

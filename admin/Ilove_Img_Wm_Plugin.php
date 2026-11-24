@@ -132,9 +132,13 @@ class Ilove_Img_Wm_Plugin {
                 self::NAME . '_admin',
                 'iloveimgWatermark',
                 array(
-                    'ajaxUrl' => admin_url( 'admin-ajax.php' ),
-                    'nonce'   => wp_create_nonce( 'iloveimg_watermark_nonce' ),
-                    'logoUrl' => esc_url( ILOVE_IMG_WM_PLUGIN_URL . 'assets/images/logo.svg' ),
+                    'ajaxUrl'         => admin_url( 'admin-ajax.php' ),
+                    'nonce'           => wp_create_nonce( 'iloveimg_watermark_nonce' ),
+                    'logoUrl'         => esc_url( ILOVE_IMG_WM_PLUGIN_URL . 'assets/images/logo.svg' ),
+                    // Max concurrent in-flight files in the client pool; defaults to the (filtered)
+                    // server gate so status-3 queued rows are rare.
+                    // Override via the ilove_img_wm_bulk_concurrency filter.
+                    'bulkConcurrency' => max( 1, (int) apply_filters( 'ilove_img_wm_bulk_concurrency', (int) apply_filters( 'ilove_img_wm_num_max_files', ILOVE_IMG_WM_NUM_MAX_FILES ) ) ),
                 )
             );
 
@@ -153,28 +157,47 @@ class Ilove_Img_Wm_Plugin {
      * This method is responsible for processing an AJAX request to apply a watermark to a specific media item. It instantiates the `Ilove_Img_Wm_Process` class and uses it to watermark the attachment. The result is then rendered to display watermark details or an error message.
      */
     public function ilove_img_wm_library() {
-        if ( isset( $_POST['id'] ) && isset( $_POST['imgnonce'] ) && wp_verify_nonce( sanitize_key( wp_unslash( $_POST['imgnonce'] ) ) ) ) {
-            $ilove         = new Ilove_Img_Wm_Process();
-            $attachment_id = intval( $_POST['id'] );
-            $images        = $ilove->watermark( $attachment_id );
+        // Ensure the job always reaches a terminal status (2 or 0) even if the proxy
+        // or client disconnects before the response is sent back (e.g. 40 s timeout).
+        // The client polls through to the true outcome, so we just need PHP to persist it.
+        ignore_user_abort( true );
 
-            if ( ! $images['error'] ) {
-                Ilove_Img_Wm_Resources::render_watermark_details( $attachment_id );
-                Ilove_Img_Wm_Resources::render_overview_counts();
+        if ( ! isset( $_POST['imgnonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_POST['imgnonce'] ) ), 'iloveimg_watermark_nonce' ) ) {
+            wp_send_json_error( __( 'Security check failed.', 'iloveimg-watermark' ), 401 );
+        }
+
+        if ( ! current_user_can( 'upload_files' ) ) {
+            wp_send_json_error( __( 'You do not have permission to process files.', 'iloveimg-watermark' ), 403 );
+        }
+
+        $attachment_id = isset( $_POST['id'] ) ? absint( $_POST['id'] ) : 0;
+        if ( ! $attachment_id ) {
+            wp_send_json_error( __( 'Invalid attachment.', 'iloveimg-watermark' ), 400 );
+        }
+
+        if ( ! current_user_can( 'edit_post', $attachment_id ) ) {
+            wp_send_json_error( __( 'You cannot edit this attachment.', 'iloveimg-watermark' ), 403 );
+        }
+
+        $ilove  = new Ilove_Img_Wm_Process();
+        $images = $ilove->watermark( $attachment_id );
+
+        if ( ! $images['error'] ) {
+            Ilove_Img_Wm_Resources::render_watermark_details( $attachment_id );
+            Ilove_Img_Wm_Resources::render_overview_counts();
+        } else {
+            $current_status = (int) get_post_meta( $attachment_id, 'iloveimg_status_watermark', true );
+            if ( 1 === $current_status || 3 === $current_status ) {
+                // Job is queued/in-flight: emit the .iloveimg_watermarking div so the
+                // JS poller re-attaches and resolves to the terminal result.
+                // page_render=false: this is the trigger response, NOT a cold render, so
+                // the queued status MUST be kept (reset_if_stale would otherwise wipe a
+                // fresh status=3 to 0 and suppress the poller — the WR/FR-W1 conflation bug).
+                Ilove_Img_Wm_Resources::get_status_of_column( $attachment_id, false );
             } else {
-                $current_status = (int) get_post_meta( $attachment_id, 'iloveimg_status_watermark', true );
-                if ( 1 === $current_status || 3 === $current_status ) {
-                    // Job is queued/in-flight: emit the .iloveimg_watermarking div so the
-                    // JS poller re-attaches and resolves to the terminal result.
-                    // page_render=false: this is the trigger response, NOT a cold render, so
-                    // the queued status MUST be kept (reset_if_stale would otherwise wipe a
-                    // fresh status=3 to 0 and suppress the poller — the WR/FR-W1 conflation bug).
-                    Ilove_Img_Wm_Resources::get_status_of_column( $attachment_id, false );
-                } else {
-                    ?>
-                    <p><?php echo esc_html( $images['error_msg'] ); ?></p>
-                    <?php
-                }
+                ?>
+                <p><?php echo esc_html( $images['error_msg'] ); ?></p>
+                <?php
             }
         }
 
@@ -224,9 +247,11 @@ class Ilove_Img_Wm_Plugin {
     /**
      * Handle the AJAX request to check if a media item has been watermarked.
      *
-     * Response contract (Fix B/C):
+     * Response contract:
      *  - Status 1 or 3 and genuinely in-flight (started within ILOVE_IMG_WM_PROCESS_TIMEOUT):
-     *    HTTP 500, empty body → JS keeps polling.
+     *    HTTP 202, empty body → JS keeps polling (unambiguous "still processing" signal;
+     *    HTTP 500 was previously used here but was silently rewritten to 200/empty by
+     *    WP's _ajax_wp_die_handler, destroying the signal — 202 is intentional and survives).
      *  - Status 1 or 3 but stale (timed out or no timestamp), reset to 0 by reset_if_stale():
      *    falls through to the status-0 branch → HTTP 200, non-empty body with re-rendered button
      *    so the row recovers without a manual page reload.
@@ -238,26 +263,42 @@ class Ilove_Img_Wm_Plugin {
      * spinner visible and the button disabled indefinitely.
      */
     public function ilove_img_wm_library_is_watermarked() {
-        if ( isset( $_POST['id'] ) && isset( $_POST['imgnonce'] ) && wp_verify_nonce( sanitize_key( wp_unslash( $_POST['imgnonce'] ) ) ) ) {
-            $attachment_id = (int) $_POST['id'];
+        if ( ! isset( $_POST['imgnonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_POST['imgnonce'] ) ), 'iloveimg_watermark_nonce' ) ) {
+            wp_send_json_error( __( 'Security check failed.', 'iloveimg-watermark' ), 401 );
+        }
 
-            // reset_if_stale() resets timed-out 1/3 rows to 0 so they fall through below.
-            // A fresh in-flight job (started within ILOVE_IMG_WM_PROCESS_TIMEOUT) is left as-is.
-            $status_watermark = Ilove_Img_Wm_Resources::reset_if_stale( $attachment_id );
+        if ( ! current_user_can( 'upload_files' ) ) {
+            wp_send_json_error( __( 'You do not have permission to process files.', 'iloveimg-watermark' ), 403 );
+        }
 
-            if ( 1 === $status_watermark || 3 === $status_watermark ) {
-                // Genuinely in-flight: signal JS to keep polling; return empty body.
-                http_response_code( 500 );
-            } elseif ( 2 === $status_watermark ) {
-                // Completed: return the detail fragment so JS can replace the cell in place.
-                Ilove_Img_Wm_Resources::render_watermark_details( $attachment_id );
-                Ilove_Img_Wm_Resources::render_overview_counts();
-            } else {
-                // Status 0 — either never processed, failed, or just reset from a stale 1/3.
-                // Return a non-empty fragment so JS can update the cell and show a notice.
-                esc_html_e( 'Watermarking didn\'t complete. Please try again.', 'iloveimg-watermark' );
-                Ilove_Img_Wm_Resources::get_status_of_column( $attachment_id );
-            }
+        $attachment_id = isset( $_POST['id'] ) ? absint( $_POST['id'] ) : 0;
+        if ( ! $attachment_id ) {
+            wp_send_json_error( __( 'Invalid attachment.', 'iloveimg-watermark' ), 400 );
+        }
+
+        if ( ! current_user_can( 'edit_post', $attachment_id ) ) {
+            wp_send_json_error( __( 'You cannot edit this attachment.', 'iloveimg-watermark' ), 403 );
+        }
+
+        // reset_if_stale() resets timed-out 1/3 rows to 0 so they fall through below.
+        // A fresh in-flight job (started within ILOVE_IMG_WM_PROCESS_TIMEOUT) is left as-is.
+        $status_watermark = Ilove_Img_Wm_Resources::reset_if_stale( $attachment_id );
+
+        if ( 1 === $status_watermark || 3 === $status_watermark ) {
+            // Genuinely in-flight: HTTP 202 is an unambiguous "still processing" signal.
+            // wp_die() is used (not http_response_code) because WP's _ajax_wp_die_handler
+            // rewrites the status to 200/empty, destroying any raw 5xx signal — only
+            // wp_die with 'response' survives the handler and reaches the client correctly.
+            wp_die( '', '', array( 'response' => 202 ) );
+        } elseif ( 2 === $status_watermark ) {
+            // Completed: return the detail fragment so JS can replace the cell in place.
+            Ilove_Img_Wm_Resources::render_watermark_details( $attachment_id );
+            Ilove_Img_Wm_Resources::render_overview_counts();
+        } else {
+            // Status 0 — either never processed, failed, or just reset from a stale 1/3.
+            // Return a non-empty fragment so JS can update the cell and show a notice.
+            esc_html_e( 'Watermarking didn\'t complete. Please try again.', 'iloveimg-watermark' );
+            Ilove_Img_Wm_Resources::get_status_of_column( $attachment_id );
         }
 
         wp_die();
@@ -359,7 +400,7 @@ class Ilove_Img_Wm_Plugin {
             'body'      => array(
 				'action'   => 'ilove_img_wm_library',
 				'id'       => $attachment_id,
-                'imgnonce' => self::get_img_nonce(),
+                'imgnonce' => wp_create_nonce( 'iloveimg_watermark_nonce' ),
 			),
             'cookies'   => $_COOKIE,
             'sslverify' => apply_filters( 'https_local_ssl_verify', false ), // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
@@ -475,72 +516,12 @@ class Ilove_Img_Wm_Plugin {
 			}
         }
 
-        if ( get_current_screen()->parent_base === 'upload' && get_query_var( 'iloveimg-bulk-watermark' ) === 'success' ) {
-            $files_success = get_transient( 'iloveimgwm_bulk_success' );
-
-            foreach ( $files_success as $file ) {
-                ?>
-                <div class="notice notice-success is-dismissible">
-                    <p>
-                    <?php
-                    printf(
-                        /* translators: %d: ID of File */
-                        esc_html__( 'Image watermarked successfully: %d', 'iloveimg-watermark' ),
-                        esc_html( $file )
-                    );
-					?>
-                    </p>
-                </div>
-                <?php
-            }
-            // One-shot consumption: prevent stale IDs accumulating across reloads.
-            delete_transient( 'iloveimgwm_bulk_success' );
-        }
-
-        if ( get_current_screen()->parent_base === 'upload' && get_query_var( 'iloveimg-bulk-watermark' ) === 'error' ) {
-            $files_with_errors = get_transient( 'iloveimgwm_bulk_errors' );
-
-            foreach ( $files_with_errors as $file ) {
-                ?>
-                <div class="notice notice-error is-dismissible">
-                    <p><?php echo esc_html( $file['message'] ); ?></p>
-                </div>
-                <?php
-            }
-            // One-shot consumption: prevent stale entries accumulating across reloads.
-            delete_transient( 'iloveimgwm_bulk_errors' );
-        }
-
-        if ( get_current_screen()->parent_base === 'upload' && get_query_var( 'iloveimg-bulk-watermark' ) === 'partial' ) {
-            $files_success     = get_transient( 'iloveimgwm_bulk_success' );
-            $files_with_errors = get_transient( 'iloveimgwm_bulk_errors' );
-
-            foreach ( $files_success as $file ) {
-                ?>
-                <div class="notice notice-success is-dismissible">
-                    <p>
-                    <?php
-                    printf(
-                        /* translators: %d: ID of File */
-                        esc_html__( 'Image watermarked successfully: %d', 'iloveimg-watermark' ),
-                        esc_html( $file )
-                    );
-					?>
-                    </p>
-                </div>
-                <?php
-            }
-
-			foreach ( $files_with_errors as $file ) {
-                ?>
-                <div class="notice notice-error is-dismissible">
-                    <p><?php echo esc_html( $file['message'] ); ?></p>
-                </div>
-                <?php
-            }
-            // One-shot consumption: prevent stale IDs/entries accumulating across reloads.
-            delete_transient( 'iloveimgwm_bulk_success' );
-            delete_transient( 'iloveimgwm_bulk_errors' );
+        if ( get_current_screen()->parent_base === 'upload' && get_query_var( 'iloveimg-bulk-watermark' ) === 'js_required' ) {
+            ?>
+            <div class="notice notice-warning is-dismissible">
+                <p><?php esc_html_e( 'Bulk watermarking requires JavaScript. Please enable it and try again.', 'iloveimg-watermark' ); ?></p>
+            </div>
+            <?php
         }
     }
 
@@ -690,49 +671,15 @@ class Ilove_Img_Wm_Plugin {
      * @param string $doaction The action being taken.
      * @param array  $post_ids An array of post IDs.
      */
-    public function handle_bulk_watermark_action( $redirect_to, $doaction, $post_ids ) {
+    public function handle_bulk_watermark_action( $redirect_to, $doaction, $post_ids ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
         if ( 'iloveimg_watermark' !== $doaction ) {
             return $redirect_to;
         }
 
-        $iloveimg_process = new Ilove_Img_Wm_Process();
-
-		$success_ids = array();
-		$error_items = array();
-
-		foreach ( $post_ids as $id ) {
-			$image = $iloveimg_process->watermark( $id );
-
-			if ( ! empty( $image['error'] ) ) {
-				$error_items[] = array(
-					'id'      => $id,
-					'message' => $image['error_msg'],
-				);
-			} else {
-				$success_ids[] = $id;
-			}
-		}
-
-		set_transient( 'iloveimgwm_bulk_success', $success_ids, 600 );
-		set_transient( 'iloveimgwm_bulk_errors', $error_items, 600 );
-
-		$status = 'success';
-
-		if ( ! empty( $error_items ) && ! empty( $success_ids ) ) {
-			$status = 'partial';
-		} elseif ( ! empty( $error_items ) ) {
-			$status = 'error';
-		}
-
-		wp_safe_redirect(
-            add_query_arg(
-                array(
-					'iloveimg-bulk-watermark' => $status,
-                ),
-                'upload.php'
-            )
-		);
-		exit();
+        // Processing is browser-driven (sequential per-file AJAX, one image per request).
+        // This server path is reached only when JS did NOT intercept the submit (e.g. JS disabled) —
+        // never run the old all-at-once foreach, which is what exhausted memory. Inform the user.
+        return add_query_arg( array( 'iloveimg-bulk-watermark' => 'js_required' ), 'upload.php' );
     }
 
     /**
