@@ -1,6 +1,7 @@
 import { watermarkImage, statusWatermark, watermarkAll } from './watermark';
 import { initClearBackup, initRestoreAllFiles, initRestoreFile } from './common/backup';
 import { initWatermarkPreview, initMediaLibrary } from './watermark/preview';
+import { initBulkWatermarkQueue } from './bulk';
 
 (function ($) {
     var adminpage = '';
@@ -14,23 +15,42 @@ import { initWatermarkPreview, initMediaLibrary } from './watermark/preview';
         case 'upload-php':
             $(document).on('click', 'button.iloveimg-watermark', watermarkImage);
 
-            // Check watermarking status
+            // Check watermarking status — silent=true so page-load pollers never
+            // emit per-file notices (prevents notice-race RC2).
             $('.iloveimg_watermarking').each(function (index, element) {
                 timesIntervals['ref_' + index] = setInterval(function () {
-                    statusWatermark(element, index, timesIntervals);
+                    statusWatermark(element, index, timesIntervals, true);
                 }, 1000);
             });
+
+            initBulkWatermarkQueue({ formId: 'posts-filter', checkboxName: 'media[]' });
             break;
 
         case 'media_page_iloveimg-media-watermark-page':
+            $(document).on('click', 'button.iloveimg-watermark', watermarkImage);
+            $(document).on('click', 'button#iloveimg_watermarkall', watermarkAll);
+
+            // Check watermarking status — silent=true so page-load pollers never
+            // emit per-file notices (prevents notice-race RC2).
+            $('.iloveimg_watermarking').each(function (index, element) {
+                timesIntervals['ref_' + index] = setInterval(function () {
+                    statusWatermark(element, index, timesIntervals, true);
+                }, 1000);
+            });
+
+            // Own-page bulk "Apply" queue.
+            initBulkWatermarkQueue({ formId: 'images-filter', checkboxName: 'image[]' });
+            break;
+
         case 'post-php':
             $(document).on('click', 'button.iloveimg-watermark', watermarkImage);
             $(document).on('click', 'button#iloveimg_watermarkall', watermarkAll);
 
-            // Check watermarking status
+            // Check watermarking status — silent=true so page-load pollers never
+            // emit per-file notices (prevents notice-race RC2).
             $('.iloveimg_watermarking').each(function (index, element) {
                 timesIntervals['ref_' + index] = setInterval(function () {
-                    statusWatermark(element, index, timesIntervals);
+                    statusWatermark(element, index, timesIntervals, true);
                 }, 1000);
             });
             break;
