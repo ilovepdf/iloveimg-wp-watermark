@@ -376,6 +376,14 @@ class Ilove_Img_Wm_Plugin {
      * This method handles an AJAX request to set the watermark image option in user settings. It unsets the automatic watermarking option and updates the watermark image option in user settings.
      */
     public function ilove_img_wm_library_set_watermark_image() {
+        if ( ! isset( $_POST['imgnonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_POST['imgnonce'] ) ), 'iloveimg_watermark_nonce' ) ) {
+            wp_send_json_error( __( 'Security check failed.', 'iloveimg-watermark' ), 401 );
+        }
+
+        if ( ! current_user_can( 'manage_options' ) ) {
+            wp_send_json_error( __( 'You do not have permission to process files.', 'iloveimg-watermark' ), 403 );
+        }
+
         $_wm_options = json_decode( get_option( 'iloveimg_options_watermark' ), true );
         unset( $_wm_options['iloveimg_field_autowatermark'] );
 
@@ -411,32 +419,6 @@ class Ilove_Img_Wm_Plugin {
 		} else {
 			wp_remote_post( admin_url( 'admin-ajax.php' ), $args );
 		}
-    }
-
-    /**
-     * Perform a bulk action on selected media items in the library.
-     *
-     * This method handles a bulk action triggered in the media library. It processes selected media items based on the specified action. In this case, it initiates the watermarking process for each selected image if it hasn't been watermarked yet.
-     * This method is intended to be used as a callback for the 'admin_action_iloveimg_bulk_action' action hook.
-     */
-    public function media_library_bulk_action() {
-        $media = isset( $_REQUEST['media'] ) ? map_deep( wp_unslash( $_REQUEST['media'] ), 'absint' ) : false; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-
-        if ( $media ) {
-            foreach ( $media as $attachment_id ) {
-                $post = get_post( (int) $attachment_id );
-
-                if ( strpos( $post->post_mime_type, 'image/' ) !== false ) {
-                    // Use reset_if_stale() so a stuck row (status 1/3 that timed out) is reset
-                    // to 0 and recovered in the bulk flow instead of silently skipped.
-                    $status_watermark = Ilove_Img_Wm_Resources::reset_if_stale( $attachment_id );
-
-                    if ( 0 === $status_watermark ) {
-                        $this->async_watermark( $attachment_id );
-                    }
-                }
-            }
-        }
     }
 
     /**

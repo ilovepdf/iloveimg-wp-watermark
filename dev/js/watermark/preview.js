@@ -243,6 +243,7 @@ export const initMediaLibrary = () => {
 			type: 'POST',
 			data: {
 				action: 'ilove_img_wm_library_set_watermark_image',
+				imgnonce: iloveimgWatermark.nonce,
 			},
 			success: function (data) {},
 		});
